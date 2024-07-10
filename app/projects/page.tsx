@@ -6,9 +6,9 @@ interface ProjectsProps {
  
 const Projects: FC<ProjectsProps> = () => {
     return ( 
-        <section>
+        <section className="page h-screen overflow-y-scroll">
 
-        </section>
+    </section>
      );
 }
  

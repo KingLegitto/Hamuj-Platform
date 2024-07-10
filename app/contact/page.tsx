@@ -6,9 +6,9 @@ interface ContactProps {
  
 const Contact: FC<ContactProps> = () => {
     return ( 
-        <section>
-            
-        </section>
+        <section className="page h-screen overflow-y-scroll">
+
+    </section>
      );
 }
  
