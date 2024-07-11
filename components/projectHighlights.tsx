@@ -8,10 +8,10 @@ interface HighlightsProps {
 
 const Highlights: FC<HighlightsProps> = ({ projectData }) => {
   return (
-    <div className="mt-10 w-full max-w-[1400px] m-auto overflow-x-scroll snap-x snap-mandatory flex px-10 items-center gap-x-10 h-[400px]">
+    <div className="mt-0 md:mt-10 w-full max-w-[1400px] m-auto overflow-x-scroll snap-x snap-mandatory flex px-3 md:px-10 items-center gap-x-10 h-[400px]">
       {projectData.map((project, index) => {
         return (
-          <div key={index} className="group snap-start flex-shrink-0 relative highlight h-[300px] overflow-hidden w-[30%] hover:w-[600px] hover:h-[350px] duration-500 rounded-md hover:rounded-xl shadow-[20px_20px_0px_2px_#0000001A] delay-0 hover:delay-500">
+          <div key={index} className="group snap-start flex-shrink-0 relative highlight h-[250px] md:h-[300px] overflow-hidden w-[90%] md:w-[30%] hover:w-full md:hover:w-[600px] hover:h-[300px] md:hover:h-[350px] duration-500 rounded-md hover:rounded-xl shadow-[20px_20px_0px_2px_#0000001A] delay-0 hover:delay-500">
             <Image
               src={project.image}
               alt={project.title}
@@ -25,7 +25,7 @@ const Highlights: FC<HighlightsProps> = ({ projectData }) => {
         );
       })}
       
-      {/* <Link href={"/projects"}>Go to Projects</Link> */}
+      <Link href={"/projects"} className="p-10 snap-start">Go to Projects</Link>
     </div>
   );
 };

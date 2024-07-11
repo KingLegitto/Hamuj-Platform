@@ -49,7 +49,7 @@ export default function Home() {
   return (
     <main className="page w-full h-auto overflow-x-hidden bg-slate-100">
       {/* Hero section */}
-      <section className=" relative overflow-hidden h-screen max-h-[700px] w-full bg-[#021322e5] flex justify-center items-center overflow-x-hidden">
+      <section className=" relative overflow-hidden h-dvh max-h-[700px] w-full bg-[#021322e5] flex justify-center items-center overflow-x-hidden">
         <h1 className="absolute z-0 opacity-0">
           Hamuj Homes Ltd - Your go to option for interior renovations,
           furniture and construction
@@ -109,35 +109,35 @@ export default function Home() {
           Our Business Units
         </h2>
 
-        <div className="mt-20 max-w-[1400px] grid grid-cols-1 md:grid-cols-3 gap-y-10 gap-x-9 h-auto md:h-96 px-16 m-auto">
-          <div className="h-auto py-7 md:py-0 md:h-full shadow-[15px_15px_0px_2px_#E8E8E8] flex flex-col justify-center items-center gap-y-5">
+        <div className="mt-20 w-[80%] md:w-full max-w-[1400px] grid grid-cols-1 md:grid-cols-3 gap-y-10 gap-x-9 h-auto md:h-96 px-0 md:px-16 m-auto">
+          <div className="h-auto py-7 md:py-0 px-3 md:px-0 md:h-full shadow-[15px_15px_0px_2px_#E8E8E8] flex flex-col justify-center items-center gap-y-5">
             <Image src={Furniture} height={50} alt="Furniture svg icon" />
-            <span className="text-2xl text-[#242424] font-bold">Furniture</span>
-            <p className=" text-center text-grade-2 w-full md:w-60 px-2 md:px-0 h-32 flex items-center">
+            <span className="text-lg md:text-2xl text-[#242424] font-bold">Furniture</span>
+            <p className=" text-center text-sm md:text-base text-grade-2 w-full md:w-60 px-2 md:px-0 h-28 md:h-32 flex items-center">
               Design, manufacture, restoration, custom solutions, expert
               craftsmanship and delivery of high-quality furniture for
               residential and commercial spaces.
             </p>
           </div>
-          <div className="h-auto py-7 md:py-0 md:h-full shadow-[15px_15px_0px_2px_#E8E8E8] flex flex-col justify-center items-center gap-y-5">
+          <div className="h-auto py-7 md:py-0 px-3 md:px-0 md:h-full shadow-[15px_15px_0px_2px_#E8E8E8] flex flex-col justify-center items-center gap-y-5">
             <Image
               src={Interiors}
               height={50}
               alt="Interiors svg icon"
               className="scale-110"
             />
-            <span className="text-2xl text-[#242424] font-bold">Interiors</span>
-            <p className=" text-center text-grade-2 w-full md:w-60 px-2 md:px-0 h-32 flex items-center">
+            <span className="text-lg md:text-2xl text-[#242424] font-bold">Interiors</span>
+            <p className=" text-center text-sm md:text-base text-grade-2 w-full md:w-60 px-2 md:px-0 h-24 md:h-32 flex items-center">
               Planning, and execution of stunning interiors for residential and
               commercial spaces, custom solutions, space optimization, etc.
             </p>
           </div>
-          <div className="h-auto py-7 md:py-0 md:h-full shadow-[15px_15px_0px_2px_#E8E8E8] flex flex-col justify-center items-center gap-y-5">
+          <div className="h-auto py-7 md:py-0 px-3 md:px-0 md:h-full shadow-[15px_15px_0px_2px_#E8E8E8] flex flex-col justify-center items-center gap-y-5">
             <Image src={RealEstate} height={50} alt="Real Estate svg icon" />
-            <span className="text-2xl text-[#242424] font-bold">
+            <span className="text-lg md:text-2xl text-[#242424] font-bold">
               Real Estate
             </span>
-            <p className=" text-center text-grade-2 w-full md:w-60 px-2 md:px-0 h-32 flex items-center">
+            <p className=" text-center text-sm md:text-base text-grade-2 w-full md:w-60 px-2 md:px-0 h-24 md:h-32 flex items-center">
               Property development, sales, maintenance and management for
               residential and commercial clients.
             </p>
@@ -145,7 +145,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="pt-top-spacing px-5 pb-top-spacing bg-[#E8E8E8] mt-[10rem] md:mt-[15rem]">
+      <section className="pt-top-spacing px-5 pb-[5rem] md:pb-top-spacing bg-[#E8E8E8] mt-[10rem] md:mt-[15rem]">
         <h2 className="text-center text-2xl md:text-heading text-grade-3 font-bold">
           Featured Projects
         </h2>

@@ -30,7 +30,7 @@ const Navbar: FC<NavbarProps> = () => {
     <nav
       className={`duration-300 w-full z-40 fixed flex justify-center items-center gap-x-14 text-white ${
         isAtPageTop
-          ? "hover:bg-theme-1 h-20 backdrop-blur-sm"
+          ? "hover:bg-theme-1 h-20 md:backdrop-blur-sm"
           : "bg-theme-1 h-14 md:h-16"
       }`}
     >
@@ -59,8 +59,8 @@ const Navbar: FC<NavbarProps> = () => {
       <Image
         src={BrandLogo}
         alt="Hamuj Homes Logo"
-        className={`absolute top-1/2 -translate-y-1/2 left-0 duration-500 opacity-0 w-12 md:w-14 ${
-          isAtPageTop ? "" : "delay-300 left-5 md:left-20 opacity-[0.9]"
+        className={`absolute top-1/2 -translate-y-1/2 left-0 duration-500 opacity-0 w-10 md:w-14 ${
+          isAtPageTop ? "" : "delay-300 left-7 md:left-20 opacity-[0.9]"
         } `}
       />
 
