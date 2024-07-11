@@ -104,7 +104,7 @@ export default function Home() {
       </section>
 
       <section className="pt-top-spacing">
-        <h2 className="text-center text-2xl md:text-heading text-grade-3 font-bold">
+        <h2 className="text-center text-2xl md:text-heading text-grade-3 font-bold px-5">
           Our Business Units
         </h2>
 
