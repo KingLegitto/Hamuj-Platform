@@ -48,7 +48,7 @@ export default function Home() {
   return (
     <main className="page w-full h-auto overflow-x-hidden bg-slate-100">
       {/* Hero section */}
-      <section className=" relative overflow-hidden h-dvh max-h-[700px] w-full bg-[#021322e5] flex justify-center items-center overflow-x-hidden">
+      <section className=" relative overflow-hidden h-dvh duration-300 max-h-[700px] w-full bg-[#021322e5] flex justify-center items-center overflow-x-hidden">
         <h1 className="absolute z-0 opacity-0">
           Hamuj Homes Ltd - Your go to option for interior renovations,
           furniture and construction
@@ -149,7 +149,7 @@ export default function Home() {
       </section>
 
       <section className="pt-top-spacing px-5 pb-[5rem] md:pb-top-spacing bg-[#E8E8E8] mt-[10rem] md:mt-[15rem]">
-        <h2 className="text-center text-2xl md:text-heading text-grade-3 font-bold">
+        <h2 className="text-center text-2xl md:text-heading text-grade-3 font-bold px-5">
           Featured Projects
         </h2>
 
