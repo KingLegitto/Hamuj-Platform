@@ -11,39 +11,38 @@ import Link from "next/link";
 import Highlights from "@/components/projectHighlights";
 import { title } from "process";
 
-
 const highlights = [
   {
     image: HeroBg,
-    title: 'Project 1',
-    location: 'Lagos, Nigeria'
+    title: "Project 1",
+    location: "Lagos, Nigeria",
   },
   {
     image: HeroBg2,
-    title: 'Project 2',
-    location: 'Lagos, Nigeria'
+    title: "Project 2",
+    location: "Lagos, Nigeria",
   },
   {
     image: HeroBg,
-    title: 'Project 3',
-    location: 'Lagos, Nigeria'
+    title: "Project 3",
+    location: "Lagos, Nigeria",
   },
   {
     image: HeroBg2,
-    title: 'Project 4',
-    location: 'Lagos, Nigeria'
+    title: "Project 4",
+    location: "Lagos, Nigeria",
   },
   {
     image: HeroBg,
-    title: 'Project 5',
-    location: 'Lagos, Nigeria'
+    title: "Project 5",
+    location: "Lagos, Nigeria",
   },
   {
     image: HeroBg2,
-    title: 'Project 6',
-    location: 'Lagos, Nigeria'
-  }
-]
+    title: "Project 6",
+    location: "Lagos, Nigeria",
+  },
+];
 
 export default function Home() {
   return (
@@ -72,7 +71,7 @@ export default function Home() {
       </section>
 
       <section className="relative pt-top-spacing">
-        <h2 className="text-center text-2xl md:text-heading text-grade-3 font-extrabold">
+        <h2 className="text-center text-2xl md:text-heading text-grade-3 font-extrabold px-5">
           Timely Luxurious Possibilities
         </h2>
 
@@ -88,7 +87,7 @@ export default function Home() {
             alt="Interiors"
             className="w-full block md:hidden"
           />
-          
+
           <p className="w-full md:w-[500px] flex-shrink-0 rounded-none md:rounded-lg bg-[#E8E8E8] md:bg-theme-1 leading-7 h-auto md:h-[370px] p-10 md:p-5 text-black md:text-white text-sm md:text-lg text-center md:text-left shadow-[20px_20px_0px_2px_#E8E8E8]">
             We are a Nigerian construction company aimed at bridging the gap
             between luxury and affordability.
@@ -112,7 +111,9 @@ export default function Home() {
         <div className="mt-20 w-[80%] md:w-full max-w-[1400px] grid grid-cols-1 md:grid-cols-3 gap-y-10 gap-x-9 h-auto md:h-96 px-0 md:px-16 m-auto">
           <div className="h-auto py-7 md:py-0 px-3 md:px-0 md:h-full shadow-[15px_15px_0px_2px_#E8E8E8] flex flex-col justify-center items-center gap-y-5">
             <Image src={Furniture} height={50} alt="Furniture svg icon" />
-            <span className="text-lg md:text-2xl text-[#242424] font-bold">Furniture</span>
+            <span className="text-lg md:text-2xl text-[#242424] font-bold">
+              Furniture
+            </span>
             <p className=" text-center text-sm md:text-base text-grade-2 w-full md:w-60 px-2 md:px-0 h-28 md:h-32 flex items-center">
               Design, manufacture, restoration, custom solutions, expert
               craftsmanship and delivery of high-quality furniture for
@@ -126,7 +127,9 @@ export default function Home() {
               alt="Interiors svg icon"
               className="scale-110"
             />
-            <span className="text-lg md:text-2xl text-[#242424] font-bold">Interiors</span>
+            <span className="text-lg md:text-2xl text-[#242424] font-bold">
+              Interiors
+            </span>
             <p className=" text-center text-sm md:text-base text-grade-2 w-full md:w-60 px-2 md:px-0 h-24 md:h-32 flex items-center">
               Planning, and execution of stunning interiors for residential and
               commercial spaces, custom solutions, space optimization, etc.
@@ -150,7 +153,7 @@ export default function Home() {
           Featured Projects
         </h2>
 
-        <Highlights projectData={highlights}/>
+        <Highlights projectData={highlights} />
       </section>
 
       <section className="bg-theme-1 flex flex-col gap-y-10 items-center justify-end h-64">
