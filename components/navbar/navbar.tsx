@@ -47,7 +47,7 @@ const Navbar: FC<NavbarProps> = () => {
             }`}
           >
             {navLink.title}
-
+            {/* Underline element effect */}
             <div
               className={`w-0 h-[1px] duration-300 rounded-full absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1 scale-105 link-underline ${
                 pathname == navLink.route ? "opacity-0" : "bg-[#ffffff90]"
@@ -74,10 +74,11 @@ const Navbar: FC<NavbarProps> = () => {
         className="md:hidden absolute top-1/2 -translate-y-1/2 right-5 scale-75 opacity-90"
       />
 
+      {/* Mobile nav */}
       <aside
-        className={`absolute duration-500 top-full pt-5 right-0 z-50 bg-white h-dvh w-3/4 flex flex-col items-center text-sm ${
+        className={`absolute duration-500 md:hidden top-full pt-5 right-0 z-50 bg-white h-dvh w-3/4 flex flex-col items-center text-sm touch-none ${
           menuIsVisible ? "translate-x-0" : "translate-x-full"
-        } ${isAtPageTop? 'rounded-l-lg':''}`}
+        } ${isAtPageTop ? "rounded-l-lg" : ""}`}
       >
         {routes.map((navLink) => {
           return (
@@ -91,21 +92,17 @@ const Navbar: FC<NavbarProps> = () => {
               }`}
             >
               {navLink.title}
-
-              <div
-                className={`w-0 h-[1px] duration-300 rounded-full absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1 scale-105 link-underline ${
-                  pathname == navLink.route ? "opacity-0" : "bg-[#ffffff90]"
-                }`}
-              />
             </Link>
           );
         })}
+        <span className={`absolute bottom-20 left-1/2 -translate-x-1/2 text-xs text-grade-3 ${isAtPageTop? 'bottom-[5.2rem]':' bottom-[4rem]'}`}>Hamuj Homes Ltd</span>
       </aside>
 
+        {/* Black translucent overlay for mobile */}
       <div
-        className={`absolute top-full h-dvh w-screen bg-black ${
+        className={`absolute top-full h-dvh w-screen bg-black touch-none ${
           menuIsVisible ? "block" : "hidden"
-        } ${isAtPageTop? 'opacity-0':'opacity-50'}`}
+        } ${isAtPageTop ? "opacity-0" : "opacity-50"}`}
         onClick={() => {
           setMenuIsVisible(false);
         }}

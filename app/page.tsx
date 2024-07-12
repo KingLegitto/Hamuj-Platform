@@ -1,7 +1,10 @@
 import Image from "next/image";
 import LogoTitle from "@/assets/rasters/Hamuj_homes.png";
 import HeroBg from "../assets/rasters/hamuj1.jpg";
-import HeroBg2 from "../assets/rasters/hamuj3.jpg";
+import HeroBg2 from "../assets/rasters/hamuj2.jpg";
+import HeroBg3 from "../assets/rasters/hamuj3.jpg";
+import HeroBg4 from "../assets/rasters/hamuj4.jpg";
+import HeroBg5 from "../assets/rasters/hamuj5.jpg";
 import GroupImage from "../assets/rasters/ImageShapes.png";
 import GroupImageMb from "../assets/vectors/groupImage.svg";
 import Furniture from "../assets/vectors/furniture.svg";
@@ -9,7 +12,8 @@ import Interiors from "../assets/vectors/interiors.svg";
 import RealEstate from "../assets/vectors/real-estate.svg";
 import Link from "next/link";
 import Highlights from "@/components/projectHighlights";
-import { title } from "process";
+import { useEffect, useState } from "react";
+import Hero from "@/components/heroSection";
 
 const highlights = [
   {
@@ -37,32 +41,23 @@ const highlights = [
     title: "Project 5",
     location: "Lagos, Nigeria",
   },
-  {
-    image: HeroBg2,
-    title: "Project 6",
-    location: "Lagos, Nigeria",
-  },
 ];
 
+const heroImages = [HeroBg,HeroBg2,HeroBg3]
+
 export default function Home() {
+
   return (
     <main className="page w-full h-auto overflow-x-hidden bg-slate-100">
       {/* Hero section */}
-      <section className=" relative overflow-hidden h-svh max-h-[700px] w-full bg-[#021322e5] flex justify-center items-center overflow-x-hidden">
+      <section className=" relative overflow-hidden h-svh max-h-[700px] w-full bg-[#101010] flex justify-center items-center overflow-x-hidden">
         <h1 className="absolute z-0 opacity-0">
           Hamuj Homes Ltd - Your go to option for interior renovations,
           furniture and construction
         </h1>
-        <Image
-          src={HeroBg2}
-          alt="Hero section"
-          className="hero1 h-full w-full object-cover absolute left-0 z-10"
-        />
-        <Image
-          src={HeroBg}
-          alt="Hero section"
-          className="hero2 h-full w-full object-cover absolute left-0 z-[9]"
-        />
+
+        <Hero images={heroImages} />
+        
         <Image
           src={LogoTitle}
           alt="Hamuj Homes"
@@ -95,7 +90,7 @@ export default function Home() {
             We are dedicated to transforming your vision into reality, using the
             latest technology and sustainable practices.
             <br /> <br />
-            We are <span className="font-bold">Hamuj</span>. You can trust us
+            We are <span className="font-bold underline underline-offset-[5px] decoration-[#F49D02] decoration-[3px]">Hamuj</span>. You can trust us
             for all your construction needs, from interior renovations to new
             builds, and experience how our expertise and dedication set us apart
             from the rest.

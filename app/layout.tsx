@@ -29,7 +29,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <footer className="relative bg-theme-1 h-40 flex justify-between">
-          <div className="absolute w-full text-center bottom-3 text-white text-sm">© 2024 Hamuj Homes Ltd. All Rights Reserved.</div>
+          <div className="absolute w-full text-center bottom-3 text-white text-xs md:text-sm">© 2024 Hamuj Homes Ltd. All Rights Reserved.</div>
         </footer>
       </body>
     </html>
