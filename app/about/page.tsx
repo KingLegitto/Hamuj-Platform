@@ -6,9 +6,9 @@ interface AboutProps {
  
 const About: FC<AboutProps> = () => {
     return ( 
-    <section className="page h-screen overflow-y-scroll">
+    <main className="page h-screen overflow-y-scroll">
 
-    </section> );
+    </main> );
 }
  
 export default About;

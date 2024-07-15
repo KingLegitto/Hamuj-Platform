@@ -6,12 +6,18 @@
   font-weight: 300;
   margin: 0;
   padding: 0;
+  scroll-behavior: smooth;
 
   &::-webkit-scrollbar {
     height: 0;
     width: 0;
   }
 }
+
+.project-highlight-parent{
+  scroll-behavior: smooth;
+}
+
 body {
   &::-webkit-scrollbar {
     width: 7px;

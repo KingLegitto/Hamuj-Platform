@@ -4,53 +4,53 @@ import HeroBg from "../assets/rasters/hamuj1.jpg";
 import HeroBg2 from "../assets/rasters/hamuj2.jpg";
 import HeroBg3 from "../assets/rasters/hamuj3.jpg";
 import HeroBg4 from "../assets/rasters/hamuj4.jpg";
-import HeroBg5 from "../assets/rasters/hamuj5.jpg";
-import GroupImage from "../assets/rasters/ImageShapes.png";
-import GroupImageMb from "../assets/vectors/groupImage.svg";
+import HeroBg5 from "../assets/rasters/hamuj6.jpg";
+import HeroBg6 from "../assets/rasters/hamuj7.jpg";
+import GroupImage from "../assets/vectors/showcase-pc.svg";
+import GroupImageMb from "../assets/rasters/showcase-mobile.png";
 import Furniture from "../assets/vectors/furniture.svg";
 import Interiors from "../assets/vectors/interiors.svg";
 import RealEstate from "../assets/vectors/real-estate.svg";
 import Link from "next/link";
 import Highlights from "@/components/projectHighlights";
-import { useEffect, useState } from "react";
 import Hero from "@/components/heroSection";
 
 const highlights = [
   {
     image: HeroBg,
-    title: "Project 1",
-    location: "Lagos, Nigeria",
+    title: "5 Bedroom Duplex",
+    location: "Osapa London, Lagos, Nigeria",
+  },
+  {
+    image: HeroBg5,
+    title: "Living Room Interior",
+    location: "Ikoyi, Lagos, Nigeria",
+  },
+  {
+    image: HeroBg6,
+    title: "Living Room Interior",
+    location: "Ikoyi, Lagos, Nigeria",
   },
   {
     image: HeroBg2,
-    title: "Project 2",
-    location: "Lagos, Nigeria",
+    title: "Apartment at Victory Park Estate",
+    location: "Lekki, Lagos Nigeria",
   },
   {
-    image: HeroBg,
-    title: "Project 3",
-    location: "Lagos, Nigeria",
-  },
-  {
-    image: HeroBg2,
-    title: "Project 4",
-    location: "Lagos, Nigeria",
-  },
-  {
-    image: HeroBg,
+    image: HeroBg3,
     title: "Project 5",
     location: "Lagos, Nigeria",
   },
 ];
 
-const heroImages = [HeroBg,HeroBg2,HeroBg3]
+const heroImages = [HeroBg,HeroBg6,HeroBg3,]
 
 export default function Home() {
 
   return (
-    <main className="page w-full h-auto overflow-x-hidden bg-slate-100">
+    <main className="page overflow-y-clip relative w-full h-auto overflow-x-hidden bg-slate-50">
       {/* Hero section */}
-      <section className=" relative overflow-hidden h-svh max-h-[700px] w-full bg-[#101010] flex justify-center items-center overflow-x-hidden">
+      <section className=" relative z-20 overflow-hidden h-svh max-h-[700px] w-full bg-[#101010] flex justify-center items-center overflow-x-hidden">
         <h1 className="absolute z-0 opacity-0">
           Hamuj Homes Ltd - Your go to option for interior renovations,
           furniture and construction
@@ -65,22 +65,22 @@ export default function Home() {
         />
       </section>
 
-      <section className="relative pt-top-spacing">
+      <section className="relative z-20 pt-top-spacing">
         <h2 className="text-center text-2xl md:text-heading text-grade-3 font-extrabold px-5">
           Timely Luxurious Possibilities
         </h2>
 
-        <div className="flex justify-center flex-wrap md:flex-nowrap gap-y-12 lg:gap-x-14 xl:gap-x-24 items-center mt-20">
+        <div className="flex justify-center flex-wrap md:flex-nowrap gap-y-12 lg:gap-x-14 xl:gap-x-24 items-center mt-12 lg:mt-20">
           <Image
             src={GroupImage}
             alt="Interiors"
-            className="w-[400px] xl:w-[600px] hidden md:block"
+            className="w-[350px] xl:w-[550px] hidden md:block"
           />
 
           <Image
             src={GroupImageMb}
             alt="Interiors"
-            className="w-full block md:hidden"
+            className="w-[90%] block md:hidden"
           />
 
           <p className="w-full md:w-[500px] flex-shrink-0 rounded-none md:rounded-lg bg-[#E8E8E8] md:bg-theme-1 leading-7 h-auto md:h-[370px] p-10 md:p-5 text-black md:text-white text-sm md:text-lg text-center md:text-left shadow-[20px_20px_0px_2px_#E8E8E8]">
@@ -98,13 +98,13 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="pt-top-spacing">
+      <section className="pt-top-spacing relative z-20">
         <h2 className="text-center text-2xl md:text-heading text-grade-3 font-bold px-5">
           Our Business Units
         </h2>
 
         <div className="mt-20 w-[80%] md:w-full max-w-[1400px] grid grid-cols-1 md:grid-cols-3 gap-y-10 gap-x-9 h-auto md:h-96 px-0 md:px-16 m-auto">
-          <div className="h-auto py-7 md:py-0 px-3 md:px-0 md:h-full shadow-[15px_15px_0px_2px_#E8E8E8] flex flex-col justify-center items-center gap-y-5">
+          <div className="h-auto bg-slate-50 py-7 md:py-0 px-3 md:px-0 md:h-full shadow-[15px_15px_0px_2px_#E8E8E8] flex flex-col justify-center items-center gap-y-5">
             <Image src={Furniture} height={50} alt="Furniture svg icon" />
             <span className="text-lg md:text-2xl text-[#242424] font-bold">
               Furniture
@@ -115,7 +115,7 @@ export default function Home() {
               residential and commercial spaces.
             </p>
           </div>
-          <div className="h-auto py-7 md:py-0 px-3 md:px-0 md:h-full shadow-[15px_15px_0px_2px_#E8E8E8] flex flex-col justify-center items-center gap-y-5">
+          <div className="h-auto bg-slate-50 py-7 md:py-0 px-3 md:px-0 md:h-full shadow-[15px_15px_0px_2px_#E8E8E8] flex flex-col justify-center items-center gap-y-5">
             <Image
               src={Interiors}
               height={50}
@@ -130,7 +130,7 @@ export default function Home() {
               commercial spaces, custom solutions, space optimization, etc.
             </p>
           </div>
-          <div className="h-auto py-7 md:py-0 px-3 md:px-0 md:h-full shadow-[15px_15px_0px_2px_#E8E8E8] flex flex-col justify-center items-center gap-y-5">
+          <div className="h-auto bg-slate-50 py-7 md:py-0 px-3 md:px-0 md:h-full shadow-[15px_15px_0px_2px_#E8E8E8] flex flex-col justify-center items-center gap-y-5">
             <Image src={RealEstate} height={50} alt="Real Estate svg icon" />
             <span className="text-lg md:text-2xl text-[#242424] font-bold">
               Real Estate
@@ -143,15 +143,14 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="pt-top-spacing px-5 pb-[5rem] md:pb-top-spacing bg-[#E8E8E8] mt-[10rem] md:mt-[15rem]">
+      <section className="pt-top-spacing z-20 lg:px-5 pb-[5rem] md:pb-top-spacing bg-[#E8E8E8] mt-[10rem] md:mt-[15rem]">
         <h2 className="text-center text-2xl md:text-heading text-grade-3 font-bold px-5">
           Featured Projects
         </h2>
-
         <Highlights projectData={highlights} />
       </section>
 
-      <section className="bg-theme-1 flex flex-col gap-y-10 items-center justify-end h-64">
+      <section className="bg-theme-1 z-20 flex flex-col gap-y-10 items-center justify-end h-64">
         <h2 className="text-center text-[32px] text-white font-bold">
           Let's create together
         </h2>
