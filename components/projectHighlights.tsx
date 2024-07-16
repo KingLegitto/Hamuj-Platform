@@ -8,11 +8,18 @@ interface HighlightsProps {
   projectData: { image: any; title: string; location: string }[];
 }
 
+let screenWidth = 0
+
+if(typeof window !== 'undefined'){
+  screenWidth = window.innerWidth
+}
+
 const Highlights: FC<HighlightsProps> = ({ projectData }) => {
   const [activeProject, setActiveProjet] = useState<number>(-1)
   const parent = useRef<HTMLDivElement>(null)
 
   useEffect(()=>{
+
     setTimeout(() => {
       let target:HTMLDivElement | null = document.querySelector(`.project-highlight-${activeProject}`)
       if(target){
@@ -25,7 +32,7 @@ const Highlights: FC<HighlightsProps> = ({ projectData }) => {
   return (
     <div ref={parent} className="project-highlight-parent mt-0 md:mt-10 w-full max-w-[1400px] m-auto overflow-scroll snap-x snap-mandatory flex flex-col md:flex-row items-center gap-y-10 md:gap-y-0 gap-x-10 h-auto md:h-[400px]">
       {projectData.map((project, index) => {
-        if(innerWidth < 768 && index > 2){
+        if(screenWidth < 768 && index > 2){
           return null
         }
         return (
