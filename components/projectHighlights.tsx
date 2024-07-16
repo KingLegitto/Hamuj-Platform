@@ -10,15 +10,14 @@ interface HighlightsProps {
 
 let screenWidth = 0
 
-if(typeof window !== 'undefined'){
-  screenWidth = window.innerWidth
-}
-
 const Highlights: FC<HighlightsProps> = ({ projectData }) => {
   const [activeProject, setActiveProjet] = useState<number>(-1)
   const parent = useRef<HTMLDivElement>(null)
 
   useEffect(()=>{
+    if(typeof window !== 'undefined'){
+      screenWidth = window.innerWidth
+    }
 
     setTimeout(() => {
       let target:HTMLDivElement | null = document.querySelector(`.project-highlight-${activeProject}`)
