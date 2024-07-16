@@ -61,7 +61,7 @@ export default function Home() {
         <Image
           src={LogoTitle}
           alt="Hamuj Homes"
-          className="relative top-8 w-[80%] md:w-[480px] z-20"
+          className="relative top-5 md:top-8 w-[80%] md:w-[480px] z-20"
         />
       </section>
 
