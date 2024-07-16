@@ -150,8 +150,8 @@ export default function Home() {
         <Highlights projectData={highlights} />
       </section>
 
-      <section className="bg-theme-1 z-20 flex flex-col gap-y-10 items-center justify-end h-64">
-        <h2 className="text-center text-[32px] text-white font-bold">
+      <section className="bg-theme-1 z-20 flex flex-col gap-y-12 items-center justify-end h-64 md:h-72">
+        <h2 className="text-center text-[25px] md:text-[32px] text-white font-bold">
           Let's create together
         </h2>
         <button className="text-white font-bold rounded-xl w-44 h-12 border-white duration-300 hover:shadow-[0px_0px_3px_3px_#ffffff50] border-2">

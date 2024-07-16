@@ -25,8 +25,8 @@ const Hero: FC<HeroProps> = ({images}) => {
         <>
         {images.map((image:any, index:number) => (
             <Image onLoad={()=>{setInitialLoad(true)}} key={index} src={image} alt="Hero section background" 
-            className={`hero-${index} h-full w-full object-cover absolute left-0 z-10 
-                ${(index === currentImageIndex && initialLoad) ? `opacity-70 scale-[1.4]`:`opacity-0 scale-[1]`}`}
+            className={`hero-${index} h-full w-full object-cover absolute left-0 z-10 brightness-50
+                ${(index === currentImageIndex && initialLoad) ? `opacity-100 scale-[1.3]`:`opacity-0 scale-[1]`}`}
             style={{transition: index === currentImageIndex ? 'opacity 1s linear, transform 13s ease-in':'opacity 1s linear, transform 13s 2s linear'}}/>
         ))} 
         </>

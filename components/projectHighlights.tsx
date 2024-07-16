@@ -2,6 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { FC, useEffect, useRef, useState } from "react";
+import RightArrow from "../assets/vectors/lineArrow.svg"
 
 interface HighlightsProps {
   projectData: { image: any; title: string; location: string }[];
@@ -26,8 +27,8 @@ const Highlights: FC<HighlightsProps> = ({ projectData }) => {
       {projectData.map((project, index) => {
         return (
           <div key={index} onClick={()=>{setActiveProjet(index)}} title={project.title}
-          className={`project-highlight-${index} group snap-center flex-shrink-0 relative highlight overflow-hidden cursor-pointer first:ml-[15px]
-          ${index === activeProject? 'w-[90%] md:w-[600px] h-[300px] md:h-[350px] rounded-xl':'w-[80%] md:w-[30%] h-[250px] md:h-[300px] rounded-md'} ${activeProject === 0? 'first:!ml-[50vw]':''} shadow-[10px_10px_0px_2px_#0000001A] lg:shadow-[20px_20px_0px_2px_#0000001A]`}
+          className={`project-highlight-${index} group snap-center flex-shrink-0 relative highlight overflow-hidden first:ml-[15px]
+          ${index === activeProject? 'w-[90%] md:w-[600px] h-[300px] md:h-[350px] rounded-xl':'w-[80%] md:w-[30%] h-[250px] md:h-[300px] rounded-md cursor-pointer'} ${activeProject === 0? 'first:!ml-[50vw]':''} shadow-[10px_10px_0px_2px_#0000001A] lg:shadow-[20px_20px_0px_2px_#0000001A]`}
           style={{transition: 'width 0.5s, height 0.5s, margin 0.5s'}}>
             <Image
               src={project.image}
@@ -36,8 +37,12 @@ const Highlights: FC<HighlightsProps> = ({ projectData }) => {
             />
             <div className={`details delay-500 duration-500 text-white bg-gradient-to-t from-[#080808a8] to-[#08080800]  opacity-0 h-1/3 absolute bottom-0 px-5 w-full flex flex-col gap-y-3 justify-center
               ${index === activeProject? 'translate-y-0 opacity-100':'translate-y-1/2'}`}>
-                <span className="font-bold text-lg lg:text-xl truncate">{project.title}</span>
-                <span className="text-xs lg:text-base">{project.location}</span>
+                <span className="font-bold text-lg lg:text-xl truncate max-w-[70%]">{project.title}</span>
+                <span className="text-xs md:text-base">{project.location}</span>
+                <span className={`absolute flex gap-x-2 items-center top-1/2 -translate-y-1/2 right-5 cursor-pointer text-xs md:text-base ${index === activeProject? 'block':'hidden'}`}>
+                  Details
+                <Image src={RightArrow} alt="arrow icon" className="w-7 md:w-10"/>
+                </span>
             </div>
           </div>
         );

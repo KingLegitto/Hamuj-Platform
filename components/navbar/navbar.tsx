@@ -17,7 +17,12 @@ const Navbar: FC<NavbarProps> = () => {
 
   useEffect(() => {
     document.addEventListener("scroll", handleNavBg);
+    handleNavBg()
   }, []);
+
+  useEffect(()=>{
+    setMenuIsVisible(false)
+  }, [pathname])
 
   function handleNavBg() {
     if (window.scrollY >= 200) {
@@ -29,8 +34,8 @@ const Navbar: FC<NavbarProps> = () => {
 
   return (
     <nav
-      className={`duration-300 w-full z-40 fixed flex justify-center items-center gap-x-14 overflow-x-clip text-white ${
-        isAtPageTop
+      className={`duration-300 group w-full z-40 fixed flex justify-center items-center gap-x-14 overflow-x-clip text-white ${
+        (isAtPageTop && pathname === '/')
           ? "lg:hover:bg-theme-1 h-20 md:backdrop-blur-sm"
           : "bg-theme-1 h-14 md:h-16"
       }`}
@@ -61,7 +66,7 @@ const Navbar: FC<NavbarProps> = () => {
         src={BrandLogo}
         alt="Hamuj Homes Logo"
         className={`absolute top-1/2 -translate-y-1/2 left-0 duration-500 opacity-0 w-10 md:w-14 ${
-          isAtPageTop ? "" : "delay-300 left-7 md:left-20 opacity-[0.9]"
+          (isAtPageTop && pathname === '/') ? "" : "delay-300 left-7 md:left-20 opacity-[0.9]"
         } `}
       />
 
@@ -78,7 +83,7 @@ const Navbar: FC<NavbarProps> = () => {
       <aside
         className={`absolute duration-500 md:hidden top-full pt-5 right-0 z-50 bg-white h-dvh w-3/4 flex flex-col items-center text-sm touch-none ${
           menuIsVisible ? "translate-x-0" : "translate-x-full"
-        } ${isAtPageTop ? "rounded-l-lg" : ""}`}
+        } ${(isAtPageTop && pathname === '/') ? "rounded-l-lg" : ""}`}
       >
         {routes.map((navLink) => {
           return (
@@ -95,14 +100,14 @@ const Navbar: FC<NavbarProps> = () => {
             </Link>
           );
         })}
-        <span className={`absolute bottom-20 left-1/2 -translate-x-1/2 text-xs text-grade-3 ${isAtPageTop? 'bottom-[5.2rem]':' bottom-[4rem]'}`}>Hamuj Homes Ltd</span>
+        <span className={`absolute bottom-20 left-1/2 -translate-x-1/2 w-full text-center text-xs text-grade-3 ${isAtPageTop? 'bottom-[5.2rem]':' bottom-[4rem]'}`}>© 2024 Hamuj Homes Ltd. <br /> All Rights Reserved.</span>
       </aside>
 
         {/* Black translucent overlay for mobile */}
       <div
         className={`absolute top-full h-dvh w-screen bg-black touch-none ${
           menuIsVisible ? "block" : "hidden"
-        } ${isAtPageTop ? "opacity-0" : "opacity-50"}`}
+        } ${(isAtPageTop && pathname === '/') ? "opacity-0" : "opacity-50"}`}
         onClick={() => {
           setMenuIsVisible(false);
         }}
