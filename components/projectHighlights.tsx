@@ -25,7 +25,7 @@ const Highlights: FC<HighlightsProps> = ({ projectData }) => {
   return (
     <div ref={parent} className="project-highlight-parent mt-0 md:mt-10 w-full max-w-[1400px] m-auto overflow-scroll snap-x snap-mandatory flex flex-col md:flex-row items-center gap-y-10 md:gap-y-0 gap-x-10 h-auto md:h-[400px]">
       {projectData.map((project, index) => {
-        if(window.innerWidth < 768 && index > 2){
+        if(innerWidth < 768 && index > 2){
           return null
         }
         return (
