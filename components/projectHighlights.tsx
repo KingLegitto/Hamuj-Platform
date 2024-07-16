@@ -57,7 +57,7 @@ const Highlights: FC<HighlightsProps> = ({ projectData }) => {
         );
       })}
       
-      <Link href={"/projects"} className=" snap-start mr-0 md:mr-[40vw] text-center md:text-left underline underline-offset-[5px] decoration-[#F49D02] decoration-[3px]">{window.innerWidth>=1024? 'Go to Projects':'View More'}</Link>
+      <Link href={"/projects"} className=" snap-start mr-0 md:mr-[40vw] text-center md:text-left underline underline-offset-[5px] decoration-[#F49D02] decoration-[3px]">{screenWidth>=1024? 'Go to Projects':'View More'}</Link>
     </div>
   );
 };
