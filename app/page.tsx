@@ -50,7 +50,7 @@ export default function Home() {
   return (
     <main className="page overflow-y-clip relative w-full h-auto overflow-x-hidden bg-slate-50">
       {/* Hero section */}
-      <section className=" relative z-20 overflow-hidden h-svh max-h-[700px] w-full bg-[#101010] flex justify-center items-center overflow-x-hidden">
+      <section className=" relative z-20 overflow-hidden h-[90svh] md:h-screen max-h-[700px] w-full bg-[#101010] flex justify-center items-center overflow-x-hidden">
         <h1 className="absolute z-0 opacity-0">
           Hamuj Homes Ltd - Your go to option for interior renovations,
           furniture and construction
@@ -61,11 +61,11 @@ export default function Home() {
         <Image
           src={LogoTitle}
           alt="Hamuj Homes"
-          className="relative top-8 w-[90%] md:w-[480px] z-20"
+          className="relative top-8 w-[80%] md:w-[480px] z-20"
         />
       </section>
 
-      <section className="relative z-20 pt-top-spacing">
+      <section className="relative z-20 pt-top-spacing-s md:pt-top-spacing">
         <h2 className="text-center text-2xl md:text-heading text-grade-3 font-extrabold px-5">
           Timely Luxurious Possibilities
         </h2>
@@ -98,12 +98,12 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="pt-top-spacing relative z-20">
+      <section className="pt-top-spacing-s md:pt-top-spacing relative z-20">
         <h2 className="text-center text-2xl md:text-heading text-grade-3 font-bold px-5">
           Our Business Units
         </h2>
 
-        <div className="mt-20 w-[80%] md:w-full max-w-[1400px] grid grid-cols-1 md:grid-cols-3 gap-y-10 gap-x-9 h-auto md:h-96 px-0 md:px-16 m-auto">
+        <div className="mt-10 md:mt-20 w-[80%] md:w-full max-w-[1400px] grid grid-cols-1 md:grid-cols-3 gap-y-10 gap-x-9 h-auto md:h-96 px-0 md:px-16 m-auto">
           <div className="h-auto bg-slate-50 py-7 md:py-0 px-3 md:px-0 md:h-full shadow-[15px_15px_0px_2px_#E8E8E8] flex flex-col justify-center items-center gap-y-5">
             <Image src={Furniture} height={50} alt="Furniture svg icon" />
             <span className="text-lg md:text-2xl text-[#242424] font-bold">
@@ -143,8 +143,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="pt-top-spacing z-20 lg:px-5 pb-[5rem] md:pb-top-spacing bg-[#E8E8E8] mt-[10rem] md:mt-[15rem]">
-        <h2 className="text-center text-2xl md:text-heading text-grade-3 font-bold px-5">
+      <section className="pt-top-spacing-s md:pt-top-spacing z-20 lg:px-5 pb-[5rem] md:pb-top-spacing bg-[#E8E8E8] mt-[10rem] md:mt-[15rem]">
+        <h2 className="text-center text-2xl md:text-heading text-grade-3 font-bold px-5 mb-10 md:mb-0">
           Featured Projects
         </h2>
         <Highlights projectData={highlights} />
@@ -157,7 +157,7 @@ export default function Home() {
         <button className="text-white font-bold rounded-xl w-44 h-12 border-white duration-300 hover:shadow-[0px_0px_3px_3px_#ffffff50] border-2">
           Contact Us
         </button>
-        <div className=" bg-white h-[2px] rounded-full w-1/2 opacity-70" />
+        <div className=" bg-white h-[2px] rounded-full w-3/4 md:w-1/2 opacity-70" />
       </section>
     </main>
   );

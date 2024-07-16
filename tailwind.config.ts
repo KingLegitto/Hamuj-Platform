@@ -24,7 +24,8 @@ const config: Config = {
         "grade-3": "#404040"
       },
       padding: {
-        "top-spacing": "8rem"
+        "top-spacing": "8rem",
+        "top-spacing-s": "5rem"
       },
       backgroundColor:{
         "theme-1":"#115FAA",

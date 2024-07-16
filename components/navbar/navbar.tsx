@@ -35,7 +35,7 @@ const Navbar: FC<NavbarProps> = () => {
   return (
     <nav
       className={`duration-300 group w-full z-40 fixed flex justify-center items-center gap-x-14 overflow-x-clip text-white ${
-        (isAtPageTop && pathname === '/')
+        (isAtPageTop)
           ? "lg:hover:bg-theme-1 h-20 md:backdrop-blur-sm"
           : "bg-theme-1 h-14 md:h-16"
       }`}
@@ -47,7 +47,7 @@ const Navbar: FC<NavbarProps> = () => {
             href={navLink.route}
             className={`navLink relative duration-200 hidden md:inline ${
               pathname == navLink.route
-                ? "text-theme-2 font-bold"
+                ? "text-theme-2 font-medium"
                 : "text-white"
             }`}
           >
@@ -66,7 +66,7 @@ const Navbar: FC<NavbarProps> = () => {
         src={BrandLogo}
         alt="Hamuj Homes Logo"
         className={`absolute top-1/2 -translate-y-1/2 left-0 duration-500 opacity-0 w-10 md:w-14 ${
-          (isAtPageTop && pathname === '/') ? "" : "delay-300 left-7 md:left-20 opacity-[0.9]"
+          (isAtPageTop) ? "" : "delay-300 left-7 md:left-20 opacity-[0.9]"
         } `}
       />
 
@@ -81,9 +81,9 @@ const Navbar: FC<NavbarProps> = () => {
 
       {/* Mobile nav */}
       <aside
-        className={`absolute duration-500 md:hidden top-full pt-5 right-0 z-50 bg-white h-dvh w-3/4 flex flex-col items-center text-sm touch-none ${
+        className={`absolute duration-500 md:hidden top-full pt-5 right-0 z-50 bg-white h-dvh w-3/4 flex flex-col items-center text-sm touch-none border-l-2 border-[#00000024] ${
           menuIsVisible ? "translate-x-0" : "translate-x-full"
-        } ${(isAtPageTop && pathname === '/') ? "rounded-l-lg" : ""}`}
+        } ${(isAtPageTop) ? "rounded-l-lg" : ""}`}
       >
         {routes.map((navLink) => {
           return (
@@ -107,7 +107,7 @@ const Navbar: FC<NavbarProps> = () => {
       <div
         className={`absolute top-full h-dvh w-screen bg-black touch-none ${
           menuIsVisible ? "block" : "hidden"
-        } ${(isAtPageTop && pathname === '/') ? "opacity-0" : "opacity-50"}`}
+        } ${(isAtPageTop) ? "opacity-0" : "opacity-50"}`}
         onClick={() => {
           setMenuIsVisible(false);
         }}

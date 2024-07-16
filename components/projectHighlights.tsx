@@ -23,11 +23,14 @@ const Highlights: FC<HighlightsProps> = ({ projectData }) => {
     
   }, [activeProject])
   return (
-    <div ref={parent} className="project-highlight-parent mt-0 md:mt-10 w-full max-w-[1400px] m-auto overflow-scroll snap-x snap-mandatory flex items-center gap-x-10 h-[400px]">
+    <div ref={parent} className="project-highlight-parent mt-0 md:mt-10 w-full max-w-[1400px] m-auto overflow-scroll snap-x snap-mandatory flex flex-col md:flex-row items-center gap-y-10 md:gap-y-0 gap-x-10 h-auto md:h-[400px]">
       {projectData.map((project, index) => {
+        if(window.innerWidth < 768 && index > 2){
+          return null
+        }
         return (
           <div key={index} onClick={()=>{setActiveProjet(index)}} title={project.title}
-          className={`project-highlight-${index} group snap-center flex-shrink-0 relative highlight overflow-hidden first:ml-[15px]
+          className={`project-highlight-${index} group snap-center flex-shrink-0 relative highlight overflow-hidden
           ${index === activeProject? 'w-[90%] md:w-[600px] h-[300px] md:h-[350px] rounded-xl':'w-[80%] md:w-[30%] h-[250px] md:h-[300px] rounded-md cursor-pointer'} ${activeProject === 0? 'first:!ml-[50vw]':''} shadow-[10px_10px_0px_2px_#0000001A] lg:shadow-[20px_20px_0px_2px_#0000001A]`}
           style={{transition: 'width 0.5s, height 0.5s, margin 0.5s'}}>
             <Image
@@ -48,7 +51,7 @@ const Highlights: FC<HighlightsProps> = ({ projectData }) => {
         );
       })}
       
-      <Link href={"/projects"} className="p-10 snap-start mr-[40vw]">Go to Projects</Link>
+      <Link href={"/projects"} className=" snap-start mr-0 md:mr-[40vw] text-center md:text-left underline underline-offset-[5px] decoration-[#F49D02] decoration-[3px]">{window.innerWidth>=1024? 'Go to Projects':'View More'}</Link>
     </div>
   );
 };

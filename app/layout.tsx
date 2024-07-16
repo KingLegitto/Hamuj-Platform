@@ -37,12 +37,12 @@ export default function RootLayout({
       <body className={inter.className}>
         <Navbar />
         {children}
-        <footer className="relative bg-theme-1 h-40 flex justify-between">
+        <footer className="relative bg-theme-1 h-32 md:h-40 flex justify-between">
           <span className="hidden md:flex gap-x-3 absolute top-1/2 -translate-y-1/2 left-5 text-white text-xs md:text-sm">
             <Link href={'/about'}>Testimonials</Link> •
             <Link href={'/contact'}>Location</Link>
           </span>
-          <span className="flex gap-x-6 md:gap-x-4 scale-110 md:scale-100 absolute top-1/2 -translate-y-1/2 right-1/2 md:right-5 translate-x-1/2 md:translate-x-0 text-white text-xs md:text-sm">
+          <span className="flex gap-x-6 md:gap-x-4 scale-110 md:scale-100 absolute top-[45%] md:top-1/2 -translate-y-1/2 right-1/2 md:right-5 translate-x-1/2 md:translate-x-0 text-white text-xs md:text-sm">
             <Link href=""><Image src={Facebook} alt="facebook icon"/></Link>
             <Link href=""><Image src={Whatsapp} alt="whatsapp icon"/></Link>
             <Link href="https://www.youtube.com/@HamujMedia/" target="_blank"><Image src={Youtube} alt="youtube icon" /></Link>
