@@ -11,6 +11,8 @@ import GroupImageMb from "../assets/rasters/showcase-mobile.png";
 import Furniture from "../assets/vectors/furniture.svg";
 import Interiors from "../assets/vectors/interiors.svg";
 import RealEstate from "../assets/vectors/real-estate.svg";
+import Quote from "../assets/vectors/quotes.svg";
+import Check from "../assets/vectors/check.svg"
 import Link from "next/link";
 import Highlights from "@/components/projectHighlights";
 import Hero from "@/components/heroSection";
@@ -43,10 +45,9 @@ const highlights = [
   },
 ];
 
-const heroImages = [HeroBg,HeroBg6,HeroBg3,]
+const heroImages = [HeroBg, HeroBg6, HeroBg3];
 
 export default function Home() {
-
   return (
     <main className="page overflow-y-clip relative w-full h-auto overflow-x-hidden bg-slate-50">
       {/* Hero section */}
@@ -57,7 +58,7 @@ export default function Home() {
         </h1>
 
         <Hero images={heroImages} />
-        
+
         <Image
           src={LogoTitle}
           alt="Hamuj Homes"
@@ -90,10 +91,13 @@ export default function Home() {
             We are dedicated to transforming your vision into reality, using the
             latest technology and sustainable practices.
             <br /> <br />
-            We are <span className="font-bold underline underline-offset-[5px] decoration-[#F49D02] decoration-[3px]">Hamuj</span>. You can trust us
-            for all your construction needs, from interior renovations to new
-            builds, and experience how our expertise and dedication set us apart
-            from the rest.
+            We are{" "}
+            <span className="font-bold underline underline-offset-[5px] decoration-[#F49D02] decoration-[3px]">
+              Hamuj
+            </span>
+            . You can trust us for all your construction needs, from interior
+            renovations to new builds, and experience how our expertise and
+            dedication set us apart from the rest.
           </p>
         </div>
       </section>
@@ -143,11 +147,57 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="pt-top-spacing-s md:pt-top-spacing z-20 lg:px-5 pb-[5rem] md:pb-top-spacing bg-[#E8E8E8] mt-[10rem] md:mt-[15rem]">
+      <section className="relative pt-top-spacing-s md:pt-top-spacing z-20 lg:px-5 pb-[5rem] md:pb-top-spacing bg-[#E8E8E8] mt-[10rem] md:mt-[15rem]">
+      <div className="hidden md:block w-[12rem] h-[4rem] bg-[#E8E8E8] absolute bottom-full right-10" />
+      <div className="hidden md:block w-[10rem] h-[5rem] bg-[#E8E8E8] absolute bottom-[calc(100%+2rem)] right-3/4" />
         <h2 className="text-center text-2xl md:text-heading text-grade-3 font-bold px-5 mb-10 md:mb-0">
           Featured Projects
         </h2>
         <Highlights projectData={highlights} />
+      </section>
+
+      <section className="relative section w-full max-failsafe py-[5rem] md:pt-28 md:pb-[calc(7rem-40px)] overflow-hidden">
+        {/* <div className="hidden md:block w-[12rem] h-[4rem] bg-[#E8E8E8] absolute top-0 left-10 z-10" />
+        <div className="hidden md:block w-[10rem] h-[5rem] bg-[#E8E8E8] absolute top-[2rem] left-3/4 z-10" /> */}
+        
+        <Image src={Check} alt="check" className="absolute -bottom-[2.5rem] md:-bottom-[2rem] left-1/2 -translate-x-1/2 scale-[0.3] md:scale-[0.4]"/>
+
+        <h2 className="relative text-center text-2xl md:text-heading text-grade-3 z-20 font-bold px-5 mb-0">
+          Client Testimonials
+        </h2>
+
+        <div className="flex h-[300px] overflow-x-scroll snap-mandatory snap-x text-base md:text-xl pb-24 md:pb-10">
+          <div
+            className="w-full h-full flex-shrink-0
+            flex justify-center items-center snap-center"
+          >
+            <p className="flex text-center max-w-[80%] md:max-w-[50%] relative text-grade-2">
+              <Image src={Quote} alt="quotation" className="absolute w-7 md:w-10 top-0 right-full -translate-y-1/4" />
+              The experience of my space transformation is forever fresh, I
+              wake up daily in my space forever thankful that I engaged Hamuj
+              for the space design and finishing.
+              <Image src={Quote} alt="quotation" className="absolute w-7 md:w-10 bottom-0 left-full rotate-180 translate-y-1/4" />
+              <span className="absolute w-full md:w-auto top-[120%] md:top-full right-1/2 md:right-0 translate-x-1/2 md:translate-x-0 text-center text-sm">
+                - <span className="text-grade-3 font-medium">Evelyn Edumoh</span><br />COO ARKLAND PROPERTIES
+              </span>
+            </p>
+          </div>
+          <div
+            className="w-full h-full flex-shrink-0
+            flex justify-center items-center snap-center"
+          >
+            <p className="flex text-center max-w-[80%] md:max-w-[50%] relative text-grade-2">
+              <Image src={Quote} alt="quotation" className="absolute w-7 md:w-10 top-0 right-full -translate-y-1/4" />
+              The experience of my space transformation is forever fresh, I
+              wake up daily in my space forever thankful that I engaged Hamuj
+              for the space design and finishing.
+              <Image src={Quote} alt="quotation" className="absolute w-7 md:w-10 bottom-0 left-full rotate-180 translate-y-1/4" />
+              <span className="absolute w-full md:w-auto top-[120%] md:top-full right-1/2 md:right-0 translate-x-1/2 md:translate-x-0 text-center text-sm">
+                - <span className="text-grade-3 font-medium">Evelyn Edumoh</span><br />COO ARKLAND PROPERTIES
+              </span>
+            </p>
+          </div>
+        </div>
       </section>
 
       <section className="bg-theme-1 z-20 flex flex-col gap-y-12 items-center justify-end h-64 md:h-72">

@@ -14,7 +14,7 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       fontSize: {
-        "heading":"40px",
+        "heading":"35px",
       },
       colors: {
         "theme-1":"#115FAA",
@@ -25,7 +25,7 @@ const config: Config = {
       },
       padding: {
         "top-spacing": "8rem",
-        "top-spacing-s": "5rem"
+        "top-spacing-s": "7rem"
       },
       backgroundColor:{
         "theme-1":"#115FAA",
