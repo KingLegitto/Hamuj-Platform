@@ -32,7 +32,7 @@ const About: FC<AboutProps> = () => {
           </span>
         </h2>
 
-        <div className="mt-16 px-7 md:px-40 text-base md:text-lg text-justify md:text-left relative text-grade-2">
+        <div className="mt-16 px-10 hyphens-auto md:px-40 text-base md:text-lg text-center md:text-left relative text-grade-2">
           <p className="w-full md:w-3/4 mb-10">
             Hamuj Homes Ltd., established in 2017, we began as a wood exporting
             company, sourcing and delivering quality wood worldwide. We expanded into home furniture in 2020, offering TV units,
