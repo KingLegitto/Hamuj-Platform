@@ -32,15 +32,15 @@ const About: FC<AboutProps> = () => {
           </span>
         </h2>
 
-        <div className="mt-16 px-10 hyphens-auto md:px-40 text-base md:text-lg text-center md:text-left relative text-grade-2">
-          <p className="w-full md:w-3/4 mb-10">
+        <div className="mt-16 px-10 md:px-40 text-base md:text-lg text-left relative text-grade-2">
+          <p className="relative z-20 w-full md:w-3/4 mb-10">
             Hamuj Homes Ltd., established in 2017, we began as a wood exporting
             company, sourcing and delivering quality wood worldwide. We expanded into home furniture in 2020, offering TV units,
             wardrobes, closets, and kitchen cabinets. By 2021, we achieved N150
             million ($113,670) in revenue, allowing us to diversify into real
             estate and start acquiring properties from our profits.
           </p>
-          <p className="w-full md:w-3/4">
+          <p className="relative z-20 w-full md:w-3/4">
             In 2022, we transitioned into a full-time interior design company, completing over
             3,000 homes across Nigeria and serving a diverse clientele, including
             celebrities, government officials, and private organization founders.
@@ -49,7 +49,7 @@ const About: FC<AboutProps> = () => {
             funded by our profits, as we progress toward evolving into a
             comprehensive group of companies under the Hamuj Group umbrella.
           </p>
-          <Image src={Logo} alt="Hamuj logo" className="absolute right-1/2 md:right-[8%] translate-x-1/2 md:translate-x-0 top-1/2 -translate-y-1/2 w-[250px] opacity-5 md:opacity-20"/>
+          <Image src={Logo} alt="Hamuj logo" className="absolute z-10 right-1/2 md:right-[8%] translate-x-1/2 md:translate-x-0 top-1/2 -translate-y-1/2 w-[250px] opacity-5 md:opacity-20"/>
         </div>
         
       </section>
