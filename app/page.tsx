@@ -73,7 +73,7 @@ export default function Home() {
 
         <div className="flex justify-center h-auto lg:h-[490px] flex-wrap lg:flex-nowrap gap-y-12 lg:gap-x-14 xl:gap-x-24 items-center mt-12 lg:mt-20">
 
-          <div className="relative h-[280px] lg:h-full w-[300px] lg:w-[540px] drop-shadow-[10px_10px_0px_#E8E8E8] lg:drop-shadow-[15px_20px_0px_#E8E8E8]">
+          <div className="relative h-[280px] lg:h-full w-[300px] lg:w-[540px] drop-shadow-[12px_12px_0px_#E8E8E8] lg:drop-shadow-[15px_20px_0px_#E8E8E8]">
             <Image src={HeroBg5} alt="group image" className="absolute z-[3] left-0 bottom-11 rounded-3xl hover:scale-110 duration-300 border-[5px] lg:border-[10px] border-slate-50 w-[180px] lg:w-[330px] aspect-square object-cover"/>
             <Image src={HeroBg} alt="group image" className="absolute z-[2] top-0 right-10  rounded-3xl hover:scale-110 duration-300 border-[5px] lg:border-[10px] border-slate-50 w-[150px] lg:w-[280px] aspect-square object-cover"/>
             <Image src={HeroBg3} alt="group image" className="absolute z-[1] right-0 bottom-0 rounded-3xl hover:scale-110 duration-300 border-[5px] lg:border-[10px] border-slate-50 w-[100px] lg:w-[150px] aspect-square object-cover"/>
