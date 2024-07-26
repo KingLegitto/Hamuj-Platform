@@ -21,26 +21,31 @@ const highlights = [
   {
     image: HeroBg,
     title: "5 Bedroom Duplex",
+    route: '5-bedroom-duplex',
     location: "Osapa London, Lagos, Nigeria",
   },
   {
     image: HeroBg5,
     title: "Living Room Interior",
+    route: 'living-room-interior',
     location: "Ikoyi, Lagos, Nigeria",
   },
   {
     image: HeroBg6,
     title: "Living Room Interior",
+    route: 'living-room-interior',
     location: "Ikoyi, Lagos, Nigeria",
   },
   {
     image: HeroBg2,
     title: "Apartment at Victory Park Estate",
+    route: 'apartment-at-victory-park-estate',
     location: "Lekki, Lagos Nigeria",
   },
   {
     image: HeroBg3,
     title: "Project 5",
+    route: 'project-5',
     location: "Lagos, Nigeria",
   },
 ];
@@ -79,7 +84,7 @@ export default function Home() {
             <Image src={HeroBg3} alt="group image" className="absolute z-[1] right-0 bottom-0 rounded-3xl hover:scale-110 duration-300 border-[5px] lg:border-[10px] border-slate-50 w-[100px] lg:w-[150px] aspect-square object-cover"/>
           </div>
 
-          <p className="w-full lg:w-[500px] flex-shrink-0 rounded-none lg:rounded-lg bg-[#E8E8E8] lg:bg-theme-1 leading-7 h-auto lg:h-[370px] p-10 lg:p-5 text-black lg:text-white text-sm lg:text-lg text-center lg:text-left shadow-[20px_20px_0px_2px_#E8E8E8]">
+          <p className="w-full lg:w-[550px] flex-shrink-0 rounded-none lg:rounded-lg bg-[#E8E8E8] lg:bg-theme-1 leading-7 h-auto lg:h-[370px] p-10 lg:p-7 text-black lg:text-white text-sm lg:text-lg text-center lg:text-left shadow-[20px_20px_0px_2px_#E8E8E8]">
             We are a Nigerian construction company aimed at bridging the gap
             between luxury and affordability.
             <br /> <br />

@@ -1,12 +1,10 @@
-import { FC } from "react";
 import Image from "next/image";
 import Hero from "../../assets/rasters/hamuj1-2.jpg";
+import Projects from "./projects";
 
-interface ProjectsProps {}
-
-const Projects: FC<ProjectsProps> = () => {
+const ProjectsPage = () => {
   return (
-    <main className="page h-screen overflow-y-scroll">
+    <main className="relative w-full h-auto bg-slate-50">
       <section className="relative flex justify-center items-center h-[250px] md:h-[400px] aspect-video w-full overflow-hidden">
         <Image
           src={Hero}
@@ -24,8 +22,10 @@ const Projects: FC<ProjectsProps> = () => {
           </span>
         </h1>
       </section>
+
+      <Projects />
     </main>
   );
 };
 
-export default Projects;
+export default ProjectsPage;

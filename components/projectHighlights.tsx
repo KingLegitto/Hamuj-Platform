@@ -5,13 +5,15 @@ import { FC, useEffect, useRef, useState } from "react";
 import RightArrow from "../assets/vectors/lineArrow.svg"
 import RightArrowBlk from "../assets/vectors/lineArrow-gold.svg"
 import AngledArrow from "../assets/vectors/acuteArrow.svg"
+import { useRouter } from "next/navigation";
 
 interface HighlightsProps {
-  projectData: { image: any; title: string; location: string }[];
+  projectData: { image: any; title: string; location: string, route: string }[];
 }
 
 
 const Highlights: FC<HighlightsProps> = ({ projectData }) => {
+  const router = useRouter()
   const [screenWidth, setScreenWidth] = useState<number>(0)
   const [activeProject, setActiveProjet] = useState<number>(0)
   const [clickPermit, setClickPermit] = useState(true)
@@ -64,7 +66,7 @@ const Highlights: FC<HighlightsProps> = ({ projectData }) => {
             return null
           }
           return (
-            <div key={index} onClick={()=>{handleScrolling(index)}} title={project.title}
+            <div key={index} onClick={()=>{handleScrolling(index)}}
             className={`project-highlight-${index} group snap-center flex-shrink-0 relative highlight overflow-hidden
             ${index === activeProject? 'w-[90%] md:w-[600px] h-[300px] md:h-[350px]':'w-[80%] md:w-[30%] h-[250px] md:h-[300px] cursor-pointer'} md:first:ml-[50vw] shadow-[10px_10px_0px_2px_#0000001A] lg:shadow-[20px_20px_0px_2px_#0000001A]`}
             style={{transition: 'width 0.5s, height 0.5s, margin 0.5s'}}>
@@ -77,10 +79,11 @@ const Highlights: FC<HighlightsProps> = ({ projectData }) => {
                 ${index === activeProject? 'translate-y-0 opacity-100':'translate-y-1/2'}`}>
                   <span className="font-bold text-lg lg:text-xl truncate max-w-[70%]">{project.title}</span>
                   <span className="text-xs md:text-base">{project.location}</span>
-                  <span className={`absolute flex gap-x-2 items-center top-1/2 -translate-y-1/2 right-5 cursor-pointer text-xs md:text-base ${index === activeProject? 'block':'hidden'}`}>
+                  <Link href={`projects/${project.route}`} title="View this project"
+                  className={`absolute flex gap-x-2 items-center top-1/2 -translate-y-1/2 right-5 cursor-pointer text-xs md:text-base ${index === activeProject? 'block':'hidden'}`}>
                     Details
                   <Image src={RightArrow} alt="arrow icon" className="w-7 md:w-10"/>
-                  </span>
+                  </Link>
               </div>
             </div>
           );
