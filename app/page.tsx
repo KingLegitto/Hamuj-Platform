@@ -153,12 +153,10 @@ export default function Home() {
         <h2 className="text-center text-2xl lg:text-heading text-grade-3 font-bold px-5 mb-10 lg:mb-0">
           Featured Projects
         </h2>
-        <Highlights projectData={highlights} />
+        <Highlights />
       </section>
 
       <section className="relative section w-full max-failsafe py-[5rem] lg:pt-28 lg:pb-[calc(7rem-40px)] overflow-hidden">
-        {/* <div className="hidden lg:block w-[12rem] h-[4rem] bg-[#E8E8E8] absolute top-0 left-10 z-10" />
-        <div className="hidden lg:block w-[10rem] h-[5rem] bg-[#E8E8E8] absolute top-[2rem] left-3/4 z-10" /> */}
         
         <Image src={Check} alt="check" className="absolute -bottom-[2.5rem] lg:-bottom-[2rem] left-1/2 -translate-x-1/2 scale-[0.3] lg:scale-[0.4]"/>
 

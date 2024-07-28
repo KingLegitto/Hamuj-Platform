@@ -13,6 +13,7 @@ const About: FC<AboutProps> = () => {
         <Image
           src={Hero}
           alt="hero section background"
+          placeholder="blur"
           className="w-full h-full object-cover brightness-[0.7] z-[1]"
         />
         <div className="z-[2] absolute w-full h-full bg-gradient-to-tr from-[#061843ad] to-[#2a2a2a00]" />

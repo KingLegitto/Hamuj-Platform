@@ -17,12 +17,12 @@ const Navbar: FC<NavbarProps> = () => {
 
   useEffect(() => {
     document.addEventListener("scroll", handleNavBg);
-    handleNavBg()
+    handleNavBg();
   }, []);
 
-  useEffect(()=>{
-    setMenuIsVisible(false)
-  }, [pathname])
+  useEffect(() => {
+    setMenuIsVisible(false);
+  }, [pathname]);
 
   function handleNavBg() {
     if (window.scrollY >= 200) {
@@ -34,11 +34,12 @@ const Navbar: FC<NavbarProps> = () => {
 
   return (
     <nav
-      className={`duration-300 group w-full z-40 fixed flex justify-center items-center gap-x-14 overflow-x-clip text-white ${
-        (isAtPageTop && !(pathname.startsWith('/projects/')))
+      className={`duration-300 group w-full z-40 fixed justify-center items-center gap-x-14 overflow-x-clip text-white ${
+        isAtPageTop && !pathname.startsWith("/projects/")
           ? "lg:hover:bg-theme-1 h-20 lg:backdrop-blur-sm"
           : "bg-theme-1 h-14 lg:h-16"
-      }`}
+      }
+        ${pathname.startsWith("/studio") ? "hidden" : "flex"}`}
     >
       {routes.map((navLink) => {
         return (
@@ -46,7 +47,8 @@ const Navbar: FC<NavbarProps> = () => {
             key={navLink.title}
             href={navLink.route}
             className={`navLink relative duration-200 hidden lg:inline ${
-              pathname == navLink.route || pathname.startsWith(`${navLink.route}/`)
+              pathname == navLink.route ||
+              pathname.startsWith(`${navLink.route}/`)
                 ? "text-theme-2 font-medium"
                 : "text-white"
             }`}
@@ -61,12 +63,14 @@ const Navbar: FC<NavbarProps> = () => {
           </Link>
         );
       })}
-      
+
       <Image
         src={BrandLogo}
         alt="Hamuj Homes Logo"
         className={`absolute top-1/2 -translate-y-1/2 left-0 duration-500 opacity-0 w-10 lg:w-14 ${
-          (isAtPageTop && !(pathname.startsWith('/projects/'))) ? "" : "delay-300 left-7 lg:left-20 opacity-[0.9]"
+          isAtPageTop && !pathname.startsWith("/projects/")
+            ? ""
+            : "delay-300 left-7 lg:left-20 opacity-[0.9]"
         } `}
       />
 
@@ -83,7 +87,7 @@ const Navbar: FC<NavbarProps> = () => {
       <aside
         className={`absolute duration-500 lg:hidden top-full pt-5 right-0 z-50 bg-white h-dvh w-3/4 flex flex-col items-center text-sm touch-none shadow-lg ${
           menuIsVisible ? "translate-x-0" : "translate-x-full"
-        } ${(isAtPageTop) ? "rounded-l-lg" : ""}`}
+        } ${isAtPageTop ? "rounded-l-lg" : ""}`}
       >
         {routes.map((navLink) => {
           return (
@@ -100,14 +104,18 @@ const Navbar: FC<NavbarProps> = () => {
             </Link>
           );
         })}
-        <span className={`absolute bottom-20 left-1/2 -translate-x-1/2 w-full text-center text-xs text-grade-3 ${isAtPageTop? 'bottom-[5.2rem]':' bottom-[4rem]'}`}>© 2024 Hamuj Homes Ltd. <br /> All Rights Reserved.</span>
+        <span
+          className={`absolute bottom-20 left-1/2 -translate-x-1/2 w-full text-center text-xs text-grade-3 ${isAtPageTop ? "bottom-[5.2rem]" : " bottom-[4rem]"}`}
+        >
+          © 2024 Hamuj Homes Ltd. <br /> All Rights Reserved.
+        </span>
       </aside>
 
-        {/* Black translucent overlay for mobile */}
+      {/* Black translucent overlay for mobile */}
       <div
         className={`absolute top-full h-dvh w-screen bg-black touch-none ${
           menuIsVisible ? "block" : "hidden"
-        } ${(isAtPageTop) ? "opacity-0" : "opacity-50"}`}
+        } ${isAtPageTop ? "opacity-0" : "opacity-50"}`}
         onClick={() => {
           setMenuIsVisible(false);
         }}
