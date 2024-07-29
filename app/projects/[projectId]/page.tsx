@@ -29,6 +29,32 @@ const Project: FC<ProjectProps> = ({ params }) => {
   const [projectDetails, setProjectDetails] = useState<ProjectDetails>();
 
   useEffect(() => {
+    // Client-side functionality
+    if (typeof window !== "undefined") {
+        const projectsInMemory = sessionStorage.getItem("projects");
+        if (projectsInMemory) {
+            const projectsData = JSON.parse(projectsInMemory)
+            projectsData.forEach((project:any)=>{
+                if(project.title === dehyphenate(projectId)){
+                    setProjectDetails(project)
+                }
+            })
+        } else {
+            const fetchProjects = async () => {
+                const query = '*[_type == "projects"]';
+                const data = await client.fetch(query);
+                alert('fetching was done')
+                sessionStorage.setItem('projects',JSON.stringify(data))
+                data.forEach((project:any)=>{
+                    if(project.title === dehyphenate(projectId)){
+                        setProjectDetails(project)
+                    }
+                })
+                // setLoading(false);
+              };
+              fetchProjects();
+        }
+      }
     const fetchProjects = async () => {
       const projectTitle = dehyphenate(projectId);
       const query = `*[_type == "projects" && title == $projectTitle]`;

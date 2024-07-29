@@ -1,13 +1,8 @@
 import Image from "next/image";
 import LogoTitle from "@/assets/rasters/Hamuj_homes.png";
 import HeroBg from "../assets/rasters/hamuj1.jpg";
-import HeroBg2 from "../assets/rasters/hamuj2.jpg";
 import HeroBg3 from "../assets/rasters/hamuj3.jpg";
-import HeroBg4 from "../assets/rasters/hamuj4.jpg";
-import HeroBg5 from "../assets/rasters/hamuj6.jpg";
 import HeroBg6 from "../assets/rasters/hamuj7.jpg";
-import GroupImage from "../assets/vectors/showcase-pc.svg";
-import GroupImageMb from "../assets/rasters/showcase-mobile.png";
 import Furniture from "../assets/vectors/furniture.svg";
 import Interiors from "../assets/vectors/interiors.svg";
 import RealEstate from "../assets/vectors/real-estate.svg";
@@ -16,43 +11,12 @@ import Check from "../assets/vectors/check.svg"
 import Link from "next/link";
 import Highlights from "@/components/projectHighlights";
 import Hero from "@/components/heroSection";
-
-const highlights = [
-  {
-    image: HeroBg,
-    title: "5 Bedroom Duplex",
-    route: '5-bedroom-duplex',
-    location: "Osapa London, Lagos, Nigeria",
-  },
-  {
-    image: HeroBg5,
-    title: "Living Room Interior",
-    route: 'living-room-interior',
-    location: "Ikoyi, Lagos, Nigeria",
-  },
-  {
-    image: HeroBg6,
-    title: "Living Room Interior",
-    route: 'living-room-interior',
-    location: "Ikoyi, Lagos, Nigeria",
-  },
-  {
-    image: HeroBg2,
-    title: "Apartment at Victory Park Estate",
-    route: 'apartment-at-victory-park-estate',
-    location: "Lekki, Lagos Nigeria",
-  },
-  {
-    image: HeroBg3,
-    title: "Project 5",
-    route: 'project-5',
-    location: "Lagos, Nigeria",
-  },
-];
+import GroupImages from "@/components/groupImages";
 
 const heroImages = [HeroBg, HeroBg6, HeroBg3];
 
 export default function Home() {
+  
   return (
     <main className="page overflow-y-clip relative w-full h-auto overflow-x-hidden bg-slate-50">
       {/* Hero section */}
@@ -78,11 +42,8 @@ export default function Home() {
 
         <div className="flex justify-center h-auto lg:h-[490px] flex-wrap lg:flex-nowrap gap-y-12 lg:gap-x-14 xl:gap-x-24 items-center mt-12 lg:mt-20">
 
-          <div className="relative h-[280px] lg:h-full w-[300px] lg:w-[540px] drop-shadow-[12px_12px_0px_#E8E8E8] lg:drop-shadow-[15px_20px_0px_#E8E8E8]">
-            <Image src={HeroBg5} alt="group image" className="absolute z-[3] left-0 bottom-11 rounded-3xl hover:scale-110 duration-300 border-[5px] lg:border-[10px] border-slate-50 w-[180px] lg:w-[330px] aspect-square object-cover"/>
-            <Image src={HeroBg} alt="group image" className="absolute z-[2] top-0 right-10  rounded-3xl hover:scale-110 duration-300 border-[5px] lg:border-[10px] border-slate-50 w-[150px] lg:w-[280px] aspect-square object-cover"/>
-            <Image src={HeroBg3} alt="group image" className="absolute z-[1] right-0 bottom-0 rounded-3xl hover:scale-110 duration-300 border-[5px] lg:border-[10px] border-slate-50 w-[100px] lg:w-[150px] aspect-square object-cover"/>
-          </div>
+            <GroupImages />
+     
 
           <p className="w-full lg:w-[550px] flex-shrink-0 rounded-none lg:rounded-lg bg-[#E8E8E8] lg:bg-theme-1 leading-7 h-auto lg:h-[370px] p-10 lg:p-7 text-black lg:text-white text-sm lg:text-lg text-center lg:text-left shadow-[20px_20px_0px_2px_#E8E8E8]">
             We are a Nigerian construction company aimed at bridging the gap

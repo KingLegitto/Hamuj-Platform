@@ -27,13 +27,23 @@ const Projects = () => {
   const [projectsData, setProjectsData] = useState<ProjectsDataProps[]>([])
 
   useEffect(()=>{
-    const fetchProjects = async () => {
-      const query = '*[_type == "projects"]'
-      const data = await client.fetch(query)
-      setProjectsData(data)
+    // Client-side functionality
+    if (typeof window !== "undefined") {
+      const projectsInMemory = sessionStorage.getItem("projects");
+      if (projectsInMemory) {
+        setProjectsData(JSON.parse(projectsInMemory));
+      } else {
+        const fetchProjects = async () => {
+          const query = '*[_type == "projects"]';
+          const data = await client.fetch(query);
+          alert('fetching was done')
+          setProjectsData(data);
+          sessionStorage.setItem('projects',JSON.stringify(data))
+          // setLoading(false);
+        };
+        fetchProjects();
+      }
     }
-  
-    fetchProjects()
   }, [])
 
   return (

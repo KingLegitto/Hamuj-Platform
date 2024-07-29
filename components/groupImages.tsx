@@ -1,0 +1,58 @@
+"use client"
+import Image from "next/image";
+import HeroBg from "../assets/rasters/hamuj1.jpg";
+import HeroBg3 from "../assets/rasters/hamuj3.jpg";
+import HeroBg5 from "../assets/rasters/hamuj6.jpg";
+import { useRef, useState } from "react";
+import { useInView, motion } from "framer-motion";
+
+const GroupImages = () => {
+  const groupImage = useRef(null);
+  const groupImageIsInView = useInView(groupImage, {margin: '0px 0px -50px 0px', once: true});
+
+  const parent ={
+    scaleUp:{
+        transition: {staggerChildren: 0.2}
+    }
+  }
+  const children = {
+    scaleUp:{
+        scale: 1, opacity: 1,
+        transition:{ease: 'easeOut', duration: 0.5}
+    }
+  }
+  return (
+    <motion.div variants={parent} animate={groupImageIsInView? 'scaleUp':''} className="relative h-[280px] lg:h-full w-[300px] lg:w-[540px] drop-shadow-[12px_12px_0px_#E8E8E8] lg:drop-shadow-[15px_20px_0px_#E8E8E8]">
+      <motion.div initial={{opacity: 0, scale: 0}} variants={children} whileHover={{scale: 1.1}} whileTap={{scale: 1.1}} drag dragSnapToOrigin
+        className={`absolute z-[3] bg-white left-0 bottom-11 overflow-hidden rounded-3xl border-[5px] lg:border-[10px] border-slate-50 w-[180px] lg:w-[330px] aspect-square cursor-pointer`}
+>
+        <Image 
+            ref={groupImage}
+            src={HeroBg5}
+            alt="group image"
+            className="h-full w-full object-cover pointer-events-none"
+        />
+      </motion.div>
+      
+      <motion.div initial={{opacity: 0, scale: 0}} variants={children} whileHover={{scale: 1.1}} whileTap={{scale: 1.1}} drag dragSnapToOrigin
+      className="absolute z-[2] bg-white top-0 right-10 overflow-hidden rounded-3xl border-[5px] lg:border-[10px] border-slate-50 w-[150px] lg:w-[280px] aspect-square cursor-pointer">
+      <Image
+        src={HeroBg}
+        alt="group image"
+        className="h-full w-full object-cover pointer-events-none"
+      />
+      </motion.div>
+      
+      <motion.div initial={{opacity: 0, scale: 0}} variants={children} whileHover={{scale: 1.1}} whileTap={{scale: 1.1}} drag dragSnapToOrigin
+      className="absolute z-[1] bg-white right-0 bottom-0 overflow-hidden rounded-3xl border-[5px] lg:border-[10px] border-slate-50 w-[100px] lg:w-[150px] aspect-square cursor-pointer">
+      <Image 
+        src={HeroBg3}
+        alt="group image"
+        className="h-full w-full object-cover pointer-events-none"
+      />
+      </motion.div>
+    </motion.div>
+  );
+};
+
+export default GroupImages;
