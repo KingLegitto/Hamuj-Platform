@@ -10,6 +10,7 @@ import Instagram from "../assets/vectors/instagram.svg"
 import Facebook from "../assets/vectors/facebook.svg"
 import TikTok from "../assets/vectors/tikTok.svg"
 import Image from "next/image";
+import Preloader from "@/components/pageTransitions/preloader";
 
 
 
@@ -51,6 +52,7 @@ export default function RootLayout({
           </span>
           <div className="absolute w-full text-center bottom-3 text-white text-xs md:text-sm">© 2024 Hamuj Homes Ltd. All Rights Reserved.</div>
         </footer>
+        <Preloader />
       </body>
     </html>
   );

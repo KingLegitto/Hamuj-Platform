@@ -6,12 +6,14 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { client, urlFor } from '../../sanityClient'
 import { hyphenate } from "@/utils/hyphenationForRoutes";
+import TransitionLink from "@/components/pageTransitions/transitionLink";
 
 
 interface ProjectsDataProps {
   title: string,
   client: string,
   location: string,
+  highlight: boolean;
   description: string,
   images: {
     _key: string
@@ -36,7 +38,6 @@ const Projects = () => {
         const fetchProjects = async () => {
           const query = '*[_type == "projects"]';
           const data = await client.fetch(query);
-          alert('fetching was done')
           setProjectsData(data);
           sessionStorage.setItem('projects',JSON.stringify(data))
           // setLoading(false);
@@ -57,14 +58,11 @@ const Projects = () => {
       </div>
 
       {projectsData.map((project, index) => {
-        return (
-          <div
+        return ( 
+          <TransitionLink
             key={index}
-            onClick={() => {
-              router.push(`projects/${hyphenate(project.title)}`);
-            }}
-            title={project.title}
-            className={`w-full h-[300px] group flex-shrink-0 relative overflow-hidden shadow-[10px_10px_0px_2px_#0000001A] lg:shadow-[20px_20px_0px_2px_#0000001A] duration-300 cursor-pointer`}
+            href={`projects/${hyphenate(project.title)}`}
+            styles={`w-full h-[300px] group flex-shrink-0 relative overflow-hidden shadow-[10px_10px_0px_2px_#0000001A] lg:shadow-[20px_20px_0px_2px_#0000001A] duration-300 cursor-pointer`}
           >
             <Image
               src={urlFor(project.images[0].asset).url()}
@@ -88,7 +86,7 @@ const Projects = () => {
                 className="absolute top-1/2 -translate-y-1/2 right-5 w-7 md:w-10 scale-[0.7]"
               />
             </div>
-          </div>
+          </TransitionLink>
         );
       })}
     </section>

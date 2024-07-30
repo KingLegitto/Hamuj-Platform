@@ -3,10 +3,11 @@
 import { FC, useEffect, useState } from "react";
 import { navbarLinks } from "./navbarHelpers";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
 import Menu from "../../assets/vectors/hamburger.svg";
 import BrandLogo from "../../assets/rasters/smallLogo.png";
+import TransitionLink from "../pageTransitions/transitionLink";
 
 interface NavbarProps {}
 const routes = navbarLinks;
@@ -14,15 +15,27 @@ const Navbar: FC<NavbarProps> = () => {
   const [isAtPageTop, setIsAtPageTop] = useState<boolean>(true);
   const [menuIsVisible, setMenuIsVisible] = useState<boolean>(false);
   const pathname = usePathname();
+  const router = useRouter()
+    
+  function transition(e:any, route:string){
+        // e.preventDefault()
+        // const preloader:HTMLDivElement = document.querySelector('.preloader')!
+        
+        // preloader.style.display = 'block'
+        // setTimeout(() => {
+        //   preloader.style.transition = '0.3s'
+        //   preloader.style.opacity = '1'
+        //   setTimeout(() => {
+        //     router.push(route)
+        //   }, 300);
+        // }, 100);
+        
+    }
 
   useEffect(() => {
     document.addEventListener("scroll", handleNavBg);
     handleNavBg();
   }, []);
-
-  useEffect(() => {
-    setMenuIsVisible(false);
-  }, [pathname]);
 
   function handleNavBg() {
     if (window.scrollY >= 200) {
@@ -43,10 +56,10 @@ const Navbar: FC<NavbarProps> = () => {
     >
       {routes.map((navLink) => {
         return (
-          <Link
+          <TransitionLink
             key={navLink.title}
             href={navLink.route}
-            className={`navLink relative duration-200 hidden lg:inline ${
+            styles={`navLink relative duration-200 hidden lg:inline ${
               pathname == navLink.route ||
               pathname.startsWith(`${navLink.route}/`)
                 ? "text-theme-2 font-medium"
@@ -60,7 +73,7 @@ const Navbar: FC<NavbarProps> = () => {
                 pathname == navLink.route ? "opacity-0" : "bg-[#ffffff90]"
               }`}
             />
-          </Link>
+          </TransitionLink>
         );
       })}
 
@@ -85,13 +98,13 @@ const Navbar: FC<NavbarProps> = () => {
 
       {/* Mobile nav */}
       <aside
-        className={`absolute duration-500 lg:hidden top-full pt-5 right-0 z-50 bg-white h-dvh w-3/4 flex flex-col items-center text-sm touch-none shadow-lg ${
-          menuIsVisible ? "translate-x-0" : "translate-x-full"
+        className={`absolute lg:hidden top-full pt-5 right-0 z-50 bg-white h-dvh w-3/4 flex flex-col items-center text-sm touch-none shadow-lg ${
+          menuIsVisible ? "translate-x-0 duration-500" : "translate-x-full"
         } ${isAtPageTop ? "rounded-l-lg" : ""}`}
       >
         {routes.map((navLink) => {
           return (
-            <Link
+            <Link onClick={(e)=>{transition(e, navLink.route); setMenuIsVisible(false)}}
               key={navLink.title}
               href={navLink.route}
               className={`navLink relative duration-200 border-b-[1px] py-3 last:border-none w-full text-center ${

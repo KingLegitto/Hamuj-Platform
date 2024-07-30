@@ -12,7 +12,7 @@ export const projects = defineType({
       description: "NOTE: Please capitalize the first letter of every word in the title, also no special characters allowed except spaces between words. Thank you",
       validation: Rule => Rule.required()
         .custom(title => {
-          const noSpecialCharsRegex = /^[a-zA-Z0-9\s]*$/;
+          const noSpecialCharsRegex = /^[a-zA-Z0-9&\s]*$/;
           const noMultipleSpacesRegex = /^[^\s](?:[a-zA-Z0-9]+(?:\s[a-zA-Z0-9]+)*)?$/;
           const capitalFirstLetterRegex = /^([A-Z0-9][a-zA-Z0-9]*\s)*[A-Z0-9][a-zA-Z0-9]*$/;
 
@@ -43,6 +43,10 @@ export const projects = defineType({
     defineField({
       name: "completedAt",
       type: "datetime",
+    }),
+    defineField({
+      name: "highlight",
+      type: "boolean",
     }),
     defineField({
       name: "images",

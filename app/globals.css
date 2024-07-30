@@ -43,3 +43,22 @@ body {
   max-width: 1440px;
   margin: auto;
 }
+
+.preloader-spinner{
+  opacity: 0;
+  animation: spin 10s linear 2s infinite;
+}
+
+@keyframes spin {
+  0% {
+    opacity: 0;
+    transform: translate(-50%,-50%) rotate(0deg);
+  }
+  10%{
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%,-50%) rotate(360deg);
+  }
+}

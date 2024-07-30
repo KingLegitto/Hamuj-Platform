@@ -7,11 +7,14 @@ import RightArrowBlk from "../assets/vectors/lineArrow-gold.svg";
 import AngledArrow from "../assets/vectors/acuteArrow.svg";
 import { client, urlFor } from "../sanityClient";
 import { hyphenate } from "@/utils/hyphenationForRoutes";
+import TransitionLink from "./pageTransitions/transitionLink";
+import { useInView } from "framer-motion";
 
-interface ProjectsDataProps {
+interface HighlightsProps {
   title: string;
   client: string;
   location: string;
+  highlight: boolean;
   description: string;
   images: {
     _key: string;
@@ -26,9 +29,9 @@ const Highlights: FC = () => {
   const [screenWidth, setScreenWidth] = useState<number>(0);
   const [activeProject, setActiveProjet] = useState<number>(0);
   const [clickPermit, setClickPermit] = useState<boolean>(true);
-  const [projectsData, setProjectsData] = useState<ProjectsDataProps[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [highlights, setHighlights] = useState<HighlightsProps[]>([]);
   const left = useRef<HTMLButtonElement>(null);
+  const isInView = useInView(left, {once: true})
   const right = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
@@ -37,26 +40,46 @@ const Highlights: FC = () => {
       setScreenWidth(innerWidth);
       const projectsInMemory = sessionStorage.getItem("projects");
       if (projectsInMemory) {
-        setProjectsData(JSON.parse(projectsInMemory));
+        const data = JSON.parse(projectsInMemory);
+        let newArr: any = [];
+        data.forEach((project: any) => {
+          if (project.highlight == true) {
+            newArr.push(project);
+          }
+        });
+        setHighlights(newArr);
       } else {
         const fetchProjects = async () => {
           const query = '*[_type == "projects"]';
           const data = await client.fetch(query);
-          alert('fetching was done')
-          setProjectsData(data);
-          sessionStorage.setItem('projects',JSON.stringify(data))
-          setLoading(false);
+          sessionStorage.setItem("projects", JSON.stringify(data));
+          let newArr: any = [];
+          data.forEach((project: any) => {
+            if (project.highlight == true) {
+              newArr.push(project);
+            }
+          });
+          setHighlights(newArr);
+          // setLoading(false);
         };
         fetchProjects();
       }
     }
   }, []);
 
+  useEffect(()=>{
+    if(isInView){
+      setTimeout(() => {
+        handleScrolling(0)
+      }, 300);
+    }
+  }, [isInView])
+
   function handleScrolling(index: number) {
     // Click permit limits the number of times the user can click in rapid succession
     if (clickPermit) {
       if (index < 0) index = 0;
-      if (index >= projectsData.length + 1) index = projectsData.length;
+      if (index >= highlights.length + 1) index = highlights.length;
       setActiveProjet(index);
 
       setTimeout(() => {
@@ -101,10 +124,11 @@ const Highlights: FC = () => {
       </button>
 
       <div className="relative project-highlight-parent mt-0 md:mt-10 w-full max-w-[1400px] m-auto overflow-scroll snap-x snap-mandatory flex flex-col md:flex-row items-center gap-y-10 md:gap-y-0 gap-x-10 h-auto md:h-[400px]">
-        {projectsData.map((project, index) => {
+        {highlights.map((project, index) => {
           if (screenWidth < 768 && index > 2) {
             return null;
           }
+          if (index > 4) return null;
           return (
             <div
               key={index}
@@ -129,10 +153,9 @@ const Highlights: FC = () => {
                   {project.title}
                 </span>
                 <span className="text-xs md:text-base">{project.location}</span>
-                <Link
+                <TransitionLink
                   href={`projects/${hyphenate(project.title)}`}
-                  title="View this project"
-                  className={`absolute flex gap-x-2 items-center top-1/2 -translate-y-1/2 right-5 cursor-pointer text-xs md:text-base ${index === activeProject ? "block" : "hidden"}`}
+                  styles={`absolute flex gap-x-2 items-center top-1/2 -translate-y-1/2 right-5 cursor-pointer text-xs md:text-base ${index === activeProject ? "block" : "hidden"}`}
                 >
                   Details
                   <Image
@@ -140,18 +163,18 @@ const Highlights: FC = () => {
                     alt="arrow icon"
                     className="w-7 md:w-10"
                   />
-                </Link>
+                </TransitionLink>
               </div>
             </div>
           );
         })}
 
         <div
-          className={`project-highlight-${projectsData.length} snap-start mr-0 md:ml-[5vw] md:mr-[50vw] w-[20vw] flex-shrink-0 py-2`}
+          className={`project-highlight-${highlights.length} snap-start mr-0 md:ml-[5vw] md:mr-[50vw] w-[20vw] flex-shrink-0 py-2`}
         >
-          <Link
+          <TransitionLink
             href={"/projects"}
-            className={`flex items-center justify-center md:gap-x-2 text-center underline md:no-underline underline-offset-[5px] decoration-[#F49D02] decoration-[2px] group text-sm md:text-base`}
+            styles={`flex items-center justify-center md:gap-x-2 text-center underline md:no-underline underline-offset-[5px] decoration-[#F49D02] decoration-[2px] group text-sm md:text-base`}
           >
             {screenWidth >= 1024 ? "Go to Projects" : "View More"}
             <Image
@@ -159,7 +182,7 @@ const Highlights: FC = () => {
               alt="arrow"
               className="hidden md:block scale-75 group-hover:scale-[1]"
             />
-          </Link>
+          </TransitionLink>
         </div>
       </div>
     </div>
