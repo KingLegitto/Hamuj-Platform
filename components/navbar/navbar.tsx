@@ -16,26 +16,15 @@ const Navbar: FC<NavbarProps> = () => {
   const [menuIsVisible, setMenuIsVisible] = useState<boolean>(false);
   const pathname = usePathname();
   const router = useRouter()
-    
-  function transition(e:any, route:string){
-        // e.preventDefault()
-        // const preloader:HTMLDivElement = document.querySelector('.preloader')!
-        
-        // preloader.style.display = 'block'
-        // setTimeout(() => {
-        //   preloader.style.transition = '0.3s'
-        //   preloader.style.opacity = '1'
-        //   setTimeout(() => {
-        //     router.push(route)
-        //   }, 300);
-        // }, 100);
-        
-    }
 
   useEffect(() => {
     document.addEventListener("scroll", handleNavBg);
     handleNavBg();
   }, []);
+
+  useEffect(()=>{
+    setMenuIsVisible(false)
+  }, [pathname])
 
   function handleNavBg() {
     if (window.scrollY >= 200) {
@@ -104,17 +93,17 @@ const Navbar: FC<NavbarProps> = () => {
       >
         {routes.map((navLink) => {
           return (
-            <Link onClick={(e)=>{transition(e, navLink.route); setMenuIsVisible(false)}}
+            <TransitionLink
               key={navLink.title}
               href={navLink.route}
-              className={`navLink relative duration-200 border-b-[1px] py-3 last:border-none w-full text-center ${
+              styles={`navLink relative duration-200 border-b-[1px] py-3 last:border-none w-full text-center ${
                 pathname == navLink.route
                   ? "text-theme-2 font-bold"
                   : "text-grade-3"
               }`}
             >
               {navLink.title}
-            </Link>
+            </TransitionLink>
           );
         })}
         <span

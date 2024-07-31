@@ -5,13 +5,14 @@ function hyphenate(inputString: string) {
 }
 
 function dehyphenate(inputString: string) {
-    // Replace hyphens with spaces
-  const replacedString = inputString.replace(/-/g, ' ');
+  const decodedString = decodeURIComponent(inputString) // In case string has special characters
+    
+  // Replace hyphens with spaces
+  const replacedString = decodedString.replace(/-/g, ' ');
 
   // Capitalize the first letter of each word
-  const capitalizedString = replacedString
-    .replace(/\b\w/g, char => char.toUpperCase()); // Capitalize the first letter of each word
-
+  const capitalizedString = replacedString.replace(/(?<=^|\s|&)\w/g, char => char.toUpperCase());
+  alert(capitalizedString)
   return capitalizedString;
   }
 

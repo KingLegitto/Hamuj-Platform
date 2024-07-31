@@ -13,8 +13,8 @@ export const projects = defineType({
       validation: Rule => Rule.required()
         .custom(title => {
           const noSpecialCharsRegex = /^[a-zA-Z0-9&\s]*$/;
-          const noMultipleSpacesRegex = /^[^\s](?:[a-zA-Z0-9]+(?:\s[a-zA-Z0-9]+)*)?$/;
-          const capitalFirstLetterRegex = /^([A-Z0-9][a-zA-Z0-9]*\s)*[A-Z0-9][a-zA-Z0-9]*$/;
+          const noMultipleSpacesRegex = /^[^\s](?:[a-zA-Z0-9&]+(?:\s[a-zA-Z0-9&]+)*)?$/;
+          const capitalFirstLetterRegex = /^([A-Z0-9][a-zA-Z0-9&]*\s)*[A-Z0-9][a-zA-Z0-9&]*$/;
 
           // Check for special characters other than spaces
           if (!noSpecialCharsRegex.test(title!)) {
