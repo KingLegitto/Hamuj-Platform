@@ -30,6 +30,7 @@ const Highlights: FC = () => {
   const [activeProject, setActiveProjet] = useState<number>(0);
   const [clickPermit, setClickPermit] = useState<boolean>(true);
   const [highlights, setHighlights] = useState<HighlightsProps[]>([]);
+  const [loaded, setLoaded] = useState(false)
   const left = useRef<HTMLButtonElement>(null);
   const isInView = useInView(left, {once: true})
   const right = useRef<HTMLButtonElement>(null);
@@ -67,14 +68,6 @@ const Highlights: FC = () => {
     }
   }, []);
 
-  useEffect(()=>{
-    if(isInView){
-      setTimeout(() => {
-        handleScrolling(0)
-      }, 300);
-    }
-  }, [isInView])
-
   function handleScrolling(index: number) {
     // Click permit limits the number of times the user can click in rapid succession
     if (clickPermit) {
@@ -89,7 +82,7 @@ const Highlights: FC = () => {
 
         if (target) {
           screenWidth >= 1024
-            ? target.scrollIntoView({ block: "nearest", inline: "center" })
+            ? target.scrollIntoView({ inline: "center", block: "center", })
             : target.scrollIntoView({ block: "center", inline: "nearest" });
         }
 
@@ -143,6 +136,7 @@ const Highlights: FC = () => {
                 src={urlFor(project.images[0].asset).url()}
                 alt={project.images[0].alt}
                 layout="fill"
+                onLoad={()=>{setLoaded(true)}}
                 className={`object-cover`}
               />
               <div
@@ -169,7 +163,7 @@ const Highlights: FC = () => {
           );
         })}
 
-        <div
+        {loaded && (<div
           className={`project-highlight-${highlights.length} snap-start mr-0 md:ml-[5vw] md:mr-[50vw] w-[20vw] flex-shrink-0 py-2`}
         >
           <TransitionLink
@@ -183,7 +177,7 @@ const Highlights: FC = () => {
               className="hidden md:block scale-75 group-hover:scale-[1]"
             />
           </TransitionLink>
-        </div>
+        </div>)}
       </div>
     </div>
   );

@@ -2,6 +2,9 @@ import { FC } from "react";
 import Image from "next/image";
 import Hero from "../../assets/rasters/hamuj1-2.jpg";
 import Logo from "../../assets/rasters/Hamuj_homes_logo.png"
+import CEO from "../../assets/rasters/Babatunde-Toheeb.jpg"
+import COO from "../../assets/rasters/Daminola-Emmanuel.jpg"
+import MD from "../../assets/rasters/Uchechukwu-Petra.jpg"
 import Slider from "@/components/principles-section-slider";
 
 interface AboutProps {}
@@ -50,7 +53,7 @@ const About: FC<AboutProps> = () => {
             funded by our profits, as we progress toward evolving into a
             comprehensive group of companies under the Hamuj Group umbrella.
           </p>
-          <Image src={Logo} alt="Hamuj logo" className="absolute z-10 right-1/2 md:right-[8%] translate-x-1/2 md:translate-x-0 top-1/2 -translate-y-1/2 w-[250px] opacity-5 md:opacity-20"/>
+          <Image src={Logo} alt="Hamuj logo" className="hidden lg:block absolute z-10 right-1/2 md:right-[8%] translate-x-1/2 md:translate-x-0 top-1/2 -translate-y-1/2 w-[250px] opacity-5 md:opacity-20"/>
         </div>
         
       </section>
@@ -75,16 +78,17 @@ const About: FC<AboutProps> = () => {
           </span>
         </h2>
 
-        <div className="mt-20 flex flex-col md:flex-row items-center md:justify-center gap-y-8 md:gap-x-10 mb-20">
-            <div className="w-[250px] h-[270px]  md:h-[350px] bg-slate-300">
-
+        <div className="mt-20 flex flex-col md:flex-row text-sm lg:text-base items-center md:justify-center gap-y-16 md:gap-x-10 mb-20">
+            <div className="relative w-[250px] h-[250px]  md:h-[300px] bg-slate-300">
+              <Image src={CEO} alt="" layout="fill" objectFit="cover" />
+              <span className="absolute top-[102%] w-full text-center font-bold text-grade-3 truncate">Idowu Babatunde Toheeb <br /><span className="text-xs lg:text-sm font-medium">Chief Executive Officer</span></span>
             </div>
-            <div className="w-[250px] h-[270px]  md:h-[350px] bg-slate-300">
-
-            </div>
-            <div className="w-[250px] h-[270px]  md:h-[350px] bg-slate-300">
-
-            </div>
+            <div className="relative w-[250px] h-[250px]  md:h-[300px] bg-slate-300">
+              <Image src={COO} alt="" layout="fill" objectFit="cover" />
+              <span className="absolute top-[102%] w-full text-center font-bold text-grade-3 truncate">Olawale Daminola Emmanuel<br /><span className="text-xs lg:text-sm font-medium">Chief Operating Officer</span></span>            </div>
+            <div className="relative w-[250px] h-[250px]  md:h-[300px] bg-slate-300">
+              <Image src={MD} alt="" layout="fill" objectFit="cover" />
+              <span className="absolute top-[102%] w-full text-center font-bold text-grade-3 truncate">Erohogo Uchechukwu Petra <br /><span className="text-xs lg:text-sm font-medium">Managing Director</span></span>            </div>
         </div>
       </section>
       

@@ -1,8 +1,8 @@
 import Image from "next/image";
 import LogoTitle from "@/assets/rasters/Hamuj_homes.png";
 import HeroBg from "../assets/rasters/hamuj1.jpg";
-import HeroBg3 from "../assets/rasters/hamuj3.jpg";
-import HeroBg6 from "../assets/rasters/hamuj7.jpg";
+import HeroBg_2 from "../assets/rasters/hamuj7.jpg";
+import HeroBg_3 from "../assets/rasters/hamuj3.jpg";
 import Furniture from "../assets/vectors/furniture.svg";
 import Interiors from "../assets/vectors/interiors.svg";
 import RealEstate from "../assets/vectors/real-estate.svg";
@@ -13,7 +13,7 @@ import Highlights from "@/components/projectHighlights";
 import Hero from "@/components/heroSection";
 import GroupImages from "@/components/groupImages";
 
-const heroImages = [HeroBg, HeroBg6, HeroBg3];
+const heroImages = [HeroBg, HeroBg_2, HeroBg_3];
 
 export default function Home() {
   

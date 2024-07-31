@@ -12,7 +12,6 @@ function dehyphenate(inputString: string) {
 
   // Capitalize the first letter of each word
   const capitalizedString = replacedString.replace(/(?<=^|\s|&)\w/g, char => char.toUpperCase());
-  alert(capitalizedString)
   return capitalizedString;
   }
 
