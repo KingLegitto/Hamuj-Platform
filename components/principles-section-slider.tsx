@@ -137,7 +137,7 @@ const Slider: FC = () => {
     </div>
   ) : (
     <>
-      <div className="w-full mt-14">
+      <div className="w-full mt-14 text-grade-2">
         <h3
           className={`w-full text-center text-lg ${activeIndex === 0? 'font-bold text-grade-3':'font-medium text-grade-2'}`}
           onClick={() => {
@@ -146,12 +146,12 @@ const Slider: FC = () => {
         >
           • MISSION
         </h3>
-        <AnimatePresence>
+      
         {activeIndex === 0 && (
           <motion.p
-            initial={{ opacity: 0, x: "-100%", maxHeight: 0 }} exit={{maxHeight: 0, opacity: 0, transition:{duration:0.2}}}
+            initial={{ opacity: 0, x: "-100%", maxHeight: 0 }} 
             animate={{ opacity: 1, x: 0, maxHeight: '500px', transition:{duration:0.5}}}
-            className="principle-0 p-5 text-center bg-[#e8e8e8] rounded-3xl mt-3 w-[90%] mx-auto"
+            className="principle-0 px-5 py-10 text-center bg-[#e8e8e8] rounded-3xl mt-3 w-[90%] mx-auto"
           >
             Our mission is to build expansive, vibrant communities across
             Africa, fostering connections among people of diverse tribes,
@@ -163,10 +163,10 @@ const Slider: FC = () => {
             and cooperation throughout the continent.
           </motion.p>
         )}
-        </AnimatePresence>
+        
       </div>
 
-      <div className="w-full mt-7">
+      <div className="w-full mt-7 text-grade-2">
         <h3
           className={`w-full text-center text-lg ${activeIndex === 1? 'font-bold text-grade-3':'font-medium text-grade-2'}`}
           onClick={() => {
@@ -175,12 +175,12 @@ const Slider: FC = () => {
         >
           • VISION
         </h3>
-        <AnimatePresence>
+      
         {activeIndex === 1 && (
           <motion.p
-            initial={{ opacity: 0, x: "-100%", maxHeight: 0 }} exit={{maxHeight: 0,opacity: 0, transition:{duration:0.2}}}
+            initial={{ opacity: 0, x: "-100%", maxHeight: 0 }}
             animate={{ opacity: 1, x: 0, maxHeight: '500px', transition:{duration:0.5}}}
-            className="principle-1 p-5 pr-7 text-left bg-[#e8e8e8] rounded-3xl mt-3 w-[90%] mx-auto"
+            className="principle-1 p-5 pr-7 py-10 text-left bg-[#e8e8e8] rounded-3xl mt-3 w-[90%] mx-auto"
           >
             <ul className="flex flex-col gap-y-1">
               <li>
@@ -194,10 +194,10 @@ const Slider: FC = () => {
             </ul>
           </motion.p>
         )}
-        </AnimatePresence>
+        
       </div>
 
-      <div className="w-full mt-7">
+      <div className="w-full mt-7 text-grade-2">
         <h3
           className={`w-full text-center text-lg ${activeIndex === 2? 'font-bold text-grade-3':'font-medium text-grade-2'}`}
           onClick={() => {
@@ -206,12 +206,12 @@ const Slider: FC = () => {
         >
           • VALUES
         </h3>
-        <AnimatePresence>
+      
         {activeIndex === 2 && (
           <motion.p
-            initial={{ opacity: 0, x: "-100%", maxHeight: 0 }} exit={{maxHeight: 0, opacity: 0, transition:{duration:0.2}}}
+            initial={{ opacity: 0, x: "-100%", maxHeight: 0 }} 
             animate={{ opacity: 1, x: 0, maxHeight: '500px', transition:{duration:0.5}}}
-            className="principle-2 p-5 pr-7 text-left bg-[#e8e8e8] rounded-3xl mt-3 w-[90%] mx-auto"
+            className="principle-2 p-5 pr-7 py-10 text-left bg-[#e8e8e8] rounded-3xl mt-3 w-[90%] mx-auto"
           >
             <ul className="flex flex-col">
               <li>Excellence</li>
@@ -222,7 +222,7 @@ const Slider: FC = () => {
             </ul>
           </motion.p>
         )}
-        </AnimatePresence>
+        
       </div>
       
     </>

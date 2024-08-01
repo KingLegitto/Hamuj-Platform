@@ -84,17 +84,17 @@ body {
 
 .preloader-text::before{
   content: 'Something might be wrong. Please check your connection';
-  animation: preloaderText 30s linear 1;
+  animation: preloaderText 60s linear 1;
 }
 
 @keyframes preloaderText {
   0%{
     content: '';
   }
-  43.33%{
+  20%{
     content: 'Loading...';
   }
-  76.66%{
+  40%{
     content: 'Still loading...';
   }
   100%{
