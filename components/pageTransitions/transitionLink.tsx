@@ -4,23 +4,26 @@ import { useRouter } from "next/navigation";
 import { FC } from "react";
 
 interface TransitionLinkProps {
+  key?: string | number;
   href: string;
   styles: string;
   children: React.ReactNode;
-  key?: string | number;
+  setMenuIsVisible?: (menuIsVisible:boolean)=>void
 }
 
 const TransitionLink: FC<TransitionLinkProps> = ({
+  key,
   href,
   styles,
   children,
-  key,
+  setMenuIsVisible,
 }) => {
   const router = useRouter();
   function transition(e: any) {
     e.preventDefault();
-    const preloader: HTMLDivElement = document.querySelector(".preloader")!;
+    if(setMenuIsVisible){setMenuIsVisible(false)}
 
+    const preloader: HTMLDivElement = document.querySelector(".preloader")!;
     preloader.style.display = "block";
     setTimeout(() => {
       preloader.style.transition = "0.3s";

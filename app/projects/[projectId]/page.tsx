@@ -5,6 +5,7 @@ import { client, urlFor } from "../../../sanityClient";
 import { dehyphenate } from "@/utils/hyphenationForRoutes";
 import ImagePreloader from "@/components/imagePreloader";
 import { AnimatePresence } from "framer-motion";
+import ImageViewer from "@/components/imageViewer";
 
 interface ProjectProps {
   params: { projectId: string };
@@ -29,6 +30,8 @@ const Project: FC<ProjectProps> = ({ params }) => {
   const { projectId } = params;
   const [projectDetails, setProjectDetails] = useState<ProjectDetails>();
   const [loadedImgs, setLoaderImgs] = useState<number>(0);
+  const [viewerIsActive, setViewerIsActive] = useState(false)
+  const [viewerData, setViewerData] = useState({images: projectDetails?.images, initialImgIndex: 0})
 
   useEffect(() => {
     // Client-side functionality
@@ -56,6 +59,11 @@ const Project: FC<ProjectProps> = ({ params }) => {
       }
     }
   }, []);
+
+  function handleImageViewing(index:number){
+    setViewerData({images: projectDetails?.images, initialImgIndex: index})
+    setViewerIsActive(true)
+  }
 
   return (
     <section className="w-full h-auto min-h-screen grid grid-cols-1 lg:grid-cols-[1fr_2fr] bg-slate-50">
@@ -93,6 +101,7 @@ const Project: FC<ProjectProps> = ({ params }) => {
                   alt={image.alt}
                   layout="fill"
                   onLoad={()=>{setLoaderImgs((prev)=>(prev+1))}}
+                  onClick={()=>{handleImageViewing(index)}}
                   className={`object-cover group-hover:scale-[1.1] z-10 ${loadedImgs===imagesArr.length? 'opacity-100':'opacity-0'}`}
                   style={{transition: 'transform 0.2s, opacity 1s'}}
                 />
@@ -105,6 +114,7 @@ const Project: FC<ProjectProps> = ({ params }) => {
           );
         })}
       </div>
+      { viewerIsActive && <ImageViewer initialImage={viewerData.initialImgIndex} images={viewerData.images!} setViewerIsActive={setViewerIsActive}/>}
     </section>
   );
 };

@@ -35,7 +35,7 @@ export default function RootLayout({
       <Head>
         <link rel="icon" href="/favicon.png" />
       </Head>
-      <body className={inter.className}>
+      <body className={`${inter.className} bg-slate-50`}>
         <Navbar />
         {children}
         <footer className="relative bg-theme-1 h-32 md:h-40 flex justify-between">

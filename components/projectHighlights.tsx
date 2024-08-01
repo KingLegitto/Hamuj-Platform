@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import Link from "next/link";
 import { FC, useEffect, useRef, useState } from "react";
 import RightArrow from "../assets/vectors/lineArrow.svg";
 import RightArrowBlk from "../assets/vectors/lineArrow-gold.svg";
@@ -8,7 +7,6 @@ import AngledArrow from "../assets/vectors/acuteArrow.svg";
 import { client, urlFor } from "../sanityClient";
 import { hyphenate } from "@/utils/hyphenationForRoutes";
 import TransitionLink from "./pageTransitions/transitionLink";
-import { useInView } from "framer-motion";
 
 interface HighlightsProps {
   title: string;
@@ -32,7 +30,6 @@ const Highlights: FC = () => {
   const [highlights, setHighlights] = useState<HighlightsProps[]>([]);
   const [loaded, setLoaded] = useState(false)
   const left = useRef<HTMLButtonElement>(null);
-  const isInView = useInView(left, {once: true})
   const right = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
@@ -82,7 +79,7 @@ const Highlights: FC = () => {
 
         if (target) {
           screenWidth >= 1024
-            ? target.scrollIntoView({ inline: "center", block: "center", })
+            ? target.scrollIntoView({ inline: "center", block: "nearest"})
             : target.scrollIntoView({ block: "center", inline: "nearest" });
         }
 

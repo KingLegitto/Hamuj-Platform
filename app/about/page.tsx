@@ -70,7 +70,7 @@ const About: FC<AboutProps> = () => {
         
       </section>
 
-      <section className="section w-full max-failsafe pt-top-spacing-s md:pt-top-spacing">
+      <section className="section w-full max-failsafe pt-10 md:pt-top-spacing">
         <h2 className="text-2xl md:text-heading text-grade-3 pl-7 md:pl-20">
           <span className="relative font-bold">
             Our Leads
@@ -81,14 +81,14 @@ const About: FC<AboutProps> = () => {
         <div className="mt-20 flex flex-col md:flex-row text-sm lg:text-base items-center md:justify-center gap-y-16 md:gap-x-10 mb-20">
             <div className="relative w-[250px] h-[250px]  md:h-[300px] bg-slate-300">
               <Image src={CEO} alt="" layout="fill" objectFit="cover" />
-              <span className="absolute top-[102%] w-full text-center font-bold text-grade-3 truncate">Idowu Babatunde Toheeb <br /><span className="text-xs lg:text-sm font-medium">Chief Executive Officer</span></span>
+              <span className="absolute top-[102%] w-full text-center font-bold text-grade-3 truncate">Idowu Babatunde Toheeb <br /><span className="text-xs lg:text-sm font-medium text-grade-1">Chief Executive Officer</span></span>
             </div>
             <div className="relative w-[250px] h-[250px]  md:h-[300px] bg-slate-300">
               <Image src={COO} alt="" layout="fill" objectFit="cover" />
-              <span className="absolute top-[102%] w-full text-center font-bold text-grade-3 truncate">Olawale Daminola Emmanuel<br /><span className="text-xs lg:text-sm font-medium">Chief Operating Officer</span></span>            </div>
+              <span className="absolute top-[102%] w-full text-center font-bold text-grade-3 truncate">Olawale Daminola Emmanuel<br /><span className="text-xs lg:text-sm font-medium text-grade-1">Chief Operating Officer</span></span>            </div>
             <div className="relative w-[250px] h-[250px]  md:h-[300px] bg-slate-300">
               <Image src={MD} alt="" layout="fill" objectFit="cover" />
-              <span className="absolute top-[102%] w-full text-center font-bold text-grade-3 truncate">Erohogo Uchechukwu Petra <br /><span className="text-xs lg:text-sm font-medium">Managing Director</span></span>            </div>
+              <span className="absolute top-[102%] w-full text-center font-bold text-grade-3 truncate">Erohogo Uchechukwu Petra <br /><span className="text-xs lg:text-sm font-medium text-grade-1">Managing Director</span></span>            </div>
         </div>
       </section>
       

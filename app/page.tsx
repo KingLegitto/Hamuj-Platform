@@ -1,6 +1,6 @@
 import Image from "next/image";
 import LogoTitle from "@/assets/rasters/Hamuj_homes.png";
-import HeroBg from "../assets/rasters/hamuj1.jpg";
+import HeroBg from "../assets/rasters/hamuj8.jpg";
 import HeroBg_2 from "../assets/rasters/hamuj7.jpg";
 import HeroBg_3 from "../assets/rasters/hamuj3.jpg";
 import Furniture from "../assets/vectors/furniture.svg";

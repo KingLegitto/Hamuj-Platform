@@ -79,9 +79,9 @@ const GroupImages = () => {
       <motion.div
         initial={{ opacity: 0, scale: 0 }}
         variants={children}
-        className={`absolute z-[2] bg-white left-0 lg:left-12 top-[40%] lg:top-[45%] -translate-y-1/2 text-center text-sm lg:text-base text-grade-2 rounded-3xl lg:px-3 py-3 lg:py-5 w-[180px] lg:w-fit h-auto font-medium`}
+        className={`absolute z-[2] bg-white left-0 lg:left-12 top-[40%] lg:top-[45%] -translate-y-1/2 text-center text-xs lg:text-base text-grade-2 rounded-3xl lg:px-3 py-3 lg:py-5 w-[180px] lg:w-fit h-auto font-medium`}
       >
-        Designed & Developed by <br /> <span className="text-base font-bold text-grade-3">King Legitto</span> 
+        Designed & Developed by <br /> <span className="text-sm lg:text-base font-bold text-grade-3">King Legitto</span> 
       </motion.div>
     </motion.div>
   );

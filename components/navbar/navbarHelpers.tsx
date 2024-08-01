@@ -15,6 +15,10 @@ const navbarLinks = [
         title: 'Contact',
         route: '/contact'
     },
+    {
+        title: 'Consultation',
+        route: '/consultation'
+    },
 
 ]
 

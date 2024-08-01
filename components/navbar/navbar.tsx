@@ -8,6 +8,7 @@ import Image from "next/image";
 import Menu from "../../assets/vectors/hamburger.svg";
 import BrandLogo from "../../assets/rasters/smallLogo.png";
 import TransitionLink from "../pageTransitions/transitionLink";
+import { AnimatePresence, motion } from "framer-motion";
 
 interface NavbarProps {}
 const routes = navbarLinks;
@@ -21,10 +22,6 @@ const Navbar: FC<NavbarProps> = () => {
     document.addEventListener("scroll", handleNavBg);
     handleNavBg();
   }, []);
-
-  useEffect(()=>{
-    setMenuIsVisible(false)
-  }, [pathname])
 
   function handleNavBg() {
     if (window.scrollY >= 200) {
@@ -87,8 +84,8 @@ const Navbar: FC<NavbarProps> = () => {
 
       {/* Mobile nav */}
       <aside
-        className={`absolute lg:hidden top-full pt-5 right-0 z-50 bg-white h-dvh w-3/4 flex flex-col items-center text-sm touch-none shadow-lg ${
-          menuIsVisible ? "translate-x-0 duration-500" : "translate-x-full"
+        className={`absolute lg:hidden duration-500 top-full pt-5 right-0 z-50 bg-white h-dvh w-3/4 flex flex-col items-center text-sm touch-none shadow-lg ${
+          menuIsVisible ? "translate-x-0 " : "translate-x-full "
         } ${isAtPageTop ? "rounded-l-lg" : ""}`}
       >
         {routes.map((navLink) => {
@@ -96,9 +93,10 @@ const Navbar: FC<NavbarProps> = () => {
             <TransitionLink
               key={navLink.title}
               href={navLink.route}
+              setMenuIsVisible={setMenuIsVisible}
               styles={`navLink relative duration-200 border-b-[1px] py-3 last:border-none w-full text-center ${
                 pathname == navLink.route
-                  ? "text-theme-2 font-bold"
+                  ? "text-theme-2 font-medium"
                   : "text-grade-3"
               }`}
             >
@@ -114,14 +112,14 @@ const Navbar: FC<NavbarProps> = () => {
       </aside>
 
       {/* Black translucent overlay for mobile */}
-      <div
-        className={`absolute top-full h-dvh w-screen bg-black touch-none ${
-          menuIsVisible ? "block" : "hidden"
-        } ${isAtPageTop ? "opacity-0" : "opacity-50"}`}
+      <AnimatePresence>
+      {menuIsVisible && (<motion.div initial={{opacity: 0}} animate={{opacity: isAtPageTop? 0:0.5}} exit={{opacity: 0}}
+        className={`absolute top-full h-dvh w-screen bg-black touch-none`}
         onClick={() => {
           setMenuIsVisible(false);
-        }}
-      ></div>
+        }}/>)}
+      </AnimatePresence>
+      
     </nav>
   );
 };
