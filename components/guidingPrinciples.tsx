@@ -140,7 +140,7 @@ const GuidingPrinciples: FC = () => {
     <div className={` duration-500 ${activeIndex === -1? 'h-[190px]':'h-[600px] mb-5'}`}>
       <div className="w-full mt-14 text-grade-3">
         <h3
-          className={`w-[250px] duration-[0.3s] mx-auto px-5 rounded-xl text-center text-lg shadow-md py-2 ${activeIndex === 0? 'text-white bg-theme-1':'text-grade-3'}`}
+          className={`w-[250px] duration-[0.3s] mx-auto px-5 rounded-3xl text-center text-base py-2 ${activeIndex === 0? 'bg-[#8c8c8c] text-white font-medium ':'shadow-[5px_5px_0px_0px_#e8e8e8] text-grade-3'}`}
           onClick={() => {
             handleActiveIndex(0);
           }}
@@ -169,7 +169,7 @@ const GuidingPrinciples: FC = () => {
 
       <div className="w-full mt-7 text-grade-3">
         <h3
-          className={`w-[250px] duration-[0.3s] mx-auto px-5 rounded-xl text-center text-lg shadow-md py-2 ${activeIndex === 1? 'text-white bg-theme-1':'text-grade-3'}`}
+          className={`w-[250px] duration-[0.3s] mx-auto px-5 rounded-3xl text-center text-base py-2 ${activeIndex === 1? 'bg-[#8c8c8c] text-white font-medium ':'shadow-[5px_5px_0px_0px_#e8e8e8] text-grade-3'}`}
           onClick={() => {
             handleActiveIndex(1);
           }}
@@ -198,7 +198,7 @@ const GuidingPrinciples: FC = () => {
 
       <div className="w-full mt-7 text-grade-3">
         <h3
-          className={`w-[250px] duration-[0.3s] mx-auto px-5 rounded-xl text-center text-lg shadow-md py-2 ${activeIndex === 2? 'text-white bg-theme-1':'text-grade-3'}`}
+          className={`w-[250px] duration-[0.3s] mx-auto px-5 rounded-3xl text-center text-base py-2 ${activeIndex === 2? 'bg-[#8c8c8c] text-white font-medium ':'shadow-[5px_5px_0px_0px_#e8e8e8] text-grade-3'}`}
           onClick={() => {
             handleActiveIndex(2);
           }}

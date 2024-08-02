@@ -72,11 +72,11 @@ const Project: FC<ProjectProps> = ({ params }) => {
         {projectDetails?.title}
       </h1>
       <div
-        className="w-full h-auto lg:h-[calc(100vh-164px)] overflow-scroll mt-2 pl-5 pt-2 lg:pt-10 pb-16 text-black
+        className="w-full h-auto lg:h-[calc(100vh-164px)] overflow-scroll mt-2 pl-5 pt-2 lg:pt-10 pb-16 text-grade-3
       flex flex-col gap-y-16"
       >
         <div className="relative pr-10 border-l-[2px] border-[#f49d02] py-3 pl-3">
-          <span className="font-medium text-sm lg:text:base">Location:</span>{" "}
+          <span className="font-medium text-sm lg:text:base text-grade-2">Location:</span>{" "}
           <br />
           <span className="text-lg lg:text-xl font-medium">
             {projectDetails?.location}
@@ -84,7 +84,7 @@ const Project: FC<ProjectProps> = ({ params }) => {
         </div>
         
         {projectDetails?.completionDate && (<div className="relative pr-10 border-l-[2px] border-[#f49d02] py-3 pl-3">
-          <span className="font-medium text-sm lg:text:base">Completion Date:</span>{" "}
+          <span className="font-medium text-sm lg:text:base text-grade-2">Completion Date:</span>{" "}
           <br />
           <span className="text-lg lg:text-xl font-medium">
             {projectDetails?.completionDate}
@@ -92,7 +92,7 @@ const Project: FC<ProjectProps> = ({ params }) => {
         </div>)}
 
         {projectDetails?.description && (<div className="relative pr-10 border-l-[2px] border-[#f49d02] py-3 pl-3">
-          <span className="font-medium text-sm lg:text:base">Details:</span>{" "}
+          <span className="font-medium text-sm lg:text:base text-grade-2">Details:</span>{" "}
           <br />
           <span className="text-lg lg:text-xl font-medium">
             {projectDetails?.description}

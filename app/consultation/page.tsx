@@ -1,9 +1,11 @@
 import Image from "next/image";
 import Hero from "../../assets/rasters/hamuj1-2.jpg";
+import Doc from "../../assets/vectors/document.svg";
+import Link from "next/link";
 
 const Consultation = () => {
-    return ( 
-        <main className="relative w-full h-auto bg-slate-50">
+  return (
+    <main className="relative w-full h-auto bg-slate-50">
       <section className="relative flex justify-center items-center h-[250px] md:h-[400px] aspect-video w-full overflow-hidden">
         <Image
           src={Hero}
@@ -23,21 +25,33 @@ const Consultation = () => {
         </h1>
       </section>
 
-        <section className=" py-top-spacing-s lg:py-top-spacing flex flex-col items-center gap-y-24 text-lg lg:text-xl">
-            <span className=" font-medium text-grade-2">*Click below to read the contract</span>
+      <section className=" py-top-spacing-s lg:py-top-spacing flex flex-col items-center gap-y-24 text-lg lg:text-xl">
+        <div className="flex flex-col gap-y-7 items-center">
+          <span className=" font-medium text-grade-2">
+            *Click below to read the terms
+          </span>
+          <Link href="" className="relative">
+            <Image src={Doc} alt="Document" className="scale-[0.7] lg:scale-[0.8]" />
+            <span className="absolute top-[105%] left-1/2 -translate-x-1/2 text-xs lg:text-sm font-bold text-grade-2">
+              Consult_T&Cs.pdf
+            </span>
+          </Link>
+        </div>
 
-            <div className="flex flex-col gap-y-5 lg:gap-y-7 font-medium text-grade-2 items-center">
-                <span className="font-medium">Proceed</span>
-                <div className="flex gap-x-5 lg:gap-x-10 justify-center">
-                    <button className="w-16 lg:w-20 p-2 rounded-full text-base lg:text-lg shadow-lg bg-white border hover:text-red-400 hover:font-medium hover:border-red-400">No</button>
-                    <button className="w-16 lg:w-20 p-2 rounded-full text-base lg:text-lg shadow-lg bg-white border hover:text-green-400 hover:font-medium hover:border-green-400">Yes</button>
-                </div>
-            </div>
-            
-        </section>
-      
+        <div className="flex flex-col gap-y-5 lg:gap-y-7 font-medium text-grade-2 items-center">
+          <span className="font-medium">Proceed</span>
+          <div className="flex gap-x-5 lg:gap-x-10 justify-center">
+            <button className="w-16 lg:w-20 p-2 rounded-full text-base lg:text-lg shadow-lg bg-white border hover:text-red-400 hover:font-medium hover:border-red-400">
+              No
+            </button>
+            <button className="w-16 lg:w-20 p-2 rounded-full text-base lg:text-lg shadow-lg bg-white border hover:text-green-400 hover:font-medium hover:border-green-400">
+              Yes
+            </button>
+          </div>
+        </div>
+      </section>
     </main>
-     );
-}
- 
+  );
+};
+
 export default Consultation;

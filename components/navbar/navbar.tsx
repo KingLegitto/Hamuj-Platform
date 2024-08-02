@@ -63,6 +63,7 @@ const Navbar: FC<NavbarProps> = () => {
         );
       })}
 
+      {/* Logo */}
       {!pathname.startsWith(`/projects/`) && (
         <Image
           src={BrandLogo}
@@ -78,16 +79,17 @@ const Navbar: FC<NavbarProps> = () => {
       {/* Back arrow for project details page */}
       {pathname.startsWith(`/projects/`) && (
         <TransitionLink href={'go-back'} goBack
-        styles="absolute flex h-5 lg:h-7 items-center gap-x-2 top-1/2 -translate-y-1/2 left-7 lg:left-20 opacity-[0.9]">
+        styles="absolute flex h-5 lg:h-7 items-center lg:gap-x-2 top-1/2 -translate-y-1/2 left-3 lg:left-20">
           <Image
             src={Arrow}
             alt="arrow"
             className="h-full rotate-180"
           />
-          <span>Back</span>
+          <span className="text-sm lg:text-base">Back</span>
         </TransitionLink>
       )}
 
+      {/* Menu Icon */}
       <Image
         src={Menu}
         alt="hamburger icon"
