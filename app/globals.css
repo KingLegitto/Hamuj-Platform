@@ -14,26 +14,29 @@
   }
 }
 
-li{
-  display: flex;
-  column-gap: 10px;
-  align-items: center;
-  &::before{
-    content: '·';
-    color:#656565;
-    font-size: 40px;
-  }
-  @media (min-width: 1024px) {
-    column-gap: 5px;
-    &::before{
-      content: '·';
-      color:#656565;
-      font-size: 70px;
+.principle-1,
+.principle-2 {
+  li {
+    display: flex;
+    column-gap: 10px;
+    align-items: center;
+    &::before {
+      content: "·";
+      color: #115faa;
+      font-size: 40px;
+    }
+    @media (min-width: 1024px) {
+      column-gap: 5px;
+      &::before {
+        content: "·";
+        color: #115faa;
+        font-size: 70px;
+      }
     }
   }
 }
 
-.project-highlight-parent{
+.project-highlight-parent {
   scroll-behavior: smooth;
 }
 
@@ -43,12 +46,12 @@ body {
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: #115FAA;
+    background-color: #115faa;
     border-radius: 100px;
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    background-color: #F49D02;
+    background-color: #f49d02;
   }
 }
 
@@ -58,12 +61,12 @@ body {
   }
 }
 
-.max-failsafe{
+.max-failsafe {
   max-width: 1440px;
   margin: auto;
 }
 
-.preloader-spinner{
+.preloader-spinner {
   opacity: 0;
   animation: spin 10s linear 2s infinite;
 }
@@ -71,33 +74,33 @@ body {
 @keyframes spin {
   0% {
     opacity: 0;
-    transform: translate(-50%,-50%) rotate(0deg);
+    transform: translate(-50%, -50%) rotate(0deg);
   }
-  10%{
+  10% {
     opacity: 1;
   }
   100% {
     opacity: 1;
-    transform: translate(-50%,-50%) rotate(360deg);
+    transform: translate(-50%, -50%) rotate(360deg);
   }
 }
 
-.preloader-text::before{
-  content: 'Something might be wrong. Please check your connection';
+.preloader-text::before {
+  content: "Something might be wrong. Please check your connection";
   animation: preloaderText 60s linear 1;
 }
 
 @keyframes preloaderText {
-  0%{
-    content: '';
+  0% {
+    content: "";
   }
-  20%{
-    content: 'Loading...';
+  35% {
+    content: "Loading...";
   }
-  40%{
-    content: 'Still loading...';
+  40% {
+    content: "Still loading...";
   }
-  100%{
-    content: 'Something might be wrong. Please check your connection';
+  100% {
+    content: "Something might be wrong. Please check your connection";
   }
 }

@@ -7,6 +7,7 @@ import AngledArrow from "../assets/vectors/acuteArrow.svg";
 import { client, urlFor } from "../sanityClient";
 import { hyphenate } from "@/utils/hyphenationForRoutes";
 import TransitionLink from "./pageTransitions/transitionLink";
+import ImagePreloader from "./imagePreloader";
 
 interface HighlightsProps {
   title: string;
@@ -132,12 +133,13 @@ const Highlights: FC = () => {
               <Image
                 src={urlFor(project.images[0].asset).url()}
                 alt={project.images[0].alt}
-                layout="fill"
+                fill
+                sizes="(max-width: 1023px) 95vw, (min-width: 1024px) 50vw"
                 onLoad={()=>{setLoaded(true)}}
-                className={`object-cover`}
+                className={`object-cover z-20`}
               />
               <div
-                className={`details delay-500 duration-500 text-white bg-gradient-to-t from-[#080808a8] to-[#08080800]  opacity-0 h-1/3 absolute bottom-0 px-5 w-full flex flex-col gap-y-3 justify-center
+                className={`details z-20 delay-500 duration-500 text-white bg-gradient-to-t from-[#080808a8] to-[#08080800]  opacity-0 h-1/3 absolute bottom-0 px-5 w-full flex flex-col gap-y-3 justify-center
                 ${index === activeProject ? "translate-y-0 opacity-100" : "translate-y-1/2"}`}
               >
                 <span className="font-bold text-lg lg:text-xl truncate max-w-[70%]">
@@ -156,6 +158,8 @@ const Highlights: FC = () => {
                   />
                 </TransitionLink>
               </div>
+
+              <ImagePreloader />
             </div>
           );
         })}

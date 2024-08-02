@@ -4,18 +4,18 @@ import { useRouter } from "next/navigation";
 import { FC } from "react";
 
 interface TransitionLinkProps {
-  key?: string | number;
   href: string;
   styles: string;
   children: React.ReactNode;
+  goBack?: boolean
   setMenuIsVisible?: (menuIsVisible:boolean)=>void
 }
 
 const TransitionLink: FC<TransitionLinkProps> = ({
-  key,
   href,
   styles,
   children,
+  goBack,
   setMenuIsVisible,
 }) => {
   const router = useRouter();
@@ -29,13 +29,13 @@ const TransitionLink: FC<TransitionLinkProps> = ({
       preloader.style.transition = "0.3s";
       preloader.style.opacity = "1";
       setTimeout(() => {
-        router.push(href);
+        if(goBack){router.back()}
+        else{router.push(href);}
       }, 300);
     }, 100);
   }
   return (
     <Link
-      key={key}
       href={href}
       className={styles}
       onClick={(e) => {

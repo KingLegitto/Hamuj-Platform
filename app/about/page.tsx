@@ -5,7 +5,7 @@ import Logo from "../../assets/rasters/Hamuj_homes_logo.png"
 import CEO from "../../assets/rasters/Babatunde-Toheeb.jpg"
 import COO from "../../assets/rasters/Daminola-Emmanuel.jpg"
 import MD from "../../assets/rasters/Uchechukwu-Petra.jpg"
-import Slider from "@/components/principles-section-slider";
+import GuidingPrinciples from "@/components/guidingPrinciples";
 
 interface AboutProps {}
 
@@ -66,7 +66,7 @@ const About: FC<AboutProps> = () => {
           </span>
         </h2>
 
-        <Slider />
+        <GuidingPrinciples />
         
       </section>
 
@@ -80,15 +80,15 @@ const About: FC<AboutProps> = () => {
 
         <div className="mt-20 flex flex-col md:flex-row text-sm lg:text-base items-center md:justify-center gap-y-16 md:gap-x-10 mb-20">
             <div className="relative w-[250px] h-[250px]  md:h-[300px] bg-slate-300">
-              <Image src={CEO} alt="" layout="fill" objectFit="cover" />
-              <span className="absolute top-[102%] w-full text-center font-bold text-grade-3 truncate">Idowu Babatunde Toheeb <br /><span className="text-xs lg:text-sm font-medium text-grade-1">Chief Executive Officer</span></span>
+              <Image src={CEO} alt="" className="object-cover w-full h-full"/>
+              <span className="absolute  top-[102%] w-full text-center font-bold text-grade-3 truncate">Idowu Babatunde Toheeb <br /><span className="text-xs lg:text-sm font-medium text-grade-1">Chief Executive Officer</span></span>
             </div>
             <div className="relative w-[250px] h-[250px]  md:h-[300px] bg-slate-300">
-              <Image src={COO} alt="" layout="fill" objectFit="cover" />
-              <span className="absolute top-[102%] w-full text-center font-bold text-grade-3 truncate">Olawale Daminola Emmanuel<br /><span className="text-xs lg:text-sm font-medium text-grade-1">Chief Operating Officer</span></span>            </div>
+              <Image src={COO} alt="" className="object-cover w-full h-full"/>
+              <span className="absolute  top-[102%] w-full text-center font-bold text-grade-3 truncate">Olawale Daminola Emmanuel<br /><span className="text-xs lg:text-sm font-medium text-grade-1">Chief Operating Officer</span></span>            </div>
             <div className="relative w-[250px] h-[250px]  md:h-[300px] bg-slate-300">
-              <Image src={MD} alt="" layout="fill" objectFit="cover" />
-              <span className="absolute top-[102%] w-full text-center font-bold text-grade-3 truncate">Erohogo Uchechukwu Petra <br /><span className="text-xs lg:text-sm font-medium text-grade-1">Managing Director</span></span>            </div>
+              <Image src={MD} alt="" className="object-cover w-full h-full"/>
+              <span className="absolute  top-[102%] w-full text-center font-bold text-grade-3 truncate">Erohogo Uchechukwu Petra <br /><span className="text-xs lg:text-sm font-medium text-grade-1">Managing Director</span></span>            </div>
         </div>
       </section>
       

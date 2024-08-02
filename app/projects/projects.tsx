@@ -67,7 +67,8 @@ const Projects = () => {
             <Image
               src={urlFor(project.images[0].asset).url()}
               alt={project.images[0].alt}
-              layout="fill"
+              fill
+              sizes="(max-width: 1023px) 95vw, (min-width: 1024px) 33vw"
               className={`object-cover group-hover:scale-[1.1] duration-500`}
             />
             <div

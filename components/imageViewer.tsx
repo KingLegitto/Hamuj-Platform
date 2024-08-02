@@ -72,7 +72,7 @@ const ImageViewer: FC<ImageViewerProps> = ({
   return (
     <div ref={scrollBox} onScroll={checkScrollBox} className="fixed flex w-screen h-dvh z-[99] overflow-scroll snap-mandatory snap-x bg-[#0000007c]">
       <button
-        className="fixed cursor-pointer top-1/2 -translate-y-1/2 left-0 z-30 rounded-r-2xl px-2 py-5 lg:p-3 bg-[#00000080] lg:hover:scale-105"
+        className="fixed cursor-pointer top-1/2 -translate-y-1/2 left-0 z-30 rounded-r-2xl px-2 py-5 lg:p-3 bg-[#00000040] backdrop-blur-sm lg:hover:scale-105"
         ref={left}
         onClick={() => {
           handleScrolling(activeImage - 1, "smooth");
@@ -81,7 +81,7 @@ const ImageViewer: FC<ImageViewerProps> = ({
         <Image src={AngledArrow} alt="arrow" className="w-7 lg:w-14 scale-50" />
       </button>
       <button
-        className="fixed cursor-pointer top-1/2 -translate-y-1/2 right-0 z-30 rounded-r-2xl px-2 py-5 lg:p-3 rotate-180 bg-[#00000080] lg:hover:scale-105"
+        className="fixed cursor-pointer top-1/2 -translate-y-1/2 right-0 z-30 rounded-r-2xl px-2 py-5 lg:p-3 rotate-180 bg-[#00000040] backdrop-blur-sm lg:hover:scale-105"
         ref={right}
         onClick={() => {
           handleScrolling(activeImage + 1, "smooth");
@@ -91,7 +91,7 @@ const ImageViewer: FC<ImageViewerProps> = ({
       </button>
       {images.map((image, index) => {
         return (
-          <div
+          <div key={index}
             className={`image-viewing-${index} relative w-full h-full flex-shrink-0 flex snap-center`}
             onClick={() => {
               setViewerIsActive(false);
@@ -100,14 +100,14 @@ const ImageViewer: FC<ImageViewerProps> = ({
             <Image
               src={urlFor(image.asset).url()}
               alt="showcase image"
-              layout="fill"
-              //   onClick={(e)=>{e.stopPropagation()}}
+              fill
+              sizes="(max-width: 1023px) 95vw, (min-width: 1024px) 90vw"
               className="z-20 max-w-[95%] lg:max-w-[90%] max-h-[60%] lg:max-h-full object-contain m-auto"
             />
           </div>
         );
       })}
-      <div className="fixed bottom-10 left-1/2 -translate-x-1/2 text-white z-40 backdrop-blur-sm font-medium px-8 py-3 bg-[#0000007b] rounded-full">
+      <div className="fixed bottom-10 left-1/2 -translate-x-1/2 text-white z-40 backdrop-blur-sm font-medium px-8 py-3 bg-[#00000040] rounded-full">
         <span>{activeImage+1}/{images.length}</span>
       </div>
     </div>

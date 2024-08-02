@@ -1,7 +1,7 @@
 import Image from "next/image";
 import LogoTitle from "@/assets/rasters/Hamuj_homes.png";
 import HeroBg from "../assets/rasters/hamuj8.jpg";
-import HeroBg_2 from "../assets/rasters/hamuj7.jpg";
+import HeroBg_2 from "../assets/rasters/hero2.jpg";
 import HeroBg_3 from "../assets/rasters/hamuj3.jpg";
 import Furniture from "../assets/vectors/furniture.svg";
 import Interiors from "../assets/vectors/interiors.svg";
@@ -20,7 +20,7 @@ export default function Home() {
   return (
     <main className="page overflow-y-clip relative w-full h-auto overflow-x-hidden bg-slate-50">
       {/* Hero section */}
-      <section className=" relative z-20 overflow-hidden h-[90svh] lg:h-screen max-h-[700px] w-full bg-[#101010] flex justify-center items-center overflow-x-hidden">
+      <section className=" relative z-20 overflow-hidden h-[90svh] lg:h-screen max-h-[700px] w-full bg-gradient-to-tr from-[#000000] to-[#011c2a] flex justify-center items-center overflow-x-hidden">
         <h1 className="absolute z-0 opacity-0">
           Hamuj Homes Ltd - Your go to option for interior renovations,
           furniture and construction

@@ -41,8 +41,8 @@ export const projects = defineType({
         type: "string",
       }),
     defineField({
-      name: "completedAt",
-      type: "datetime",
+      name: "completionDate",
+      type: "string",
     }),
     defineField({
       name: "highlight",

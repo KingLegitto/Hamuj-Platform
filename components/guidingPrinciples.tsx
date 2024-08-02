@@ -6,7 +6,7 @@ import Values from "../assets/vectors/values.svg";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 
-const Slider: FC = () => {
+const GuidingPrinciples: FC = () => {
   const [screenWidth, setScreenWidth] = useState<number>(0);
   const [activeIndex, setActiveIndex] = useState(-1);
 
@@ -17,15 +17,20 @@ const Slider: FC = () => {
   }, [screenWidth]);
 
   function handleActiveIndex(index: number) {
-    setActiveIndex(index);
+    if(index != activeIndex){
+      setActiveIndex(index);
 
-    setTimeout(() => {
-      const target: HTMLParagraphElement = document.querySelector(
-        `.principle-${index}`
-      )!;
+      setTimeout(() => {
+        const target: HTMLParagraphElement = document.querySelector(
+          `.principle-${index}`
+        )!;
 
-      target.scrollIntoView({ block: "center", inline: "nearest" });
-    }, 400);
+        target.scrollIntoView({ block: "center", inline: "nearest" });
+      }, 400);
+    }
+    else{
+      setActiveIndex(-1)
+    }
   }
 
   return screenWidth >= 768 ? (
@@ -96,8 +101,7 @@ const Slider: FC = () => {
               alt="mission icon"
               className="justify-self-end"
             />
-            <p className="max-w-[70%]">
-              <ul className="flex flex-col gap-y-7">
+              <ul className="principle-1 flex flex-col gap-y-7 max-w-[70%]">
               <li>
                 To Combine luxury and affordability for the average Nigerian.
               </li>
@@ -107,7 +111,6 @@ const Slider: FC = () => {
                 across Africa.
               </li>
               </ul>
-            </p>
           </motion.div>
         )}
 
@@ -122,36 +125,34 @@ const Slider: FC = () => {
               alt="mission icon"
               className="justify-self-end"
             />
-            <p className="max-w-[70%]">
-              <ul className="flex flex-col gap-y-3">
+              <ul className="principle-2 flex flex-col gap-y-3 max-w-[70%]">
                 <li>Excellence</li>
                 <li>Quality</li>
                 <li>Tranquility</li>
                 <li>Impeccability</li>
                 <li>Integrity</li>
               </ul>
-            </p>
           </motion.div>
         )}
       </div>
     </div>
   ) : (
-    <>
-      <div className="w-full mt-14 text-grade-2">
+    <div className={` duration-500 ${activeIndex === -1? 'h-[190px]':'h-[600px] mb-5'}`}>
+      <div className="w-full mt-14 text-grade-3">
         <h3
-          className={`w-full text-center text-lg ${activeIndex === 0? 'font-bold text-grade-3':'font-medium text-grade-2'}`}
+          className={`w-[250px] duration-[0.3s] mx-auto px-5 rounded-xl text-center text-lg shadow-md py-2 ${activeIndex === 0? 'text-white bg-theme-1':'text-grade-3'}`}
           onClick={() => {
             handleActiveIndex(0);
           }}
         >
-          • MISSION
+          MISSION
         </h3>
       
         {activeIndex === 0 && (
           <motion.p
             initial={{ opacity: 0, x: "-100%", maxHeight: 0 }} 
             animate={{ opacity: 1, x: 0, maxHeight: '500px', transition:{duration:0.5}}}
-            className="principle-0 px-5 py-10 text-center bg-[#e8e8e8] rounded-3xl mt-3 w-[90%] mx-auto"
+            className="principle-0 px-5 py-10 text-center overflow-hidden bg-[#e8e8e8] rounded-xl mt-3 w-[90%] mx-auto"
           >
             Our mission is to build expansive, vibrant communities across
             Africa, fostering connections among people of diverse tribes,
@@ -166,23 +167,22 @@ const Slider: FC = () => {
         
       </div>
 
-      <div className="w-full mt-7 text-grade-2">
+      <div className="w-full mt-7 text-grade-3">
         <h3
-          className={`w-full text-center text-lg ${activeIndex === 1? 'font-bold text-grade-3':'font-medium text-grade-2'}`}
+          className={`w-[250px] duration-[0.3s] mx-auto px-5 rounded-xl text-center text-lg shadow-md py-2 ${activeIndex === 1? 'text-white bg-theme-1':'text-grade-3'}`}
           onClick={() => {
             handleActiveIndex(1);
           }}
         >
-          • VISION
+          VISION
         </h3>
       
         {activeIndex === 1 && (
-          <motion.p
+          <motion.ul
             initial={{ opacity: 0, x: "-100%", maxHeight: 0 }}
             animate={{ opacity: 1, x: 0, maxHeight: '500px', transition:{duration:0.5}}}
-            className="principle-1 p-5 pr-7 py-10 text-left bg-[#e8e8e8] rounded-3xl mt-3 w-[90%] mx-auto"
+            className="principle-1 flex flex-col gap-y-1 p-5 pr-7 py-10 text-left bg-[#e8e8e8] rounded-xl mt-3 w-[90%] mx-auto"
           >
-            <ul className="flex flex-col gap-y-1">
               <li>
                 To Combine luxury and affordability for the average Nigerian.
               </li>
@@ -191,42 +191,39 @@ const Slider: FC = () => {
                 To become a multinational real estate group and solve trending and existing real estate issues
                 across Africa.
               </li>
-            </ul>
-          </motion.p>
+          </motion.ul>
         )}
         
       </div>
 
-      <div className="w-full mt-7 text-grade-2">
+      <div className="w-full mt-7 text-grade-3">
         <h3
-          className={`w-full text-center text-lg ${activeIndex === 2? 'font-bold text-grade-3':'font-medium text-grade-2'}`}
+          className={`w-[250px] duration-[0.3s] mx-auto px-5 rounded-xl text-center text-lg shadow-md py-2 ${activeIndex === 2? 'text-white bg-theme-1':'text-grade-3'}`}
           onClick={() => {
             handleActiveIndex(2);
           }}
         >
-          • VALUES
+          VALUES
         </h3>
       
         {activeIndex === 2 && (
-          <motion.p
+          <motion.ul
             initial={{ opacity: 0, x: "-100%", maxHeight: 0 }} 
             animate={{ opacity: 1, x: 0, maxHeight: '500px', transition:{duration:0.5}}}
-            className="principle-2 p-5 pr-7 py-10 text-left bg-[#e8e8e8] rounded-3xl mt-3 w-[90%] mx-auto"
+            className="principle-2 flex flex-col pl-10 pr-7 py-10 text-left bg-[#e8e8e8] rounded-xl mt-3 w-[90%] mx-auto"
           >
-            <ul className="flex flex-col">
               <li>Excellence</li>
               <li>Quality</li>
               <li>Tranquility</li>
               <li>Impeccability</li>
               <li>Integrity</li>
-            </ul>
-          </motion.p>
+          </motion.ul>
         )}
         
       </div>
       
-    </>
+    </div>
   );
 };
 
-export default Slider;
+export default GuidingPrinciples;

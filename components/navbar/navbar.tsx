@@ -2,11 +2,11 @@
 
 import { FC, useEffect, useState } from "react";
 import { navbarLinks } from "./navbarHelpers";
-import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
 import Menu from "../../assets/vectors/hamburger.svg";
 import BrandLogo from "../../assets/rasters/smallLogo.png";
+import Arrow from "../../assets/vectors/lineArrow.svg";
 import TransitionLink from "../pageTransitions/transitionLink";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -16,7 +16,7 @@ const Navbar: FC<NavbarProps> = () => {
   const [isAtPageTop, setIsAtPageTop] = useState<boolean>(true);
   const [menuIsVisible, setMenuIsVisible] = useState<boolean>(false);
   const pathname = usePathname();
-  const router = useRouter()
+  const router = useRouter();
 
   useEffect(() => {
     document.addEventListener("scroll", handleNavBg);
@@ -63,15 +63,30 @@ const Navbar: FC<NavbarProps> = () => {
         );
       })}
 
-      <Image
-        src={BrandLogo}
-        alt="Hamuj Homes Logo"
-        className={`absolute top-1/2 -translate-y-1/2 left-0 duration-500 opacity-0 w-10 lg:w-14 ${
-          isAtPageTop && !pathname.startsWith("/projects/")
-            ? ""
-            : "delay-300 left-7 lg:left-20 opacity-[0.9]"
-        } `}
-      />
+      {!pathname.startsWith(`/projects/`) && (
+        <Image
+          src={BrandLogo}
+          alt="Hamuj Homes Logo"
+          className={`absolute top-1/2 -translate-y-1/2 left-0 duration-500 opacity-0 w-10 lg:w-14 ${
+            isAtPageTop && !pathname.startsWith("/projects/")
+              ? ""
+              : "delay-300 left-7 lg:left-20 opacity-[0.9]"
+          } `}
+        />
+      )}
+
+      {/* Back arrow for project details page */}
+      {pathname.startsWith(`/projects/`) && (
+        <TransitionLink href={'go-back'} goBack
+        styles="absolute flex h-5 lg:h-7 items-center gap-x-2 top-1/2 -translate-y-1/2 left-7 lg:left-20 opacity-[0.9]">
+          <Image
+            src={Arrow}
+            alt="arrow"
+            className="h-full rotate-180"
+          />
+          <span>Back</span>
+        </TransitionLink>
+      )}
 
       <Image
         src={Menu}
@@ -113,13 +128,18 @@ const Navbar: FC<NavbarProps> = () => {
 
       {/* Black translucent overlay for mobile */}
       <AnimatePresence>
-      {menuIsVisible && (<motion.div initial={{opacity: 0}} animate={{opacity: isAtPageTop? 0:0.5}} exit={{opacity: 0}}
-        className={`absolute top-full h-dvh w-screen bg-black touch-none`}
-        onClick={() => {
-          setMenuIsVisible(false);
-        }}/>)}
+        {menuIsVisible && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: isAtPageTop ? 0 : 0.5 }}
+            exit={{ opacity: 0 }}
+            className={`absolute top-full h-dvh w-screen bg-black touch-none`}
+            onClick={() => {
+              setMenuIsVisible(false);
+            }}
+          />
+        )}
       </AnimatePresence>
-      
     </nav>
   );
 };
