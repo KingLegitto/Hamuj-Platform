@@ -38,8 +38,8 @@ const Consultation = () => {
           </Link>
         </div>
 
-        <div className="flex flex-col gap-y-5 lg:gap-y-7 font-medium text-grade-2 items-center">
-          <span className="font-medium">Proceed</span>
+        <div className="flex flex-col gap-y-3 lg:gap-y-7 font-medium text-grade-2 items-center">
+          <span className="font-medium">Proceed?</span>
           <div className="flex gap-x-5 lg:gap-x-10 justify-center">
             <button className="w-16 lg:w-20 p-2 rounded-full text-base lg:text-lg shadow-lg bg-white border hover:text-red-400 hover:font-medium hover:border-red-400">
               No
