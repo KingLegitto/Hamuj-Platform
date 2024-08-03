@@ -1,12 +1,12 @@
 "use client";
 import Image from "next/image";
-import HeroBg from "../assets/rasters/hamuj1.jpg";
-import HeroBg3 from "../assets/rasters/hamuj3.jpg";
-import HeroBg5 from "../assets/rasters/hamuj6.jpg";
-import { useRef, useState } from "react";
+import Img1 from "../assets/rasters/hamuj6.jpg";
+import Img2 from "../assets/rasters/hamuj1.jpg";
+import Img3 from "../assets/rasters/hamuj3.jpg";
+import { useRef } from "react";
 import { useInView, motion } from "framer-motion";
 
-const GroupImages = () => {
+const DecorImages = () => {
   const groupImage = useRef(null);
   const groupImageIsInView = useInView(groupImage, {
     margin: "0px 0px -50px 0px",
@@ -42,7 +42,7 @@ const GroupImages = () => {
       >
         <Image
           ref={groupImage}
-          src={HeroBg5}
+          src={Img1}
           alt="group image"
           className="h-full w-full object-cover pointer-events-none"
         />
@@ -56,7 +56,7 @@ const GroupImages = () => {
         className="absolute z-[2] bg-white top-0 right-10 overflow-hidden rounded-3xl border-[5px] lg:border-[10px] border-slate-50 w-[150px] lg:w-[280px] aspect-square"
       >
         <Image
-          src={HeroBg}
+          src={Img2}
           alt="group image"
           className="h-full w-full object-cover pointer-events-none"
         />
@@ -70,7 +70,7 @@ const GroupImages = () => {
         className="absolute z-[1] bg-white right-0 bottom-0 overflow-hidden rounded-3xl border-[5px] lg:border-[10px] border-slate-50 w-[100px] lg:w-[150px] aspect-square"
       >
         <Image
-          src={HeroBg3}
+          src={Img3}
           alt="group image"
           className="h-full w-full object-cover pointer-events-none"
         />
@@ -87,4 +87,4 @@ const GroupImages = () => {
   );
 };
 
-export default GroupImages;
+export default DecorImages;

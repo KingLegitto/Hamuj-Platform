@@ -1,7 +1,16 @@
 import Image from "next/image";
+import type { Metadata } from "next";
 import Hero from "../../assets/rasters/hamuj1-2.jpg";
 import Doc from "../../assets/vectors/document.svg";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Consultation",
+  description: "Request professional consultation from the Hamuj Homes team",
+  icons: {
+    icon: '/favicon.png'
+  }
+};
 
 const Consultation = () => {
   return (
@@ -39,7 +48,7 @@ const Consultation = () => {
         </div>
 
         <div className="flex flex-col gap-y-3 lg:gap-y-7 font-medium text-grade-2 items-center">
-          <span className="font-medium">Proceed?</span>
+          <span className="font-medium text-sm lg:text-base">Proceed?</span>
           <div className="flex gap-x-5 lg:gap-x-10 justify-center">
             <button className="w-16 lg:w-20 p-2 rounded-full text-base lg:text-lg shadow-lg bg-white border hover:text-red-400 hover:font-medium hover:border-red-400">
               No

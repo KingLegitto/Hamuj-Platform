@@ -1,5 +1,5 @@
-import { FC } from "react";
 import Image from "next/image";
+import type { Metadata } from "next";
 import Hero from "../../assets/rasters/hamuj1-2.jpg";
 import Logo from "../../assets/rasters/Hamuj_homes_logo.png"
 import CEO from "../../assets/rasters/Babatunde-Toheeb.jpg"
@@ -7,9 +7,15 @@ import COO from "../../assets/rasters/Daminola-Emmanuel.jpg"
 import MD from "../../assets/rasters/Uchechukwu-Petra.jpg"
 import GuidingPrinciples from "@/components/guidingPrinciples";
 
-interface AboutProps {}
+export const metadata: Metadata = {
+  title: "About Us",
+  description: "Learn more about who we are and what we do",
+  icons: {
+    icon: '/favicon.png'
+  }
+};
 
-const About: FC<AboutProps> = () => {
+const About = () => {
   return (
     <main className="relative w-full h-auto bg-slate-50">
       <section className="relative flex justify-center items-center h-[250px] md:h-[400px] aspect-video w-full overflow-hidden">

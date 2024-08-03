@@ -4,31 +4,32 @@ import Filter from "../../assets/vectors/filter.svg";
 import Arrow from "../../assets/vectors/lineArrow.svg";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { client, urlFor } from '../../sanityClient'
+import { client, urlFor } from "../../sanityClient";
 import { hyphenate } from "@/utils/hyphenationForRoutes";
 import TransitionLink from "@/components/pageTransitions/transitionLink";
 
-
 interface ProjectsDataProps {
-  title: string,
-  client: string,
-  location: string,
+  title: string;
+  client: string;
+  area: string;
+  state: string;
   highlight: boolean;
-  description: string,
+  description: string;
   images: {
-    _key: string
+    _key: string;
     asset: {
-      _ref: string
-    }
-    alt: string
-  }[]
+      _ref: string;
+    };
+    alt: string;
+  }[];
 }
 
 const Projects = () => {
-  const router = useRouter();
-  const [projectsData, setProjectsData] = useState<ProjectsDataProps[]>([])
+  const [projectsData, setProjectsData] = useState<ProjectsDataProps[]>([]);
+  const [filters, setFilters] = useState<string[]>([])
+  const [filterBox, setFilterBox] = useState<{isOpen: boolean, filter: string|null}>({isOpen: false, filter: null})
 
-  useEffect(()=>{
+  useEffect(() => {
     // Client-side functionality
     if (typeof window !== "undefined") {
       const projectsInMemory = sessionStorage.getItem("projects");
@@ -39,30 +40,59 @@ const Projects = () => {
           const query = '*[_type == "projects"]';
           const data = await client.fetch(query);
           setProjectsData(data);
-          sessionStorage.setItem('projects',JSON.stringify(data))
+          sessionStorage.setItem("projects", JSON.stringify(data));
           // setLoading(false);
         };
         fetchProjects();
       }
     }
-  }, [])
+  }, []);
+
+  useEffect(()=>{
+    let states: string[] = []
+    projectsData.forEach((project)=>(
+      states.push(project.state)
+    ))
+    let filteredStates = states.filter((state,index,arr)=>(index===arr.indexOf(state)))
+    setFilters([...filteredStates])
+  }, [projectsData])
 
   return (
-    <section className="w-full py-top-spacing-s lg:py-top-spacing px-7 lg:px-10 grid grid-cols-1 lg:grid-cols-3 gap-x-8 gap-y-14">
-      <div className="lg:col-span-3">
-        <button className="relative flex gap-x-2 items-center">
+    <section className="w-full py-top-spacing-s lg:py-top-spacing px-7 lg:px-10 overflow-x-clip grid grid-cols-1 lg:grid-cols-3 gap-x-8 gap-y-14">
+      <div className="lg:col-span-3 bg-slate-50 sticky -translate-x-1 top-14 lg:top-16 py-5 z-20 w-[110%]">
+        <button className="relative flex gap-x-2 items-center" onClick={()=>{setFilterBox({isOpen: !filterBox.isOpen, filter: filterBox.filter})}}>
           <Image src={Filter} alt="filter" />
           <span className="text-sm lg:text-base">Filters</span>
           <span className="absolute left-0 top-[110%] w-[150%] h-[2px] rounded-full bg-theme-2"></span>
         </button>
+
+        {filterBox.isOpen && (<div className="absolute left-0 top-full -translate-y-1 grid grid-cols-3  gap-x-2 gap-y-4 px-5 py-5 min-h-[200px] border border-[#e8e8e8] shadow-lg bg-slate-50 w-[95%] lg:w-[350px]">
+          <button onClick={()=>{setFilterBox({isOpen: false, filter: null})}}
+            className={`w-full rounded-full text-center h-fit py-1 bg-[#e8e8e8] text-xs lg:text-sm
+              ${filterBox.filter===null? 'bg-theme-1 text-white font-medium':'text-grade-3'}`}
+          >
+            All
+          </button>
+          {filters.map((state) => {
+            return (
+              <button onClick={()=>{setFilterBox({isOpen: false, filter: state})}}
+                className={`w-full rounded-full h-fit text-center py-1 bg-[#e8e8e8] text-xs lg:text-sm text-grade-3
+                  ${filterBox.filter===state? 'bg-theme-1 text-white font-medium':'text-grade-3'}`}
+              >
+                {state}
+              </button>
+            );
+          })}
+        </div>)}
       </div>
 
       {projectsData.map((project, index) => {
-        return ( 
+        if(filterBox.filter && project.state != filterBox.filter) return
+        return (
           <TransitionLink
             key={index}
             href={`projects/${hyphenate(project.title)}`}
-            styles={`w-full h-[300px] group flex-shrink-0 relative overflow-hidden shadow-[10px_10px_0px_2px_#0000001A] lg:shadow-[20px_20px_0px_2px_#0000001A] duration-300 cursor-pointer`}
+            styles={`w-full h-[300px] group flex-shrink-0 relative overflow-hidden shadow-[10px_10px_0px_2px_#0000001A] lg:shadow-[20px_20px_0px_2px_#0000001A] duration-300 cursor-pointer bg-[#e8e8e8]`}
           >
             <Image
               src={urlFor(project.images[0].asset).url()}
@@ -79,7 +109,7 @@ const Projects = () => {
                 {project.title}
               </span>
               <span className="text-xs md:text-base truncate max-w-[90%]">
-                {project.location}
+                {project.area}, {project.state}
               </span>
               <Image
                 src={Arrow}

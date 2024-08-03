@@ -8,10 +8,9 @@ import Interiors from "../assets/vectors/interiors.svg";
 import RealEstate from "../assets/vectors/real-estate.svg";
 import Quote from "../assets/vectors/quotes.svg";
 import Check from "../assets/vectors/check.svg"
-import Link from "next/link";
-import Highlights from "@/components/projectHighlights";
-import Hero from "@/components/heroSection";
-import GroupImages from "@/components/groupImages";
+import DecorImages from "./decorImages";
+import Hero from "./landingHero";
+import Highlights from "./projectHighlights";
 
 const heroImages = [HeroBg, HeroBg_2, HeroBg_3];
 
@@ -26,7 +25,7 @@ export default function Home() {
           furniture and construction
         </h1>
 
-        <Hero images={heroImages} />
+        <Hero images={heroImages}/>
 
         <Image
           src={LogoTitle}
@@ -42,8 +41,7 @@ export default function Home() {
 
         <div className="flex justify-center h-auto lg:h-[490px] flex-wrap lg:flex-nowrap gap-y-12 lg:gap-x-14 xl:gap-x-24 items-center mt-12 lg:mt-20">
 
-            <GroupImages />
-     
+          <DecorImages />
 
           <p className="w-full lg:w-[550px] flex-shrink-0 rounded-none lg:rounded-lg bg-[#E8E8E8] lg:bg-theme-1 leading-7 h-auto lg:h-[370px] p-10 lg:p-7 text-black lg:text-white text-sm lg:text-lg text-center lg:text-left shadow-[20px_20px_0px_2px_#E8E8E8]">
             We are a Nigerian construction company aimed at bridging the gap

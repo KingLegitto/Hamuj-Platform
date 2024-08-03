@@ -6,13 +6,14 @@ import RightArrowBlk from "../assets/vectors/lineArrow-gold.svg";
 import AngledArrow from "../assets/vectors/acuteArrow.svg";
 import { client, urlFor } from "../sanityClient";
 import { hyphenate } from "@/utils/hyphenationForRoutes";
-import TransitionLink from "./pageTransitions/transitionLink";
-import ImagePreloader from "./imagePreloader";
+import TransitionLink from "../components/pageTransitions/transitionLink";
+import ImagePreloader from "../components/imagePreloader";
 
 interface HighlightsProps {
   title: string;
   client: string;
-  location: string;
+  area: string;
+  state: string;
   highlight: boolean;
   description: string;
   images: {
@@ -97,7 +98,7 @@ const Highlights: FC = () => {
     <div className="relative">
       <button
         ref={left}
-        className="absolute hidden md:block cursor-pointer top-1/2 -translate-y-1/2 left-0 z-10 p-3 bg-[#00000080] hover:scale-105"
+        className="absolute hidden md:block cursor-pointer top-1/2 -translate-y-1/2 left-0 z-30 p-3 bg-[#00000080] hover:scale-105"
         onClick={() => {
           handleScrolling(activeProject - 1);
         }}
@@ -106,7 +107,7 @@ const Highlights: FC = () => {
       </button>
       <button
         ref={right}
-        className="absolute hidden md:block cursor-pointer top-1/2 -translate-y-1/2 right-0 z-10 rotate-180 p-3 bg-[#00000080] hover:scale-105"
+        className="absolute hidden md:block cursor-pointer top-1/2 -translate-y-1/2 right-0 z-30 rotate-180 p-3 bg-[#00000080] hover:scale-105"
         onClick={() => {
           handleScrolling(activeProject + 1);
         }}
@@ -145,7 +146,7 @@ const Highlights: FC = () => {
                 <span className="font-bold text-lg lg:text-xl truncate max-w-[70%]">
                   {project.title}
                 </span>
-                <span className="text-xs md:text-base">{project.location}</span>
+                <span className="text-xs md:text-base">{project.area}, {project.state}</span>
                 <TransitionLink
                   href={`projects/${hyphenate(project.title)}`}
                   styles={`absolute flex gap-x-2 items-center top-1/2 -translate-y-1/2 right-5 cursor-pointer text-xs md:text-base ${index === activeProject ? "block" : "hidden"}`}

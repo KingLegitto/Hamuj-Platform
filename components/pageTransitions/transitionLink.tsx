@@ -5,7 +5,7 @@ import { FC } from "react";
 
 interface TransitionLinkProps {
   href: string;
-  styles: string;
+  styles?: string;
   children: React.ReactNode;
   goBack?: boolean
   setMenuIsVisible?: (menuIsVisible:boolean)=>void
@@ -37,7 +37,7 @@ const TransitionLink: FC<TransitionLinkProps> = ({
   return (
     <Link
       href={href}
-      className={styles}
+      className={styles? styles:''}
       onClick={(e) => {
         transition(e);
       }}

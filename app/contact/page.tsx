@@ -1,16 +1,23 @@
-"use client"
-import { FC } from "react";
 import Image from "next/image";
-import Hero from "../../assets/rasters/hamuj1-2.jpg";
+import HeaderBg from "../../assets/rasters/hamuj1-2.jpg";
+import { Metadata } from "next";
+import Map from "./map";
+import EnquiryForm from "./enquiryForm";
 
-interface ContactProps {}
+export const metadata: Metadata = { 
+  title: "Contact",
+  description: "Make enquiries or visit us at our main branch in Lagos, Nigeria.",
+  icons: {
+    icon: '/favicon.png'
+  }
+};
 
-const Contact: FC<ContactProps> = () => {
+const Contact = () => {
   return (
     <main className="relative w-full h-auto bg-slate-50">
       <section className="relative flex justify-center items-center h-[250px] md:h-[400px] aspect-video w-full overflow-hidden">
         <Image
-          src={Hero}
+          src={HeaderBg}
           alt="hero section background"
           placeholder="blur"
           className="w-full h-full object-cover brightness-[0.7] z-[1]"
@@ -51,43 +58,12 @@ const Contact: FC<ContactProps> = () => {
             </span>
           </div>
 
-          <div className="w-full flex-grow bg-[#E8E8E8] p-1 rounded-2xl">
-            <iframe
-              className="border-none w-full h-60 md:h-full rounded-2xl"
-              id="gmap_canvas"
-              allow="geolocation"
-              src="https://maps.google.com/maps?width=520&amp;height=400&amp;hl=en&amp;q=Ibukun%20house,%20victoria%20island%20Lagos+(Hamuj%20Homes%20Ltd)&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
-            />
-          </div>
+          <Map />
+
         </div>
 
-        <form className="hidden md:flex flex-col gap-y-20 text-lg font-normal pr-20">
-          <input
-            type="text"
-            placeholder="Name"
-            className="py-4 px-6 border-[1px] border-[#8C8C8C]"
-          />
-          <input
-            type="email"
-            placeholder="Email"
-            className="py-4 px-6 border-[1px] border-[#8C8C8C]"
-          />
-          <input
-            type="text"
-            placeholder="Phone"
-            className="py-4 px-6 border-[1px] border-[#8C8C8C]"
-          />
-          <textarea
-            rows={4}
-            placeholder="Enquiry"
-            className="py-4 px-6 border-[1px] border-[#8C8C8C]"
-          />
-          <input
-            type="submit"
-            value={"Send Enquiry"}
-            className="bg-theme-1 text-white py-3 w-1/3 font-medium"
-          />
-        </form>
+        <EnquiryForm />
+
       </section>
     </main>
   );

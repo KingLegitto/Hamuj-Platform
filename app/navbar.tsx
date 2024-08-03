@@ -1,22 +1,26 @@
 "use client";
 
-import { FC, useEffect, useState } from "react";
-import { navbarLinks } from "./navbarHelpers";
+import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
-import Menu from "../../assets/vectors/hamburger.svg";
-import BrandLogo from "../../assets/rasters/smallLogo.png";
-import Arrow from "../../assets/vectors/lineArrow.svg";
-import TransitionLink from "../pageTransitions/transitionLink";
+import Menu from "../assets/vectors/hamburger.svg";
+import BrandLogo from "../assets/rasters/smallLogo.png";
+import Arrow from "../assets/vectors/lineArrow.svg";
+import TransitionLink from "../components/pageTransitions/transitionLink";
 import { AnimatePresence, motion } from "framer-motion";
 
-interface NavbarProps {}
-const routes = navbarLinks;
-const Navbar: FC<NavbarProps> = () => {
+const routes = [
+  { title: "Home", route: "/" },
+  { title: "About", route: "/about" },
+  { title: "Projects", route: "/projects" },
+  { title: "Contact", route: "/contact" },
+  { title: "Consultation", route: "/consultation" },
+];
+
+const Navbar = () => {
   const [isAtPageTop, setIsAtPageTop] = useState<boolean>(true);
   const [menuIsVisible, setMenuIsVisible] = useState<boolean>(false);
   const pathname = usePathname();
-  const router = useRouter();
 
   useEffect(() => {
     document.addEventListener("scroll", handleNavBg);
@@ -78,13 +82,12 @@ const Navbar: FC<NavbarProps> = () => {
 
       {/* Back arrow for project details page */}
       {pathname.startsWith(`/projects/`) && (
-        <TransitionLink href={'go-back'} goBack
-        styles="absolute flex h-5 lg:h-7 items-center lg:gap-x-2 top-1/2 -translate-y-1/2 left-3 lg:left-20">
-          <Image
-            src={Arrow}
-            alt="arrow"
-            className="h-full rotate-180"
-          />
+        <TransitionLink
+          href={"go-back"}
+          goBack
+          styles="absolute flex h-5 lg:h-7 items-center lg:gap-x-2 top-1/2 -translate-y-1/2 left-3 lg:left-20"
+        >
+          <Image src={Arrow} alt="arrow" className="h-full rotate-180" />
           <span className="text-sm lg:text-base">Back</span>
         </TransitionLink>
       )}
