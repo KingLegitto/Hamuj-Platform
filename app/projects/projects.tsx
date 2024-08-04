@@ -65,8 +65,9 @@ const Projects = () => {
           <span className="text-sm lg:text-base">Filters</span>
           <span className="absolute left-0 top-[110%] w-[150%] h-[2px] rounded-full bg-theme-2"></span>
         </button>
-
-        {filterBox.isOpen && (<div className="absolute left-0 top-full -translate-y-1 grid grid-cols-3  gap-x-2 gap-y-4 px-5 py-5 min-h-[200px] border border-[#e8e8e8] shadow-lg bg-slate-50 w-[95%] lg:w-[350px]">
+        {/* filter Container */}
+        {filterBox.isOpen && (<div className="absolute left-0 top-full -translate-y-1 rounded-2xl grid grid-cols-3 
+        gap-x-2 gap-y-4 px-5 py-5 min-h-[200px] border border-[#e8e8e8] shadow-lg bg-slate-50 w-[calc(100vw-24px-14px)] lg:w-[350px]">
           <button onClick={()=>{setFilterBox({isOpen: false, filter: null})}}
             className={`w-full rounded-full text-center h-fit py-1 bg-[#e8e8e8] text-xs lg:text-sm
               ${filterBox.filter===null? 'bg-theme-1 text-white font-medium':'text-grade-3'}`}
@@ -99,7 +100,7 @@ const Projects = () => {
               alt={project.images[0].alt}
               fill
               sizes="(max-width: 1023px) 95vw, (min-width: 1024px) 33vw"
-              className={`object-cover group-hover:scale-[1.1] duration-500`}
+              className={`object-cover group-hover:lg:scale-[1.1] duration-500`}
             />
             <div
               className={`text-white bg-gradient-to-t from-[#080808a8] to-[#08080800] h-1/3 absolute bottom-0 px-5 w-full flex flex-col gap-y-3 justify-center

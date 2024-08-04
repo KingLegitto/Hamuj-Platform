@@ -92,7 +92,7 @@ const ImageViewer: FC<ImageViewerProps> = ({
       {images.map((image, index) => {
         return (
           <div key={index}
-            className={`image-viewing-${index} relative w-full h-full flex-shrink-0 flex snap-center`}
+            className={`image-viewing-${index} relative w-full h-full flex-shrink-0 flex snap-center touch-none`}
             onClick={() => {
               setViewerIsActive(false);
             }}

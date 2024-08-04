@@ -17,7 +17,7 @@ const Preloader = () => {
   }, [pathname]);
   return (
     <div
-      className={`preloader fixed z-[99] bg-white w-screen h-dvh top-0 left-0`}
+      className={`preloader fixed z-[99] bg-white w-screen h-dvh top-0 left-0 touch-none`}
     >
       <div className="preloader-spinner absolute w-28 lg:w-36 left-1/2 top-1/2 aspect-square border-dotted border-[#115faa] border-[20px] rounded-full" />
       <div className="preloader-text absolute w-full px-5 text-center top-[calc(50%+5.5rem)] lg:top-[calc(50%+6rem)] left-1/2 -translate-x-1/2 " />

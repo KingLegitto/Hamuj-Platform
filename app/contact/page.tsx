@@ -34,25 +34,25 @@ const Contact = () => {
         </h1>
       </section>
 
-      <section className="pt-top-spacing-s md:pt-top-spacing grid grid-cols-1 md:grid-cols-[42.5%_52.5%] gap-x-[5%] mb-[5rem]">
-        <div className="flex flex-col gap-y-14 pl-7 pr-7 md:pl-20 md:pr-0">
+      <section className="pt-[5rem] md:pt-top-spacing grid grid-cols-1 md:grid-cols-[42.5%_52.5%] gap-x-[5%] mb-[5rem]">
+        <div className="flex flex-col gap-y-10 lg:gap-y-14 pl-7 pr-7 md:pl-20 md:pr-0 text-base">
           <div className="flex flex-col gap-y-3">
-            <span className="font-medium text-grade-3 text-xl">Whatsapp</span>
-            <span className="text-grade-1 font-medium text-base">
+            <span className="font-medium text-grade-3 text-lg lg:text-xl">Whatsapp</span>
+            <span className="text-grade-1 font-medium">
               +234 8061999995
             </span>
           </div>
 
           <div className="flex flex-col gap-y-3">
-            <span className="font-medium text-grade-3 text-xl">Email</span>
-            <span className="text-grade-1 font-medium text-base">
+            <span className="font-medium text-grade-3 text-lg lg:text-xl">Email</span>
+            <span className="text-grade-1 font-medium">
               hamujhomesltd.1@gmail.com
             </span>
           </div>
 
           <div className="flex flex-col gap-y-3">
-            <span className="font-medium text-grade-3 text-xl">Location</span>
-            <span className="text-grade-1 font-medium text-base">
+            <span className="font-medium text-grade-3 text-lg lg:text-xl">Location</span>
+            <span className="text-grade-1 font-medium">
               1637, Ibukun House Ademola <br /> Adetokunbo, Opposite Eko Hotel,
               <br /> Victoria Island, Lagos, Nigeria
             </span>
