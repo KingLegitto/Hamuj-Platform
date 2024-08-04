@@ -3,13 +3,14 @@ import type { Metadata } from "next";
 import Hero from "../../assets/rasters/hamuj1-2.jpg";
 import Doc from "../../assets/vectors/document.svg";
 import Link from "next/link";
+import TransitionLink from "@/components/pageTransitions/transitionLink";
 
 export const metadata: Metadata = {
   title: "Consultation",
   description: "Request professional consultation from the Hamuj Homes team",
   icons: {
-    icon: '/favicon.png'
-  }
+    icon: "/favicon.png",
+  },
 };
 
 const Consultation = () => {
@@ -19,7 +20,6 @@ const Consultation = () => {
         <Image
           src={Hero}
           alt="hero section background"
-          placeholder="blur"
           className="w-full h-full object-cover brightness-[0.7] z-[1]"
         />
         <div className="z-[2] absolute w-full h-full bg-gradient-to-tr from-[#061843ad] to-[#2a2a2a00]" />
@@ -40,7 +40,11 @@ const Consultation = () => {
             *Click below to read the terms
           </span>
           <Link href="" className="relative">
-            <Image src={Doc} alt="Document" className="scale-[0.7] lg:scale-[0.8]" />
+            <Image
+              src={Doc}
+              alt="Document"
+              className="scale-[0.7] lg:scale-[0.8]"
+            />
             <span className="absolute top-[105%] left-1/2 -translate-x-1/2 text-xs lg:text-sm font-bold text-grade-2">
               Consult_T&Cs.pdf
             </span>
@@ -50,12 +54,12 @@ const Consultation = () => {
         <div className="flex flex-col gap-y-3 lg:gap-y-7 font-medium text-grade-2 items-center">
           <span className="font-medium text-sm lg:text-base">Proceed?</span>
           <div className="flex gap-x-5 lg:gap-x-10 justify-center">
-            <button className="w-16 lg:w-20 p-2 rounded-full text-base lg:text-lg shadow-lg bg-white border hover:text-red-400 hover:font-medium hover:border-red-400">
+            <button className="w-16 lg:w-20 p-2 rounded-full text-center text-base lg:text-lg shadow-lg bg-white border hover:text-red-400 hover:font-medium hover:border-red-400">
               No
             </button>
-            <button className="w-16 lg:w-20 p-2 rounded-full text-base lg:text-lg shadow-lg bg-white border hover:text-green-400 hover:font-medium hover:border-green-400">
+            <TransitionLink href="/consultation/questionnaire" styles="w-16 lg:w-20 p-2 rounded-full text-center text-base lg:text-lg shadow-lg bg-white border hover:text-green-400 hover:font-medium hover:border-green-400">
               Yes
-            </button>
+            </TransitionLink>
           </div>
         </div>
       </section>

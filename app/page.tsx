@@ -96,7 +96,7 @@ export default function Home() {
           <div className="h-auto bg-slate-50 py-7 lg:py-0 px-3 lg:px-0 lg:h-full shadow-[15px_15px_0px_2px_#E8E8E8] flex flex-col justify-center items-center gap-y-5">
             <Image src={RealEstate} height={50} alt="Real Estate svg icon" />
             <span className="text-lg lg:text-2xl text-[#242424] font-bold">
-              Real Estate
+              Construction
             </span>
             <p className=" text-center text-sm lg:text-base text-grade-2 w-full lg:w-60 px-2 lg:px-0 h-24 lg:h-32 flex items-center">
               Property development, sales, maintenance and management for

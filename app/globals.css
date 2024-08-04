@@ -63,7 +63,8 @@ body {
 
 .max-failsafe {
   max-width: 1440px;
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .preloader-spinner {

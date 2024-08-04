@@ -3,8 +3,8 @@ import type { Metadata } from "next";
 import Hero from "../../assets/rasters/hamuj1-2.jpg";
 import Logo from "../../assets/rasters/Hamuj_homes_logo.png"
 import CEO from "../../assets/rasters/Babatunde-Toheeb.jpg"
-import COO from "../../assets/rasters/Daminola-Emmanuel.jpg"
-import MD from "../../assets/rasters/Uchechukwu-Petra.jpg"
+import COO from "../../assets/rasters/hamuj_COO.jpg"
+import MD from "../../assets/rasters/hamuj_MD.jpg"
 import GuidingPrinciples from "@/components/guidingPrinciples";
 
 export const metadata: Metadata = {
@@ -94,7 +94,7 @@ const About = () => {
               <span className="absolute  top-[102%] w-full text-center font-bold text-grade-3 truncate">Olawale Daminola Emmanuel<br /><span className="text-xs lg:text-sm font-medium text-grade-1">Chief Operating Officer</span></span>            </div>
             <div className="relative w-[250px] h-[250px]  md:h-[300px] bg-slate-300">
               <Image src={MD} alt="" className="object-cover w-full h-full"/>
-              <span className="absolute  top-[102%] w-full text-center font-bold text-grade-3 truncate">Erohogo Uchechukwu Petra <br /><span className="text-xs lg:text-sm font-medium text-grade-1">Managing Director</span></span>            </div>
+              <span className="absolute  top-[102%] w-full text-center font-bold text-grade-3 truncate">Erohogo Petra Uchechukwu <br /><span className="text-xs lg:text-sm font-medium text-grade-1">Managing Director</span></span>            </div>
         </div>
       </section>
       
