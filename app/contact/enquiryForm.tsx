@@ -45,11 +45,11 @@ const EnquiryForm = () => {
         {formIsVisible && (
         
         <motion.div initial={{backgroundColor: '#00000000'}} animate={{backgroundColor: '#0000007d', transition:{duration: 0.5}}} exit={{backgroundColor: '#00000000', transition: {delay: 0.3,duration: 0.5}}}
-        className="lg:hidden fixed top-0 z-[100] flex h-screen overflow-clip w-full pt-28"
+        className="lg:hidden fixed top-0 z-[100] h-screen overflow-clip w-full"
         onClick={()=>{setFormIsVisible(false)}}>
         
         <motion.form onClick={(e)=>{e.stopPropagation()}} initial={{y: '100%'}} animate={{y:0, transition:{delay: 0.2, duration:0.5}}} exit={{y: '100%', transition:{duration:0.5}}}
-        className="flex flex-col flex-grow gap-y-10 overflow-scroll text-sm font-normal px-7 pt-10 rounded-t-2xl bg-slate-50">
+        className="absolute bottom-0 flex flex-col h-auto w-full gap-y-10 text-sm font-normal px-7 pt-10 pb-9 rounded-t-2xl bg-slate-50">
           
           <div className="absolute top-2 left-1/2 -translate-x-1/2 rounded-full w-1/5 h-1 bg-[#8c8c8c]"/>
           
