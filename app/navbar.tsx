@@ -103,7 +103,7 @@ const Navbar = () => {
       />
 
       {/* Mobile nav */}
-      <aside
+      <aside onClick={(e)=>{e.stopPropagation()}}
         className={`absolute lg:hidden duration-500 top-full pt-5 right-0 z-50 bg-white h-dvh w-3/4 flex flex-col items-center text-sm touch-none shadow-lg ${
           menuIsVisible ? "translate-x-0 " : "translate-x-full "
         } ${isAtPageTop ? "rounded-l-lg" : ""}`}
