@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Hero from "../../../assets/rasters/hamuj1-2.jpg";
+import { personalDetails } from "./questions";
 
 const Questionnaire = () => {
   return (
@@ -29,6 +30,36 @@ const Questionnaire = () => {
             <div className="h-[2px] w-[120%] absolute bg-theme-2 -bottom-3 left-0" />
           </span>
         </h2>
+
+        <div className="mt-10 px-9 lg:px-24 text-sm lg:text-base">
+          {personalDetails.map((question) => {
+            return (
+              <div className="flex flex-col gap-y-2 mb-6 last:mb-0">
+                <span className="font-normal">{question.title}</span>
+
+                {/* If there are no options */}
+                {!question.options ? (
+                  <input
+                    type={question.type}
+                    className="p-3 border focus:outline-none w-full lg:w-[70%]"
+                  />
+                ) : (
+                  // If there are options
+                  <div className="flex flex-col gap-y-5 mt-2">
+                    {question.options?.map((option, optionIndex) => {
+                      return (
+                        <div className="flex gap-x-3 w-fit cursor-pointer pl-3">
+                          <input type={question.type} className="w-5 cursor-pointer" id={`${question.title}-${optionIndex}`} name={question.title}/>
+                          <label htmlFor={`${question.title}-${optionIndex}`} className="cursor-pointer">{option}</label>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
       </section>
 
       <section className="mb-10 w-full max-failsafe pt-top-spacing-s md:pt-top-spacing">
