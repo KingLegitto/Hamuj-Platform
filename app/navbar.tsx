@@ -96,7 +96,7 @@ const Navbar = () => {
       <Image
         src={Menu}
         alt="hamburger icon"
-        onClick={() => {
+        onTouchEnd={() => {
           setMenuIsVisible(!menuIsVisible);
         }}
         className="lg:hidden absolute top-1/2 -translate-y-1/2 right-5 scale-75 opacity-90"
