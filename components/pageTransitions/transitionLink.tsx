@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { FC } from "react";
 
 interface TransitionLinkProps {
@@ -19,8 +19,12 @@ const TransitionLink: FC<TransitionLinkProps> = ({
   setMenuIsVisible,
 }) => {
   const router = useRouter();
+  const pathname = usePathname()
+  
   function transition(e: any) {
     e.preventDefault();
+    
+    if(href === pathname) return
     if(setMenuIsVisible){setMenuIsVisible(false)}
 
     const preloader: HTMLDivElement = document.querySelector(".preloader")!;

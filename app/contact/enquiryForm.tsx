@@ -46,7 +46,7 @@ const EnquiryForm = () => {
 
         {/* Trigger button */}
         <motion.div initial={{y: '50%', opacity: 0}} animate={{y:0,opacity:1,transition:{delay:1, duration:0.3}}} whileTap={{scale: 0.5}} onTap={()=>{setFormIsVisible(true)}} 
-        className="lg:hidden fixed bottom-7 right-3 z-20 text-white bg-theme-1 rounded-full aspect-square px-4 py-3 flex justify-center items-center gap-x-2 shadow-[0px_0px_10px_-2px_rgba(255,255,255,0.1)] border-white border-[1px]">
+        className="lg:hidden fixed bottom-7 right-3 z-20 text-white bg-theme-1 rounded-full aspect-square px-4 py-3 flex justify-center items-center gap-x-2 shadow-[0px_0px_10px_-2px_rgba(255,255,255,0.5)] border-white border-[2px]">
           <Image src={Compose} alt="Compose" className="scale-[0.8]"/>
         </motion.div>
 
@@ -67,27 +67,27 @@ const EnquiryForm = () => {
           <input
             type="text"
             placeholder="Name" required
-            className="py-4 px-6 border-[1px] flex-shrink-0 border-[#8C8C8C] rounded-lg"
+            className="py-4 px-6 border-[1px] flex-shrink-0 border-[#8C8C8C] rounded-lg touch-none"
           />
           <input
             type="email"
             placeholder="Email" required
-            className="py-4 px-6 border-[1px] flex-shrink-0 border-[#8C8C8C] rounded-lg"
+            className="py-4 px-6 border-[1px] flex-shrink-0 border-[#8C8C8C] rounded-lg touch-none"
           />
           <input
             type="text"
             placeholder="Phone" required
-            className="py-4 px-6 border-[1px] flex-shrink-0 border-[#8C8C8C] rounded-lg"
+            className="py-4 px-6 border-[1px] flex-shrink-0 border-[#8C8C8C] rounded-lg touch-none"
           />
           <textarea
             rows={4}
             placeholder="Enquiry" required
-            className="py-4 px-6 border-[1px] flex-shrink-0 border-[#8C8C8C] rounded-lg"
+            className="py-4 px-6 border-[1px] flex-shrink-0 border-[#8C8C8C] rounded-lg touch-none"
           />
           <input
             type="submit"
             value={"Send Enquiry"}
-            className="bg-theme-1 text-white cursor-pointer rounded-lg duration-100 py-3 w-1/2 mx-auto font-medium"
+            className="bg-theme-1 text-white cursor-pointer rounded-lg duration-100 py-3 w-1/2 mx-auto font-medium touch-none"
           />
         </motion.form>
         </motion.div>)}

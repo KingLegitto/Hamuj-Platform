@@ -1,8 +1,13 @@
+"use client"
 import Image from "next/image";
 import Hero from "../../../assets/rasters/hamuj1-2.jpg";
-import { personalDetails } from "./questions";
+import Personal from "./personalPage";
+import { useState } from "react";
+import Project from "./projectPage";
+import { AnimatePresence, motion } from "framer-motion";
 
 const Questionnaire = () => {
+    const [page, setPage] = useState(0)
   return (
     <main className="relative w-full h-auto bg-slate-50">
       <section className="relative flex justify-center items-center h-[250px] md:h-[400px] aspect-video w-full overflow-hidden">
@@ -23,53 +28,21 @@ const Questionnaire = () => {
         </h1>
       </section>
 
-      <section className="w-full max-failsafe pt-top-spacing-s md:pt-top-spacing">
-        <h2 className="text-lg md:text-2xl text-grade-3 pl-5 md:pl-20">
-          <span className="relative font-bold">
-            PERSONAL DETAILS
-            <div className="h-[2px] w-[120%] absolute bg-theme-2 -bottom-3 left-0" />
-          </span>
-        </h2>
+        {page===0? <Personal />: <Project />}
 
-        <div className="mt-10 px-9 lg:px-24 text-sm lg:text-base">
-          {personalDetails.map((question) => {
-            return (
-              <div className="flex flex-col gap-y-2 mb-6 last:mb-0">
-                <span className="font-normal">{question.title}</span>
+        {page===0 && (
+            <motion.button initial={{opacity: 0}} animate={{opacity: 1, transition:{duration:0.5, delay:1}}} onClick={()=>{setPage(1)}} 
+            className="relative left-1/2 lg:left-0 -translate-x-1/2 lg:-translate-x-0 lg:ml-24 my-10 lg:my-16 w-20 lg:w-28 p-2 rounded-full text-center text-sm lg:text-base shadow-lg bg-white border hover:text-blue-400 hover:font-medium hover:border-blue-400">
+            Next
+            </motion.button>)}
 
-                {/* If there are no options */}
-                {!question.options ? (
-                  <input
-                    type={question.type}
-                    className="p-3 border focus:outline-none w-full lg:w-[70%]"
-                  />
-                ) : (
-                  // If there are options
-                  <div className="flex flex-col gap-y-5 mt-2">
-                    {question.options?.map((option, optionIndex) => {
-                      return (
-                        <div className="flex gap-x-3 w-fit cursor-pointer pl-3">
-                          <input type={question.type} className="w-5 cursor-pointer" id={`${question.title}-${optionIndex}`} name={question.title}/>
-                          <label htmlFor={`${question.title}-${optionIndex}`} className="cursor-pointer">{option}</label>
-                        </div>
-                      );
-                    })}
-                  </div>
-                )}
-              </div>
-            );
-          })}
-        </div>
-      </section>
-
-      <section className="mb-10 w-full max-failsafe pt-top-spacing-s md:pt-top-spacing">
-        <h2 className="text-lg md:text-2xl text-grade-3 pl-5 md:pl-20">
-          <span className="relative font-bold">
-            PROJECT DETAILS
-            <div className="h-[2px] w-[120%] absolute bg-theme-2 -bottom-3 left-0" />
-          </span>
-        </h2>
-      </section>
+        {page===1 && (
+            <motion.div initial={{opacity: 0}} animate={{opacity: 1, transition:{duration:0.5, delay:1}}} className="my-10 lg:my-16 lg:ml-24 flex justify-center lg:justify-start gap-x-3">
+                <button onClick={()=>{setPage(0)}} className="w-20 lg:w-24 p-2 rounded-full text-center text-sm lg:text-base shadow-lg bg-white border hover:text-blue-400 hover:font-medium hover:border-blue-400">Back</button>
+                <button onClick={()=>{}} className="w-20 lg:w-24 p-2 rounded-full text-center text-sm lg:text-base shadow-lg bg-white border hover:text-blue-400 hover:font-medium hover:border-blue-400">Proceed</button>
+            </motion.div>
+        )}
+      
     </main>
   );
 };
