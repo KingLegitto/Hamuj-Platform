@@ -37,7 +37,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`duration-300 group w-full z-40 fixed justify-center items-center gap-x-14 overflow-x-clip text-white ${
+      className={`duration-300 group w-full z-40 fixed justify-center items-center gap-x-14 text-white ${
         isAtPageTop && !pathname.startsWith("/projects/")
           ? "lg:hover:bg-theme-1 h-20 lg:backdrop-blur-sm"
           : "bg-theme-1 h-14 lg:h-16"
@@ -97,13 +97,13 @@ const Navbar = () => {
         src={Menu}
         alt="hamburger icon"
         onClick={() => {
-          setMenuIsVisible(true);
+          setMenuIsVisible(!menuIsVisible);
         }}
         className="lg:hidden absolute top-1/2 -translate-y-1/2 right-5 scale-75 opacity-90"
       />
 
       {/* Mobile nav */}
-      <aside onClick={(e)=>{e.stopPropagation()}}
+      <aside
         className={`absolute lg:hidden duration-500 top-full pt-5 right-0 z-50 bg-white h-dvh w-3/4 flex flex-col items-center text-sm touch-none shadow-lg ${
           menuIsVisible ? "translate-x-0 " : "translate-x-full "
         } ${isAtPageTop ? "rounded-l-lg" : ""}`}
