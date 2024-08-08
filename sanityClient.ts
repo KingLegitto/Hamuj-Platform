@@ -1,10 +1,11 @@
 // sanityClient.ts
-import sanityClient, { createClient } from '@sanity/client'
+import { createClient } from '@sanity/client'
 import imageUrlBuilder from '@sanity/image-url'
 
 const client = createClient({
-  projectId: '7ebo0bvv',
-  dataset: 'production',
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
+  token: process.env.NEXT_PUBLIC_SANITY_TOKEN,
   apiVersion: '2023-07-28',
   useCdn: true,
 })

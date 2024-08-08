@@ -1,13 +1,205 @@
-"use client"
+"use client";
 import Image from "next/image";
 import Hero from "../../../assets/rasters/hamuj1-2.jpg";
-import Personal from "./personalPage";
-import { useState } from "react";
-import Project from "./projectPage";
-import { AnimatePresence, motion } from "framer-motion";
+import PersonalSegment from "./personalSegment";
+import { useEffect, useState } from "react";
+import ProjectSegment from "./projectSegment";
+import { personalDetails } from "./questions";
+import { projectDetails } from "./questions";
+import { client } from "@/sanityClient";
+
+interface StoredResponse {
+  personalResponses: any;
+  projectResponses: any;
+}
 
 const Questionnaire = () => {
-    const [page, setPage] = useState(0)
+  const [page, setPage] = useState(0);
+  const [personalQuestions, setPersonalQuestions] = useState(personalDetails);
+  const [projectQuestions, setProjectQuestions] = useState(projectDetails);
+  const [storedResponse, setStoredResponse] = useState<StoredResponse>({
+    personalResponses: null,
+    projectResponses: null,
+  });
+
+  //   RESPONSE STORAGE LOGIC
+  function storeResponse(
+    segment: string,
+    segmentQuestions: {
+      title: string;
+      type: "text" | "checkbox" | "radio" | "textbox" | "email";
+      options?: string[];
+      required?: false;
+      followUpTriggers?: number[];
+      followUpTo?: string;
+      hidden?: boolean;
+    }[],
+    doNotValidate?: boolean
+  ) {
+    let responseObj: any = {};
+
+    if (segment === "personal") {
+      // Personal details segment responses
+      segmentQuestions.forEach((question, questionIndex) => {
+        if (!question.options && !question.hidden) {
+          // If question has options (that is, type checkbox or radio) and is not hidden...
+          let inputElement: HTMLInputElement = document.querySelector(
+            `.${question.title.replaceAll(/[\s\W]/g, "-")}-0`
+          )!; // Get the input element associated with said question
+          responseObj[`(#${questionIndex})-${question.title}`] = [
+            inputElement.value,
+          ]; // Store its value
+        }
+
+        if (question.options && !question.hidden) {
+          // If question has options (that is, type checkbox or radio) and is not hidden...
+          responseObj[`(#${questionIndex})-${question.title}`] = [];
+          question.options.forEach((option, optionIndex) => {
+            let inputElement: HTMLInputElement = document.querySelector(
+              `.${question.title.replaceAll(/[\s\W]/g, "-")}-${optionIndex}`
+            )!; // Get the checkboxes or radios associated with said question
+            responseObj[`(#${questionIndex})-${question.title}`].push(
+              inputElement.checked
+            ); // Store each ones checked state
+          });
+        }
+      });
+      setStoredResponse({
+        ...storedResponse,
+        personalResponses: responseObj,
+      });
+
+      if(doNotValidate){
+        // setPage(page-1)
+      } 
+      else{
+        validateForm(responseObj)? setPage(1)
+        : document.querySelector('.heading')!.scrollIntoView({block: 'center', inline: 'nearest'})
+    }
+    }
+
+    if (segment === "project") {
+      // Project details segment responses
+      segmentQuestions.forEach((question, questionIndex) => {
+        if (!question.options && !question.hidden) {
+          // If question has options (that is, type checkbox or radio) and is not hidden...
+          let inputElement: HTMLInputElement = document.querySelector(
+            `.${question.title.replaceAll(/[\s\W]/g, "-")}-0`
+          )!; // Get the input element associated with said question
+          responseObj[`(#${questionIndex})-${question.title}`] = [
+            inputElement.value,
+          ]; // Store its value
+        }
+
+        if (question.options && !question.hidden) {
+          // If question has options (that is, type checkbox or radio) and is not hidden...
+          responseObj[`(#${questionIndex})-${question.title}`] = [];
+          question.options.forEach((option, optionIndex) => {
+            let inputElement: HTMLInputElement = document.querySelector(
+              `.${question.title.replaceAll(/[\s\W]/g, "-")}-${optionIndex}`
+            )!; // Get the checkboxes or radios associated with said question
+            responseObj[`(#${questionIndex})-${question.title}`].push(
+              inputElement.checked
+            ); // Store each ones checked state
+          });
+        }
+      });
+      setStoredResponse({
+        ...storedResponse,
+        projectResponses: responseObj,
+      });
+      
+      if(doNotValidate){
+        setPage(page-1)
+      } 
+      else{
+        validateForm(responseObj)? (setPage(2), sendToSanity())
+        : document.querySelector('.heading')!.scrollIntoView({block: 'center', inline: 'nearest'})
+    }
+    }
+  }
+
+  async function sendToSanity(){
+    let author
+    Object.keys(storedResponse['personalResponses']).forEach((responseKey: any, index)=>{
+        if(index === 0){
+            //@ts-ignore
+            author = storedResponse['personalResponses'][responseKey][0]
+        }
+    })
+    let stringifiedResponse = JSON.stringify(storedResponse)
+    try{
+        const response = await client.create({_type: 'forms', author: author, data: stringifiedResponse})
+        alert('success')
+    }
+    catch (error){
+        alert('Sanity failed')
+    }
+  }
+
+  function checkForStoredResponse(
+    segment: keyof StoredResponse,
+  ) {
+    if (storedResponse[segment] && segment === 'personalResponses') {
+        personalQuestions.map((question, questionIndex)=>{
+            if(!question.hidden && !question.options){
+                let data = storedResponse[segment][`(#${questionIndex})-${question.title}`][0]
+                let inputElement: HTMLInputElement = document.querySelector(`.${question.title.replaceAll(/[\s\W]/g, "-")}-0`)!
+                inputElement.value = data
+            }
+            else if(!question.hidden && question.options){
+                question.options.forEach((option, optionIndex)=>{
+                    let data = storedResponse[segment][`(#${questionIndex})-${question.title}`][optionIndex]
+                    let inputElement: HTMLInputElement = document.querySelector(`.${question.title.replaceAll(/[\s\W]/g, "-")}-${optionIndex}`)!
+                    inputElement.checked = data
+                })
+            }
+        })
+    }
+
+    if (storedResponse[segment] && segment === 'projectResponses') {
+        projectQuestions.map((question, questionIndex)=>{
+            if(!question.hidden && !question.options){
+                let data = storedResponse[segment][`(#${questionIndex})-${question.title}`][0]
+                let inputElement: HTMLInputElement = document.querySelector(`.${question.title.replaceAll(/[\s\W]/g, "-")}-0`)!
+                inputElement.value = data
+            }
+            else if(!question.hidden && question.options){
+                question.options.forEach((option, optionIndex)=>{
+                    let data = storedResponse[segment][`(#${questionIndex})-${question.title}`][optionIndex]
+                    let inputElement: HTMLInputElement = document.querySelector(`.${question.title.replaceAll(/[\s\W]/g, "-")}-${optionIndex}`)!
+                    inputElement.checked = data
+                })
+            }
+        })
+    }
+  }
+
+  function validateForm(responseObj: any){
+    let goodToGo = true
+      Object.keys(responseObj).forEach((response, responseIndex)=>{
+        let questionWasAnswered = false
+        responseObj[response].forEach((potentialAnswer: boolean | string)=>{
+            if(potentialAnswer){
+                questionWasAnswered = true
+            }
+        })
+
+        if(!questionWasAnswered){
+            goodToGo = false
+            let targetQuestion: HTMLSpanElement = document.querySelector(`.question${response.replaceAll(/[^\w\d]/g, "")}`)!
+            targetQuestion.style.color = 'red'
+            targetQuestion.classList.add('incomplete')
+        }
+    })
+
+    if(goodToGo){return true}
+    else{
+        alert('Unanswered questions detected, please fill to proceed.')
+        return false
+    }
+  }
+
   return (
     <main className="relative w-full h-auto bg-slate-50">
       <section className="relative flex justify-center items-center h-[250px] md:h-[400px] aspect-video w-full overflow-hidden">
@@ -28,21 +220,23 @@ const Questionnaire = () => {
         </h1>
       </section>
 
-        {page===0? <Personal />: <Project />}
 
-        {page===0 && (
-            <motion.button initial={{opacity: 0}} animate={{opacity: 1, transition:{duration:0.5, delay:1}}} onClick={()=>{setPage(1)}} 
-            className="relative left-1/2 lg:left-0 -translate-x-1/2 lg:-translate-x-0 lg:ml-24 my-10 lg:my-16 w-20 lg:w-28 p-2 rounded-full text-center text-sm lg:text-base shadow-lg bg-white border hover:text-blue-400 hover:font-medium hover:border-blue-400">
-            Next
-            </motion.button>)}
+      {page === 0 ? (
+        <PersonalSegment
+          Questions={personalQuestions}
+          setQuestions={setPersonalQuestions}
+          storeResponse={storeResponse}
+          checkForStoredResponse={checkForStoredResponse}
+        />
+      ) : (
+        <ProjectSegment
+          Questions={projectQuestions}
+          setQuestions={setProjectQuestions}
+          storeResponse={storeResponse}
+          checkForStoredResponse={checkForStoredResponse}
+        />
+      )}
 
-        {page===1 && (
-            <motion.div initial={{opacity: 0}} animate={{opacity: 1, transition:{duration:0.5, delay:1}}} className="my-10 lg:my-16 lg:ml-24 flex justify-center lg:justify-start gap-x-3">
-                <button onClick={()=>{setPage(0)}} className="w-20 lg:w-24 p-2 rounded-full text-center text-sm lg:text-base shadow-lg bg-white border hover:text-blue-400 hover:font-medium hover:border-blue-400">Back</button>
-                <button onClick={()=>{}} className="w-20 lg:w-24 p-2 rounded-full text-center text-sm lg:text-base shadow-lg bg-white border hover:text-blue-400 hover:font-medium hover:border-blue-400">Proceed</button>
-            </motion.div>
-        )}
-      
     </main>
   );
 };

@@ -1,38 +1,58 @@
 "use client"
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { FormEvent, useRef, useState } from "react";
 import Compose from "../../assets/vectors/compose.svg"
 import Image from "next/image";
+import emailjs from '@emailjs/browser';
 
 const EnquiryForm = () => {
   const [formIsVisible, setFormIsVisible] = useState(false)
+  const laptopForm = useRef<HTMLFormElement>(null)
+  const mobileForm = useRef<HTMLFormElement>(null)
 
   function handleDragEnd(distance:number){
     if(distance > 150){
       setFormIsVisible(false)
     }
   }
+
+  function sendEmail(type: string, e: FormEvent){
+    e.preventDefault();
+    const form = type==='laptop'? laptopForm: mobileForm
+    emailjs
+      .sendForm('service_ewdkhrh', 'template_dkj2xz8', form.current!, {
+        publicKey: 'ypM9qCA_5t-lUOOdw',
+      })
+      .then(
+        () => {
+          console.log('SUCCESS!');
+        },
+        (error) => {
+          console.log('FAILED...', error.text);
+        },
+      );
+  }
     return ( 
       <>
-        <form className="hidden md:flex flex-col gap-y-20 text-lg font-normal pr-20">
+        <form ref={laptopForm} onSubmit={(e)=>{sendEmail('laptop', e)}} className="hidden md:flex flex-col gap-y-20 text-lg font-normal pr-20">
           <input
             type="text"
-            placeholder="Name" required
+            placeholder="Name" required name="from_name"
             className="py-4 px-6 border-[1px] border-[#8C8C8C]"
           />
           <input
             type="email"
-            placeholder="Email" required
+            placeholder="Email" required name="email"
             className="py-4 px-6 border-[1px] border-[#8C8C8C]"
           />
           <input
             type="text"
-            placeholder="Phone" required
+            placeholder="Phone" required name="phone"
             className="py-4 px-6 border-[1px] border-[#8C8C8C]"
           />
           <textarea
             rows={4}
-            placeholder="Enquiry" required
+            placeholder="Enquiry" required name="message"
             className="py-4 px-6 border-[1px] border-[#8C8C8C]"
           />
           <input
@@ -56,9 +76,10 @@ const EnquiryForm = () => {
         
         <motion.div initial={{backgroundColor: '#00000000'}} animate={{backgroundColor: '#0000007d', transition:{duration: 0.5}}} exit={{backgroundColor: '#00000000', transition: {delay: 0.3,duration: 0.5}}}
         className="lg:hidden fixed top-0 z-[100] h-dvh overflow-clip w-full touch-none"
+        onClick={()=>{setFormIsVisible(false)}}
         >
         
-        <motion.form drag='y' dragConstraints={{top: 0}} dragElastic={{top: 0, bottom: 0.5}} dragSnapToOrigin onDragEnd={(e,info)=>(handleDragEnd(info.offset.y))} 
+        <motion.form ref={mobileForm} onSubmit={(e)=>{sendEmail('mobile', e)}} drag='y' dragConstraints={{top: 0}} dragElastic={{top: 0, bottom: 0.5}} dragSnapToOrigin onDragEnd={(e,info)=>(handleDragEnd(info.offset.y))} 
         onClick={(e)=>{e.stopPropagation()}} initial={{y: '100%'}} animate={{y:0, transition:{delay: 0.2, duration:0.5}}} exit={{y: '100%', transition:{duration:0.5}}}
         className="absolute bottom-0 flex flex-col touch-none h-auto w-full gap-y-10 text-sm font-normal px-7 pt-10 pb-9 rounded-t-2xl bg-slate-50">
           

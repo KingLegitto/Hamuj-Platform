@@ -12,6 +12,14 @@
     height: 0;
     width: 0;
   }
+  
+  
+}
+
+.not-selectable{
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 }
 
 .principle-1,
@@ -104,4 +112,8 @@ body {
   100% {
     content: "Something might be wrong. Please check your connection or reload the page";
   }
+}
+
+.incomplete::before{
+  content: '* '
 }
