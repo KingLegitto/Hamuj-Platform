@@ -6,11 +6,12 @@ const personalDetails: {
   followUpTriggers?: number[];
   followUpTo?: string;
   hidden?: boolean;
+  cssSelector?: string
 }[] = [
-  { title: "Your lastname", type: "text" },
-  { title: "Other names", type: "text" },
+  { title: "Your lastname", type: "text", cssSelector: 'lastname' },
+  { title: "Other names", type: "text", cssSelector: 'otherNames' },
   { title: "Phone number", type: "text" },
-  { title: "Email address", type: "email" },
+  { title: "Email address", type: "email", cssSelector: 'email' },
   { title: "Preferred form(s) of contact", type: "checkbox", options: ['Call','Text','Email']},
   { title: "Preferred day(s) to contact you", type: "checkbox", options: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday']},
   { title: "Suitable time to call", type: "radio", options: ['Mornings (9am - 12pm)', 'Afternoons (12pm - 4pm)', 'Evenings (4pm - 6pm)']},

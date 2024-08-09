@@ -10,6 +10,7 @@ interface PersonalSegmentProps {
     followUpTriggers?: number[];
     followUpTo?: string;
     hidden?: boolean;
+    cssSelector?: string
   }[];
 
   setQuestions: (questions: any) => void;
@@ -128,7 +129,7 @@ const PersonalSegment: FC<PersonalSegmentProps> = ({
                   {!question.options ? (
                     <input
                       type={question.type}
-                      className={` ${question.title.replaceAll(/[\s\W]/g, "-")}-0 abcde p-3 border focus:outline-none w-full lg:w-[70%]`}
+                      className={` ${question.title.replaceAll(/[\s\W]/g, "-")}-0 ${question.cssSelector? question.cssSelector:''} abcde p-3 border focus:outline-none w-full lg:w-[70%]`}
                     />
                   ) : (
                     // If there are options

@@ -7,6 +7,8 @@ import ProjectSegment from "./projectSegment";
 import { personalDetails } from "./questions";
 import { projectDetails } from "./questions";
 import { client } from "@/sanityClient";
+import emailjs from '@emailjs/browser';
+import Toast from "@/components/toast";
 
 interface StoredResponse {
   personalResponses: any;
@@ -21,6 +23,10 @@ const Questionnaire = () => {
     personalResponses: null,
     projectResponses: null,
   });
+  const [easyAccess, setEasyAccess] = useState({lastname: '', otherNames: '', email: ''})
+  const [toast, setToast] = useState(false)
+  const [toastDetails, setToastDetails] = useState({title: '', result: false, message: ''})
+
 
   //   RESPONSE STORAGE LOGIC
   function storeResponse(
@@ -69,13 +75,18 @@ const Questionnaire = () => {
         personalResponses: responseObj,
       });
 
-      if(doNotValidate){
-        // setPage(page-1)
-      } 
-      else{
-        validateForm(responseObj)? setPage(1)
-        : document.querySelector('.heading')!.scrollIntoView({block: 'center', inline: 'nearest'})
-    }
+      const lastname: HTMLInputElement = document.querySelector('.lastname')!
+      const otherNames: HTMLInputElement = document.querySelector('.otherNames')!
+      const email: HTMLInputElement = document.querySelector('.email')!
+      setEasyAccess({lastname: lastname.value, otherNames: otherNames.value, email: email.value})
+
+          if(doNotValidate){
+            // setPage(page-1)
+          } 
+          else{
+            validateForm(responseObj)? setPage(1)
+            : document.querySelector('.heading')!.scrollIntoView({block: 'center', inline: 'nearest'})
+        }
     }
 
     if (segment === "project") {
@@ -113,28 +124,54 @@ const Questionnaire = () => {
         setPage(page-1)
       } 
       else{
-        validateForm(responseObj)? (setPage(2), sendToSanity())
+        validateForm(responseObj)? setPage(2)
         : document.querySelector('.heading')!.scrollIntoView({block: 'center', inline: 'nearest'})
     }
     }
   }
 
+  useEffect(()=>{
+    if(page === 2){
+        sendToSanity()
+    }
+  }, [storedResponse, page])
+
   async function sendToSanity(){
-    let author
-    Object.keys(storedResponse['personalResponses']).forEach((responseKey: any, index)=>{
-        if(index === 0){
-            //@ts-ignore
-            author = storedResponse['personalResponses'][responseKey][0]
-        }
-    })
     let stringifiedResponse = JSON.stringify(storedResponse)
     try{
-        const response = await client.create({_type: 'forms', author: author, data: stringifiedResponse})
-        alert('success')
+        const response = await client.create({_type: 'forms', author: `${easyAccess.otherNames} ${easyAccess.lastname}`, data: stringifiedResponse})
+        sendConfirmationEmail(response._id)
     }
     catch (error){
-        alert('Sanity failed')
+        setToast(true)
+        setToastDetails({title: 'Error', result: false, message: 'An error occurred, try again later' })
     }
+  }
+
+  function sendConfirmationEmail(ID: string){
+    const templateParams = {
+        from_name: `${easyAccess.otherNames} ${easyAccess.lastname}`,
+        email: easyAccess.email,
+        link: `${window.location.href}/${ID}`,
+        subject: `Hamuj Homes Consultation auto-reply`,
+        content: `This is a confirmation that we have received your request and will respond to you shortly.\n
+        You can review you choices by clicking the link below.\n
+        ${window.location.host}/${ID}}`
+    }
+    emailjs
+      .send('service_ewdkhrh', 'template_7idchr2', templateParams, {
+        publicKey: 'ypM9qCA_5t-lUOOdw',
+      })
+      .then(
+        () => {
+            setToast(true)
+            setToastDetails({title: 'Success', result: true, message: 'Completed successfully' })
+        },
+        (error) => {
+            setToast(true)
+            setToastDetails({title: 'Error', result: false, message: 'An error occurred.' })
+        },
+      );
   }
 
   function checkForStoredResponse(
@@ -202,6 +239,7 @@ const Questionnaire = () => {
 
   return (
     <main className="relative w-full h-auto bg-slate-50">
+        <Toast toast={toast} setToast={setToast} toastDetails={toastDetails}/>
       <section className="relative flex justify-center items-center h-[250px] md:h-[400px] aspect-video w-full overflow-hidden">
         <Image
           src={Hero}
