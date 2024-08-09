@@ -129,6 +129,7 @@ const PersonalSegment: FC<PersonalSegmentProps> = ({
                   {!question.options ? (
                     <input
                       type={question.type}
+                      placeholder={question.type==='email'? '* Ensure email is accurate':''}
                       className={` ${question.title.replaceAll(/[\s\W]/g, "-")}-0 ${question.cssSelector? question.cssSelector:''} abcde p-3 border focus:outline-none w-full lg:w-[70%]`}
                     />
                   ) : (

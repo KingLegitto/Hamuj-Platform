@@ -37,7 +37,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`duration-300 group w-full z-40 fixed justify-center items-center gap-x-14 text-white ${
+      className={`duration-300 group w-full z-[90] fixed justify-center items-center gap-x-14 text-white ${
         isAtPageTop && !pathname.startsWith("/projects/")
           ? "lg:hover:bg-theme-1 h-20 lg:backdrop-blur-sm"
           : "bg-theme-1 h-14 lg:h-16"

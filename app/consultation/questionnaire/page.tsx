@@ -129,7 +129,7 @@ const Questionnaire = () => {
         setPage(page-1)
       } 
       else{
-        validateForm(responseObj)? (setPage(2), router.push('/next-step'))
+        validateForm(responseObj)? (setPage(2), router.push('/consultation/next-step'))
         : document.querySelector('.heading')!.scrollIntoView({block: 'center', inline: 'nearest'})
     }
     setDisableForm(false)
