@@ -36,8 +36,8 @@ const ViewResponse: FC<ViewResponseProps> = ({ params }) => {
 
   useEffect(() => {
     if (formData) {
-      // console.log(formData)
       checkForStoredResponse("personalResponses");
+      checkForStoredResponse("projectResponses")
     }
   }, [formData]);
 

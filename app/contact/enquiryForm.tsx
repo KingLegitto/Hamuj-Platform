@@ -17,13 +17,13 @@ const EnquiryForm = () => {
     }
   }
 
-  function sendEmail(e: FormEvent){
+  function sendEmail(e: FormEvent, screen: string){
     e.preventDefault();
 
-    const name: HTMLInputElement = document.querySelector('.name')!
-    const phone: HTMLInputElement = document.querySelector('.phone')!
-    const email: HTMLInputElement = document.querySelector('.email')!
-    const enquiry: HTMLInputElement = document.querySelector('.enquiry')!
+    const name: HTMLInputElement = screen==='pc'? document.querySelector('.name')! : document.querySelector('.name-mobile')!
+    const phone: HTMLInputElement = screen==='pc'? document.querySelector('.phone')! : document.querySelector('.phone-mobile')!
+    const email: HTMLInputElement = screen==='pc'? document.querySelector('.email')! : document.querySelector('.email-mobile')!
+    const enquiry: HTMLInputElement = screen==='pc'? document.querySelector('.enquiry')! : document.querySelector('.enquiry-mobile')!
 
     const templateParams = {
       subject: 'A new enquiry for Hamuj Homes',
@@ -56,7 +56,7 @@ const EnquiryForm = () => {
     return ( 
       <>
       <Toast toastDetails={toastDetails} toast={toast} setToast={setToast}/>
-        <form onSubmit={(e)=>{sendEmail(e)}} className="hidden md:flex flex-col gap-y-20 text-lg font-normal pr-20">
+        <form onSubmit={(e)=>{sendEmail(e, 'pc')}} className="hidden md:flex flex-col gap-y-20 text-lg font-normal pr-20">
           <input
             type="text"
             placeholder="Name" required name="from_name"
@@ -102,7 +102,7 @@ const EnquiryForm = () => {
         onClick={()=>{setFormIsVisible(false)}}
         >
         
-        <motion.form onSubmit={(e)=>{sendEmail(e)}} drag='y' dragConstraints={{top: 0}} dragElastic={{top: 0, bottom: 0.5}} dragSnapToOrigin onDragEnd={(e,info)=>(handleDragEnd(info.offset.y))} 
+        <motion.form onSubmit={(e)=>{sendEmail(e, 'mobile')}} drag='y' dragConstraints={{top: 0}} dragElastic={{top: 0, bottom: 0.5}} dragSnapToOrigin onDragEnd={(e,info)=>(handleDragEnd(info.offset.y))} 
         onClick={(e)=>{e.stopPropagation()}} initial={{y: '100%'}} animate={{y:0, transition:{delay: 0.2, duration:0.5}}} exit={{y: '100%', transition:{duration:0.5}}}
         className="absolute bottom-0 flex flex-col touch-none h-auto w-full gap-y-10 text-sm font-normal px-7 pt-10 pb-9 rounded-t-2xl bg-slate-50">
           
@@ -111,22 +111,22 @@ const EnquiryForm = () => {
           <input
             type="text"
             placeholder="Name" required
-            className="name py-4 px-6 border-[1px] flex-shrink-0 border-[#8C8C8C] rounded-lg touch-none"
+            className="name-mobile py-4 px-6 border-[1px] flex-shrink-0 border-[#8C8C8C] rounded-lg touch-none"
           />
           <input
             type="email"
             placeholder="Email" required 
-            className="email py-4 px-6 border-[1px] flex-shrink-0 border-[#8C8C8C] rounded-lg touch-none"
+            className="email-mobile py-4 px-6 border-[1px] flex-shrink-0 border-[#8C8C8C] rounded-lg touch-none"
           />
           <input
             type="text"
             placeholder="Phone" required
-            className="phone py-4 px-6 border-[1px] flex-shrink-0 border-[#8C8C8C] rounded-lg touch-none"
+            className="phone-mobile py-4 px-6 border-[1px] flex-shrink-0 border-[#8C8C8C] rounded-lg touch-none"
           />
           <textarea
             rows={4}
             placeholder="Enquiry" required
-            className="enquiry py-4 px-6 border-[1px] flex-shrink-0 border-[#8C8C8C] rounded-lg touch-none"
+            className="enquiry-mobile py-4 px-6 border-[1px] flex-shrink-0 border-[#8C8C8C] rounded-lg touch-none"
           />
           <input
             type="submit"

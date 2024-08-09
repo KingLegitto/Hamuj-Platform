@@ -232,7 +232,8 @@ const Questionnaire = () => {
 
     if(goodToGo){return true}
     else{
-        alert('Unanswered questions detected, please fill to proceed.')
+        setToast(true)
+        setToastDetails({title: 'Error', result: false, message: 'Please fill completely' })
         return false
     }
   }
