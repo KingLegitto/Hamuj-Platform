@@ -10,7 +10,7 @@ import { client } from "@/sanityClient";
 import emailjs from '@emailjs/browser';
 import Toast from "@/components/toast";
 import { AnimatePresence } from "framer-motion";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 interface StoredResponse {
   personalResponses: any;
