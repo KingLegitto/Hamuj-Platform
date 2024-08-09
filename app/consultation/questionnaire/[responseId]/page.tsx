@@ -69,24 +69,24 @@ const ViewResponse: FC<ViewResponseProps> = ({ params }) => {
     if (formData![segment] && segment === "projectResponses") {
       projectDetails.map((question, questionIndex) => {
         if (!question.options) {
-          let data =
-            formData![segment][`(#${questionIndex})-${question.title}`][0];
-          let inputElement: HTMLInputElement | null = document.querySelector(
-            `.${question.title.replaceAll(/[\s\W]/g, "-")}-0`
-          );
-          if (inputElement) inputElement.value = data;
-        } else if (question.options) {
-          question.options.forEach((option, optionIndex) => {
             let data =
-              formData![segment][`(#${questionIndex})-${question.title}`][
-                optionIndex
-              ];
+              formData![segment][`(#${questionIndex})-${question.title}`];
+            let value = data ? data[0] : null;
             let inputElement: HTMLInputElement | null = document.querySelector(
-              `.${question.title.replaceAll(/[\s\W]/g, "-")}-${optionIndex}`
+              `.${question.title.replaceAll(/[\s\W]/g, "-")}-0`
             );
-            if (inputElement) inputElement.checked = data;
-          });
-        }
+            if (inputElement) inputElement.value = value;
+          } else if (question.options) {
+            question.options.forEach((option, optionIndex) => {
+              let data =
+                formData![segment][`(#${questionIndex})-${question.title}`];
+              let value = data ? data[optionIndex] : null;
+              let inputElement: HTMLInputElement | null = document.querySelector(
+                `.${question.title.replaceAll(/[\s\W]/g, "-")}-${optionIndex}`
+              );
+              if (inputElement) inputElement.checked = value;
+            });
+          }
       });
     }
   }
