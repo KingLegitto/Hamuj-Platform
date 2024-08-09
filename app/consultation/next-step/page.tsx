@@ -21,7 +21,7 @@ const NextStep = () => {
         </h1>
       </section>
 
-      <section className="mx-auto bg-white text-sm md:text-base flex flex-col justify-center items-center gap-y-10  rounded-3xl border-[3px] text-grade-3 border-[#e8e8e8] p-5 lg:p-16 w-[95%] md:w-[70%] h-[60vh] lg:h-[70vh] max-h-[500px] shadow-lg text-center my-[10rem]">
+      <section className="mx-auto bg-white text-sm md:text-base flex flex-col justify-center items-center gap-y-10 rounded-[70px] lg:rounded-3xl border-[3px] text-grade-3 border-[#e8e8e8] p-5 lg:p-16 w-[95%] md:w-[70%] h-[55vh] lg:h-[70vh] max-h-[500px] shadow-lg text-center my-[10rem]">
         <h2 className="font-normal text-lg md:text-xl text-grade-3">
           Your request has been placed successfully
         </h2>

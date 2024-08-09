@@ -49,7 +49,7 @@ const ViewResponse: FC<ViewResponseProps> = ({ params }) => {
             formData![segment][`(#${questionIndex})-${question.title}`];
           let value = data ? data[0] : null;
           let inputElement: HTMLInputElement | null = document.querySelector(
-            `.${question.title.replaceAll(/[\s\W]/g, "-")}-0`
+            `.personal${question.title.replaceAll(/[\s\W]/g, "-")}-${questionIndex}`
           );
           if (inputElement) inputElement.value = value;
         } else if (question.options) {
@@ -58,7 +58,7 @@ const ViewResponse: FC<ViewResponseProps> = ({ params }) => {
               formData![segment][`(#${questionIndex})-${question.title}`];
             let value = data ? data[optionIndex] : null;
             let inputElement: HTMLInputElement | null = document.querySelector(
-              `.${question.title.replaceAll(/[\s\W]/g, "-")}-${optionIndex}`
+              `.personal${question.title.replaceAll(/[\s\W]/g, "-")}-${optionIndex}`
             );
             if (inputElement) inputElement.checked = value;
           });
@@ -73,7 +73,7 @@ const ViewResponse: FC<ViewResponseProps> = ({ params }) => {
               formData![segment][`(#${questionIndex})-${question.title}`];
             let value = data ? data[0] : null;
             let inputElement: HTMLInputElement | null = document.querySelector(
-              `.${question.title.replaceAll(/[\s\W]/g, "-")}-0`
+              `.project${question.title.replaceAll(/[\s\W]/g, "-")}-${questionIndex}`
             );
             if (inputElement) inputElement.value = value;
           } else if (question.options) {
@@ -82,7 +82,7 @@ const ViewResponse: FC<ViewResponseProps> = ({ params }) => {
                 formData![segment][`(#${questionIndex})-${question.title}`];
               let value = data ? data[optionIndex] : null;
               let inputElement: HTMLInputElement | null = document.querySelector(
-                `.${question.title.replaceAll(/[\s\W]/g, "-")}-${optionIndex}`
+                `.project${question.title.replaceAll(/[\s\W]/g, "-")}-${optionIndex}`
               );
               if (inputElement) inputElement.checked = value;
             });
@@ -134,7 +134,7 @@ const ViewResponse: FC<ViewResponseProps> = ({ params }) => {
           else
             return (
               <div
-                key={question.title}
+                key={`personal-(#${questionIndex})-${question.title}`}
                 className={`flex flex-col gap-y-2 mb-6 last:mb-0`}
               >
                 <span
@@ -147,7 +147,7 @@ const ViewResponse: FC<ViewResponseProps> = ({ params }) => {
                 {!question.options ? (
                   <input
                     type={question.type}
-                    className={` ${question.title.replaceAll(/[\s\W]/g, "-")}-0 ${question.cssSelector ? question.cssSelector : ""} p-3 border focus:outline-none w-full lg:w-[70%]`}
+                    className={` personal${question.title.replaceAll(/[\s\W]/g, "-")}-${questionIndex} ${question.cssSelector ? question.cssSelector : ""} p-3 border focus:outline-none w-full lg:w-[70%]`}
                   />
                 ) : (
                   // If there are options
@@ -160,7 +160,7 @@ const ViewResponse: FC<ViewResponseProps> = ({ params }) => {
                         >
                           <input
                             type={question.type}
-                            className={`${question.title.replaceAll(/[\s\W]/g, "-")}-${optionIndex} w-5 cursor-pointer`}
+                            className={`personal${question.title.replaceAll(/[\s\W]/g, "-")}-${optionIndex} w-5 cursor-pointer`}
                             id={`${question.title}-${optionIndex}`}
                             name={question.title}
                           />
@@ -198,7 +198,7 @@ const ViewResponse: FC<ViewResponseProps> = ({ params }) => {
           else
             return (
               <div
-                key={question.title}
+                key={`project-(#${questionIndex})-${question.title}`}
                 className={`flex flex-col gap-y-2 mb-6 last:mb-0`}
               >
                 <span
@@ -213,12 +213,12 @@ const ViewResponse: FC<ViewResponseProps> = ({ params }) => {
                     {question.type === "text" ? (
                       <input
                         type={question.type}
-                        className={` ${question.title.replaceAll(/[\s\W]/g, "-")}-0 p-3 border focus:outline-none w-full lg:w-[70%]`}
+                        className={` project${question.title.replaceAll(/[\s\W]/g, "-")}-${questionIndex} p-3 border focus:outline-none w-full lg:w-[70%]`}
                       />
                     ) : (
                       <textarea
                         rows={3}
-                        className={` ${question.title.replaceAll(/[\s\W]/g, "-")}-0 p-3 border focus:outline-none w-full lg:w-[70%]`}
+                        className={` project${question.title.replaceAll(/[\s\W]/g, "-")}-${questionIndex} p-3 border focus:outline-none w-full lg:w-[70%]`}
                       ></textarea>
                     )}
                   </>
@@ -233,7 +233,7 @@ const ViewResponse: FC<ViewResponseProps> = ({ params }) => {
                         >
                           <input
                             type={question.type}
-                            className={`${question.title.replaceAll(/[\s\W]/g, "-")}-${optionIndex} w-5 cursor-pointer`}
+                            className={`project${question.title.replaceAll(/[\s\W]/g, "-")}-${optionIndex} w-5 cursor-pointer`}
                             id={`${question.title}-${optionIndex}`}
                             name={question.title}
                           />
