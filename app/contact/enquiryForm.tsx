@@ -8,6 +8,7 @@ import Toast from "@/components/toast";
 
 const EnquiryForm = () => {
   const [formIsVisible, setFormIsVisible] = useState(false)
+  const [disableForm, setDisableForm] = useState(false)
   const [toast, setToast] = useState(false)
   const [toastDetails, setToastDetails] = useState({title: '', result: false, message: ''})
 
@@ -19,7 +20,7 @@ const EnquiryForm = () => {
 
   function sendEmail(e: FormEvent, screen: string){
     e.preventDefault();
-
+    setDisableForm(true)
     const name: HTMLInputElement = screen==='pc'? document.querySelector('.name')! : document.querySelector('.name-mobile')!
     const phone: HTMLInputElement = screen==='pc'? document.querySelector('.phone')! : document.querySelector('.phone-mobile')!
     const email: HTMLInputElement = screen==='pc'? document.querySelector('.email')! : document.querySelector('.email-mobile')!
@@ -27,12 +28,12 @@ const EnquiryForm = () => {
 
     const templateParams = {
       subject: 'A new enquiry for Hamuj Homes',
-      send_to: 'theblazinking@gmail.com',
+      send_to: 'nikechukwumene@gmail.com',
       content: `A new enquiry was submitted by:\n
       Name: ${name.value}\n
       Phone: ${phone.value}\n
       Email: ${email.value}\n\n
-      ================================\n\n
+      Enquiry:\n
       ${enquiry.value}`
     }
     emailjs
@@ -41,21 +42,23 @@ const EnquiryForm = () => {
       })
       .then(
         () => {
+          setDisableForm(false)
           setToast(true)
-          setToastDetails({title: 'Success', result: true, message: 'Enquiry sent successfully.' })        },
+          setToastDetails({title: 'Success', result: true, message: 'Enquiry sent successfully.' })
+          setFormIsVisible(false)
+        },
         (error) => {
+          setDisableForm(false)
           setToast(true)
           setToastDetails({title: 'Did not send', result: false, message: 'An error occurred, try again later' })        },
       );
   }
-  useEffect(()=>{
-    if(toast){
-      setFormIsVisible(false)
-    }
-  }, [toastDetails])
+  
     return ( 
       <>
-      <Toast toastDetails={toastDetails} toast={toast} setToast={setToast}/>
+        <AnimatePresence>
+            {toast && <Toast setToast={setToast} toastDetails={toastDetails}/>}
+        </AnimatePresence>
         <form onSubmit={(e)=>{sendEmail(e, 'pc')}} className="hidden md:flex flex-col gap-y-20 text-lg font-normal pr-20">
           <input
             type="text"
@@ -79,8 +82,8 @@ const EnquiryForm = () => {
           />
           <input
             type="submit"
-            value={"Send Enquiry"}
-            disabled={toastDetails.result? true:false}
+            value={disableForm? "Sending...":"Send Enquiry"}
+            disabled={disableForm? true:false}
             className={`bg-theme-1 text-white cursor-pointer hover:scale-[1.05] duration-100 py-3 w-1/3 font-medium ${toastDetails.result? 'cursor-not-allowed':''}`}
           />
         </form>
@@ -130,7 +133,8 @@ const EnquiryForm = () => {
           />
           <input
             type="submit"
-            value={"Send Enquiry"}
+            value={disableForm? "Sending...":"Send Enquiry"}
+            disabled={disableForm? true:false}
             className="bg-theme-1 text-white cursor-pointer rounded-lg duration-100 py-3 w-1/2 mx-auto font-medium touch-none"
           />
         </motion.form>

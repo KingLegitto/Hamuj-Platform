@@ -9,6 +9,8 @@ import { projectDetails } from "./questions";
 import { client } from "@/sanityClient";
 import emailjs from '@emailjs/browser';
 import Toast from "@/components/toast";
+import { AnimatePresence } from "framer-motion";
+import { useRouter } from "next/router";
 
 interface StoredResponse {
   personalResponses: any;
@@ -16,6 +18,7 @@ interface StoredResponse {
 }
 
 const Questionnaire = () => {
+    const router = useRouter()
   const [page, setPage] = useState(0);
   const [personalQuestions, setPersonalQuestions] = useState(personalDetails);
   const [projectQuestions, setProjectQuestions] = useState(projectDetails);
@@ -23,6 +26,7 @@ const Questionnaire = () => {
     personalResponses: null,
     projectResponses: null,
   });
+  const [disableForm, setDisableForm] = useState(false)
   const [easyAccess, setEasyAccess] = useState({lastname: '', otherNames: '', email: ''})
   const [toast, setToast] = useState(false)
   const [toastDetails, setToastDetails] = useState({title: '', result: false, message: ''})
@@ -89,7 +93,8 @@ const Questionnaire = () => {
         }
     }
 
-    if (segment === "project") {
+    if (segment === "project" && !disableForm) {
+        setDisableForm(true) //Prevent multiple invokes at once
       // Project details segment responses
       segmentQuestions.forEach((question, questionIndex) => {
         if (!question.options && !question.hidden) {
@@ -124,9 +129,10 @@ const Questionnaire = () => {
         setPage(page-1)
       } 
       else{
-        validateForm(responseObj)? setPage(2)
+        validateForm(responseObj)? (setPage(2), router.push('/next-step'))
         : document.querySelector('.heading')!.scrollIntoView({block: 'center', inline: 'nearest'})
     }
+    setDisableForm(false)
     }
   }
 
@@ -233,14 +239,16 @@ const Questionnaire = () => {
     if(goodToGo){return true}
     else{
         setToast(true)
-        setToastDetails({title: 'Error', result: false, message: 'Please fill completely' })
+        setToastDetails({title: 'Incomplete', result: false, message: 'Please fill the form' })
         return false
     }
   }
 
   return (
     <main className="relative w-full h-auto bg-slate-50">
-        <Toast toast={toast} setToast={setToast} toastDetails={toastDetails}/>
+        <AnimatePresence>
+            {toast && <Toast setToast={setToast} toastDetails={toastDetails}/>}
+        </AnimatePresence>
       <section className="relative flex justify-center items-center h-[250px] md:h-[400px] aspect-video w-full overflow-hidden">
         <Image
           src={Hero}
