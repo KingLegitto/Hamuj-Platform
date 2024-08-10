@@ -156,10 +156,10 @@ const Questionnaire = () => {
     const templateParams = {
         from_name: `${easyAccess.otherNames} ${easyAccess.lastname}`,
         email: easyAccess.email,
+        subject: `Hamuj Homes Consultation Auto-reply`,
         link: `${window.location.href}/${ID}`,
-        subject: `Hamuj Homes Consultation auto-reply`,
         content: `This is a confirmation that we have received your request and will respond to you shortly.\n
-        You can review you choices by clicking the link below.\n
+        You can review your choices by clicking the link below.\n
         ${window.location.host}/${ID}}`
     }
     emailjs

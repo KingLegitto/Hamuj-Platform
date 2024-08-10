@@ -28,7 +28,7 @@ const EnquiryForm = () => {
 
     const templateParams = {
       subject: 'A new enquiry for Hamuj Homes',
-      send_to: 'nikechukwumene@gmail.com',
+      email: 'theblazinking@gmail.com',
       content: `A new enquiry was submitted by:\n
       Name: ${name.value}\n
       Phone: ${phone.value}\n
@@ -44,13 +44,15 @@ const EnquiryForm = () => {
         () => {
           setDisableForm(false)
           setToast(true)
-          setToastDetails({title: 'Success', result: true, message: 'Enquiry sent successfully.' })
-          setFormIsVisible(false)
+          setToastDetails({title: 'Success', result: true, message: 'Enquiry sent successfully. We will respond shortly' })
+          setTimeout(() => {
+            setFormIsVisible(false)
+          }, 500);
         },
         (error) => {
           setDisableForm(false)
           setToast(true)
-          setToastDetails({title: 'Did not send', result: false, message: 'An error occurred, try again later' })        },
+          setToastDetails({title: 'Failed to send', result: false, message: 'Enquiry did not send, please try again later' })},
       );
   }
   
