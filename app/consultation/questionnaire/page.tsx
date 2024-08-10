@@ -10,7 +10,7 @@ import { client } from "@/sanityClient";
 import emailjs from '@emailjs/browser';
 import Toast from "@/components/toast";
 import { AnimatePresence } from "framer-motion";
-import { useRouter } from "next/navigation";
+import NextSteps from "./nextSteps";
 
 interface StoredResponse {
   personalResponses: any;
@@ -18,8 +18,7 @@ interface StoredResponse {
 }
 
 const Questionnaire = () => {
-    const router = useRouter()
-  const [page, setPage] = useState(0);
+  const [page, setPage] = useState<number | 'sending' | 'complete'>(0);
   const [personalQuestions, setPersonalQuestions] = useState(personalDetails);
   const [projectQuestions, setProjectQuestions] = useState(projectDetails);
   const [storedResponse, setStoredResponse] = useState<StoredResponse>({
@@ -85,7 +84,6 @@ const Questionnaire = () => {
       setEasyAccess({lastname: lastname.value, otherNames: otherNames.value, email: email.value})
 
           if(doNotValidate){
-            // setPage(page-1)
           } 
           else{
             validateForm(responseObj)? setPage(1)
@@ -126,10 +124,10 @@ const Questionnaire = () => {
       });
       
       if(doNotValidate){
-        setPage(page-1)
+        setPage(0)
       } 
       else{
-        validateForm(responseObj)? (setPage(2), router.push('/consultation/next-step'))
+        validateForm(responseObj)? (setPage('sending'))
         : document.querySelector('.heading')!.scrollIntoView({block: 'center', inline: 'nearest'})
     }
     setDisableForm(false)
@@ -137,7 +135,7 @@ const Questionnaire = () => {
   }
 
   useEffect(()=>{
-    if(page === 2){
+    if(page === 'sending'){
         sendToSanity()
     }
   }, [storedResponse, page])
@@ -172,6 +170,7 @@ const Questionnaire = () => {
         () => {
             setToast(true)
             setToastDetails({title: 'Success', result: true, message: 'Completed successfully' })
+            setPage('complete')
         },
         (error) => {
             setToast(true)
@@ -268,21 +267,27 @@ const Questionnaire = () => {
       </section>
 
 
-      {page === 0 ? (
+      
+        {page === 0 && 
         <PersonalSegment
           Questions={personalQuestions}
           setQuestions={setPersonalQuestions}
           storeResponse={storeResponse}
           checkForStoredResponse={checkForStoredResponse}
-        />
-      ) : (
+        />}
+
+        {(page === 1 || page === 'sending') && 
         <ProjectSegment
           Questions={projectQuestions}
           setQuestions={setProjectQuestions}
           storeResponse={storeResponse}
           checkForStoredResponse={checkForStoredResponse}
-        />
-      )}
+        />}
+
+        {page === 'complete' && 
+        <NextSteps email={easyAccess.email}/>
+        }
+      
 
     </main>
   );
