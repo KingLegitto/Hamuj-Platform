@@ -1,18 +1,19 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import Image from "next/image";
-import Menu from "../assets/vectors/hamburger.svg";
-import BrandLogo from "../assets/rasters/smallLogo.png";
-import Arrow from "../assets/vectors/lineArrow.svg";
+import Menu from "../public/vectors/hamburger.svg";
+import BrandLogo from "../public/rasters/smallLogo.png";
+import Arrow from "../public/vectors/lineArrow.svg";
 import TransitionLink from "../components/pageTransitions/transitionLink";
 import { AnimatePresence, motion } from "framer-motion";
 
 const routes = [
   { title: "Home", route: "/" },
   { title: "About", route: "/about" },
-  { title: "Projects", route: "/projects" },
+  { title: "Explore", route: "/explore" },
+  { title: "Portfolio", route: "/portfolio" },
   { title: "Contact", route: "/contact" },
   { title: "Consultation", route: "/consultation" },
 ];

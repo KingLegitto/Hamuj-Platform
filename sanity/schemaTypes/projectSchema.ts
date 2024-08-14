@@ -9,20 +9,13 @@ export const projects = defineType({
       name: "title",
       title: "Project Title",
       type: "string",
-      description:
-        "NOTE: Please capitalize the first letter of every word in the title, also no special characters allowed except spaces between words. Thank you",
       validation: (Rule) =>
         Rule.required().custom((title) => {
-          const noSpecialCharsRegex = /^[a-zA-Z0-9&\s]*$/;
           const noMultipleSpacesRegex =
             /^[^\s](?:[a-zA-Z0-9&]+(?:\s[a-zA-Z0-9&]+)*)?$/;
           const capitalFirstLetterRegex =
             /^([A-Z0-9][a-zA-Z0-9&]*\s)*[A-Z0-9][a-zA-Z0-9&]*$/;
 
-          // Check for special characters other than spaces
-          if (!noSpecialCharsRegex.test(title!)) {
-            return "No special characters allowed, just alphanumeric and spaces";
-          }
           // Check for multiple consecutive spaces
           if (!noMultipleSpacesRegex.test(title!)) {
             return "No multiple consecutive spaces between words, neither can you end title with a space";

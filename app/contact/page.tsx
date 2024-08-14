@@ -6,7 +6,7 @@ import EnquiryForm from "./enquiryForm";
 
 export const metadata: Metadata = { 
   title: "Contact",
-  description: "Make enquiries or visit us at our main branch in Lagos, Nigeria.",
+  description: "Make enquiries or endeavor to visit us at our main branch in Lagos, Nigeria.",
   icons: {
     icon: '/favicon.png'
   }
@@ -19,7 +19,6 @@ const Contact = () => {
         <Image
           src={HeaderBg}
           alt="hero section background"
-          placeholder="blur"
           className="w-full h-full object-cover brightness-[0.7] z-[1]"
         />
         <div className="z-[2] absolute w-full h-full bg-gradient-to-tr from-[#061843ad] to-[#2a2a2a00]" />

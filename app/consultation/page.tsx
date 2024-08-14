@@ -7,7 +7,7 @@ import TransitionLink from "@/components/pageTransitions/transitionLink";
 
 export const metadata: Metadata = {
   title: "Consultation",
-  description: "Request professional consultation from the Hamuj Homes team",
+  description: "Request professional consultation from the our team of experts",
   icons: {
     icon: "/favicon.png",
   },

@@ -1,6 +1,7 @@
 function hyphenate(inputString: string) {
   inputString = inputString.toLowerCase();
-  const outputString = inputString.replace(/\s+/g, "-");
+  const encodedString = encodeURIComponent(inputString)
+  const outputString = encodedString.replace(/\s+/g, "-");
   return outputString;
 }
 

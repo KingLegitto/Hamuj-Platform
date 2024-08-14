@@ -1,9 +1,9 @@
 "use client";
 import Image from "next/image";
 import { FC, useEffect, useRef, useState } from "react";
-import RightArrow from "../assets/vectors/lineArrow.svg";
-import RightArrowBlk from "../assets/vectors/lineArrow-gold.svg";
-import AngledArrow from "../assets/vectors/acuteArrow.svg";
+import RightArrow from "../public/vectors/lineArrow.svg";
+import RightArrowBlk from "../public/vectors/lineArrow-gold.svg";
+import AngledArrow from "../public/vectors/acuteArrow.svg";
 import { client, urlFor } from "../sanityClient";
 import { hyphenate } from "@/utils/hyphenationForRoutes";
 import TransitionLink from "../components/pageTransitions/transitionLink";
@@ -148,7 +148,7 @@ const Highlights: FC = () => {
                 </span>
                 <span className="text-xs md:text-base">{project.area}, {project.state}</span>
                 <TransitionLink
-                  href={`projects/${hyphenate(project.title)}`}
+                  href={`portfolio/details?id=${hyphenate(project.title)}`}
                   styles={`absolute flex gap-x-2 items-center top-1/2 -translate-y-1/2 right-5 cursor-pointer text-xs md:text-base ${index === activeProject ? "block" : "hidden"}`}
                 >
                   Details

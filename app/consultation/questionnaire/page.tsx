@@ -11,6 +11,7 @@ import emailjs from '@emailjs/browser';
 import Toast from "@/components/toast";
 import { AnimatePresence } from "framer-motion";
 import NextSteps from "./nextSteps";
+import { uploadResponse } from "@/firebaseConfig";
 
 interface StoredResponse {
   personalResponses: any;
@@ -135,16 +136,15 @@ const Questionnaire = () => {
   }
 
   useEffect(()=>{
-    if(page === 'sending'){
-        sendToSanity()
+    if(page === 1){
+        initiateUpload()
     }
   }, [storedResponse, page])
 
-  async function sendToSanity(){
+  async function initiateUpload(){
     let stringifiedResponse = JSON.stringify(storedResponse)
     try{
-        const response = await client.create({_type: 'forms', author: `${easyAccess.otherNames} ${easyAccess.lastname}`, data: stringifiedResponse})
-        sendConfirmationEmail(response._id)
+        const id = uploadResponse(stringifiedResponse, easyAccess.lastname)
     }
     catch (error){
         setToast(true)
@@ -157,10 +157,10 @@ const Questionnaire = () => {
         from_name: `${easyAccess.otherNames} ${easyAccess.lastname}`,
         email: easyAccess.email,
         subject: `Hamuj Homes Consultation Auto-reply`,
-        link: `${window.location.href}/${ID}`,
+        link: `${window.location.href}/response?${ID}`,
         content: `This is a confirmation that we have received your request and will respond to you shortly.\n
         You can review your choices by clicking the link below.\n
-        ${window.location.host}/${ID}}`
+        ${window.location.href}/response?${ID}`
     }
     emailjs
       .send('service_ewdkhrh', 'template_7idchr2', templateParams, {

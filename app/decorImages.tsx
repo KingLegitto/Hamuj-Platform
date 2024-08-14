@@ -1,8 +1,8 @@
 "use client";
 import Image from "next/image";
-import Img1 from "../assets/rasters/hamuj6.jpg";
-import Img2 from "../assets/rasters/hamuj1.jpg";
-import Img3 from "../assets/rasters/hamuj3.jpg";
+import Img1 from "../public/rasters/hamuj6.jpg";
+import Img2 from "../public/rasters/hamuj1.jpg";
+import Img3 from "../public/rasters/hamuj3.jpg";
 import { useRef } from "react";
 import { useInView, motion } from "framer-motion";
 

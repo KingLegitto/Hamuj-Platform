@@ -9,7 +9,7 @@ import GuidingPrinciples from "@/components/guidingPrinciples";
 
 export const metadata: Metadata = {
   title: "About Us",
-  description: "Learn more about who we are and what we do",
+  description: "Learn more about us, who we are and what we do",
   icons: {
     icon: '/favicon.png'
   }
@@ -22,7 +22,6 @@ const About = () => {
         <Image
           src={Hero}
           alt="hero section background"
-          placeholder="blur"
           className="w-full h-full object-cover brightness-[0.7] z-[1]"
         />
         <div className="z-[2] absolute w-full h-full bg-gradient-to-tr from-[#061843ad] to-[#2a2a2a00]" />
@@ -42,7 +41,7 @@ const About = () => {
           </span>
         </h2>
 
-        <div className="mt-16 px-10 md:px-40 text-base md:text-lg text-left relative text-grade-2">
+        <div className="mt-16 px-10 md:px-40 text-sm md:text-lg text-left relative text-grade-2">
           <p className="relative z-20 w-full md:w-3/4 mb-10">
             Hamuj Homes Ltd., established in 2017, we began as a wood exporting
             company, sourcing and delivering quality wood worldwide. We expanded into home furniture in 2020, offering TV units,
