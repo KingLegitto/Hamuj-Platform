@@ -25,7 +25,8 @@ export const productListing = defineType({
     ],
     }),
     defineField({
-      name: "Tag",
+      name: "tag",
+      title: "Tag",
       type: "string",
     }),
     defineField({
