@@ -117,7 +117,7 @@ const Explore = () => {
             <div
               key={index}
               className={`w-full h-[300px] group flex-shrink-0 rounded-xl shadow-[15px_15px_0px_2px_#0000001A] lg:shadow-[17px_17px_0px_2px_#0000001A] 
-                hover:shadow-[7px_7px_0px_2px_#656565] hover:lg:shadow-[17px_17px_0px_2px_#b5b5b5] relative overflow-hidden duration-300 cursor-pointer bg-[#e8e8e8]`}
+               hover:lg:shadow-[17px_17px_0px_2px_#b5b5b5] relative overflow-hidden duration-300 cursor-pointer bg-[#e8e8e8]`}
             >
               <Image
                 src={urlFor(product.images[0].asset).url()}
@@ -130,9 +130,9 @@ const Explore = () => {
                 className={`text-white bg-gradient-to-t from-[#080808a8] to-[#08080800] h-1/3 absolute bottom-0 px-5 w-full flex flex-col gap-y-3 justify-center
                 `}
               >
-                {/* <span className="font-bold text-base lg:text-lg truncate max-w-[90%]">
-                  {product.title}
-                </span> */}
+                <span className="font-bold text-base lg:text-lg truncate max-w-[90%]">
+                  #{product.tag}
+                </span>
                 {/* <span className="text-xs md:text-base truncate max-w-[90%]">
                   {product.area}, {product.state}
                 </span> */}
