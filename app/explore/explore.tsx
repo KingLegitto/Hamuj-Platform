@@ -131,7 +131,7 @@ const Explore = () => {
                 `}
               >
                 <span className="font-bold text-base lg:text-lg truncate max-w-[90%]">
-                  #{product.tag}
+                  # {product.tag}
                 </span>
                 {/* <span className="text-xs md:text-base truncate max-w-[90%]">
                   {product.area}, {product.state}
