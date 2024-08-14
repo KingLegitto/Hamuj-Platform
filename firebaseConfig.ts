@@ -7,7 +7,7 @@ import { getDatabase, ref, set, get, DataSnapshot } from "firebase/database";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyBWQSw4lpfs6AIgDCMwUOkba1J7HXE3Om8",
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
   authDomain: "hamuj-platform-test.firebaseapp.com",
   projectId: "hamuj-platform-test",
   storageBucket: "hamuj-platform-test.appspot.com",
