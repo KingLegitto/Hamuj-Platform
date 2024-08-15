@@ -137,7 +137,7 @@ const Questionnaire = () => {
   }
 
   useEffect(()=>{
-    if(typeof window !== undefined){
+    if(typeof window !== "undefined"){
       setLink(window.location.href)
     }
     if(page === 'sending'){
