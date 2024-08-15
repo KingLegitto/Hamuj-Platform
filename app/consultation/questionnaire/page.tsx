@@ -33,7 +33,7 @@ const Questionnaire = () => {
   const [link, setLink] = useState<string | null>(null)
 
   useEffect(()=>{
-    if(typeof window !== "undefined"){
+    if(typeof window !== 'undefined'){
       setLink(window.location.href)
     }
   }, [])
