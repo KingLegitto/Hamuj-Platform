@@ -33,11 +33,13 @@ const Project  = () => {
   });
 
   useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search)
-      const params = urlParams.get('id')
-      if(params){
-        hydratePage(params)
-      }
+    if(typeof window !== "undefined"){
+      const urlParams = new URLSearchParams(window.location.search)
+        const params = urlParams.get('id')
+        if(params){
+          hydratePage(params)
+        }
+    }
   }, []);
 
   function hydratePage(projectId : string){

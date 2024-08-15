@@ -17,10 +17,12 @@ const ViewResponse = () => {
   const [notFound, setNotFound] = useState<boolean>(false);
 
   useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search)
-    const params = urlParams.get('response')
-    if(params){
-      hydratePage(params)
+    if(typeof window !== "undefined"){
+      const urlParams = new URLSearchParams(window.location.search)
+      const params = urlParams.get('response')
+      if(params){
+        hydratePage(params)
+      }
     }
 }, []);
 

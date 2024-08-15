@@ -30,6 +30,8 @@ const Questionnaire = () => {
   const [easyAccess, setEasyAccess] = useState({lastname: '', otherNames: '', email: ''})
   const [toast, setToast] = useState<boolean>(false)
   const [toastDetails, setToastDetails] = useState({title: '', result: false, message: ''})
+  const [link, setLink] = useState<string>('')
+
 
   //   RESPONSE STORAGE LOGIC
   function storeResponse(
@@ -135,6 +137,9 @@ const Questionnaire = () => {
   }
 
   useEffect(()=>{
+    if(typeof window !== "undefined"){
+      setLink(window.location.href)
+    }
     if(page === 'sending'){
         initiateUpload()
     }
@@ -157,10 +162,10 @@ const Questionnaire = () => {
         from_name: `${easyAccess.otherNames} ${easyAccess.lastname}`,
         email: easyAccess.email,
         subject: `Hamuj Homes Consultation`,
-        link: `https://hamuj-platform.vercel.app/consultation/questionnaire/review?response=${ID}`,
+        link: `${link}/review?response=${ID}`,
         content: `This is a confirmation that we have received your consultation request and will respond to within 2-4 business days.\n
         You can review your choices by clicking the link below.\n
-        https://hamuj-platform.vercel.app/consultation/questionnaire/review?response=${ID}`
+        ${link}/review?response=${ID}`
     }
     emailjs
       .send('service_ewdkhrh', 'template_7idchr2', templateParams, {
