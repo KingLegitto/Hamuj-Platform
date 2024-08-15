@@ -40,10 +40,8 @@ const ViewResponse = () => {
         const dataObj = JSON.parse(result.response);
         setFormData(dataObj);
       } else {
-        alert('no response')
         setNotFound(true);
       }
-
   }
 
   function checkForStoredResponse(segment: keyof StoredResponse) {
