@@ -11,7 +11,10 @@ import Toast from "@/components/toast";
 import { AnimatePresence } from "framer-motion";
 import NextSteps from "./nextSteps";
 import { uploadResponse } from "@/firebaseConfig";
-import Payment from "./payment";
+import dynamic from "next/dynamic";
+const Payment = dynamic(() => import('./payment'), {
+  ssr: false,
+});
 
 interface StoredResponse {
   personalResponses: any;
