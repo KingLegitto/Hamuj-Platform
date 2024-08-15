@@ -158,10 +158,10 @@ const Questionnaire = () => {
         from_name: `${easyAccess.otherNames} ${easyAccess.lastname}`,
         email: easyAccess.email,
         subject: `Hamuj Homes Consultation`,
-        link: `${window.location.href}/review?response=${ID}`,
+        link: `${location.href}/review?response=${ID}`,
         content: `This is a confirmation that we have received your consultation request and will respond to within 2-4 business days.\n
         You can review your choices by clicking the link below.\n
-        ${window.location.href}/review?response=${ID}`
+        ${location.href}/review?response=${ID}`
     }
     emailjs
       .send('service_ewdkhrh', 'template_7idchr2', templateParams, {
