@@ -6,12 +6,12 @@ import { useEffect, useState } from "react";
 import ProjectSegment from "./projectSegment";
 import { personalDetails } from "./questions";
 import { projectDetails } from "./questions";
-import { client } from "@/sanityClient";
 import emailjs from '@emailjs/browser';
 import Toast from "@/components/toast";
 import { AnimatePresence } from "framer-motion";
 import NextSteps from "./nextSteps";
 import { uploadResponse } from "@/firebaseConfig";
+import Payment from "./payment";
 
 interface StoredResponse {
   personalResponses: any;
@@ -19,16 +19,16 @@ interface StoredResponse {
 }
 
 const Questionnaire = () => {
-  const [page, setPage] = useState<number | 'sending' | 'complete'>(0);
+  const [page, setPage] = useState<number | 'payment' | 'sending' | 'complete'>(0);
   const [personalQuestions, setPersonalQuestions] = useState(personalDetails);
   const [projectQuestions, setProjectQuestions] = useState(projectDetails);
   const [storedResponse, setStoredResponse] = useState<StoredResponse>({
     personalResponses: null,
     projectResponses: null,
   });
-  const [disableForm, setDisableForm] = useState(false)
+  const [disableForm, setDisableForm] = useState<boolean>(false)
   const [easyAccess, setEasyAccess] = useState({lastname: '', otherNames: '', email: ''})
-  const [toast, setToast] = useState(false)
+  const [toast, setToast] = useState<boolean>(false)
   const [toastDetails, setToastDetails] = useState({title: '', result: false, message: ''})
 
 
@@ -128,7 +128,7 @@ const Questionnaire = () => {
         setPage(0)
       } 
       else{
-        validateForm(responseObj)? (setPage('sending'))
+        validateForm(responseObj)? (setPage('payment'))
         : document.querySelector('.heading')!.scrollIntoView({block: 'center', inline: 'nearest'})
     }
     setDisableForm(false)
@@ -136,7 +136,7 @@ const Questionnaire = () => {
   }
 
   useEffect(()=>{
-    if(page === 1){
+    if(page === 'sending'){
         initiateUpload()
     }
   }, [storedResponse, page])
@@ -145,6 +145,7 @@ const Questionnaire = () => {
     let stringifiedResponse = JSON.stringify(storedResponse)
     try{
         const id = uploadResponse(stringifiedResponse, easyAccess.lastname)
+        sendConfirmationEmail(id)
     }
     catch (error){
         setToast(true)
@@ -156,11 +157,11 @@ const Questionnaire = () => {
     const templateParams = {
         from_name: `${easyAccess.otherNames} ${easyAccess.lastname}`,
         email: easyAccess.email,
-        subject: `Hamuj Homes Consultation Auto-reply`,
-        link: `${window.location.href}/response?${ID}`,
-        content: `This is a confirmation that we have received your request and will respond to you shortly.\n
+        subject: `Hamuj Homes Consultation`,
+        link: `${window.location.href}/review?response=${ID}`,
+        content: `This is a confirmation that we have received your consultation request and will respond to within 2-4 business days.\n
         You can review your choices by clicking the link below.\n
-        ${window.location.href}/response?${ID}`
+        ${window.location.href}/review?response=${ID}`
     }
     emailjs
       .send('service_ewdkhrh', 'template_7idchr2', templateParams, {
@@ -276,13 +277,17 @@ const Questionnaire = () => {
           checkForStoredResponse={checkForStoredResponse}
         />}
 
-        {(page === 1 || page === 'sending') && 
+        {(page === 1) && 
         <ProjectSegment
           Questions={projectQuestions}
           setQuestions={setProjectQuestions}
           storeResponse={storeResponse}
           checkForStoredResponse={checkForStoredResponse}
         />}
+
+        {(page === 'payment' || page === 'sending') && 
+        <Payment email={easyAccess.email} setPage={setPage}/>
+        }
 
         {page === 'complete' && 
         <NextSteps email={easyAccess.email}/>

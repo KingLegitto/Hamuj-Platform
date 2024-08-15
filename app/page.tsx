@@ -99,8 +99,8 @@ export default function Home() {
               Construction
             </span>
             <p className=" text-center text-sm lg:text-base text-grade-2 w-full lg:w-60 px-2 lg:px-0 h-24 lg:h-32 flex items-center">
-              Property development, sales, maintenance and management for
-              residential and commercial clients.
+              Property development, repair, and renovations for
+              residential and commercial structures.
             </p>
           </div>
         </div>

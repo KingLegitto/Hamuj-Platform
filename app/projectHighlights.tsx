@@ -128,7 +128,7 @@ const Highlights: FC = () => {
                 handleScrolling(index);
               }}
               className={`project-highlight-${index} group snap-center flex-shrink-0 relative highlight overflow-hidden
-            ${index === activeProject ? "w-[90%] md:w-[600px] h-[300px] md:h-[350px]" : "w-[80%] md:w-[30%] h-[250px] md:h-[300px] cursor-pointer"} md:first:ml-[50vw] shadow-[10px_10px_0px_2px_#0000001A] lg:shadow-[20px_20px_0px_2px_#0000001A]`}
+            ${index === activeProject ? "w-[90%] md:w-[600px] h-[300px] md:h-[350px]" : "w-[80%] md:w-[30%] h-[250px] md:h-[300px] cursor-pointer"} md:first:ml-[50vw] shadow-[10px_10px_0px_2px_#0000001A] lg:shadow-[20px_20px_0px_2px_#0000001A] rounded-xl`}
               style={{ transition: "width 0.5s, height 0.5s, margin 0.5s" }}
             >
               <Image
@@ -169,10 +169,10 @@ const Highlights: FC = () => {
           className={`project-highlight-${highlights.length} snap-start mr-0 md:ml-[5vw] md:mr-[50vw] w-[20vw] flex-shrink-0 py-2`}
         >
           <TransitionLink
-            href={"/projects"}
+            href={"/portfolio"}
             styles={`flex items-center justify-center md:gap-x-2 text-center underline md:no-underline underline-offset-[5px] decoration-[#F49D02] decoration-[2px] group text-sm md:text-base`}
           >
-            {screenWidth >= 1024 ? "Go to Projects" : "View More"}
+            {screenWidth >= 1024 ? "View portfolio" : "View More"}
             <Image
               src={RightArrowBlk}
               alt="arrow"
