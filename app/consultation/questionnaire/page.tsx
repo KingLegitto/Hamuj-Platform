@@ -32,6 +32,9 @@ const Questionnaire = () => {
   const [toastDetails, setToastDetails] = useState({title: '', result: false, message: ''})
   const [link, setLink] = useState<string>('')
 
+  if(typeof window !== "undefined"){
+    setLink(window.location.href)
+  }
 
   //   RESPONSE STORAGE LOGIC
   function storeResponse(
@@ -137,9 +140,6 @@ const Questionnaire = () => {
   }
 
   useEffect(()=>{
-    if(typeof window !== "undefined"){
-      setLink(window.location.href)
-    }
     if(page === 'sending'){
         initiateUpload()
     }
