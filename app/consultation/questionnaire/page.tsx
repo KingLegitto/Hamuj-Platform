@@ -30,11 +30,20 @@ const Questionnaire = () => {
   const [easyAccess, setEasyAccess] = useState({lastname: '', otherNames: '', email: ''})
   const [toast, setToast] = useState<boolean>(false)
   const [toastDetails, setToastDetails] = useState({title: '', result: false, message: ''})
-  const [link, setLink] = useState<string>('')
+  const [link, setLink] = useState<string | null>(null)
 
-  if(typeof window !== "undefined"){
-    setLink(window.location.href)
-  }
+  useEffect(()=>{
+    if(typeof window !== "undefined"){
+      setLink(window.location.href)
+    }
+  }, [])
+
+  useEffect(()=>{
+    
+    if(page === 'sending'){
+        initiateUpload()
+    }
+  }, [storedResponse, page])
 
   //   RESPONSE STORAGE LOGIC
   function storeResponse(
@@ -138,12 +147,6 @@ const Questionnaire = () => {
     setDisableForm(false)
     }
   }
-
-  useEffect(()=>{
-    if(page === 'sending'){
-        initiateUpload()
-    }
-  }, [storedResponse, page])
 
   async function initiateUpload(){
     let stringifiedResponse = JSON.stringify(storedResponse)
