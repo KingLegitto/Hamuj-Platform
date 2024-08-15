@@ -138,7 +138,7 @@ const Questionnaire = () => {
 
   useEffect(()=>{
     if(typeof window !== "undefined"){
-      setLink(window.location.href)
+      setLink(location.href)
     }
     if(page === 'sending'){
         initiateUpload()
