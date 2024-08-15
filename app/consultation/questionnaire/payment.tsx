@@ -47,8 +47,8 @@ const Payment: FC<PaymentProps> = ({ email, setPage }) => {
           consultation fee of: <br /><span className="font-normal">₦70,000 (Seventy thousand naira)</span>.
         </span>
 
-          <PaystackButton {...paymentConfig} 
-          className="text-center py-2 px-4 hover:scale-[1.05] duration-150 w-fit mx-auto rounded-lg bg-theme-1 text-white font-normal" />
+          {(typeof window !== 'undefined') && <PaystackButton {...paymentConfig} 
+          className="text-center py-2 px-4 hover:scale-[1.05] duration-150 w-fit mx-auto rounded-lg bg-theme-1 text-white font-normal" />}
       </div>
     </section>
   );
