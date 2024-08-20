@@ -46,17 +46,18 @@ const Shop = () => {
   }, []);
 
   useEffect(() => {
-    let states: string[] = [];
-    productsData.forEach((product) => states.push(product.title));
-    let filteredStates = states.filter(
-      (state, index, arr) => index === arr.indexOf(state)
+    let categories: string[] = [];
+    productsData.forEach((product) => categories.push(product.category));
+    let filteredStates = categories.filter(
+      (category, index, arr) => index === arr.indexOf(category)
     );
     setFilters([...filteredStates]);
   }, [productsData]);
 
   return (
     <section className="max-failsafe w-full flex flex-col gap-y-10 py-16 lg:py-top-spacing overflow-x-hidden">
-      <div className="w-[90%] lg:w-[700px] flex border-2 border-[#e8e8e8] rounded-xl h-12 px-4 mx-auto overflow-hidden">
+      <div className="w-[90%] lg:w-[700px] flex border-2 border-[#e8e8e8] rounded-xl h-12 px-4 mx-auto overflow-hidden
+      hover:border-[#656565]">
         <input
           type="search"
           name=""
@@ -66,8 +67,21 @@ const Shop = () => {
         />
       </div>
 
+      <div className="text-xs md:text-base">
+        <div className="text-center mb-2 uppercase text-grade-2">Categories</div>
+
+        <div className="flex justify-center items-center gap-x-3 text-grade-3">
+        <button className="w-14 py-1 hover:bg-[#e8e8e8] font-normal rounded-full border">All</button>
+        <button className="w-14 py-1 hover:bg-[#e8e8e8] font-normal rounded-full border">New</button>
+          {filters.map((category)=>{
+            return(
+              <button className="w-14 py-1 hover:bg-[#e8e8e8] font-normal rounded-full border">{category}</button>
+            )
+          })}
+        </div>
+      </div>
+
       <section className="w-full pb-7 px-5 lg:px-10 overflow-x-hidden grid grid-cols-2 lg:grid-cols-4 gap-x-5 lg:gap-x-8 gap-y-10 lg:gap-y-14">
-        
 
         {productsData.map((product, index) => {
           if (filterBox.filter && product.title != filterBox.filter) return;
@@ -89,13 +103,13 @@ const Shop = () => {
               </div>
               
               <div
-                className={`w-full flex flex-col gap-y-1 justify-center
+                className={`w-full flex flex-col  gap-y-1 justify-center text-xs md:text-base min-h-14
                 `}
               >
-                <span className="font-medium uppercase text-xs md:text-base text-grade-3">
+                <span className="font-medium uppercase text-grade-3">
                   {product.title}
                 </span>
-                <span className="font-bold text-xs md:text-base text-theme-1">
+                <span className="font-bold text-theme-1">
                   ₦ {parseInt(product.price.toFixed(2)).toLocaleString()}
                 </span>
               </div>
