@@ -66,7 +66,7 @@ const Shop = () => {
         />
       </div>
 
-      <section className="w-full lg:pb-top-spacing px-5 lg:px-10 overflow-x-hidden grid grid-cols-2 lg:grid-cols-4 gap-x-5 lg:gap-x-8 gap-y-10 lg:gap-y-14">
+      <section className="w-full pb-7 px-5 lg:px-10 overflow-x-hidden grid grid-cols-2 lg:grid-cols-4 gap-x-5 lg:gap-x-8 gap-y-10 lg:gap-y-14">
         
 
         {productsData.map((product, index) => {
@@ -74,7 +74,7 @@ const Shop = () => {
           return (
             <div
               key={index}
-              className={`w-full aspect-square group flex-shrink-0 rounded-xl shadow-[10px_10px_0px_2px_#0000001A] lg:shadow-[17px_17px_0px_2px_#0000001A] 
+              className={`w-full aspect-square group flex-shrink-0 rounded-lg lg:rounded-xl shadow-[10px_10px_0px_2px_#0000001A] lg:shadow-[17px_17px_0px_2px_#0000001A] 
                hover:lg:shadow-[17px_17px_0px_2px_#b5b5b5] relative overflow-hidden duration-300 cursor-pointer bg-[#e8e8e8]`}
             >
               <Image
@@ -88,10 +88,10 @@ const Shop = () => {
                 className={`text-white bg-gradient-to-t from-[#080808bd] to-[#08080800] h-1/3 absolute bottom-0 px-2 lg:px-5 w-full flex flex-col justify-center
                 `}
               >
-                <span className="font-medium text-base lg:text-lg truncate">
+                <span className="font-medium text-xs md:text-base truncate">
                   {product.title}
                 </span>
-                <span className="font-normal text-xs md:text-base truncate max-w-[90%]">
+                <span className="font-normal text-xs md:text-base truncate">
                   ₦ {product.price}
                 </span>
               </div>
