@@ -55,8 +55,8 @@ const Projects = () => {
   }, [projectsData])
 
   return (
-    <section className="w-full py-top-spacing-s lg:py-top-spacing px-7 lg:px-10 overflow-x-hidden grid grid-cols-1 lg:grid-cols-3 gap-x-8 gap-y-14">
-      <div className="lg:col-span-3 bg-slate-50 sticky -translate-x-1 top-14 lg:top-16 py-5 z-20 w-[110%] mb-2">
+    <section className="w-full pt-7 pb-20 px-7 lg:px-10 overflow-x-hidden grid grid-cols-1 lg:grid-cols-3 gap-x-8 gap-y-14">
+      <div className="lg:col-span-3 bg-slate-50 sticky -translate-x-1 translate-y-12 py-5 z-40 w-[110%] mb-2">
         <button className="relative flex gap-x-2 items-center" onClick={()=>{setFilterBox({isOpen: !filterBox.isOpen, filter: filterBox.filter})}}>
           <Image src={Filter} alt="filter" />
           <span className="text-sm lg:text-base">Filters</span>

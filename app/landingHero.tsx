@@ -43,7 +43,7 @@ const Hero: FC<HeroProps> = ({ images }) => {
           src={image}
           alt="Hero section background"
           className={`hero-${index} h-full w-full object-cover absolute left-0 z-10 brightness-50
-                ${(index === currentImageIndex && (initialLoad === images.length)) ? `opacity-100 scale-[1.3]` : `opacity-0 scale-[1]`}`}
+                ${(index === currentImageIndex && (initialLoad === images.length)) ? `opacity-100 scale-[1.5] md:scale-[1.3]` : `opacity-0 scale-[1]`}`}
           style={{
             transition:
               index === currentImageIndex

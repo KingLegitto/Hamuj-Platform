@@ -12,7 +12,7 @@ import { AnimatePresence, motion } from "framer-motion";
 const routes = [
   { title: "Home", route: "/" },
   { title: "About", route: "/about" },
-  { title: "Explore", route: "/explore" },
+  { title: "Shop", route: "/shop" },
   { title: "Portfolio", route: "/portfolio" },
   { title: "Contact", route: "/contact" },
   { title: "Consultation", route: "/consultation" },
@@ -83,9 +83,9 @@ const Navbar = () => {
       {/* Back arrow for project details page */}
       {pathname.startsWith(`/portfolio/`) && (
         <TransitionLink
-          href={"go-back"}
+          href={"/"}
           goBack
-          styles="absolute flex h-5 lg:h-7 items-center lg:gap-x-2 top-1/2 -translate-y-1/2 left-3 lg:left-20"
+          styles="absolute flex h-5 lg:h-7 items-center lg:gap-x-2 top-1/2 -translate-y-1/2 left-3 lg:left-10"
         >
           <Image src={Arrow} alt="arrow" className="h-full rotate-180" />
           <span className="text-sm lg:text-base">Back</span>
@@ -99,7 +99,7 @@ const Navbar = () => {
         onClick={() => {
           setMenuIsVisible(!menuIsVisible);
         }}
-        className="lg:hidden absolute top-1/2 -translate-y-1/2 right-5 scale-75 opacity-90"
+        className="lg:hidden backdrop-blur-sm absolute top-1/2 -translate-y-1/2 right-5 scale-75 opacity-90"
       />
 
       {/* Mobile nav */}

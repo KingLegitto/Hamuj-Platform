@@ -6,6 +6,21 @@ export const productListing = defineType({
   type: "document",
   fields: [
     defineField({
+      name: "title",
+      title: "Title",
+      type: "string",
+    }),
+    defineField({
+      name: "category",
+      title: "Category",
+      type: "string",
+    }),
+    defineField({
+      name: "price",
+      title: "Price",
+      type: "number",
+    }),
+    defineField({
     name: "images",
     type: "array",
     of: [
@@ -25,23 +40,22 @@ export const productListing = defineType({
     ],
     }),
     defineField({
-      name: "tag",
-      title: "Tag",
-      type: "string",
-    }),
-    defineField({
       name: "description",
       type: "text",
     }),
   ],
   preview: {
     select: {
+      title: "title",
+      price: "price",
       media: "images.0.asset",
     },
     prepare(selection) {
-      const { media } = selection;
+      const { title, price, media } = selection;
       return {
-        media: media,
+        title: title,
+        subtitle: price? `₦ ${price}`: 'No price stated',
+        media: media
       };
     },
   },

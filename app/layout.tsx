@@ -8,8 +8,8 @@ import Footer from "./footer";
 const inter = Inter({ subsets: ["latin"], weight: ['300','400', '500', '700', '800'] });
 
 export const metadata: Metadata = {
-  title: "Hamuj Homes | Your best choice for construction in Nigeria",
-  description: "Hamuj Homes Ltd is a Nigerian based construction company. We specialise at making renovations and construction affordable while maintaining utmost elegance and grandeur",
+  title: "Hamuj Homes | Your top choice for construction and renovations in Nigeria",
+  description: "Hamuj Homes Ltd is a Nigerian based construction company. We specialise at making furniture, renovations and construction affordable while maintaining utmost elegance and grandeur",
   icons: {
     icon: '/favicon.png'
   }
