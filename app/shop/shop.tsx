@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 interface ProductsDataProps {
   category: string;
   title: string;
-  price: string;
+  price: number;
   description: string;
   images: {
     _key: string;
@@ -62,7 +62,7 @@ const Shop = () => {
           name=""
           id=""
           placeholder="Search products..."
-          className="h-full flex-grow focus:outline-none"
+          className="h-full flex-grow focus:outline-none bg-slate-50"
         />
       </div>
 
@@ -74,25 +74,29 @@ const Shop = () => {
           return (
             <div
               key={index}
-              className={`w-full aspect-square group flex-shrink-0 rounded-lg lg:rounded-xl shadow-[10px_10px_0px_2px_#0000001A] lg:shadow-[17px_17px_0px_2px_#0000001A] 
-               hover:lg:shadow-[17px_17px_0px_2px_#b5b5b5] relative overflow-hidden duration-300 cursor-pointer bg-[#e8e8e8]`}
+              className={`w-full p-2 md:p-4 border-[#0000001A] border-[1px] hover:lg:border-[#b5b5b5] group flex-shrink-0 rounded-lg lg:rounded-xl shadow-[10px_10px_0px_2px_#0000001A] lg:shadow-[17px_17px_0px_2px_#0000001A] 
+               hover:lg:shadow-[17px_17px_0px_2px_#b5b5b5] overflow-hidden duration-300 cursor-pointer`}
             >
-              <Image
-                src={urlFor(product.images[0].asset).url()}
-                alt={product.images[0].alt}
-                fill
-                sizes="(max-width: 1023px) 95vw, (min-width: 1024px) 33vw"
-                className={`object-cover group-hover:lg:scale-[1.1] duration-500`}
-              />
+
+              <div className="w-full aspect-[1/0.8] mx-auto relative rounded-lg lg:rounded-xl overflow-hidden mb-2 md:mb-4">
+                <Image
+                  src={urlFor(product.images[0].asset).url()}
+                  alt={product.images[0].alt}
+                  fill
+                  sizes="(max-width: 1023px) 95vw, (min-width: 1024px) 33vw"
+                  className={`object-cover group-hover:lg:scale-[1.05] duration-500`}
+                />
+              </div>
+              
               <div
-                className={`text-white bg-gradient-to-t from-[#080808bd] to-[#08080800] h-1/3 absolute bottom-0 px-2 lg:px-5 w-full flex flex-col justify-center
+                className={` w-full flex flex-col gap-y-1 justify-center px-2
                 `}
               >
-                <span className="font-medium text-xs md:text-base truncate">
+                <span className="font-normal text-sm md:text-lg text-grade-2">
                   {product.title}
                 </span>
-                <span className="font-normal text-xs md:text-base truncate">
-                  ₦ {product.price}
+                <span className="font-bold text-xs md:text-base text-theme-1">
+                  ₦ {parseInt(product.price.toFixed(2)).toLocaleString()}
                 </span>
               </div>
             </div>
