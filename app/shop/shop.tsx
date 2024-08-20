@@ -89,10 +89,10 @@ const Shop = () => {
               </div>
               
               <div
-                className={` w-full flex flex-col gap-y-1 justify-center px-2
+                className={`w-full flex flex-col gap-y-1 justify-center
                 `}
               >
-                <span className="font-normal text-sm md:text-lg text-grade-2">
+                <span className="font-medium uppercase text-xs md:text-base text-grade-3">
                   {product.title}
                 </span>
                 <span className="font-bold text-xs md:text-base text-theme-1">
