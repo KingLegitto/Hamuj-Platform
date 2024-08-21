@@ -6,6 +6,8 @@ import Arrow from "../../assets/vectors/lineArrow.svg";
 import { client, urlFor } from "../../sanityClient";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import ProductDetails from "./productDetails";
+import { AnimatePresence } from "framer-motion";
 
 interface ProductsDataProps {
   category: string;
@@ -23,6 +25,7 @@ interface ProductsDataProps {
 
 const Shop = () => {
   const [productsData, setProductsData] = useState<ProductsDataProps[]>([]);
+  const [details, setDetails] = useState<ProductsDataProps | null>(null)
   const [filters, setFilters] = useState<string[]>([]);
   const [filterBox, setFilterBox] = useState<{
     isOpen: boolean;
@@ -56,14 +59,14 @@ const Shop = () => {
 
   return (
     <section className="max-failsafe w-full flex flex-col gap-y-10 py-16 lg:py-top-spacing overflow-x-hidden">
-      <div className="w-[90%] lg:w-[700px] flex border-2 border-[#e8e8e8] rounded-xl h-12 px-4 mx-auto overflow-hidden
-      hover:border-[#656565]">
+      <div className="w-[90%] lg:w-[700px] flex border-2 border-[#e8e8e8] rounded-xl h-9 lg:h-12 px-4 mx-auto overflow-hidden
+      hover:border-[#aaaaaa]">
         <input
           type="search"
           name=""
           id=""
           placeholder="Search products..."
-          className="h-full flex-grow focus:outline-none bg-slate-50"
+          className="h-full flex-grow focus:outline-none bg-slate-50 text-sm lg:text-base"
         />
       </div>
 
@@ -71,11 +74,11 @@ const Shop = () => {
         <div className="text-center mb-2 uppercase text-grade-2">Categories</div>
 
         <div className="flex justify-center items-center gap-x-3 text-grade-3">
-        <button className="w-14 py-1 hover:bg-[#e8e8e8] font-normal rounded-full border">All</button>
-        <button className="w-14 py-1 hover:bg-[#e8e8e8] font-normal rounded-full border">New</button>
+        <button className="w-14 lg:w-16 py-1 hover:bg-[#e8e8e8] font-normal rounded-full border">All</button>
+        <button className="w-14 lg:w-16 py-1 hover:bg-[#e8e8e8] font-normal rounded-full border">New</button>
           {filters.map((category)=>{
             return(
-              <button className="w-14 py-1 hover:bg-[#e8e8e8] font-normal rounded-full border">{category}</button>
+              <button className="w-14 lg:w-16 py-1 hover:bg-[#e8e8e8] font-normal rounded-full border">{category}</button>
             )
           })}
         </div>
@@ -87,7 +90,7 @@ const Shop = () => {
           if (filterBox.filter && product.title != filterBox.filter) return;
           return (
             <div
-              key={index}
+              key={index} onClick={()=>{setDetails(product)}}
               className={`w-full p-2 md:p-4 border-[#0000001A] border-[1px] hover:lg:border-[#b5b5b5] group flex-shrink-0 rounded-lg lg:rounded-xl shadow-[10px_10px_0px_2px_#0000001A] lg:shadow-[17px_17px_0px_2px_#0000001A] 
                hover:lg:shadow-[17px_17px_0px_2px_#b5b5b5] overflow-hidden duration-300 cursor-pointer`}
             >
@@ -117,6 +120,9 @@ const Shop = () => {
           );
         })}
       </section>
+      <AnimatePresence>
+        {details && <ProductDetails product={details} setDetails={setDetails}/>}
+      </AnimatePresence>
     </section>
   );
 };

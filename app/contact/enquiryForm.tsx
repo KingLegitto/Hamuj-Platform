@@ -103,7 +103,7 @@ const EnquiryForm = () => {
         {formIsVisible && (
         
         <motion.div initial={{backgroundColor: '#00000000'}} animate={{backgroundColor: '#0000007d', transition:{duration: 0.5}}} exit={{backgroundColor: '#00000000', transition: {delay: 0.3,duration: 0.5}}}
-        className="lg:hidden fixed top-0 z-[100] h-dvh overflow-clip w-full touch-none"
+        className="lg:hidden fixed top-0 z-[100] h-dvh overflow-hidden w-full touch-none"
         onClick={()=>{setFormIsVisible(false)}}
         >
         
