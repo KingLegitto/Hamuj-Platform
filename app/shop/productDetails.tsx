@@ -23,16 +23,20 @@ interface ProductDetailsProps {
 const ProductDetails: FC<ProductDetailsProps> = ({ product, setDetails }) => {
     const main = useRef<HTMLDivElement>(null)
     const [mainHeight, setMainHeight] = useState(0)
+    const [initialTop, setInitialTop] = useState(0)
 
     useEffect(()=>{
         if(main.current){
             setMainHeight(main.current.clientHeight)
+            setTimeout(() => {
+                setInitialTop(main.current!.getBoundingClientRect().top)
+            }, 550);
         }
 
     }, [main.current])
 
     function handleDragEnd(){
-        if( main.current && main.current.getBoundingClientRect().top > innerHeight/2.5 ){
+        if( main.current && main.current.getBoundingClientRect().top > initialTop+50 ){
           setDetails(null)
         }
       }
@@ -46,7 +50,7 @@ const ProductDetails: FC<ProductDetailsProps> = ({ product, setDetails }) => {
       initial={{ backgroundColor: "rgba(0,0,0,0)" }}
       animate={{ backgroundColor: "rgba(0,0,0,0.5)" }}
       exit={{ backgroundColor: "rgba(0,0,0,0)" }}
-      className="fixed z-[89] w-screen h-dvh top-0 left-0 overflow-y-scroll text-grade-3 text-sm lg:text-base"
+      className="fixed z-[89] w-screen h-dvh top-0 left-0 text-grade-3 text-sm lg:text-base"
     >
       {/* Main content */}
       <motion.div ref={main}
@@ -56,8 +60,8 @@ const ProductDetails: FC<ProductDetailsProps> = ({ product, setDetails }) => {
         initial={{ y: "100%", x: "-50%" }}
         animate={{ y: 0, transition: { duration: 0.5 } }}
         exit={{ y: "100%", transition: { duration: 0.5 } }}
-        drag='y' dragConstraints={{top: -(mainHeight - 500)}} dragElastic={0} dragMomentum={false} onDragEnd={(e,info)=>(handleDragEnd())}
-        className="absolute w-full lg:w-[1000px] top-[calc(100dvh-500px)] lg:top-[calc(100vh-517px)] left-1/2 rounded-t-3xl overflow-hidden grid grid-cols-1 lg:grid-cols-2 gap-x-5 bg-[#e8e8e8] p-7"
+        drag='y' dragConstraints={{top: -(mainHeight - 500)}} dragElastic={0} dragMomentum={false} onDragEnd={()=>(handleDragEnd())}
+        className="absolute w-full lg:w-[1000px] top-[calc(100dvh-507px)] lg:top-[calc(100vh-517px)] left-1/2 rounded-t-3xl overflow-hidden grid grid-cols-1 lg:grid-cols-2 gap-x-5 bg-[#e8e8e8] p-7"
       >
         <div className="lg:hidden absolute top-4 left-1/2 -translate-x-1/2 rounded-full w-1/5 lg:w-16 h-1 bg-[#8c8c8c]" />
 
@@ -76,7 +80,8 @@ const ProductDetails: FC<ProductDetailsProps> = ({ product, setDetails }) => {
             {product.title}
           </div>
 
-          <div className="flex gap-x-7 items-center justify-center lg:justify-start ">
+            <div className="w-full lg:w-3/4 h-[2px] mx-auto" style={{background: 'linear-gradient(to right, transparent, #b5b5b5 ,transparent'}}/>
+          <div className="flex gap-x-7 items-center justify-center">
             <span className="font-bold text-base lg:text-lg text-theme-1">
               ₦ {parseInt(product.price.toFixed(2)).toLocaleString()}
             </span>
@@ -84,6 +89,7 @@ const ProductDetails: FC<ProductDetailsProps> = ({ product, setDetails }) => {
               Enquire now
             </button>
           </div>
+          <div className="w-full lg:w-3/4 h-[2px] mx-auto" style={{background: 'linear-gradient(to right, transparent, #b5b5b5 ,transparent'}}/>
 
           <div className="flex flex-col gap-y-1 text-grade-3">
             <span className="font-medium text-grade-3 w-full">DESCRIPTION</span>
