@@ -36,7 +36,7 @@ const ProductDetails: FC<ProductDetailsProps> = ({ product, setDetails }) => {
     }, [main.current])
 
     function handleDragEnd(){
-        if( main.current && main.current.getBoundingClientRect().top > initialTop+50 ){
+        if( main.current && main.current.getBoundingClientRect().top > initialTop ){
           setDetails(null)
         }
       }
@@ -60,8 +60,8 @@ const ProductDetails: FC<ProductDetailsProps> = ({ product, setDetails }) => {
         initial={{ y: "100%", x: "-50%" }}
         animate={{ y: 0, transition: { duration: 0.5 } }}
         exit={{ y: "100%", transition: { duration: 0.5 } }}
-        drag='y' dragConstraints={{top: -(mainHeight - 500)}} dragElastic={0} dragMomentum={false} onDragEnd={()=>(handleDragEnd())}
-        className="absolute w-full lg:w-[1000px] top-[calc(100dvh-507px)] lg:top-[calc(100vh-517px)] left-1/2 rounded-t-3xl overflow-hidden grid grid-cols-1 lg:grid-cols-2 gap-x-5 bg-[#e8e8e8] p-7"
+        drag='y' dragConstraints={{top: -(mainHeight - 525)}} dragElastic={0} dragMomentum={false} onDragEnd={()=>(handleDragEnd())}
+        className="absolute w-full lg:w-[1000px] top-[calc(100dvh-525px)] lg:top-[calc(100vh-505px)] left-1/2 rounded-t-3xl overflow-hidden grid grid-cols-1 lg:grid-cols-2 gap-x-10 bg-[#e8e8e8] p-7"
       >
         <div className="lg:hidden absolute top-4 left-1/2 -translate-x-1/2 rounded-full w-1/5 lg:w-16 h-1 bg-[#8c8c8c]" />
 
@@ -75,12 +75,12 @@ const ProductDetails: FC<ProductDetailsProps> = ({ product, setDetails }) => {
           />
         </div>
 
-        <div className="w-full pt-6 lg:pt-10 flex flex-col gap-y-3 lg:gap-y-5">
-          <div className="uppercase text-lg lg:text-xl font-medium text-center lg:text-left">
+        <div className="w-full pt-6 lg:pt-10 flex flex-col gap-y-4 lg:gap-y-5">
+          <div className="uppercase text-lg lg:text-xl font-medium text-grade-2 text-center lg:text-left">
             {product.title}
           </div>
 
-            <div className="w-full lg:w-3/4 h-[2px] mx-auto" style={{background: 'linear-gradient(to right, transparent, #b5b5b5 ,transparent'}}/>
+            <div className="w-3/4 h-[2px] mx-auto" style={{background: 'linear-gradient(to right, #e8e8e8, #c5c5c5 ,#e8e8e8'}}/>
           <div className="flex gap-x-7 items-center justify-center">
             <span className="font-bold text-base lg:text-lg text-theme-1">
               ₦ {parseInt(product.price.toFixed(2)).toLocaleString()}
@@ -89,10 +89,10 @@ const ProductDetails: FC<ProductDetailsProps> = ({ product, setDetails }) => {
               Enquire now
             </button>
           </div>
-          <div className="w-full lg:w-3/4 h-[2px] mx-auto" style={{background: 'linear-gradient(to right, transparent, #b5b5b5 ,transparent'}}/>
+          <div className="w-3/4 h-[2px] mx-auto" style={{background: 'linear-gradient(to right, #e8e8e8, #c5c5c5 ,#e8e8e8'}}/>
 
-          <div className="flex flex-col gap-y-1 text-grade-3">
-            <span className="font-medium text-grade-3 w-full">DESCRIPTION</span>
+          <div className="flex flex-col gap-y-1 text-grade-2">
+            <span className="font-medium w-full">DESCRIPTION</span>
             <p className=" hyphens-auto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum repellat, illum possimus harum, nam ullam quasi culpa hic, libero quisquam minima modi doloremque magni atque iure reprehenderit praesentium necessitatibus. Iste.</p>
           </div>
         </div>
