@@ -31,8 +31,8 @@ const ProductDetails: FC<ProductDetailsProps> = ({ product, setDetails }) => {
 
     }, [main.current])
 
-    function handleDragEnd(distance:number){
-        if(distance > 150){
+    function handleDragEnd(){
+        if( main.current && main.current.getBoundingClientRect().top > innerHeight/2.5 ){
           setDetails(null)
         }
       }
@@ -56,8 +56,8 @@ const ProductDetails: FC<ProductDetailsProps> = ({ product, setDetails }) => {
         initial={{ y: "100%", x: "-50%" }}
         animate={{ y: 0, transition: { duration: 0.5 } }}
         exit={{ y: "100%", transition: { duration: 0.5 } }}
-        drag='y' dragConstraints={{top: -(mainHeight - 500)}} dragElastic={{top: 0, bottom: 0.5}} onDragEnd={(e,info)=>(handleDragEnd(info.offset.y))}
-        className="absolute w-full lg:w-[1000px] top-[calc(100vh-500px)] lg:top-[calc(100vh-517px)] left-1/2 rounded-t-3xl overflow-hidden grid grid-cols-1 lg:grid-cols-2 gap-x-5 bg-[#e8e8e8] p-7"
+        drag='y' dragConstraints={{top: -(mainHeight - 500)}} dragElastic={0} dragMomentum={false} onDragEnd={(e,info)=>(handleDragEnd())}
+        className="absolute w-full lg:w-[1000px] top-[calc(100dvh-500px)] lg:top-[calc(100vh-517px)] left-1/2 rounded-t-3xl overflow-hidden grid grid-cols-1 lg:grid-cols-2 gap-x-5 bg-[#e8e8e8] p-7"
       >
         <div className="lg:hidden absolute top-4 left-1/2 -translate-x-1/2 rounded-full w-1/5 lg:w-16 h-1 bg-[#8c8c8c]" />
 
@@ -71,7 +71,7 @@ const ProductDetails: FC<ProductDetailsProps> = ({ product, setDetails }) => {
           />
         </div>
 
-        <div className="w-full pt-10 flex flex-col gap-y-5">
+        <div className="w-full pt-6 lg:pt-10 flex flex-col gap-y-3 lg:gap-y-5">
           <div className="uppercase text-lg lg:text-xl font-medium text-center lg:text-left">
             {product.title}
           </div>
@@ -86,7 +86,7 @@ const ProductDetails: FC<ProductDetailsProps> = ({ product, setDetails }) => {
           </div>
 
           <div className="flex flex-col gap-y-1 text-grade-3">
-            <span className="font-medium text-grade-1">DESCRIPTION</span>
+            <span className="font-medium text-grade-3 w-full">DESCRIPTION</span>
             <p className=" hyphens-auto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum repellat, illum possimus harum, nam ullam quasi culpa hic, libero quisquam minima modi doloremque magni atque iure reprehenderit praesentium necessitatibus. Iste.</p>
           </div>
         </div>
