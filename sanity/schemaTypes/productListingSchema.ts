@@ -40,6 +40,13 @@ export const productListing = defineType({
     ],
     }),
     defineField({
+      name: "colors",
+      type: "array",
+      of: [{
+          type: "string",
+        }],
+    }),
+    defineField({
       name: "description",
       type: "text",
     }),

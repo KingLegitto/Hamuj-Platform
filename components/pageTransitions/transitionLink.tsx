@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 
 interface TransitionLinkProps {
   href: string;
@@ -20,6 +20,7 @@ const TransitionLink: FC<TransitionLinkProps> = ({
 }) => {
   const router = useRouter();
   const pathname = usePathname()
+  const [clientSide, setClientSide] = useState<boolean>(false)
   
   function transition(e: any) {
     e.preventDefault();
@@ -38,13 +39,20 @@ const TransitionLink: FC<TransitionLinkProps> = ({
       }, 300);
     }, 100);
   }
+
+  useEffect(()=>{
+    setClientSide(true)
+  },[])
+
   return (
     <Link
       href={href}
       className={styles? styles:''}
-      onClick={(e) => {
-        transition(e);
-      }}
+      onClick={clientSide? (
+        (e) => {transition(e)}
+      ) : (
+        ()=>{/* Don't activate transition linking if not on the client side */}
+      )}
     >
       {children}
     </Link>

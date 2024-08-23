@@ -292,11 +292,11 @@ const Questionnaire = () => {
           checkForStoredResponse={checkForStoredResponse}
         />}
 
-        {(page === 'payment' || page === 'sending') && 
+        {/* {(page === 'payment' || page === 'sending') && 
         <Payment email={easyAccess.email} setPage={setPage}/>
-        }
+        } */}
 
-        {page === 'complete' && 
+        {page === 'payment' && 
         <NextSteps email={easyAccess.email}/>
         }
       
