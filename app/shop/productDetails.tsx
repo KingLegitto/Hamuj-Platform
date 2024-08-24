@@ -110,7 +110,7 @@ const ProductDetails: FC<ProductDetailsProps> = ({ product, setDetails }) => {
               <button className="py-3 px-4 rounded-md bg-green-500 text-white font-normal"
               onClick={()=>{
                 setToast(true);
-                setToastDetails({title: 'Feature in development', result: 'deny', message: 'Unfortunately this feature is unavailable at the moment'})
+                setToastDetails({title: 'Feature in development', result: 'deny', message: 'This feature is unavailable at the moment'})
               }}>
                 Enquire now
               </button>
@@ -130,9 +130,9 @@ const ProductDetails: FC<ProductDetailsProps> = ({ product, setDetails }) => {
                 </span>
                 {product.colors.map((color, index) => {
                   return (
-                    <span key={index} className="lowercase">
-                      {color}{" "}
-                    </span>
+                    <button key={index} className="capitalize px-2 border border-[#d8d8d8] hover:bg-[#d8d8d8] w-fit rounded-full">
+                      {color}
+                    </button>
                   );
                 })}
               </div>

@@ -13,6 +13,7 @@ interface ProductsDataProps {
   category: string;
   title: string;
   price: number;
+  colors: string[];
   description: string;
   images: {
     _key: string;

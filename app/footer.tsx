@@ -15,9 +15,9 @@ const Footer = () => {
             <TransitionLink href={'/contact'}>Location</TransitionLink>
           </span>
           <span className="flex gap-x-6 md:gap-x-4 scale-110 md:scale-100 absolute top-[45%] md:top-1/2 -translate-y-1/2 right-1/2 md:right-5 translate-x-1/2 md:translate-x-0 text-white text-xs md:text-sm">
-            <Link href="https://web.facebook.com/hamujhomes.ng" target="_blank"><Image src={Facebook} alt="facebook icon"/></Link>
+            <Link href="https://web.facebook.com/people/Hamujng/" target="_blank"><Image src={Facebook} alt="facebook icon"/></Link>
             <Link href="" target="_blank"><Image src={Whatsapp} alt="whatsapp icon"/></Link>
-            <Link href="https://www.youtube.com/@HamujMedia/" target="_blank"><Image src={Youtube} alt="youtube icon" /></Link>
+            <Link href="https://www.youtube.com/@Hamuj_ng" target="_blank"><Image src={Youtube} alt="youtube icon" /></Link>
             <Link href="https://www.instagram.com/hamuj.ng/" target="_blank"><Image src={Instagram} alt="instagram icon"/></Link>
             <Link href="https://www.tiktok.com/@hamuj.ng" target="_blank"><Image src={TikTok} alt="tiktok icon"/></Link>
           </span>
