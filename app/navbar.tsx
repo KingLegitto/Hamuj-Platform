@@ -89,7 +89,7 @@ const Navbar = () => {
           window.location.reload()
         }, 300);
       }, 500);
-    }, 300);
+    }, 500);
   }
 
   function checkIfRegionSelected(selection : string){
@@ -256,11 +256,11 @@ const Navbar = () => {
 
           <h2 className="text-center mb-2 text-base font-medium">Select Region</h2>
           
-          <button className={`relative text-center py-5 border-b ${checkIfRegionSelected('NG')}`} onClick={()=>{handleRegionSelection('NG')}}>
+          <button className={`relative text-center py-5 border-b hover:bg-[#e8e8e8] ${checkIfRegionSelected('NG')}`} onClick={()=>{handleRegionSelection('NG')}}>
             <Image src={Nigeria} alt="nigeria" className="absolute top-1/2 left-2 -translate-y-1/2"/> 
             Nigeria
           </button>
-          <button className={`relative text-center py-5 border-b ${checkIfRegionSelected('GB')}`} onClick={()=>{handleRegionSelection('GB')}}>
+          <button className={`relative text-center py-5 border-b hover:bg-[#e8e8e8] ${checkIfRegionSelected('GB')}`} onClick={()=>{handleRegionSelection('GB')}}>
             <Image src={UK} alt="united kingdom" className="absolute top-1/2 left-2 -translate-y-1/2"/> 
             United Kingdom
           </button>
