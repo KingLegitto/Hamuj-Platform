@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 const Consultation = () => {
   return (
     <main className="relative w-full h-auto bg-slate-50">
-      <section className="relative flex justify-center items-center h-[250px] md:h-[400px] aspect-video w-full overflow-hidden">
+      <section className="relative flex justify-center items-center h-[250px] md:h-[400px] aspect-video w-full overflow-hidden bg-[#303030]">
         <Image
           src={Hero}
           alt="hero section background"

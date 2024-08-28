@@ -91,7 +91,7 @@ body {
 }
 
 .preloader-text::before {
-  content: "Something might be wrong. Please check your connection or reload the page";
+  content: "Your network might be slow. Please check your connection and reload this page";
   animation: preloaderText 60s linear 1;
 }
 
@@ -106,7 +106,7 @@ body {
     content: "Still loading...";
   }
   100% {
-    content: "Something might be wrong. Please check your connection or reload the page";
+    content: "Your network might be slow. Please check your connection and reload this page";
   }
 }
 

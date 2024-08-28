@@ -6,6 +6,9 @@ import Image from "next/image";
 import Menu from "../public/vectors/hamburger.svg";
 import BrandLogo from "../public/rasters/smallLogo.png";
 import Arrow from "../public/vectors/lineArrow.svg";
+import Nigeria from "../public/vectors/nigeria.svg";
+import UK from "../public/vectors/uk.svg";
+import Globe from "../public/vectors/globe.svg";
 import TransitionLink from "../components/pageTransitions/transitionLink";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -22,8 +25,13 @@ const Navbar = () => {
   const [isAtPageTop, setIsAtPageTop] = useState<boolean>(true);
   const [menuIsVisible, setMenuIsVisible] = useState<boolean>(false);
   const pathname = usePathname();
+  const [region, setRegion] = useState<string | null>()
+  const [isRegionVisible, setIsRegionVisible] = useState<boolean>(false)
+  const date = new Date()
+
 
   useEffect(() => {
+    getCountryFromIP()
     document.addEventListener("scroll", handleNavBg);
     handleNavBg();
   }, []);
@@ -34,9 +42,64 @@ const Navbar = () => {
     } else {
       setIsAtPageTop(true);
     }
+    
+    if(window.scrollY >= 50 && !(sessionStorage.getItem('region'))){
+      setIsRegionVisible(true)
+    }
+  }
+
+  function handleDragEnd(distance:number){
+    if(distance > 150){
+      setIsRegionVisible(false)
+    }
+  }
+
+  async function getCountryFromIP() {
+    if(!sessionStorage.getItem('region')){ // If there's no region data stored
+      try {
+        const response = await fetch('https://ipapi.co/json/');
+        const data = await response.json();
+        const country = data.country_code
+        if(country){
+          setRegion(country)
+          sessionStorage.setItem('region', country)
+        }
+      } catch (error) {
+        // Do nothing
+      }
+    }
+    else{ // If there is region data in session storage
+      setRegion(sessionStorage.getItem('region'))
+    }
+  }
+
+  function handleRegionSelection(selection: string){
+    setRegion(selection)
+    sessionStorage.setItem('region', selection)
+    setTimeout(() => {
+      setIsRegionVisible(false)
+      setTimeout(() => {
+        const preloader: HTMLDivElement = document.querySelector(".preloader")!;
+        preloader.style.display = "block";
+        setTimeout(() => {
+          preloader.style.transition = "0.3s";
+          preloader.style.opacity = "1";
+        }, 100);
+        setTimeout(() => {
+          window.location.reload()
+        }, 300);
+      }, 500);
+    }, 300);
+  }
+
+  function checkIfRegionSelected(selection : string){
+    if(selection === region){
+      return 'text-theme-1'
+    }
   }
 
   return (
+    <>
     <nav
       className={`duration-300 flex group w-full z-[90] fixed justify-center items-center gap-x-14 text-white ${
         isAtPageTop && !pathname.startsWith("/portfolio/")
@@ -102,11 +165,18 @@ const Navbar = () => {
         className="lg:hidden backdrop-blur-sm absolute top-1/2 -translate-y-1/2 right-5 scale-75 opacity-90"
       />
 
+      {/* Region button */}
+      <button onClick={()=>{setIsRegionVisible(true)}} className="hidden lg:flex items-center gap-x-1 absolute top-1/2 -translate-y-1/2 right-20"
+        title="Change region">
+        <Image src={Globe} alt="globe" className="w-9"/>
+        <span className="uppercase">{region}</span>
+      </button>
+
       {/* Mobile nav */}
       <aside
-        className={`absolute lg:hidden duration-500 top-full pt-5 right-0 z-50 bg-white h-dvh w-3/4 flex flex-col items-center text-sm touch-none shadow-lg ${
+        className={`absolute lg:hidden duration-500 top-full pt-5 right-0 z-50 bg-white w-3/4 flex flex-col items-center text-sm touch-none shadow-lg ${
           menuIsVisible ? "translate-x-0 " : "translate-x-full "
-        } ${isAtPageTop ? "rounded-l-lg" : ""}`}
+        } ${isAtPageTop ? "rounded-l-lg h-[calc(100dvh-80px)]" : "h-[calc(100dvh-56px)]"}`}
       >
         {routes.map((navLink) => {
           return (
@@ -124,28 +194,82 @@ const Navbar = () => {
             </TransitionLink>
           );
         })}
-        <span
-          className={`absolute bottom-20 left-1/2 -translate-x-1/2 w-full text-center text-xs text-grade-3 ${isAtPageTop ? "bottom-[5.2rem]" : " bottom-[4rem]"}`}
+
+        <div
+          className={`absolute bottom-3 left-1/2 -translate-x-1/2 w-full flex flex-col gap-y-5 text-center text-xs text-grade-3`}
         >
-          © 2024 Hamuj Homes Ltd. <br /> All Rights Reserved.
-        </span>
+          <span onClick={()=>{setIsRegionVisible(true), setMenuIsVisible(false)}}>Change Region</span>
+          <span>
+            © {date.getFullYear()} Hamuj Homes Ltd. <br /> All Rights Reserved.
+          </span>
+        </div>
+
       </aside>
 
       {/* Black translucent overlay for mobile */}
       <AnimatePresence>
-        {menuIsVisible && (
+        {(menuIsVisible || isRegionVisible) && (
           <motion.div
             initial={{ opacity: 0 }}
-            animate={{ opacity: isAtPageTop ? 0 : 0.5 }}
+            animate={{ opacity: (isAtPageTop && !isRegionVisible) ? 0 : 0.5 }}
             exit={{ opacity: 0 }}
-            className={`absolute top-full h-dvh w-screen bg-black touch-none`}
+            className={`absolute ${isRegionVisible? 'top-0':'top-full'} h-dvh w-screen bg-black touch-none`}
             onClick={() => {
               setMenuIsVisible(false);
+              region?
+              setIsRegionVisible(false) : setIsRegionVisible(true)
             }}
           />
         )}
       </AnimatePresence>
     </nav>
+
+    {/* Region element */}
+    <AnimatePresence>
+        {isRegionVisible && (
+        <>
+        {/* TAB AND PC VERSION */}
+        <motion.section 
+        onClick={(e)=>{e.stopPropagation()}} initial={{opacity: 0, x: '-50%', y: 0}} animate={{opacity: 1, y: '-50%', transition:{delay: 0.3, duration: 0.3}}} exit={{opacity: 0, y: 0, transition:{duration:0.5}}}
+        className="hidden md:flex fixed z-[100] top-1/2 left-1/2 flex-col 
+        w-[500px] lg:w-[700px] h-[400px] text-grade-3 font-normal px-10 pt-5 bg-slate-50">
+          
+          <h2 className="text-center mb-2 text-base font-medium">Select Region</h2>
+          
+          <button className={`relative text-center py-5 border-b hover:bg-[#e8e8e8] ${checkIfRegionSelected('NG')}`} onClick={()=>{handleRegionSelection('NG')}}>
+            <Image src={Nigeria} alt="nigeria" className="absolute top-1/2 left-2 -translate-y-1/2"/> 
+            Nigeria
+          </button>
+          <button className={`relative text-center py-5 border-b hover:bg-[#e8e8e8] ${checkIfRegionSelected('GB')}`} onClick={()=>{handleRegionSelection('GB')}}>
+            <Image src={UK} alt="united kingdom" className="absolute top-1/2 left-2 -translate-y-1/2"/> 
+            United Kingdom
+          </button>
+          
+        </motion.section>
+
+          {/* PHONE VERSION */}
+        <motion.section drag='y' dragConstraints={{top: 0}} dragElastic={{top: 0, bottom: 0.5}} dragSnapToOrigin onDragEnd={(e,info)=>(handleDragEnd(info.offset.y))} 
+        onClick={(e)=>{e.stopPropagation()}} initial={{y: '100%'}} animate={{y:0, transition:{delay: 0.3, duration: 0.7}}} exit={{y: '100%', transition:{delay: 0, duration:0.5}}}
+        className="md:hidden fixed z-[100] bottom-0 flex flex-col touch-none h-[calc(100dvh-100px)] w-full text-sm text-grade-3 font-normal px-7 pt-10 pb-9 rounded-t-2xl bg-slate-50">
+          
+          <div className="absolute top-3 left-1/2 -translate-x-1/2 rounded-full w-1/5 h-1 bg-[#8c8c8c]"/>
+
+          <h2 className="text-center mb-2 text-base font-medium">Select Region</h2>
+          
+          <button className={`relative text-center py-5 border-b ${checkIfRegionSelected('NG')}`} onClick={()=>{handleRegionSelection('NG')}}>
+            <Image src={Nigeria} alt="nigeria" className="absolute top-1/2 left-2 -translate-y-1/2"/> 
+            Nigeria
+          </button>
+          <button className={`relative text-center py-5 border-b ${checkIfRegionSelected('GB')}`} onClick={()=>{handleRegionSelection('GB')}}>
+            <Image src={UK} alt="united kingdom" className="absolute top-1/2 left-2 -translate-y-1/2"/> 
+            United Kingdom
+          </button>
+          
+        </motion.section>
+        </>
+      )}
+        </AnimatePresence>
+    </>
   );
 };
 

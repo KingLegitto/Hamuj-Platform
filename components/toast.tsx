@@ -56,7 +56,7 @@ const Toast: FC<ToastProps> = ({ setToast, toastDetails }) => {
         onClick={() => {
           setToast(false);
         }}
-        className={`flex md:hidden gap-x-5 fixed z-[89] top-20 left-1/2 rounded-lg w-[90%] md:w-auto md:max-w-[3/4] lg:max-w-1/2 p-5 border-l-[10px] border-[1px] shadow-lg bg-white ${toastType('bgColor')}`}
+        className={`flex md:hidden gap-x-5 items-center fixed z-[89] top-20 left-1/2 rounded-lg w-[90%] md:w-auto md:max-w-[3/4] lg:max-w-1/2 p-5 border-l-[10px] border-[1px] shadow-lg bg-white ${toastType('bgColor')}`}
       >
         <Image
           src={toastType('image')}

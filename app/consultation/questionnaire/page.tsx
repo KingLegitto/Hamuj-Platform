@@ -256,7 +256,7 @@ const Questionnaire = () => {
         <AnimatePresence>
             {toast && <Toast setToast={setToast} toastDetails={toastDetails}/>}
         </AnimatePresence>
-      <section className="relative flex justify-center items-center h-[250px] md:h-[400px] aspect-video w-full overflow-hidden">
+      <section className="relative flex justify-center items-center h-[250px] md:h-[400px] aspect-video w-full overflow-hidden bg-[#303030]">
         <Image
           src={Hero}
           alt="hero section background"

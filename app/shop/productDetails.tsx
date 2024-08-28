@@ -77,11 +77,11 @@ const ProductDetails: FC<ProductDetailsProps> = ({ product, setDetails }) => {
           dragElastic={0}
           dragMomentum={false}
           onDragEnd={() => handleDragEnd()}
-          className="absolute w-full lg:w-[1000px] top-[calc(100dvh-525px)] lg:top-[calc(100vh-505px)] left-1/2 rounded-t-3xl overflow-hidden grid grid-cols-1 lg:grid-cols-2 gap-x-10 bg-[#e8e8e8] p-7"
+          className="absolute w-full lg:w-[1000px] top-[calc(100dvh-525px)] lg:top-[calc(100vh-505px)] left-1/2 rounded-t-3xl overflow-hidden grid grid-cols-1 lg:grid-cols-2 gap-x-10 bg-[#f5f5f5] p-7"
         >
           <div className="lg:hidden absolute top-4 left-1/2 -translate-x-1/2 rounded-full w-1/5 lg:w-16 h-1 bg-[#8c8c8c]" />
 
-          <div className="relative w-full aspect-square overflow-hidden border-x-[10px] lg:border-x-[0px] border-t-[10px] lg:border-t-[10px] lg:border-l-[10px] border-[#e8e8e8]">
+          <div className="relative w-full aspect-square overflow-hidden border-x-[10px] lg:border-x-[0px] border-t-[10px] lg:border-t-[10px] lg:border-l-[10px] border-[#f5f5f5]">
             <Image
               src={urlFor(product.images[0].asset).url()}
               alt={product.images[0].alt}

@@ -93,7 +93,9 @@ const EnquiryForm = () => {
         {/* Mobile form elements*/}
 
         {/* Trigger button */}
-        <motion.div initial={{y: '50%', opacity: 0}} animate={{y:0,opacity:1,transition:{delay:1, duration:0.3}}} whileTap={{scale: 0.5}} onTap={()=>{setFormIsVisible(true)}} 
+        <motion.div initial={{y: '50%', opacity: 0}} animate={{y:0,opacity:1,transition:{delay:1, duration:0.3}}} 
+        drag='y' dragConstraints={{top: -300, bottom: 0}} dragElastic dragMomentum={false} whileDrag={{scale: 0.9}}
+        whileTap={{scale: 0.9}} onClick={()=>{setFormIsVisible(true)}} 
         className="lg:hidden fixed bottom-7 right-3 z-20 text-white bg-theme-1 rounded-full aspect-square px-4 py-3 flex justify-center items-center gap-x-2 shadow-[0px_0px_10px_-2px_rgba(255,255,255,0.5)] border-white border-[2px]">
           <Image src={Compose} alt="Compose" className="scale-[0.8]"/>
         </motion.div>
