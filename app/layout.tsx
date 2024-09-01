@@ -5,7 +5,7 @@ import Preloader from "@/components/pageTransitions/preloader";
 import Navbar from "./navbar";
 import Footer from "./footer";
 
-const inter = Inter({ subsets: ["latin"], weight: ['300','400', '500', '700', '800'] });
+const inter = Inter({ subsets: ["latin"], weight: ['300','400', '500', '700', '800'], display: "swap", });
 
 export const metadata: Metadata = {
   title: "Hamuj Homes | Your top choice for construction and renovations in Nigeria",

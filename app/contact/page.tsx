@@ -3,6 +3,7 @@ import HeaderBg from "../../assets/rasters/hamuj1-2.jpg";
 import { Metadata } from "next";
 import Map from "./map";
 import EnquiryForm from "./enquiryForm";
+import Localisation from "./localisation";
 
 export const metadata: Metadata = { 
   title: "Contact",
@@ -38,7 +39,7 @@ const Contact = () => {
           <div className="flex flex-col gap-y-3">
             <span className="font-medium text-grade-3 text-lg lg:text-xl">Whatsapp</span>
             <span className="text-grade-1 font-medium">
-              +234 8061999995
+              <Localisation content="whatsapp"/>
             </span>
           </div>
 
@@ -52,8 +53,7 @@ const Contact = () => {
           <div className="flex flex-col gap-y-3">
             <span className="font-medium text-grade-3 text-lg lg:text-xl">Location</span>
             <span className="text-grade-1 font-medium">
-              1637, Ibukun House Ademola <br /> Adetokunbo, Opposite Eko Hotel,
-              <br /> Victoria Island, Lagos, Nigeria
+              <Localisation content="address"/>
             </span>
           </div>
 

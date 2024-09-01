@@ -44,6 +44,7 @@ const footerLinksData = [
     subject: "whatsapp",
     links: {
       ng: "https://wa.link/tz8g9o",
+      gb: "https://wa.link/rc03ay"
     },
   },
 ];
@@ -51,8 +52,6 @@ const footerLinksData = [
 
 const Footer = () => {
   const [region, setRegion] = useState<string | null>()
-
-  
 
   function localiseLogic(content: { ng: string; uk?: string }) {
     let localisedContent = content.ng; // Nigerian content by default
@@ -87,7 +86,7 @@ const Footer = () => {
   return (
     <footer className="relative bg-theme-1 h-32 md:h-40 flex justify-between">
       <span className="hidden md:flex gap-x-3 absolute top-1/2 -translate-y-1/2 left-5 text-white text-xs md:text-sm">
-        <TransitionLink href={"/about"}>Testimonials</TransitionLink> •
+        <TransitionLink href={"/"}>Testimonials</TransitionLink> •
         <TransitionLink href={"/contact"}>Location</TransitionLink>
       </span>
       <span className="flex gap-x-6 md:gap-x-4 scale-110 md:scale-100 absolute top-[45%] md:top-1/2 -translate-y-1/2 right-1/2 md:right-5 translate-x-1/2 md:translate-x-0 text-white text-xs md:text-sm">
