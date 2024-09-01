@@ -1,8 +1,7 @@
 "use client";
 import Image from "next/image";
-import Filter from "../../assets/vectors/filter.svg";
 import Arrow from "../../assets/vectors/lineArrow.svg";
-import { useRouter } from "next/navigation";
+// import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { client, urlFor } from "../../sanityClient";
 import { hyphenate } from "@/utils/hyphenationForRoutes";
@@ -11,6 +10,7 @@ import TransitionLink from "@/components/pageTransitions/transitionLink";
 interface ProjectsDataProps {
   title: string;
   client: string;
+  projectType: string;
   area: string;
   state: string;
   highlight: boolean;
@@ -26,8 +26,8 @@ interface ProjectsDataProps {
 
 const Projects = () => {
   const [projectsData, setProjectsData] = useState<ProjectsDataProps[]>([]);
-  const [filters, setFilters] = useState<string[]>([])
-  const [filterBox, setFilterBox] = useState<{isOpen: boolean, filter: string|null}>({isOpen: false, filter: null})
+  const [projectType, setProjectType] = useState<'interiors' | 'construction'>('interiors')
+  // const searchParams = useSearchParams()
 
   useEffect(() => {
       const projectsInMemory = sessionStorage.getItem("projects");
@@ -43,54 +43,34 @@ const Projects = () => {
         };
         fetchProjects();
       }
+
+      const urlParams = new URLSearchParams(window.location.search)
+      const params = urlParams.get('type')
+      // @ts-ignore
+      if(params){setProjectType(params)}
+
   }, []);
 
-  useEffect(()=>{
-    let states: string[] = []
-    projectsData.forEach((project)=>(
-      states.push(project.state)
-    ))
-    let filteredStates = states.filter((state,index,arr)=>(index===arr.indexOf(state)))
-    setFilters([...filteredStates])
-  }, [projectsData])
-
   return (
-    <section className="w-full pt-7 pb-20 px-7 lg:px-10 overflow-x-hidden grid grid-cols-1 lg:grid-cols-3 gap-x-8 gap-y-14">
-      <div className="lg:col-span-3 bg-slate-50 sticky -translate-x-1 translate-y-12 py-5 z-40 w-[110%] mb-2">
-        <button className="relative flex gap-x-2 items-center" onClick={()=>{setFilterBox({isOpen: !filterBox.isOpen, filter: filterBox.filter})}}>
-          <Image src={Filter} alt="filter" />
-          <span className="text-sm lg:text-base">Filters</span>
-          <span className="absolute left-0 top-[110%] w-[150%] h-[2px] rounded-full bg-theme-2"></span>
-        </button>
-        {/* filter Container */}
-        {filterBox.isOpen && (<div className="absolute left-0 top-full -translate-y-1 rounded-2xl grid grid-cols-3 
-        gap-x-2 gap-y-4 px-5 py-5 min-h-[200px] border border-[#e8e8e8] shadow-lg bg-slate-50 w-[calc(100vw-24px-14px)] lg:w-[350px]">
-          <button onClick={()=>{setFilterBox({isOpen: false, filter: null})}}
-            className={`w-full rounded-full text-center h-fit py-1 bg-[#e8e8e8] text-xs lg:text-sm
-              ${filterBox.filter===null? 'bg-theme-1 text-white font-medium':'text-grade-3'}`}
-          >
-            All
-          </button>
-          {filters.map((state) => {
-            return (
-              <button onClick={()=>{setFilterBox({isOpen: false, filter: state})}}
-                className={`w-full rounded-full h-fit text-center py-1 bg-[#e8e8e8] text-xs lg:text-sm text-grade-3
-                  ${filterBox.filter===state? 'bg-theme-1 text-white font-medium':'text-grade-3'}`}
-              >
-                {state}
-              </button>
-            );
-          })}
-        </div>)}
-      </div>
+    <>
+    <div className="text-xs md:text-base my-10 lg:my-14">
+        <div className="text-center mb-3 uppercase text-grade-2">Project type</div>
+
+        <div className="flex justify-center items-center gap-x-3 text-grade-3">
+        <button className={`w-28 lg:w-36 py-1 hover:bg-[#e8e8e8] font-normal rounded-lg lg:rounded-xl border ${projectType==='interiors'? 'bg-[#e8e8e8]': ''}`} onClick={()=>{setProjectType('interiors')}}>Interiors</button>
+        <button className={`w-28 lg:w-36 py-1 hover:bg-[#e8e8e8] font-normal rounded-lg lg:rounded-xl border ${projectType==='construction'? 'bg-[#e8e8e8]': ''}`} onClick={()=>{setProjectType('construction')}}>Construction</button>
+        </div>
+    </div>
+
+    <section className="w-full pb-20 px-7 lg:px-10 overflow-x-hidden grid grid-cols-1 lg:grid-cols-3 gap-x-8 gap-y-14">
 
       {projectsData.map((project, index) => {
-        if(filterBox.filter && project.state != filterBox.filter) return
+        if(project.projectType !== projectType) return
         return (
           <TransitionLink
             key={index}
             href={`portfolio/details?id=${hyphenate(project.title)}`}
-            styles={`w-full h-[300px] group flex-shrink-0 relative overflow-hidden rounded-xl shadow-[15px_15px_0px_2px_#0000001A] lg:shadow-[17px_17px_0px_2px_#0000001A] duration-300 cursor-pointer bg-[#e8e8e8]`}
+            styles={`w-full h-[300px] group flex-shrink-0 relative overflow-hidden rounded-xl shadow-[15px_15px_0px_2px_#0000001A] lg:shadow-[17px_17px_0px_2px_#0000001A] duration-300 cursor-pointer bg-[#505050]`}
           >
             <Image
               src={urlFor(project.images[0].asset).url()}
@@ -119,6 +99,7 @@ const Projects = () => {
         );
       })}
     </section>
+    </>
   );
 };
 

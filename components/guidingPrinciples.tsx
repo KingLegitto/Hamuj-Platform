@@ -40,7 +40,7 @@ const GuidingPrinciples: FC = () => {
           onClick={() => {
             setActiveIndex(0);
           }}
-          className={`w-full h-full flex items-center justify-center text-xl md:text-3xl font-bold
+          className={`w-full h-full flex items-center justify-center text-xl font-bold
             ${(activeIndex === 0 || activeIndex === -1) ? "bg-[#E8E8E8]" : "text-grade-1 hover:text-grade-3 cursor-pointer"}`}
         >
           MISSION
@@ -49,7 +49,7 @@ const GuidingPrinciples: FC = () => {
           onClick={() => {
             setActiveIndex(1);
           }}
-          className={`h-full flex items-center justify-center text-xl md:text-3xl font-bold
+          className={`h-full flex items-center justify-center text-xl font-bold
             ${activeIndex === 1 ? "bg-[#E8E8E8]" : "text-grade-1 hover:text-grade-3 cursor-pointer"}`}
         >
           VISION
@@ -58,7 +58,7 @@ const GuidingPrinciples: FC = () => {
           onClick={() => {
             setActiveIndex(2);
           }}
-          className={`h-full flex items-center justify-center text-xl md:text-3xl font-bold
+          className={`h-full flex items-center justify-center text-xl font-bold
             ${activeIndex === 2 ? "bg-[#E8E8E8]" : "text-grade-1 hover:text-grade-3 cursor-pointer"}`}
         >
           VALUES

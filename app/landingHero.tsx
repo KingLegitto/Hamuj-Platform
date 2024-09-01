@@ -15,7 +15,7 @@ const Hero: FC<HeroProps> = ({ images }) => {
       setCurrentImageIndex((prevIndex) =>
         prevIndex === images.length - 1 ? 0 : prevIndex + 1
       );
-    }, 12000); // Change image every 10 seconds
+    }, 12000); // Change image every 12 seconds
 
     return () => clearInterval(interval);
   }, []);

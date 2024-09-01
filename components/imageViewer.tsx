@@ -72,22 +72,22 @@ const ImageViewer: FC<ImageViewerProps> = ({
   return (
     <div ref={scrollBox} onScroll={checkScrollBox} className="fixed flex w-screen h-dvh z-[99] overflow-scroll snap-mandatory snap-x bg-[#0000007c]">
       <button
-        className="fixed cursor-pointer top-1/2 -translate-y-1/2 left-0 z-30 rounded-r-2xl px-2 py-5 lg:p-3 bg-[#00000040] backdrop-blur-sm lg:hover:scale-105"
+        className="fixed cursor-pointer top-1/2 -translate-y-1/2 left-0 z-30 px-2 py-5 lg:p-3 bg-[#00000040] backdrop-blur-sm group"
         ref={left}
         onClick={() => {
           handleScrolling(activeImage - 1, "smooth");
         }}
       >
-        <Image src={AngledArrow} alt="arrow" className="w-7 lg:w-14 scale-50" />
+        <Image src={AngledArrow} alt="arrow" className="w-7 lg:w-14 scale-50 lg:group-hover:scale-[0.55]" />
       </button>
       <button
-        className="fixed cursor-pointer top-1/2 -translate-y-1/2 right-0 z-30 rounded-r-2xl px-2 py-5 lg:p-3 rotate-180 bg-[#00000040] backdrop-blur-sm lg:hover:scale-105"
+        className="fixed cursor-pointer top-1/2 -translate-y-1/2 right-0 z-30 px-2 py-5 lg:p-3 rotate-180 bg-[#00000040] backdrop-blur-sm group"
         ref={right}
         onClick={() => {
           handleScrolling(activeImage + 1, "smooth");
         }}
       >
-        <Image src={AngledArrow} alt="arrow" className="w-7 lg:w-14 scale-50" />
+        <Image src={AngledArrow} alt="arrow" className="w-7 lg:w-14 scale-50 lg:group-hover:scale-[0.55]" />
       </button>
       {images.map((image, index) => {
         return (

@@ -1,16 +1,17 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
 import Menu from "../public/vectors/hamburger.svg";
 import BrandLogo from "../public/rasters/smallLogo.png";
 import Arrow from "../public/vectors/lineArrow.svg";
-import Nigeria from "../public/vectors/nigeria.svg";
-import UK from "../public/vectors/uk.svg";
 import Globe from "../public/vectors/globe.svg";
+import GlobeMobile from "../public/vectors/globeMobile.svg";
 import TransitionLink from "../components/pageTransitions/transitionLink";
 import { AnimatePresence, motion } from "framer-motion";
+import NigeriaFlag from "@/assets/vectors/NigeriaFlag";
+import UKFlag from "@/assets/vectors/UKFlag";
 
 const routes = [
   { title: "Home", route: "/" },
@@ -31,7 +32,8 @@ const Navbar = () => {
 
 
   useEffect(() => {
-    getCountryFromIP()
+    // getCountryFromIP()
+    setRegion(sessionStorage.getItem('region'))
     document.addEventListener("scroll", handleNavBg);
     handleNavBg();
   }, []);
@@ -198,7 +200,10 @@ const Navbar = () => {
         <div
           className={`absolute bottom-3 left-1/2 -translate-x-1/2 w-full flex flex-col gap-y-5 text-center text-xs text-grade-3`}
         >
-          <span onClick={()=>{setIsRegionVisible(true), setMenuIsVisible(false)}}>Change Region</span>
+          <button onClick={()=>{setIsRegionVisible(true), setMenuIsVisible(false)}} className="flex items-center w-full justify-center">
+            <Image src={GlobeMobile} alt="globe" className="w-6"/>
+            <span className="uppercase">{region}</span>
+          </button>
           <span>
             © {date.getFullYear()} Hamuj Homes Ltd. <br /> All Rights Reserved.
           </span>
@@ -217,7 +222,8 @@ const Navbar = () => {
             onClick={() => {
               setMenuIsVisible(false);
               region?
-              setIsRegionVisible(false) : setIsRegionVisible(true)
+              // setIsRegionVisible(false) : setIsRegionVisible(true)
+              setIsRegionVisible(false) : (setIsRegionVisible(false), setRegion('NG'),sessionStorage.setItem('region', 'NG'))
             }}
           />
         )}
@@ -231,17 +237,17 @@ const Navbar = () => {
         {/* TAB AND PC VERSION */}
         <motion.section 
         onClick={(e)=>{e.stopPropagation()}} initial={{opacity: 0, x: '-50%', y: 0}} animate={{opacity: 1, y: '-50%', transition:{delay: 0.3, duration: 0.3}}} exit={{opacity: 0, y: 0, transition:{duration:0.5}}}
-        className="hidden md:flex fixed z-[100] top-1/2 left-1/2 flex-col 
+        className="hidden md:flex fixed z-[100] top-1/2 left-1/2 flex-col shadow-md
         w-[500px] lg:w-[700px] h-[400px] text-grade-3 font-normal px-10 pt-5 bg-slate-50">
           
           <h2 className="text-center mb-2 text-base font-medium">Select Region</h2>
           
           <button className={`relative text-center py-5 border-b hover:bg-[#e8e8e8] ${checkIfRegionSelected('NG')}`} onClick={()=>{handleRegionSelection('NG')}}>
-            <Image src={Nigeria} alt="nigeria" className="absolute top-1/2 left-2 -translate-y-1/2"/> 
+            <NigeriaFlag className="absolute top-1/2 left-2 -translate-y-1/2"/>
             Nigeria
           </button>
           <button className={`relative text-center py-5 border-b hover:bg-[#e8e8e8] ${checkIfRegionSelected('GB')}`} onClick={()=>{handleRegionSelection('GB')}}>
-            <Image src={UK} alt="united kingdom" className="absolute top-1/2 left-2 -translate-y-1/2"/> 
+            <UKFlag className="absolute top-1/2 left-2 -translate-y-1/2"/>
             United Kingdom
           </button>
           
@@ -257,11 +263,11 @@ const Navbar = () => {
           <h2 className="text-center mb-2 text-base font-medium">Select Region</h2>
           
           <button className={`relative text-center py-5 border-b hover:bg-[#e8e8e8] ${checkIfRegionSelected('NG')}`} onClick={()=>{handleRegionSelection('NG')}}>
-            <Image src={Nigeria} alt="nigeria" className="absolute top-1/2 left-2 -translate-y-1/2"/> 
+            <NigeriaFlag className="absolute top-1/2 left-2 -translate-y-1/2"/>
             Nigeria
           </button>
           <button className={`relative text-center py-5 border-b hover:bg-[#e8e8e8] ${checkIfRegionSelected('GB')}`} onClick={()=>{handleRegionSelection('GB')}}>
-            <Image src={UK} alt="united kingdom" className="absolute top-1/2 left-2 -translate-y-1/2"/> 
+            <UKFlag className="absolute top-1/2 left-2 -translate-y-1/2"/>
             United Kingdom
           </button>
           

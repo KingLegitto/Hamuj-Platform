@@ -1,9 +1,9 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { FC, useEffect } from "react";
-import Success from "../assets/vectors/success.svg";
-import Fail from "../assets/vectors/fail.svg";
-import Deny from "../assets/vectors/warn.svg";
 import Image from "next/image";
+import Warn from "@/assets/vectors/Warn";
+import Success from "@/assets/vectors/Success";
+import Fail from "@/assets/vectors/Fail";
 
 interface ToastProps {
   toastDetails: { title: string; result: boolean | "deny"; message: string };
@@ -23,12 +23,12 @@ const Toast: FC<ToastProps> = ({ setToast, toastDetails }) => {
   function toastType(request: 'image' | 'bgColor') {
     if (request === "image" && toastDetails.result) {
       if (toastDetails.result === "deny") {
-        return Deny;
+        return <Warn className="scale-[0.8] md:scale-[1]"/>;
       } else {
-        return Success;
+        return <Success className="scale-[0.8] md:scale-[1]"/>;
       }
     } else if (request === "image") {
-      return Fail;
+      return <Fail className="scale-[0.8] md:scale-[1]"/>;
     }
     // ///////////////////////////////////////////////////////////////
     if (request === "bgColor" && toastDetails.result) {
@@ -50,24 +50,20 @@ const Toast: FC<ToastProps> = ({ setToast, toastDetails }) => {
         animate={{
           y: 0,
           opacity: 1,
-          transition: { type: "spring", bounce: 0.6 },
+          transition: { type: "spring", bounce: 0.5 },
         }}
         exit={{ y: "-100%", opacity: 0 }}
         onClick={() => {
           setToast(false);
         }}
-        className={`flex md:hidden gap-x-5 items-center fixed z-[89] top-20 left-1/2 rounded-lg w-[90%] md:w-auto md:max-w-[3/4] lg:max-w-1/2 p-5 border-l-[10px] border-[1px] shadow-lg bg-white ${toastType('bgColor')}`}
+        className={`flex md:hidden gap-x-2 items-center fixed z-[89] top-20 left-1/2 rounded-lg w-[90%] md:w-auto md:max-w-[3/4] lg:max-w-1/2 p-4 border-l-[10px] border-[1px] shadow-lg bg-white ${toastType('bgColor')}`}
       >
-        <Image
-          src={toastType('image')}
-          alt="verdict"
-          className="object-contain h-full aspect-square"
-        />
+        {toastType('image')}
         <div className="flex flex-col justify-center">
           <span className="text-sm font-bold text-grade-3">
             {toastDetails.title}
           </span>
-          <span className="text-xs lg:text-sm">{toastDetails.message}</span>
+          <span className="text-xs lg:text-sm text-grade-2">{toastDetails.message}</span>
         </div>
       </motion.div>
 
@@ -84,18 +80,14 @@ const Toast: FC<ToastProps> = ({ setToast, toastDetails }) => {
         onClick={() => {
           setToast(false);
         }}
-        className={`hidden md:flex cursor-pointer gap-x-7 items-center fixed z-[100] top-24 right-1 left-1/2 w-[90%] md:w-auto md:max-w-[3/4] lg:max-w-1/2 pl-7 h-[120px] rounded-lg bg-white border-l-[10px] border-[1px] shadow-lg ${toastType('bgColor')}`}
+        className={`hidden md:flex cursor-pointer gap-x-7 items-center fixed z-[100] top-24 right-1 left-1/2 w-[90%] md:w-auto md:max-w-[3/4] lg:max-w-1/2 px-7 h-[100px] rounded-lg bg-white border-l-[10px] border-[1px] shadow-lg ${toastType('bgColor')}`}
       >
-        <Image
-          src={toastType('image')}
-          alt="verdict"
-          className="object-contain h-full aspect-square"
-        />
+        {toastType('image')}
         <div className="flex flex-col justify-center">
           <span className="text-lg font-bold text-grade-3">
             {toastDetails.title}
           </span>
-          <span className="text-sm lg:text-sm">{toastDetails.message}</span>
+          <span className="text-sm lg:text-sm text-grade-2">{toastDetails.message}</span>
         </div>
       </motion.div>
     </>

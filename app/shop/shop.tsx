@@ -72,14 +72,14 @@ const Shop = () => {
       </div>
 
       <div className="text-xs md:text-base">
-        <div className="text-center mb-2 uppercase text-grade-2">Categories</div>
+        <div className="text-center mb-3 uppercase text-grade-2">Categories</div>
 
         <div className="flex justify-center items-center gap-x-3 text-grade-3">
-        <button className="w-14 lg:w-16 py-1 hover:bg-[#e8e8e8] font-normal rounded-full border">All</button>
-        <button className="w-14 lg:w-16 py-1 hover:bg-[#e8e8e8] font-normal rounded-full border">New</button>
+        <button className="w-14 lg:w-16 py-1 hover:bg-[#e8e8e8] font-normal rounded-lg lg:rounded-xl border">All</button>
+        <button className="w-14 lg:w-16 py-1 hover:bg-[#e8e8e8] font-normal rounded-lg lg:rounded-xl border">New</button>
           {filters.map((category)=>{
             return(
-              <button className="w-14 lg:w-16 py-1 hover:bg-[#e8e8e8] font-normal rounded-full border">{category}</button>
+              <button className="w-14 lg:w-16 py-1 hover:bg-[#e8e8e8] font-normal rounded-lg lg:rounded-xl border">{category}</button>
             )
           })}
         </div>

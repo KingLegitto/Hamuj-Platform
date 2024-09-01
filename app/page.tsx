@@ -1,23 +1,24 @@
 import Image from "next/image";
-import LogoTitle from "@/public/rasters/Hamuj_homes.png";
+import Logo from '../assets/rasters/Hamuj_homes_logo.png'
+import LogoTitle from "../public/rasters/Hamuj_homes.png";
 import HeroBg from "../public/rasters/hero1.webp";
 import HeroBg_2 from "../public/rasters/hero2.webp";
 import HeroBg_3 from "../public/rasters/hero3.webp";
 import Furniture from "../public/vectors/furniture.svg";
 import Interiors from "../public/vectors/interiors.svg";
-import RealEstate from "../public/vectors/real-estate.svg";
-import Quote from "../public/vectors/quotes.svg";
-import Check from "../public/vectors/check.svg"
+import Construction from "../assets/vectors/construction.svg"
+import Shortlets from "../public/vectors/real-estate.svg";
 import DecorImages from "./decorImages";
 import Hero from "./landingHero";
 import Highlights from "./projectHighlights";
+import Testimonials from "./testimonials";
 
 const heroImages = [HeroBg, HeroBg_2, HeroBg_3];
 
 export default function Home() {
   
   return (
-    <main className="page overflow-y-clip relative w-full h-auto overflow-x-hidden bg-slate-50">
+    <main className="page relative w-full h-auto overflow-x-hidden bg-slate-50">
       {/* Hero section */}
       <section className=" relative z-20 overflow-hidden h-[90svh] lg:h-screen max-h-[700px] w-full bg-gradient-to-tr from-[#000000] to-[#011c2a] flex justify-center items-center overflow-x-hidden">
         <h1 className="absolute z-0 opacity-0">
@@ -66,43 +67,74 @@ export default function Home() {
           Our Business Units
         </h2>
 
-        <div className="mt-10 lg:mt-20 w-[80%] lg:w-full max-w-[1400px] grid grid-cols-1 lg:grid-cols-3 gap-y-10 gap-x-9 h-auto lg:h-96 px-0 lg:px-16 m-auto">
-          <div className="h-auto bg-slate-50 py-7 lg:py-0 px-3 lg:px-0 lg:h-full shadow-[15px_15px_0px_2px_#E8E8E8] flex flex-col justify-center items-center gap-y-5">
-            <Image src={Furniture} height={50} alt="Furniture svg icon" />
-            <span className="text-lg lg:text-2xl text-[#242424] font-bold">
-              Furniture
-            </span>
-            <p className=" text-center text-sm lg:text-base text-grade-2 w-full lg:w-60 px-2 lg:px-0 h-28 lg:h-32 flex items-center">
-              Design, manufacture, restoration, custom solutions, expert
-              craftsmanship and delivery of high-quality furniture for
-              residential and commercial spaces.
-            </p>
-          </div>
-          <div className="h-auto bg-slate-50 py-7 lg:py-0 px-3 lg:px-0 lg:h-full shadow-[15px_15px_0px_2px_#E8E8E8] flex flex-col justify-center items-center gap-y-5">
-            <Image
-              src={Interiors}
-              height={50}
-              alt="Interiors svg icon"
-              className="scale-110"
-            />
-            <span className="text-lg lg:text-2xl text-[#242424] font-bold">
-              Interiors
-            </span>
-            <p className=" text-center text-sm lg:text-base text-grade-2 w-full lg:w-60 px-2 lg:px-0 h-24 lg:h-32 flex items-center">
-              Planning, and execution of stunning interiors for residential and
-              commercial spaces, custom solutions, space optimization, etc.
-            </p>
-          </div>
-          <div className="h-auto bg-slate-50 py-7 lg:py-0 px-3 lg:px-0 lg:h-full shadow-[15px_15px_0px_2px_#E8E8E8] flex flex-col justify-center items-center gap-y-5">
-            <Image src={RealEstate} height={50} alt="Real Estate svg icon" />
-            <span className="text-lg lg:text-2xl text-[#242424] font-bold">
-              Construction
-            </span>
-            <p className=" text-center text-sm lg:text-base text-grade-2 w-full lg:w-60 px-2 lg:px-0 h-24 lg:h-32 flex items-center">
-              Property development, repair, and renovations for
-              residential and commercial structures.
-            </p>
-          </div>
+        <div className="mt-10 lg:mt-20 w-[80%] lg:w-full max-w-[1400px] grid grid-cols-1 lg:grid-cols-3 grid-rows-[repeat(auto-fit,minmax(0px,min-content))] gap-y-10 gap-x-9 h-auto px-0 lg:px-16 m-auto">
+          <a href="/shop">
+            <div className="h-auto bg-slate-50 py-7 px-3 lg:px-0 shadow-[15px_15px_0px_2px_#E8E8E8] flex flex-col justify-center items-center gap-y-5">
+              <Image src={Furniture} height={50} alt="Furniture" />
+              <span className="text-lg lg:text-2xl text-[#242424] font-bold">
+                Furniture
+              </span>
+              <p className=" text-center text-sm lg:text-base text-grade-2 w-full lg:w-60 px-2 lg:px-0 h-28 lg:h-32 flex items-center">
+                Design, manufacture, restoration, custom solutions, expert
+                craftsmanship and delivery of high-quality furniture for
+                residential and commercial spaces.
+              </p>
+            </div>
+          </a>
+
+          <a href="/portfolio">
+            <div className="h-auto bg-slate-50 py-7 px-3 lg:px-0 lg:h-full shadow-[15px_15px_0px_2px_#E8E8E8] flex flex-col justify-center items-center gap-y-5">
+              <Image
+                src={Interiors}
+                height={50}
+                alt="Interiors"
+                className="scale-110"
+              />
+              <span className="text-lg lg:text-2xl text-[#242424] font-bold">
+                Interiors
+              </span>
+              <p className=" text-center text-sm lg:text-base text-grade-2 w-full lg:w-60 px-2 lg:px-0 h-24 lg:h-32 flex items-center">
+                Planning, and execution of stunning interiors for residential and
+                commercial spaces, custom solutions, space optimization, etc.
+              </p>
+            </div>
+          </a>
+          
+          <a href="/portfolio?type=construction">
+            <div className="h-auto bg-slate-50 py-7 lg:py-0 px-3 lg:px-0 lg:h-full shadow-[15px_15px_0px_2px_#E8E8E8] flex flex-col justify-center items-center gap-y-5">
+              <Image src={Construction} height={50} alt="construction" className="scale-110"/>
+              <span className="text-lg lg:text-2xl text-[#242424] font-bold">
+                Construction
+              </span>
+              <p className=" text-center text-sm lg:text-base text-grade-2 w-full lg:w-60 px-2 lg:px-0 h-24 lg:h-32 flex items-center">
+                Property development, repair, and renovations for
+                residential and commercial structures.
+              </p>
+            </div>
+          </a>
+
+          
+            <div className="h-auto bg-slate-50 py-7 px-3 lg:px-0 lg:h-full shadow-[15px_15px_0px_2px_#E8E8E8] flex flex-col justify-center items-center gap-y-5">
+              <Image src={Logo} height={50} alt="Furniture" className="scale-[1.2]"/>
+              <span className="text-lg lg:text-2xl text-[#242424] font-bold">
+                Properties
+              </span>
+              <p className=" text-center text-sm lg:text-base text-grade-2 w-full lg:w-60 px-2 lg:px-0 h-28 lg:h-32 flex items-center">
+                Aside development of properties for individuals (residential & commercial), we also have numbers of our own residential development across Nigeria. 
+              </p>
+            </div>
+          
+
+            <div className="h-auto bg-slate-50 py-7 px-3 lg:px-0 lg:h-full shadow-[15px_15px_0px_2px_#E8E8E8] flex flex-col justify-center items-center gap-y-5">
+              <Image src={Shortlets} height={50} alt="Furniture svg icon" />
+              <span className="text-lg lg:text-2xl text-[#242424] font-bold">
+                Shortlets
+              </span>
+              <p className=" text-center text-sm lg:text-base text-grade-2 w-full lg:w-60 px-2 lg:px-0 h-28 lg:h-32 flex items-center">
+                We have created magical spaces to spark love, joy, happiness and reunion between you and your loved ones. We would love to host you.
+              </p>
+            </div>
+          
         </div>
       </section>
 
@@ -115,47 +147,7 @@ export default function Home() {
         <Highlights />
       </section>
 
-      <section className="relative section w-full max-failsafe py-[5rem] lg:pt-28 lg:pb-[calc(7rem-40px)] overflow-hidden">
-        
-        <Image src={Check} alt="check" className="absolute -bottom-[2.5rem] lg:-bottom-[2rem] left-1/2 -translate-x-1/2 scale-[0.3] lg:scale-[0.4]"/>
-
-        <h2 className="relative text-center text-2xl lg:text-heading text-grade-3 z-20 font-bold px-5 mb-0">
-          Client Testimonials
-        </h2>
-
-        <div className="flex h-[300px] overflow-x-scroll snap-mandatory snap-x text-base lg:text-xl pb-24 lg:pb-10">
-          <div
-            className="w-full h-full flex-shrink-0
-            flex justify-center items-center snap-center"
-          >
-            <p className="flex text-center max-w-[80%] lg:max-w-[50%] relative text-grade-2">
-              <Image src={Quote} alt="quotation" className="absolute w-7 lg:w-10 top-0 right-full -translate-y-1/4" />
-              The experience of my space transformation is forever fresh, I
-              wake up daily in my space forever thankful that I engaged Hamuj
-              for the space design and finishing.
-              <Image src={Quote} alt="quotation" className="absolute w-7 lg:w-10 bottom-0 left-full rotate-180 translate-y-1/4" />
-              <span className="absolute w-full lg:w-auto top-[120%] lg:top-full right-1/2 lg:right-0 translate-x-1/2 lg:translate-x-0 text-center text-sm">
-                - <span className="text-grade-3 font-medium">Evelyn Edumoh</span><br />COO ARKLAND PROPERTIES
-              </span>
-            </p>
-          </div>
-          <div
-            className="w-full h-full flex-shrink-0
-            flex justify-center items-center snap-center"
-          >
-            <p className="flex text-center max-w-[80%] lg:max-w-[50%] relative text-grade-2">
-              <Image src={Quote} alt="quotation" className="absolute w-7 lg:w-10 top-0 right-full -translate-y-1/4" />
-              The experience of my space transformation is forever fresh, I
-              wake up daily in my space forever thankful that I engaged Hamuj
-              for the space design and finishing.
-              <Image src={Quote} alt="quotation" className="absolute w-7 lg:w-10 bottom-0 left-full rotate-180 translate-y-1/4" />
-              <span className="absolute w-full lg:w-auto top-[120%] lg:top-full right-1/2 lg:right-0 translate-x-1/2 lg:translate-x-0 text-center text-sm">
-                - <span className="text-grade-3 font-medium">Evelyn Edumoh</span><br />COO ARKLAND PROPERTIES
-              </span>
-            </p>
-          </div>
-        </div>
-      </section>
+      <Testimonials />
 
       <section className="bg-theme-1 z-20 flex flex-col gap-y-12 items-center justify-end h-64 lg:h-72">
         <h2 className="text-center text-[25px] lg:text-[32px] text-white font-bold">

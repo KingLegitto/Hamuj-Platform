@@ -42,6 +42,19 @@ export const projects = defineType({
       type: "string",
     }),
     defineField({
+      name: 'projectType',
+      title: 'Project Type',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Interiors', value: 'interiors' },
+          { title: 'Construction', value: 'construction' },
+        ],
+        layout: 'radio'
+      },
+      validation: Rule => Rule.required()
+    }),
+    defineField({
       name: "completionDate",
       type: "string",
     }),
@@ -76,14 +89,14 @@ export const projects = defineType({
   preview: {
     select: {
       title: "title",
-      client: "client",
+      projectType: "projectType",
       media: "images.0.asset",
     },
     prepare(selection) {
-      const { title, client, media } = selection;
+      const { title, projectType, media } = selection;
       return {
         title: title ? title : "Untitled",
-        subtitle: client ? client : "---",
+        subtitle: projectType ? projectType : "---",
         media: media,
       };
     },

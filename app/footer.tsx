@@ -3,12 +3,14 @@
 import TransitionLink from "@/components/pageTransitions/transitionLink";
 import Image from "next/image";
 import Link from "next/link";
-import Whatsapp from "../assets/vectors/whatsapp.svg";
-import Youtube from "../assets/vectors/youTube.svg";
+// import Whatsapp from "../assets/vectors/whatsapp.svg";
+// import Youtube from "../assets/vectors/youTube.svg";
 import Instagram from "../assets/vectors/instagram.svg";
 import Facebook from "../assets/vectors/facebook.svg";
 import TikTok from "../assets/vectors/tikTok.svg";
 import { useEffect, useState } from "react";
+import Whatsapp from "@/assets/vectors/Whatsapp";
+import YouTube from "@/assets/vectors/YouTube";
 
 const footerLinksData = [
   {
@@ -93,10 +95,10 @@ const Footer = () => {
           <Image src={Facebook} alt="facebook icon" />
         </Link>
         <Link href={footerLinks('whatsapp')} target="_blank">
-          <Image src={Whatsapp} alt="whatsapp icon" />
+          <Whatsapp />
         </Link>
         <Link href={footerLinks('yt')} target="_blank">
-          <Image src={Youtube} alt="youtube icon" />
+          <YouTube />
         </Link>
         <Link href={footerLinks("ig")} target="_blank">
           <Image src={Instagram} alt="instagram icon" />
