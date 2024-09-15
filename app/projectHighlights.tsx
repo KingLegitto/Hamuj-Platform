@@ -128,7 +128,7 @@ const Highlights: FC = () => {
                 handleScrolling(index);
               }}
               className={`project-highlight-${index} group snap-center flex-shrink-0 relative highlight overflow-hidden
-            ${index === activeProject ? "w-[90%] md:w-[600px] h-[300px] md:h-[350px]" : "w-[80%] md:w-[30%] h-[250px] md:h-[300px] cursor-pointer"} md:first:ml-[50vw] shadow-[10px_10px_0px_2px_#0000001A] lg:shadow-[20px_20px_0px_2px_#0000001A] rounded-xl`}
+            ${index === activeProject ? "w-[90%] sm:w-[400px] md:w-[600px] h-[300px] md:h-[350px]" : "w-[80%] sm:w-[350px] md:w-[30%] h-[250px] md:h-[300px] cursor-pointer"} md:first:ml-[50vw] shadow-[10px_10px_0px_2px_#0000001A] lg:shadow-[20px_20px_0px_2px_#0000001A] rounded-xl`}
               style={{ transition: "width 0.5s, height 0.5s, margin 0.5s" }}
             >
               <Image
