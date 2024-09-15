@@ -54,13 +54,13 @@ const Properties = () => {
     <section className="max-failsafe py-16 lg:py-20">
       <div className="text-xs md:text-base mb-10">
         <div className="text-center mb-3 uppercase text-grade-2">
-          Apply filters
+          Search filter
         </div>
         <select
           className="w-[90%] md:w-[500px] lg:w-[700px] flex border-2 border-[#e8e8e8] rounded-xl h-9 lg:h-12 px-4 mx-auto overflow-hidden
-      hover:border-[#aaaaaa] focus:outline-none"
+      hover:border-[#aaaaaa] bg-transparent focus:outline-none"
         >
-          <option value="">All</option>
+          <option value="">None</option>
           <option value="">Freehold tenure</option>
           <option value="">Leasehold tenure</option>
         </select>
