@@ -151,7 +151,7 @@ const Navbar = () => {
           className={`absolute top-1/2 -translate-y-1/2 left-0 duration-500 opacity-0 w-10 lg:w-14 ${
             isAtPageTop && !pathname.startsWith("/projects/")
               ? ""
-              : "delay-300 left-7 lg:left-20 opacity-[0.9]"
+              : "delay-300 left-7 lg:left-10 xl:left-20 opacity-[0.9]"
           } `}
         />
       )}
@@ -179,7 +179,7 @@ const Navbar = () => {
       />
 
       {/* Region button */}
-      <button onClick={()=>{setIsRegionVisible(true)}} className="hidden lg:flex items-center gap-x-1 absolute top-1/2 -translate-y-1/2 right-20"
+      <button onClick={()=>{setIsRegionVisible(true)}} className="hidden lg:flex items-center gap-x-1 absolute top-1/2 -translate-y-1/2 lg:right-10 xl:right-20"
         title="Change region">
         <Image src={Globe} alt="globe" className="w-9"/>
         <span className="uppercase">{region}</span>

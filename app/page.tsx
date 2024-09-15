@@ -44,7 +44,7 @@ export default function Home() {
 
           <DecorImages />
 
-          <p className="w-full lg:w-[550px] flex-shrink-0 rounded-none lg:rounded-lg bg-[#E8E8E8] lg:bg-theme-1 leading-7 h-auto lg:h-[370px] p-10 px-40 lg:p-7 text-black lg:text-white text-sm md:text-lg text-center lg:text-left shadow-[20px_20px_0px_2px_#E8E8E8]">
+          <p className="w-full lg:w-[550px] flex-shrink-0 rounded-none lg:rounded-lg bg-[#E8E8E8] lg:bg-theme-1 leading-7 h-auto lg:h-[370px] p-10 md:px-40 lg:p-7 text-black lg:text-white text-sm md:text-lg text-center lg:text-left shadow-[20px_20px_0px_2px_#E8E8E8]">
             We are a Nigerian construction company aimed at bridging the gap
             between luxury and affordability.
             <br /> <br />

@@ -36,7 +36,7 @@ const DecorImages = () => {
         variants={children}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 1.1 }}
-        className={`absolute z-[3] bg-white left-0 bottom-11 lg:bottom-20 xl:bottom-11 overflow-hidden rounded-3xl border-[5px] lg:border-[10px] border-slate-50 w-[180px] lg:w-[250px] xl:w-[330px] aspect-square`}
+        className={`absolute z-[3] bg-white left-0 bottom-11 lg:bottom-28 xl:bottom-11 overflow-hidden rounded-3xl border-[5px] lg:border-[10px] border-slate-50 w-[180px] lg:w-[250px] xl:w-[330px] aspect-square`}
       >
         <Image
           ref={groupImage}
