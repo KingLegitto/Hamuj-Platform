@@ -198,9 +198,10 @@ const Navbar = () => {
               href={navLink.route}
               setMenuIsVisible={setMenuIsVisible}
               styles={`navLink relative duration-200 border-b-[1px] py-3 last:border-none w-full text-center ${
-                pathname == navLink.route
-                  ? "text-theme-2 font-medium"
-                  : "text-grade-3"
+                  pathname == navLink.route ||
+              pathname.startsWith(`${navLink.route}/`)
+                ? "text-theme-2 font-medium"
+                : "text-grade-3"
               }`}
             >
               {navLink.title}

@@ -128,12 +128,15 @@ const Project  = () => {
         )}
       </div>
 
-      <div className="w-full h-auto lg:h-[calc(100vh-164px)] overflow-scroll mt-2 grid px-5 pb-14 grid-cols-2 lg:grid-cols-4 grid-rows-[repeat(auto-fit,minmax(0px,min-content))] gap-5">
+      <div className="w-full h-auto lg:h-[calc(100vh-164px)] overflow-scroll mt-2 grid px-5 pb-14 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 grid-rows-[repeat(auto-fit,minmax(0px,min-content))] gap-5">
         {projectDetails?.images.map((image, index, imagesArr) => {
           return (
             <div
               key={index}
               className="relative group w-full cursor-pointer aspect-square overflow-hidden"
+              onClick={() => {
+                handleImageViewing(index);
+              }}
             >
               <Image
                 src={urlFor(image.asset).url()}
@@ -142,9 +145,6 @@ const Project  = () => {
                 sizes="(max-width: 1023px) 50vw, (min-width: 1024px) 20vw"
                 onLoad={() => {
                   setLoaderImgs((prev) => prev + 1);
-                }}
-                onClick={() => {
-                  handleImageViewing(index);
                 }}
                 className={`object-cover lg:group-hover:scale-[1.1] z-10 ${loadedImgs === imagesArr.length ? "opacity-100" : "opacity-0"}`}
                 style={{ transition: "transform 0.2s, opacity 1s" }}

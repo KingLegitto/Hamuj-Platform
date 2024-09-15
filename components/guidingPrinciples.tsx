@@ -141,7 +141,7 @@ const GuidingPrinciples: FC = () => {
     <div className={` duration-500 h-[190px] ${activeIndex === 0? 'h-[500px]':'mb-5'} ${activeIndex === 1? 'h-[400px]':'mb-5'} ${activeIndex === 2? 'h-[350px]':'mb-5'}`}>
       <div className="w-full mt-14 text-grade-3 text-sm">
         <h3
-          className={`w-[250px] duration-[0.3s] mx-auto px-5 rounded-3xl text-center text-base py-2 ${activeIndex === 0? 'bg-[#8c8c8c] text-white font-medium ':'shadow-[5px_5px_0px_0px_#e8e8e8] text-grade-3'}`}
+          className={`w-[250px] duration-[0.3s] mx-auto px-5 text-center text-base py-2 ${activeIndex === 0? 'bg-[#8c8c8c] text-white font-medium rounded-2xl':'rounded-3xl shadow-[5px_5px_0px_0px_#e8e8e8] text-grade-3'}`}
           onClick={() => {
             handleActiveIndex(0);
           }}
@@ -170,7 +170,7 @@ const GuidingPrinciples: FC = () => {
 
       <div className="w-full mt-7 text-grade-3 text-sm">
         <h3
-          className={`w-[250px] duration-[0.3s] mx-auto px-5 rounded-3xl text-center text-base py-2 ${activeIndex === 1? 'bg-[#8c8c8c] text-white font-medium ':'shadow-[5px_5px_0px_0px_#e8e8e8] text-grade-3'}`}
+          className={`w-[250px] duration-[0.3s] mx-auto px-5 text-center text-base py-2 ${activeIndex === 1? 'bg-[#8c8c8c] text-white font-medium rounded-2xl':'rounded-3xl shadow-[5px_5px_0px_0px_#e8e8e8] text-grade-3'}`}
           onClick={() => {
             handleActiveIndex(1);
           }}
@@ -199,7 +199,7 @@ const GuidingPrinciples: FC = () => {
 
       <div className="w-full mt-7 text-grade-3 text-sm">
         <h3
-          className={`w-[250px] duration-[0.3s] mx-auto px-5 rounded-3xl text-center text-base py-2 ${activeIndex === 2? 'bg-[#8c8c8c] text-white font-medium ':'shadow-[5px_5px_0px_0px_#e8e8e8] text-grade-3'}`}
+          className={`w-[250px] duration-[0.3s] mx-auto px-5 text-center text-base py-2 ${activeIndex === 2? 'bg-[#8c8c8c] text-white font-medium rounded-2xl':'rounded-3xl shadow-[5px_5px_0px_0px_#e8e8e8] text-grade-3'}`}
           onClick={() => {
             handleActiveIndex(2);
           }}

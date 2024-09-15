@@ -82,19 +82,19 @@ const Properties = () => {
                   {property.address}
                 </h2>
                 <div className="grid grid-cols-[minmax(0px,min-content)_minmax(0,max-content)]">
-                  <span className="border-r-[2px] py-1 pr-3">
+                  <span className="border-r-[2px] py-1 pr-3 text-grade-2">
                     Description
                   </span>
                   <span className="flex items-center pl-3 font-normal">
                     {property.description}
                   </span>
-                  <span className="border-r-[2px] py-1 pr-3">
+                  <span className="border-r-[2px] py-1 pr-3 text-grade-2">
                     Tenure
                   </span>
                   <span className="flex items-center pl-3 font-normal">
                     {property.tenure? property.tenure:'---'}
                   </span>
-                  <span className="border-r-[2px] py-1 pr-3">
+                  <span className="border-r-[2px] py-1 pr-3 text-grade-2">
                     Historical records
                   </span>
                   <div className="flex justify-center flex-col py-1 pl-3 gap-y-2 font-normal" style={{textTransform:'none'}}>
