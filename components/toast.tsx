@@ -67,7 +67,7 @@ const Toast: FC<ToastProps> = ({ setToast, toastDetails }) => {
         </div>
       </motion.div>
 
-      {/* PC TOAST */}
+      {/* PC/TAB TOAST */}
       <motion.div
         whileHover={{ scale: 1.02 }}
         initial={{ x: "100%", opacity: 0 }}
@@ -80,7 +80,7 @@ const Toast: FC<ToastProps> = ({ setToast, toastDetails }) => {
         onClick={() => {
           setToast(false);
         }}
-        className={`hidden md:flex cursor-pointer gap-x-7 items-center fixed z-[100] top-24 right-1 left-1/2 w-[90%] md:w-auto md:max-w-[3/4] lg:max-w-1/2 px-7 h-[100px] rounded-lg bg-white border-l-[10px] border-[1px] shadow-lg ${toastType('bgColor')}`}
+        className={`hidden md:flex cursor-pointer gap-x-7 items-center fixed z-[100] top-24 right-1 left-1/2 w-[90%] md:max-w-[3/4] lg:max-w-1/2 px-7 h-[100px] rounded-lg bg-white border-l-[10px] border-[1px] shadow-lg ${toastType('bgColor')}`}
       >
         {toastType('image')}
         <div className="flex flex-col justify-center">

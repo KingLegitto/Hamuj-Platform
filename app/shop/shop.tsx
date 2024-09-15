@@ -1,8 +1,4 @@
 "use client";
-import TransitionLink from "@/components/pageTransitions/transitionLink";
-import { hyphenate } from "@/utils/hyphenationForRoutes";
-import Filter from "../../assets/vectors/filter.svg";
-import Arrow from "../../assets/vectors/lineArrow.svg";
 import { client, urlFor } from "../../sanityClient";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -85,7 +81,7 @@ const Shop = () => {
         </div>
       </div>
 
-      <section className="w-full pb-7 px-5 lg:px-10 overflow-x-hidden grid grid-cols-2 lg:grid-cols-4 gap-x-5 lg:gap-x-8 gap-y-10 lg:gap-y-14">
+      <section className="w-full pb-7 px-5 md:px-10 lg:px-10 overflow-x-hidden grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-5 lg:gap-x-8 gap-y-10 lg:gap-y-14">
 
         {productsData.map((product, index) => {
           if (filterBox.filter && product.title != filterBox.filter) return;
@@ -110,7 +106,7 @@ const Shop = () => {
                 className={`w-full flex flex-col  gap-y-1 justify-center text-xs md:text-base min-h-14
                 `}
               >
-                <span className="font-medium uppercase text-grade-3">
+                <span className="font-medium capitalize text-grade-3">
                   {product.title}
                 </span>
                 <span className="font-bold text-theme-1">

@@ -83,7 +83,7 @@ const About = () => {
           </span>
         </h2>
 
-        <div className="mt-20 flex flex-col md:flex-row text-sm lg:text-base items-center md:justify-center gap-y-16 md:gap-x-10 mb-20">
+        <div className="mt-20 flex flex-col md:flex-row md:px-5 text-sm lg:text-base items-center md:justify-center gap-y-16 md:gap-x-10 mb-20">
             <div className="relative w-[250px] h-[250px]  md:h-[300px] bg-slate-300">
               <Image src={CEO} alt="" className="object-cover w-full h-full"/>
               <span className="absolute  top-[102%] w-full text-center font-bold text-grade-3 truncate">Idowu Babatunde Toheeb <br /><span className="text-xs lg:text-sm font-medium text-grade-1">Chief Executive Officer</span></span>

@@ -36,15 +36,15 @@ export default function Home() {
       </section>
 
       <section className="relative z-20 pt-top-spacing-s lg:pt-top-spacing max-failsafe">
-        <h2 className="text-center text-2xl lg:text-heading text-grade-3 font-extrabold px-5">
+        <h2 className="text-center text-2xl md:text-3xl lg:text-heading text-grade-3 font-extrabold px-5">
           Timely Luxurious Possibilities
         </h2>
 
-        <div className="flex justify-center h-auto lg:h-[490px] flex-wrap lg:flex-nowrap gap-y-12 lg:gap-x-14 xl:gap-x-24 items-center mt-12 lg:mt-20">
+        <div className="flex justify-center h-auto lg:h-[490px] lg:px-5 flex-wrap lg:flex-nowrap gap-y-12 lg:gap-x-10 xl:gap-x-24 items-center mt-12 lg:mt-20">
 
           <DecorImages />
 
-          <p className="w-full lg:w-[550px] flex-shrink-0 rounded-none lg:rounded-lg bg-[#E8E8E8] lg:bg-theme-1 leading-7 h-auto lg:h-[370px] p-10 lg:p-7 text-black lg:text-white text-sm lg:text-lg text-center lg:text-left shadow-[20px_20px_0px_2px_#E8E8E8]">
+          <p className="w-full lg:w-[550px] flex-shrink-0 rounded-none lg:rounded-lg bg-[#E8E8E8] lg:bg-theme-1 leading-7 h-auto lg:h-[370px] p-10 px-40 lg:p-7 text-black lg:text-white text-sm md:text-lg text-center lg:text-left shadow-[20px_20px_0px_2px_#E8E8E8]">
             We are a Nigerian construction company aimed at bridging the gap
             between luxury and affordability.
             <br /> <br />
@@ -63,11 +63,11 @@ export default function Home() {
       </section>
 
       <section className="pt-top-spacing-s lg:pt-top-spacing relative z-20">
-        <h2 className="text-center text-2xl lg:text-heading text-grade-3 font-bold px-5">
+        <h2 className="text-center text-2xl md:text-3xl lg:text-heading text-grade-3 font-bold px-5">
           Our Business Units
         </h2>
 
-        <div className="mt-10 lg:mt-20 w-[80%] lg:w-full max-w-[1400px] grid grid-cols-1 lg:grid-cols-3 grid-rows-[repeat(auto-fit,minmax(0px,min-content))] gap-y-10 gap-x-9 h-auto px-0 lg:px-16 m-auto">
+        <div className="mt-10 lg:mt-20 w-[80%] md:w-[60%] lg:w-full max-w-[1400px] grid grid-cols-1 lg:grid-cols-3 grid-rows-[repeat(auto-fit,minmax(0px,min-content))] gap-y-10 gap-x-9 h-auto px-0 lg:px-16 m-auto">
           <a href="/shop">
             <div className="h-auto bg-slate-50 py-7 px-3 lg:px-0 shadow-[15px_15px_0px_2px_#E8E8E8] flex flex-col justify-center items-center gap-y-5">
               <Image src={Furniture} height={50} alt="Furniture" />
@@ -113,16 +113,17 @@ export default function Home() {
             </div>
           </a>
 
-          
-            <div className="h-auto bg-slate-50 py-7 px-3 lg:px-0 lg:h-full shadow-[15px_15px_0px_2px_#E8E8E8] flex flex-col justify-center items-center gap-y-5">
-              <Image src={Logo} height={50} alt="Furniture" className="scale-[1.2]"/>
-              <span className="text-lg lg:text-2xl text-[#242424] font-bold">
-                Properties
-              </span>
-              <p className=" text-center text-sm lg:text-base text-grade-2 w-full lg:w-60 px-2 lg:px-0 h-28 lg:h-32 flex items-center">
-                Aside development of properties for individuals (residential & commercial), we also have numbers of our own residential development across Nigeria. 
-              </p>
-            </div>
+            <a href="/properties">
+              <div className="h-auto bg-slate-50 py-7 px-3 lg:px-0 lg:h-full shadow-[15px_15px_0px_2px_#E8E8E8] flex flex-col justify-center items-center gap-y-5">
+                <Image src={Logo} height={50} alt="Furniture" className="scale-[1.2]"/>
+                <span className="text-lg lg:text-2xl text-[#242424] font-bold">
+                  Properties
+                </span>
+                <p className=" text-center text-sm lg:text-base text-grade-2 w-full lg:w-60 px-2 lg:px-0 h-28 lg:h-32 flex items-center">
+                  Aside development of properties for individuals (residential & commercial), we also have numbers of our own residential development across Nigeria. 
+                </p>
+              </div>
+            </a>
           
 
             <div className="h-auto bg-slate-50 py-7 px-3 lg:px-0 lg:h-full shadow-[15px_15px_0px_2px_#E8E8E8] flex flex-col justify-center items-center gap-y-5">
@@ -141,7 +142,7 @@ export default function Home() {
       <section className="relative pt-top-spacing-s lg:pt-top-spacing z-20 lg:px-5 pb-[5rem] lg:pb-top-spacing bg-[#E8E8E8] mt-[10rem] lg:mt-[15rem]">
       <div className="hidden lg:block w-[12rem] h-[4rem] bg-[#E8E8E8] absolute bottom-full right-10" />
       <div className="hidden lg:block w-[10rem] h-[5rem] bg-[#E8E8E8] absolute bottom-[calc(100%+2rem)] right-3/4" />
-        <h2 className="text-center text-2xl lg:text-heading text-grade-3 font-bold px-5 mb-10 lg:mb-0">
+        <h2 className="text-center text-2xl md:text-3xl lg:text-heading text-grade-3 font-bold px-5 mb-10 lg:mb-0">
           Featured Projects
         </h2>
         <Highlights />

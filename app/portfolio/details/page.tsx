@@ -6,6 +6,7 @@ import { dehyphenate } from "@/utils/hyphenationForRoutes";
 import ImagePreloader from "@/components/imagePreloader";
 import { AnimatePresence } from "framer-motion";
 import ImageViewer from "@/components/imageViewer";
+import ExpandIcon from "@/assets/vectors/Expand";
 // import { useSearchParams } from "next/navigation";
 
 interface ProjectDetails {
@@ -92,15 +93,15 @@ const Project  = () => {
           </div>
         )}
 
-        <div className="relative pr-10 border-l-[2px] border-[#f49d02] py-3 pl-3">
+        {(projectDetails?.state) && (<div className="relative pr-10 border-l-[2px] border-[#f49d02] py-3 pl-3">
           <span className="font-medium text-sm lg:text:base text-grade-2">
             Location:
           </span>{" "}
           <br />
           <span className="text-lg lg:text-xl font-medium">
-            {projectDetails?.area}, {projectDetails?.state}
+            {projectDetails.area? `${projectDetails.area}, ${projectDetails.state}` : projectDetails.state}
           </span>
-        </div>
+        </div>)}
 
         {projectDetails?.completionDate && (
           <div className="relative pr-10 border-l-[2px] border-[#f49d02] py-3 pl-3">
@@ -145,12 +146,16 @@ const Project  = () => {
                 onClick={() => {
                   handleImageViewing(index);
                 }}
-                className={`object-cover group-hover:scale-[1.1] z-10 ${loadedImgs === imagesArr.length ? "opacity-100" : "opacity-0"}`}
+                className={`object-cover lg:group-hover:scale-[1.1] z-10 ${loadedImgs === imagesArr.length ? "opacity-100" : "opacity-0"}`}
                 style={{ transition: "transform 0.2s, opacity 1s" }}
               />
+              <div className="bg-[#0000000c] z-20 rounded-sm absolute right-2 bottom-2 lg:right-3 lg:bottom-3 scale-[1.2] lg:scale-[1.5]">
+                <ExpandIcon />
+              </div>
               <AnimatePresence>
                 {!(loadedImgs === imagesArr.length) && <ImagePreloader />}
               </AnimatePresence>
+
             </div>
           );
         })}

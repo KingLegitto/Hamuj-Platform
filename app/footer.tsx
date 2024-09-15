@@ -3,14 +3,12 @@
 import TransitionLink from "@/components/pageTransitions/transitionLink";
 import Image from "next/image";
 import Link from "next/link";
-// import Whatsapp from "../assets/vectors/whatsapp.svg";
-// import Youtube from "../assets/vectors/youTube.svg";
+import Whatsapp from "../assets/vectors/whatsapp.svg";
+import Youtube from "../assets/vectors/youTube.svg";
 import Instagram from "../assets/vectors/instagram.svg";
 import Facebook from "../assets/vectors/facebook.svg";
 import TikTok from "../assets/vectors/tikTok.svg";
 import { useEffect, useState } from "react";
-import Whatsapp from "@/assets/vectors/Whatsapp";
-import YouTube from "@/assets/vectors/YouTube";
 
 const footerLinksData = [
   {
@@ -89,15 +87,15 @@ const Footer = () => {
         <TransitionLink href={"/"}>Testimonials</TransitionLink> •
         <TransitionLink href={"/contact"}>Location</TransitionLink>
       </span>
-      <span className="flex gap-x-6 md:gap-x-4 scale-110 md:scale-100 absolute top-[45%] md:top-1/2 -translate-y-1/2 right-1/2 md:right-5 translate-x-1/2 md:translate-x-0 text-white text-xs md:text-sm">
+      <span className="flex items-center gap-x-6 md:gap-x-4 scale-110 md:scale-100 absolute top-[45%] md:top-1/2 -translate-y-1/2 right-1/2 md:right-5 translate-x-1/2 md:translate-x-0 text-white text-xs md:text-sm">
         <Link href={footerLinks("fb")} target="_blank">
           <Image src={Facebook} alt="facebook icon" />
         </Link>
         <Link href={footerLinks('whatsapp')} target="_blank">
-          <Whatsapp />
+          <Image src={Whatsapp} alt="whatsapp icon" />
         </Link>
         <Link href={footerLinks('yt')} target="_blank">
-          <YouTube />
+          <Image src={Youtube} alt="youtube icon" />
         </Link>
         <Link href={footerLinks("ig")} target="_blank">
           <Image src={Instagram} alt="instagram icon" />

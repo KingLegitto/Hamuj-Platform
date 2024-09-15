@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { urlFor } from "../../sanityClient";
 import Toast from "@/components/toast";
+import RoundArrow from "@/assets/vectors/RoundArrow";
 
 interface ProductDetailsProps {
   product: {
@@ -32,6 +33,7 @@ const ProductDetails: FC<ProductDetailsProps> = ({ product, setDetails }) => {
     result: false,
     message: "",
   });
+  const [activeImage, setActiveImage] = useState<number>(0)
 
   useEffect(() => {
     if (main.current) {
@@ -73,28 +75,51 @@ const ProductDetails: FC<ProductDetailsProps> = ({ product, setDetails }) => {
           animate={{ y: 0, transition: { duration: 0.5 } }}
           exit={{ y: "100%", transition: { duration: 0.5 } }}
           drag="y"
-          dragConstraints={{ top: -(mainHeight - 525) }}
+          dragConstraints={{ top: -(mainHeight - 540) }}
           dragElastic={0}
           dragMomentum={false}
           onDragEnd={() => handleDragEnd()}
-          className="absolute w-full lg:w-[1000px] top-[calc(100dvh-525px)] lg:top-[calc(100vh-505px)] left-1/2 rounded-t-3xl overflow-hidden grid grid-cols-1 lg:grid-cols-2 gap-x-10 bg-[#f5f5f5] p-7"
+          className="absolute w-full lg:w-[1000px] top-[calc(100dvh-540px)] lg:top-[calc(100vh-505px)] left-1/2 rounded-t-3xl overflow-hidden grid grid-cols-1 lg:grid-cols-2 gap-x-10 bg-[#f5f5f5] p-7 md:pt-14"
         >
           <div className="lg:hidden absolute top-4 left-1/2 -translate-x-1/2 rounded-full w-1/5 lg:w-16 h-1 bg-[#8c8c8c]" />
 
-          <div className="relative w-full aspect-square overflow-hidden border-x-[10px] lg:border-x-[0px] border-t-[10px] lg:border-t-[10px] lg:border-l-[10px] border-[#f5f5f5]">
+          <div className="relative w-full md:w-[500px] lg:w-full aspect-square mx-auto overflow-hidden border-x-[10px] lg:border-x-[0px] border-t-[10px] lg:border-t-[10px] lg:border-l-[10px] border-[#f5f5f5]">
             <Image
-              src={urlFor(product.images[0].asset).url()}
-              alt={product.images[0].alt}
+              src={urlFor(product.images[activeImage].asset).url()}
+              alt={product.images[activeImage].alt}
               fill
               sizes="(max-width: 1023px) 95vw, (min-width: 1024px) 33vw"
-              className={`object-cover group-hover:lg:scale-[1.05] duration-500 rounded-tl-3xl rounded-3xl rounded-tr-3xl lg:rounded-tl-3xl`}
+              className={`object-cover group-hover:lg:scale-[1.05] duration-500 rounded-3xl`}
             />
           </div>
 
           <div className="w-full pt-6 lg:pt-10 flex flex-col gap-y-4 lg:gap-y-5">
-            <div className="uppercase text-base lg:text-xl font-medium text-grade-3 text-center lg:text-left">
+            <div className="capitalize text-base lg:text-xl font-medium text-grade-3 text-center lg:text-left">
               {product.title}
             </div>
+
+            {product.images.length > 1 && (<div className="relative w-full">
+              <RoundArrow className="absolute -left-4 top-1/2 -translate-y-1/2" fill="#656565"/>
+              <RoundArrow className="absolute -right-4 top-1/2 -translate-y-1/2 rotate-180" fill="#656565"/>
+            
+              <div className="relative flex w-full overflow-scroll snap-mandatory touch-pan-x snap-x gap-x-3 p-1">
+                {product.images.map((image, index)=>{
+                  return(
+                    <motion.div key={index} whileTap={{scale: 0.9}}
+                    className={`relative snap-start last:snap-center cursor-pointer touch-pan-x flex-shrink-0 w-20 aspect-square bg-[#e8e8e8] border-[#404040] ${index===activeImage? 'border-[3px]':''} overflow-hidden rounded-lg`}
+                    onTap={()=>{setActiveImage(index)}}>
+                      <Image
+                        src={urlFor(image.asset).url()}
+                        alt={image.alt}
+                        fill
+                        className="object-cover"
+                      />
+                    </motion.div>
+                  )
+                })}
+                
+              </div>
+            </div>)}
 
             <div
               className="w-3/4 h-[1px] mx-auto rounded-full translate-y-1"
@@ -143,10 +168,7 @@ const ProductDetails: FC<ProductDetailsProps> = ({ product, setDetails }) => {
                 DESCRIPTION
               </span>
               <p className=" hyphens-auto">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-                repellat, illum possimus harum, nam ullam quasi culpa hic,
-                libero quisquam minima modi doloremque magni atque iure
-                reprehenderit praesentium necessitatibus. Iste.
+                {product.description? product.description:'-----'}
               </p>
             </div>
           </div>

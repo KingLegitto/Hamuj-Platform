@@ -146,7 +146,7 @@ const Highlights: FC = () => {
                 <span className="font-bold text-lg lg:text-xl truncate max-w-[70%]">
                   {project.title}
                 </span>
-                <span className="text-xs md:text-base">{project.area}, {project.state}</span>
+                <span className="text-xs md:text-base">{project.area? `${project.area}, ${project.state}` : project.state}</span>
                 <TransitionLink
                   href={`portfolio/details?id=${hyphenate(project.title)}`}
                   styles={`absolute flex gap-x-2 items-center top-1/2 -translate-y-1/2 right-5 cursor-pointer text-xs md:text-base ${index === activeProject ? "block" : "hidden"}`}

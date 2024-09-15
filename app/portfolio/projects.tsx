@@ -62,14 +62,14 @@ const Projects = () => {
         </div>
     </div>
 
-    <section className="w-full pb-20 px-7 lg:px-10 overflow-x-hidden grid grid-cols-1 lg:grid-cols-3 gap-x-8 gap-y-14">
+    <section className="w-full pb-20 px-7 lg:px-10 overflow-x-hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-14">
 
       {projectsData.map((project, index) => {
         if(project.projectType !== projectType) return
         return (
           <TransitionLink
             key={index}
-            href={`portfolio/details?id=${hyphenate(project.title)}`}
+            href={`/portfolio/details?id=${hyphenate(project.title)}`}
             styles={`w-full h-[300px] group flex-shrink-0 relative overflow-hidden rounded-xl shadow-[15px_15px_0px_2px_#0000001A] lg:shadow-[17px_17px_0px_2px_#0000001A] duration-300 cursor-pointer bg-[#505050]`}
           >
             <Image
@@ -87,7 +87,7 @@ const Projects = () => {
                 {project.title}
               </span>
               <span className="text-xs md:text-base truncate max-w-[90%]">
-                {project.area}, {project.state}
+                {project.area? `${project.area}, ${project.state}` : project.state}
               </span>
               <Image
                 src={Arrow}

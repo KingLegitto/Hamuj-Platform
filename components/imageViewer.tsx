@@ -70,7 +70,7 @@ const ImageViewer: FC<ImageViewerProps> = ({
   }
 
   return (
-    <div ref={scrollBox} onScroll={checkScrollBox} className="fixed flex w-screen h-dvh z-[99] overflow-scroll snap-mandatory snap-x bg-[#0000007c]">
+    <div ref={scrollBox} onScroll={checkScrollBox} className="fixed top-0 flex w-screen h-dvh z-[99] overflow-scroll snap-mandatory snap-x bg-[#0000007c]">
       <button
         className="fixed cursor-pointer top-1/2 -translate-y-1/2 left-0 z-30 px-2 py-5 lg:p-3 bg-[#00000040] backdrop-blur-sm group"
         ref={left}
@@ -102,7 +102,7 @@ const ImageViewer: FC<ImageViewerProps> = ({
               alt="showcase image"
               fill
               sizes="(max-width: 1023px) 95vw, (min-width: 1024px) 90vw"
-              className="z-20 max-w-[95%] lg:max-w-[90%] max-h-[60%] lg:max-h-full object-contain m-auto"
+              className="z-20 lg:max-w-[90%] max-h-[60%] lg:max-h-full object-contain m-auto"
             />
           </div>
         );

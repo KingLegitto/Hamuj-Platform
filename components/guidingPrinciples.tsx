@@ -33,7 +33,7 @@ const GuidingPrinciples: FC = () => {
     }
   }
 
-  return screenWidth >= 768 ? (
+  return screenWidth > 768 ? (
     <div className="h-[500px] flex flex-col mt-32">
       <div className="h-20 grid grid-cols-3">
         <div

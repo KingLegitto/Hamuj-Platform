@@ -17,6 +17,7 @@ const routes = [
   { title: "Home", route: "/" },
   { title: "About", route: "/about" },
   { title: "Shop", route: "/shop" },
+  { title: "Properties", route: "/properties" },
   { title: "Portfolio", route: "/portfolio" },
   { title: "Contact", route: "/contact" },
   { title: "Consultation", route: "/consultation" },
@@ -25,6 +26,7 @@ const routes = [
 const Navbar = () => {
   const [isAtPageTop, setIsAtPageTop] = useState<boolean>(true);
   const [menuIsVisible, setMenuIsVisible] = useState<boolean>(false);
+  const [allowInteraction, setAllowInteraction] = useState(true)
   const pathname = usePathname();
   const [region, setRegion] = useState<string | null>()
   const [isRegionVisible, setIsRegionVisible] = useState<boolean>(false)
@@ -36,6 +38,9 @@ const Navbar = () => {
     setRegion(sessionStorage.getItem('region'))
     document.addEventListener("scroll", handleNavBg);
     handleNavBg();
+
+    console.log("If you made it here then you're probably a developer too. \n\nYes I designed and developed this site from scratch 😊. \n\nYou can reach out to me using the details below ↓",
+      "\n\nEmail: nikechukwumene@gmail.com | portfolio: https://enenike.vercel.app")
   }, []);
 
   function handleNavBg() {
@@ -46,13 +51,19 @@ const Navbar = () => {
     }
     
     if(window.scrollY >= 50 && !(sessionStorage.getItem('region'))){
+      setAllowInteraction(false)
       setIsRegionVisible(true)
+      setTimeout(() => {
+        setAllowInteraction(true)
+      }, 1200);
     }
   }
 
   function handleDragEnd(distance:number){
     if(distance > 150){
-      setIsRegionVisible(false)
+      // setIsRegionVisible(false)
+      region?
+        setIsRegionVisible(false) : (setIsRegionVisible(false), setRegion('NG'),sessionStorage.setItem('region', 'NG'))
     }
   }
 
@@ -218,7 +229,7 @@ const Navbar = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: (isAtPageTop && !isRegionVisible) ? 0 : 0.5 }}
             exit={{ opacity: 0 }}
-            className={`absolute ${isRegionVisible? 'top-0':'top-full'} h-dvh w-screen bg-black touch-none`}
+            className={`absolute ${isRegionVisible? 'top-0':'top-full'} h-lvh w-screen bg-black touch-none ${allowInteraction? '':'pointer-events-none'}`}
             onClick={() => {
               setMenuIsVisible(false);
               region?
@@ -256,7 +267,7 @@ const Navbar = () => {
           {/* PHONE VERSION */}
         <motion.section drag='y' dragConstraints={{top: 0}} dragElastic={{top: 0, bottom: 0.5}} dragSnapToOrigin onDragEnd={(e,info)=>(handleDragEnd(info.offset.y))} 
         onClick={(e)=>{e.stopPropagation()}} initial={{y: '100%'}} animate={{y:0, transition:{delay: 0.3, duration: 0.7}}} exit={{y: '100%', transition:{delay: 0, duration:0.5}}}
-        className="md:hidden fixed z-[100] bottom-0 flex flex-col touch-none h-[calc(100dvh-100px)] w-full text-sm text-grade-3 font-normal px-7 pt-10 pb-9 rounded-t-2xl bg-slate-50">
+        className={`md:hidden fixed z-[100] bottom-0 flex flex-col touch-none h-[calc(100dvh-100px)] w-full text-sm text-grade-3 font-normal px-7 pt-10 pb-9 rounded-t-2xl bg-slate-50 ${allowInteraction? '':'pointer-events-none'}`}>
           
           <div className="absolute top-3 left-1/2 -translate-x-1/2 rounded-full w-1/5 h-1 bg-[#8c8c8c]"/>
 

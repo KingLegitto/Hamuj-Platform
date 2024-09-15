@@ -57,6 +57,7 @@ export const projects = defineType({
     defineField({
       name: "completionDate",
       type: "string",
+      description: 'For consistency use this format: mm-yy'
     }),
     defineField({
       name: "highlight",
@@ -95,8 +96,8 @@ export const projects = defineType({
     prepare(selection) {
       const { title, projectType, media } = selection;
       return {
-        title: title ? title : "Untitled",
-        subtitle: projectType ? projectType : "---",
+        title: title || "Untitled",
+        subtitle: projectType || "---",
         media: media,
       };
     },

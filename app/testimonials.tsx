@@ -75,7 +75,7 @@ const Testimonials = () => {
 
   return (
     <section className="relative w-full max-failsafe pt-16 pb-10 lg:pt-28 lg:pb-10 overflow-hidden">
-      <h2 className="relative text-center text-2xl lg:text-heading text-grade-3 z-20 font-bold px-5 mb-0">
+      <h2 className="relative text-center md:text-3xl text-2xl lg:text-heading text-grade-3 z-20 font-bold px-5 mb-0">
         Client Testimonials
       </h2>
 

@@ -36,9 +36,7 @@ const DecorImages = () => {
         variants={children}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 1.1 }}
-        drag
-        dragSnapToOrigin
-        className={`absolute z-[3] bg-white left-0 bottom-11 overflow-hidden rounded-3xl border-[5px] lg:border-[10px] border-slate-50 w-[180px] lg:w-[330px] aspect-square cursor-move`}
+        className={`absolute z-[3] bg-white left-0 bottom-11 lg:bottom-20 xl:bottom-11 overflow-hidden rounded-3xl border-[5px] lg:border-[10px] border-slate-50 w-[180px] lg:w-[250px] xl:w-[330px] aspect-square`}
       >
         <Image
           ref={groupImage}
@@ -53,7 +51,7 @@ const DecorImages = () => {
         variants={children}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 1.1 }}
-        className="absolute z-[2] bg-white top-0 right-10 overflow-hidden rounded-3xl border-[5px] lg:border-[10px] border-slate-50 w-[150px] lg:w-[280px] aspect-square"
+        className="absolute z-[2] bg-white top-0 right-10 overflow-hidden rounded-3xl border-[5px] lg:border-[10px] border-slate-50 w-[150px] lg:w-[200px] xl:w-[280px] aspect-square"
       >
         <Image
           src={Img2}
@@ -67,7 +65,7 @@ const DecorImages = () => {
         variants={children}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 1.1 }}
-        className="absolute z-[1] bg-white right-0 bottom-0 overflow-hidden rounded-3xl border-[5px] lg:border-[10px] border-slate-50 w-[100px] lg:w-[150px] aspect-square"
+        className="absolute z-[1] bg-white right-0 bottom-0 overflow-hidden rounded-3xl border-[5px] lg:border-[10px] border-slate-50 w-[100px] lg:w-[125px] xl:w-[150px] aspect-square"
       >
         <Image
           src={Img3}
@@ -76,13 +74,13 @@ const DecorImages = () => {
         />
       </motion.div>
 
-      <motion.div
+      {/* <motion.div
         initial={{ opacity: 0, scale: 0 }}
         variants={children}
         className={`absolute z-[2] bg-white left-0 lg:left-12 top-[40%] lg:top-[45%] -translate-y-1/2 text-center text-xs lg:text-base text-grade-2 rounded-3xl lg:px-3 py-3 lg:py-5 w-[180px] lg:w-fit h-auto font-medium`}
       >
         Designed & Developed by <br /> <span className="text-sm lg:text-base font-bold text-grade-3">King Legitto</span> 
-      </motion.div>
+      </motion.div> */}
     </motion.div>
   );
 };

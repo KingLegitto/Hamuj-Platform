@@ -35,7 +35,7 @@ const Contact = () => {
       </section>
 
       <section className="pt-[5rem] md:pt-top-spacing grid grid-cols-1 md:grid-cols-[42.5%_52.5%] gap-x-[5%] mb-[5rem]">
-        <div className="flex flex-col gap-y-10 lg:gap-y-14 pl-7 pr-7 md:pl-20 md:pr-0 text-base">
+        <div className="flex flex-col gap-y-10 lg:gap-y-14 pl-7 pr-7 lg:pl-20 md:pr-0 text-base">
           <div className="flex flex-col gap-y-3">
             <span className="font-medium text-grade-3 text-lg lg:text-xl">Whatsapp</span>
             <span className="text-grade-1 font-medium">
