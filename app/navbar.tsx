@@ -13,11 +13,27 @@ import { AnimatePresence, motion } from "framer-motion";
 import NigeriaFlag from "@/assets/vectors/NigeriaFlag";
 import UKFlag from "@/assets/vectors/UKFlag";
 
-const routes = [
+const desktopRoutes = [
+  { title: "Home", route: "/" },
+  { title: "About", route: "/about" },
+  { title: "Shop", route: "/shop" },
+  { title: "Services", route: "/" },
+  { title: "Portfolio", route: "/portfolio" },
+  { title: "Contact", route: "/contact" },
+];
+
+const subMenuRoutes = [
+  { title: "Properties", route: "/properties" },
+  { title: "HMOs", route: "/hmos" },
+  { title: "Consultation", route: "/consultation" },
+]
+
+const mobileRoutes = [
   { title: "Home", route: "/" },
   { title: "About", route: "/about" },
   { title: "Shop", route: "/shop" },
   { title: "Properties", route: "/properties" },
+  { title: "HMOs", route: "/hmos" },
   { title: "Portfolio", route: "/portfolio" },
   { title: "Contact", route: "/contact" },
   { title: "Consultation", route: "/consultation" },
@@ -30,6 +46,7 @@ const Navbar = () => {
   const pathname = usePathname();
   const [region, setRegion] = useState<string | null>()
   const [isRegionVisible, setIsRegionVisible] = useState<boolean>(false)
+  const [subMenu, setSubMenu] = useState(false)
   const date = new Date()
 
 
@@ -113,15 +130,32 @@ const Navbar = () => {
 
   return (
     <>
-    <nav
+    <motion.nav onHoverEnd={()=>{setSubMenu(false)}}
       className={`duration-300 flex group w-full z-[90] fixed justify-center items-center gap-x-14 text-white ${
         isAtPageTop && !pathname.startsWith("/portfolio/")
           ? "lg:hover:bg-theme-1 h-20 lg:backdrop-blur-sm"
           : "bg-theme-1 h-14 lg:h-16"
       }`}
     >
-      {routes.map((navLink) => {
-        return (
+      {desktopRoutes.map((navLink) => {
+        if(navLink.title === 'Services'){
+          return(
+            <motion.span className={`navLink relative duration-200 hidden lg:inline ${
+              pathname == navLink.route ||
+              pathname.startsWith(`${navLink.route}/`)
+                ? "text-theme-2 font-medium"
+                : "text-white"
+            }`} onHoverStart={()=>{setSubMenu(true)}}>
+              {navLink.title}
+              <div
+              className={`w-0 h-[1px] duration-300 rounded-full absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1 scale-105 link-underline ${
+                pathname == navLink.route ? "opacity-0" : "bg-[#ffffff90]"
+              }`}
+            />
+            </motion.span>
+          )
+        }
+        else return (
           <TransitionLink
             key={navLink.title}
             href={navLink.route}
@@ -185,13 +219,42 @@ const Navbar = () => {
         <span className="uppercase">{region}</span>
       </button>
 
+        {/* Submenu for services */}
+      {subMenu && (
+        <motion.div initial={{opacity: 0, y: '-20%'}} animate={{opacity: 1, y: 0, transition: {duration: 0.3}}}
+      className="absolute top-full left-0 bg-white w-screen py-5 flex justify-center gap-x-14">
+        {subMenuRoutes.map((navLink)=>{
+          return(
+            <TransitionLink
+              key={navLink.title}
+              href={navLink.route}
+              styles={`navLink relative duration-200 hidden lg:inline ${
+                pathname == navLink.route ||
+                pathname.startsWith(`${navLink.route}/`)
+                  ? "text-theme-2 font-medium"
+                  : "text-black"
+              }`}
+            >
+              {navLink.title}
+              <div
+              className={`w-0 h-[1px] duration-300 rounded-full absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1 scale-105 link-underline ${
+                pathname == navLink.route ? "opacity-0" : "bg-[#00000090]"
+              }`}
+            />
+            </TransitionLink>
+          )
+        })}
+      </motion.div>)}
+      
+      
+      
       {/* Mobile nav */}
       <aside
         className={`absolute lg:hidden duration-500 top-full pt-5 right-0 z-50 bg-white w-3/4 flex flex-col items-center text-sm touch-none shadow-lg ${
           menuIsVisible ? "translate-x-0 " : "translate-x-full "
         } ${isAtPageTop ? "rounded-l-lg h-[calc(100dvh-80px)]" : "h-[calc(100dvh-56px)]"}`}
       >
-        {routes.map((navLink) => {
+        {mobileRoutes.map((navLink) => {
           return (
             <TransitionLink
               key={navLink.title}
@@ -240,7 +303,7 @@ const Navbar = () => {
           />
         )}
       </AnimatePresence>
-    </nav>
+    </motion.nav>
 
     {/* Region element */}
     <AnimatePresence>

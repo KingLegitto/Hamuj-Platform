@@ -7,7 +7,8 @@ import HeroBg_3 from "../public/rasters/hero3.webp";
 import Furniture from "../public/vectors/furniture.svg";
 import Interiors from "../public/vectors/interiors.svg";
 import Construction from "../assets/vectors/construction.svg"
-import Shortlets from "../public/vectors/real-estate.svg";
+import Shortlets from "../assets/vectors/shortlets.svg";
+import HMO from "../assets/vectors/real-estate.svg";
 import DecorImages from "./decorImages";
 import Hero from "./landingHero";
 import Highlights from "./projectHighlights";
@@ -74,7 +75,7 @@ export default function Home() {
               <span className="text-lg lg:text-2xl text-[#242424] font-bold">
                 Furniture
               </span>
-              <p className=" text-center text-sm lg:text-base text-grade-2 w-full lg:w-60 px-2 lg:px-0 h-28 lg:h-32 flex items-center">
+              <p className="-mt-3 lg:mt-0 text-center text-sm lg:text-base text-grade-2 w-full lg:w-60 px-2 lg:px-0 h-28 lg:h-32 flex items-center">
                 Design, manufacture, restoration, custom solutions, expert
                 craftsmanship and delivery of high-quality furniture for
                 residential and commercial spaces.
@@ -106,7 +107,7 @@ export default function Home() {
               <span className="text-lg lg:text-2xl text-[#242424] font-bold">
                 Construction
               </span>
-              <p className=" text-center text-sm lg:text-base text-grade-2 w-full lg:w-60 px-2 lg:px-0 h-24 lg:h-32 flex items-center">
+              <p className="-mt-5 lg:mt-0 text-center text-sm lg:text-base text-grade-2 w-full lg:w-60 px-2 lg:px-0 h-24 lg:h-32 flex items-center">
                 Property development, repair, and renovations for
                 residential and commercial structures.
               </p>
@@ -119,7 +120,7 @@ export default function Home() {
                 <span className="text-lg lg:text-2xl text-[#242424] font-bold">
                   Properties
                 </span>
-                <p className=" text-center text-sm lg:text-base text-grade-2 w-full lg:w-60 px-2 lg:px-0 h-28 lg:h-32 flex items-center">
+                <p className="-mt-3 lg:mt-0 text-center text-sm lg:text-base text-grade-2 w-full lg:w-60 px-2 lg:px-0 h-28 lg:h-32 flex items-center">
                   Aside development of properties for individuals (residential & commercial), we also have numbers of our own residential development across Nigeria. 
                 </p>
               </div>
@@ -127,14 +128,26 @@ export default function Home() {
           
 
             <div className="h-auto bg-slate-50 py-7 px-3 lg:px-0 lg:h-full shadow-[15px_15px_0px_2px_#E8E8E8] flex flex-col justify-center items-center gap-y-5">
-              <Image src={Shortlets} height={50} alt="Furniture svg icon" />
+              <Image src={Shortlets} className="scale-[1.3]" alt="Furniture svg icon" />
               <span className="text-lg lg:text-2xl text-[#242424] font-bold">
                 Shortlets
               </span>
-              <p className=" text-center text-sm lg:text-base text-grade-2 w-full lg:w-60 px-2 lg:px-0 h-28 lg:h-32 flex items-center">
+              <p className="-mt-5 lg:mt-0 text-center text-sm lg:text-base text-grade-2 w-full lg:w-60 px-2 lg:px-0 h-28 lg:h-32 flex items-center">
                 We have created magical spaces to spark love, joy, happiness and reunion between you and your loved ones. We would love to host you.
               </p>
             </div>
+
+            <a href="/hmo">
+              <div className="h-auto bg-slate-50 py-7 px-3 lg:px-0 lg:h-full shadow-[15px_15px_0px_2px_#E8E8E8] flex flex-col justify-center items-center gap-y-5">
+                <Image src={HMO} height={50} alt="Furniture"/>
+                <span className="text-lg lg:text-2xl text-[#242424] font-bold">
+                  HMO
+                </span>
+                <p className="-mt-5 lg:mt-0 text-center text-sm lg:text-base text-grade-2 w-full lg:w-60 px-2 lg:px-0 h-28 lg:h-32 flex items-center">
+                  We specialize in beautiful, budget-friendly homes for professionals and Long-term, lucrative returns for our partners
+                </p>
+              </div>
+            </a>
           
         </div>
       </section>
@@ -154,9 +167,9 @@ export default function Home() {
         <h2 className="text-center text-[25px] lg:text-[32px] text-white font-bold">
           Let's create together
         </h2>
-        <button className="text-white font-bold rounded-xl w-44 h-12 border-white duration-300 hover:shadow-[0px_0px_3px_3px_#ffffff50] border-2">
-          Contact Us
-        </button>
+        <a href="/consultation" className="text-white font-bold rounded-xl w-44 h-12 border-white duration-300 hover:shadow-[0px_0px_3px_3px_#ffffff50] border-2">
+          Get started
+        </a>
         <div className=" bg-white h-[2px] rounded-full w-full lg:w-1/2 opacity-70" />
       </section>
     </main>
