@@ -137,7 +137,7 @@ export default function Home() {
               </p>
             </div>
 
-            <a href="/hmo">
+            <a href="/hmos">
               <div className="h-auto bg-slate-50 py-7 px-3 lg:px-0 lg:h-full shadow-[15px_15px_0px_2px_#E8E8E8] flex flex-col justify-center items-center gap-y-5">
                 <Image src={HMO} height={50} alt="Furniture"/>
                 <span className="text-lg lg:text-2xl text-[#242424] font-bold">
