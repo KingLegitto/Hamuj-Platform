@@ -141,15 +141,14 @@ const Navbar = () => {
         if(navLink.title === 'Services'){
           return(
             <motion.span className={`navLink relative duration-200 hidden lg:inline ${
-              pathname == navLink.route ||
-              pathname.startsWith(`${navLink.route}/`)
+              ((pathname === '/hmos') || (pathname === '/properties') || (pathname === '/consultation')) 
                 ? "text-theme-2 font-medium"
                 : "text-white"
             }`} onHoverStart={()=>{setSubMenu(true)}}>
               {navLink.title}
               <div
-              className={`w-0 h-[1px] duration-300 rounded-full absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1 scale-105 link-underline ${
-                pathname == navLink.route ? "opacity-0" : "bg-[#ffffff90]"
+              className={`h-[1px] duration-300 rounded-full absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1 scale-105 link-underline ${
+                subMenu ? "w-full bg-[#ffffff90]" : "w-0"
               }`}
             />
             </motion.span>
@@ -159,14 +158,14 @@ const Navbar = () => {
           <TransitionLink
             key={navLink.title}
             href={navLink.route}
-            styles={`navLink relative duration-200 hidden lg:inline ${
+            styles={`navLink relative duration-200 hidden lg:inline`}
+          >
+            <motion.span className={`${
               pathname == navLink.route ||
               pathname.startsWith(`${navLink.route}/`)
                 ? "text-theme-2 font-medium"
                 : "text-white"
-            }`}
-          >
-            {navLink.title}
+            }`} onHoverStart={()=>{setSubMenu(false)}}>{navLink.title}</motion.span>
             {/* Underline element effect */}
             <div
               className={`w-0 h-[1px] duration-300 rounded-full absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1 scale-105 link-underline ${
@@ -220,31 +219,33 @@ const Navbar = () => {
       </button>
 
         {/* Submenu for services */}
+        <AnimatePresence>
       {subMenu && (
-        <motion.div initial={{opacity: 0, y: '-20%'}} animate={{opacity: 1, y: 0, transition: {duration: 0.3}}}
-      className="absolute top-full left-0 bg-white w-screen py-5 flex justify-center gap-x-14">
+        <motion.div initial={{opacity: 0, y: '-20%'}} animate={{opacity: 1, y: 0, transition: {duration: 0.3}}} exit={{opacity: 0, transition: {duration: 0.3}}}
+        className="absolute top-full left-0 bg-white shadow-md w-screen py-5 flex justify-center gap-x-14">
         {subMenuRoutes.map((navLink)=>{
           return(
             <TransitionLink
-              key={navLink.title}
+            key={navLink.title}
               href={navLink.route}
               styles={`navLink relative duration-200 hidden lg:inline ${
                 pathname == navLink.route ||
                 pathname.startsWith(`${navLink.route}/`)
                   ? "text-theme-2 font-medium"
                   : "text-black"
-              }`}
-            >
+                }`}
+                >
               {navLink.title}
               <div
               className={`w-0 h-[1px] duration-300 rounded-full absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1 scale-105 link-underline ${
                 pathname == navLink.route ? "opacity-0" : "bg-[#00000090]"
               }`}
-            />
+              />
             </TransitionLink>
           )
         })}
       </motion.div>)}
+        </AnimatePresence>
       
       
       

@@ -15,26 +15,26 @@ const HMO = () => {
             <div className="relative px-4 lg:px-14 text-white text-sm lg:text-base group shadow-[10px_10px_0px_2px_#E8E8E8] lg:shadow-[15px_15px_0px_2px_#E8E8E8] w-full h-56 lg:h-80 flex flex-col justify-center items-center gap-2 lg:gap-y-3 overflow-hidden">
                 <Image src={Landlord} alt="img" fill className=" object-cover brightness-50 lg:group-hover:scale-110 duration-500"/>
                 <span className="relative font-medium text-xl lg:text-3xl z-10">LANDLORDS</span>
-                <p className="relative z-10 text-center leading-[1.3]">HMO owner looking to transform and maximize your propery's value and potential? We have you covered.</p>
-                <TransitionLink href="/hmo/landlords"><button className=" mt-3 bg-theme-1 relative z-10 w-[230px] py-2 outline outline-1 outline-white">Explore</button></TransitionLink>
+                <p className="relative z-10 text-center font-normal leading-[1.3]">HMO owner looking to transform and maximize your propery's value and potential? We have you covered.</p>
+                <TransitionLink href="/hmos/landlords"><button className=" mt-3 bg-theme-1 relative z-10 w-[200px] lg:w-[230px] rounded-lg py-1 lg:py-2 outline outline-1 outline-white">Explore</button></TransitionLink>
             </div>
             <div className="relative px-4 lg:px-14 text-white text-sm lg:text-base group shadow-[10px_10px_0px_2px_#E8E8E8] lg:shadow-[15px_15px_0px_2px_#E8E8E8] w-full h-56 lg:h-80 flex flex-col justify-center items-center gap-2 lg:gap-y-3 overflow-hidden">
                 <Image src={Investors} alt="img" fill className=" object-cover brightness-50 lg:group-hover:scale-110 duration-500"/>
                 <span className="relative font-medium text-xl lg:text-3xl z-10">INVESTORS</span>
-                <p className="relative z-10 text-center leading-[1.3]">HMO owner looking to transform and maximize your propery's value and potential? We have you covered.</p>
-                <button className=" mt-3 bg-theme-1 relative z-10 w-3/4 py-2 outline outline-1 outline-white">Explore</button>
+                <p className="relative z-10 text-center font-normal leading-[1.3]">HMO owner looking to transform and maximize your propery's value and potential? We have you covered.</p>
+                <button className=" mt-3 bg-theme-1 relative z-10 w-[200px] lg:w-[230px] py-1 lg:py-2 rounded-lg outline outline-1 outline-white">Explore</button>
             </div>
             <div className="relative px-4 lg:px-14 text-white text-sm lg:text-base group shadow-[10px_10px_0px_2px_#E8E8E8] lg:shadow-[15px_15px_0px_2px_#E8E8E8] w-full h-56 lg:h-80 flex flex-col justify-center items-center gap-2 lg:gap-y-3 overflow-hidden">
                 <Image src={COR} alt="img" fill className=" object-cover brightness-50 lg:group-hover:scale-110 duration-500"/>
                 <span className="relative font-medium text-xl lg:text-3xl z-10 text-center leading-[1]">CORPORATE ACCOMMODATIONS</span>
-                <p className="relative z-10 text-center leading-[1.3]">HMO owner looking to transform and maximize your propery's value and potential? We have you covered.</p>
-                <button className=" mt-3 bg-theme-1 relative z-10 w-3/4 py-2 outline outline-1 outline-white">Explore</button>
+                <p className="relative z-10 text-center font-normal leading-[1.3]">HMO owner looking to transform and maximize your propery's value and potential? We have you covered.</p>
+                <button className=" mt-3 bg-theme-1 relative z-10 w-[200px] lg:w-[230px] py-1 lg:py-2 rounded-lg outline outline-1 outline-white">Explore</button>
             </div>
             <div className="relative px-4 lg:px-14 text-white text-sm lg:text-base group shadow-[10px_10px_0px_2px_#E8E8E8] lg:shadow-[15px_15px_0px_2px_#E8E8E8] w-full h-56 lg:h-80 flex flex-col justify-center items-center gap-2 lg:gap-y-3 overflow-hidden">
                 <Image src={HM} alt="img" fill className=" object-cover brightness-50 lg:group-hover:scale-110 duration-500"/>
                 <span className="relative font-medium text-xl lg:text-3xl z-10 text-center leading-[1]">HOUSEMATES</span>
-                <p className="relative z-10 text-center leading-[1.3]">HMO owner looking to transform and maximize your propery's value and potential? We have you covered.</p>
-                <button className=" mt-3 bg-theme-1 relative z-10 w-3/4 py-2 outline outline-1 outline-white">Explore</button>
+                <p className="relative z-10 text-center font-normal leading-[1.3]">HMO owner looking to transform and maximize your propery's value and potential? We have you covered.</p>
+                <button className=" mt-3 bg-theme-1 relative z-10 w-[200px] lg:w-[230px] py-1 lg:py-2 rounded-lg outline outline-1 outline-white">Explore</button>
             </div>
             
         </div>
