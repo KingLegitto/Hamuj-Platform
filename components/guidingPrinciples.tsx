@@ -101,7 +101,7 @@ const GuidingPrinciples: FC = () => {
               alt="mission icon"
               className="justify-self-end"
             />
-              <ul className="principle-1 flex flex-col gap-y-7 max-w-[70%]">
+              <ul className="principle-1 lists flex flex-col gap-y-7 max-w-[70%]">
               <li>
                 To Combine luxury and affordability for the average Nigerian.
               </li>
@@ -125,7 +125,7 @@ const GuidingPrinciples: FC = () => {
               alt="mission icon"
               className="justify-self-end"
             />
-              <ul className="principle-2 flex flex-col gap-y-3 max-w-[70%]">
+              <ul className="principle-2 lists flex flex-col gap-y-3 max-w-[70%]">
                 <li>Excellence</li>
                 <li>Quality</li>
                 <li>Tranquility</li>
@@ -182,7 +182,7 @@ const GuidingPrinciples: FC = () => {
           <motion.ul
             initial={{ opacity: 0, x: "-100%", maxHeight: 0 }}
             animate={{ opacity: 1, x: 0, maxHeight: '500px', transition:{duration:0.5}}}
-            className="principle-1 flex flex-col gap-y-1 p-5 pr-7 py-10 text-left bg-[#e8e8e8] rounded-xl mt-3 w-[90%] mx-auto"
+            className="principle-1 lists flex flex-col gap-y-1 p-5 pr-7 py-10 text-left bg-[#e8e8e8] rounded-xl mt-3 w-[90%] mx-auto"
           >
               <li>
                 To Combine luxury and affordability for the average Nigerian.
@@ -211,7 +211,7 @@ const GuidingPrinciples: FC = () => {
           <motion.ul
             initial={{ opacity: 0, x: "-100%", maxHeight: 0 }} 
             animate={{ opacity: 1, x: 0, maxHeight: '500px', transition:{duration:0.5}}}
-            className="principle-2 flex flex-col pl-10 pr-7 py-10 text-left bg-[#e8e8e8] rounded-xl mt-3 w-[90%] mx-auto"
+            className="principle-2 lists flex flex-col pl-10 pr-7 py-10 text-left bg-[#e8e8e8] rounded-xl mt-3 w-[90%] mx-auto"
           >
               <li>Excellence</li>
               <li>Quality</li>

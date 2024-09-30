@@ -31,14 +31,14 @@ const HMOPage = () => {
       </section>
 
       <div className="relative flex justify-center items-center h-[250px] md:h-[350px] aspect-video w-full overflow-hidden">
-        <h1 className="absolute z-[3] w-full text-center flex flex-col gap-y-1 md:gap-y-3 items-center">
+        <h2 className="absolute z-[3] w-full text-center flex flex-col gap-y-1 md:gap-y-3 items-center">
           <span className="text-[20px] md:text-[35px] leading-[1.15] text-grade-3 font-medium px-5">
             Transforming HMOs, Enhancing Lives
           </span>
           <span className="text-sm md:text-[20px] mt-3 text-grade-2 max-w-[90%] md:max-w-[70%] leading-[1.25]">
             We specialize in beautiful, budget-friendly homes for professionals and Long-term, lucrative returns for our partners
           </span>
-        </h1>
+        </h2>
       </div>
 
         <HMO />

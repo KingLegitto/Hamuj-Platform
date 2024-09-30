@@ -22,8 +22,7 @@
   user-select: none; /* Standard syntax */
 }
 
-.principle-1,
-.principle-2 {
+.lists {
   li {
     display: flex;
     column-gap: 10px;
@@ -32,6 +31,7 @@
       content: "·";
       color: #115faa;
       font-size: 40px;
+      transform: translateY(-10%);
     }
     @media (min-width: 1024px) {
       column-gap: 5px;
@@ -39,6 +39,7 @@
         content: "·";
         color: #115faa;
         font-size: 70px;
+        transform: translateY(-10%);
       }
     }
   }
