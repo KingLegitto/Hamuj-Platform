@@ -132,7 +132,7 @@ const Navbar = () => {
     <>
     <motion.nav onHoverEnd={()=>{setSubMenu(false)}}
       className={`duration-300 flex group w-full z-[90] fixed justify-center items-center gap-x-14 text-white ${
-        isAtPageTop && !pathname.startsWith("/portfolio/")
+        isAtPageTop && (!pathname.startsWith("/portfolio/") && !pathname.startsWith("/hmos/"))
           ? "lg:hover:bg-theme-1 h-20 lg:backdrop-blur-sm"
           : "bg-theme-1 h-14 lg:h-16"
       }`}
@@ -177,7 +177,7 @@ const Navbar = () => {
       })}
 
       {/* Logo */}
-      {!pathname.startsWith(`/portfolio/`) && (
+      {(!pathname.startsWith(`/portfolio/`) && !pathname.startsWith(`/hmos/`)) && (
         <Image
           src={BrandLogo}
           alt="Hamuj Homes Logo"
@@ -189,8 +189,8 @@ const Navbar = () => {
         />
       )}
 
-      {/* Back arrow for project details page */}
-      {pathname.startsWith(`/portfolio/`) && (
+      {/* Back arrow */}
+      {(pathname.startsWith(`/portfolio/`) || pathname.startsWith(`/hmos/`)) && (
         <TransitionLink
           href={"/"}
           goBack
@@ -253,7 +253,7 @@ const Navbar = () => {
       <aside
         className={`absolute lg:hidden duration-500 top-full pt-5 right-0 z-50 bg-white w-3/4 flex flex-col items-center text-sm touch-none shadow-lg ${
           menuIsVisible ? "translate-x-0 " : "translate-x-full "
-        } ${isAtPageTop ? "rounded-l-lg h-[calc(100dvh-80px)]" : "h-[calc(100dvh-56px)]"}`}
+        } ${(isAtPageTop && pathname!=='/portfolio/details' && !pathname.startsWith('/hmos/')) ? "rounded-l-lg h-[calc(100dvh-80px)]" : "h-[calc(100dvh-56px)]"}`}
       >
         {mobileRoutes.map((navLink) => {
           return (

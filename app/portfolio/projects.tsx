@@ -70,7 +70,7 @@ const Projects = () => {
           <TransitionLink
             key={index}
             href={`/portfolio/details?id=${hyphenate(project.title)}`}
-            styles={`w-full h-[300px] group flex-shrink-0 relative overflow-hidden rounded-xl shadow-[15px_15px_0px_2px_#0000001A] lg:shadow-[17px_17px_0px_2px_#0000001A] duration-300 cursor-pointer bg-[#505050]`}
+            styles={`w-full aspect-[1.45/1] group flex-shrink-0 relative overflow-hidden rounded-xl shadow-[15px_15px_0px_2px_#0000001A] lg:shadow-[17px_17px_0px_2px_#0000001A] duration-300 cursor-pointer bg-[#505050]`}
           >
             <Image
               src={urlFor(project.images[0].asset).url()}
