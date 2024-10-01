@@ -69,7 +69,7 @@ const LandlordsPage = () => {
               <div key={index} className="w-full flex">
                 
                 <div className="flex flex-col gap-y-5 text-sm md:text-lg text-grade-2">
-                  <span className="relative font-medium text-[18px] lg:text-[22px] text-grade-3 pl-3">
+                  <span className="relative font-medium text-[18px] lg:text-[22px] text-grade-3 pl-1">
                     {perk.heading}
                     <Check fill="#115faa" width="100" height="100" className="absolute top-1/2 -translate-y-1/2 right-full translate-x-5 lg:translate-x-0 flex-shrink-0 scale-[0.7] lg:scale-[1]"/>
                   </span>

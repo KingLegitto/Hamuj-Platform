@@ -70,7 +70,7 @@ const TenantsPage = () => {
 
       <section className="max-failsafe grid grid-cols-1 lg:grid-cols-2 gap-x-20 gap-y-14 lg:gap-y-20 my-16 lg:my-32 pl-16 pr-7 lg:pl-28 lg:pr-20">
           <div className="flex flex-col gap-y-5 text-sm md:text-lg text-grade-2">
-            <span className="relative font-medium text-[18px] lg:text-[22px] text-grade-3 pl-3">
+            <span className="relative font-medium text-[18px] lg:text-[22px] text-grade-3 pl-1">
               Advantages
               <Check
                 fill="#115faa"
@@ -94,7 +94,7 @@ const TenantsPage = () => {
           </div>
 
           <div className="flex flex-col gap-y-5 text-sm md:text-lg text-grade-2">
-            <span className="relative font-medium text-[18px] lg:text-[22px] text-grade-3 pl-3">
+            <span className="relative font-medium text-[18px] lg:text-[22px] text-grade-3 pl-1">
               We will meet the following:
               <Check
                 fill="#115faa"
