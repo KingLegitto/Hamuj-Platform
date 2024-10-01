@@ -73,7 +73,7 @@ const LandlordsPage = () => {
                     {perk.heading}
                     <Check fill="#115faa" width="100" height="100" className="absolute top-1/2 -translate-y-1/2 right-full translate-x-5 lg:translate-x-0 flex-shrink-0 scale-[0.7] lg:scale-[1]"/>
                   </span>
-                  {perk.paragraph && (<span className="pl-3">{perk.paragraph}</span>)}
+                  {perk.paragraph && (<span className="pl-1">{perk.paragraph}</span>)}
                   {perk.list && (
                     <ul className="lists flex flex-col gap-y-3">
                       {perk.list.map((item, index)=>{
