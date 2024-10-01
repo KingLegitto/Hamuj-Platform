@@ -127,8 +127,8 @@ const Highlights: FC = () => {
               onClick={() => {
                 handleScrolling(index);
               }}
-              className={`project-highlight-${index} group snap-center flex-shrink-0 relative highlight overflow-hidden
-            ${index === activeProject ? "w-[90%] sm:w-[400px] md:w-[600px] h-[300px] md:h-[350px]" : "w-[80%] sm:w-[350px] md:w-[30%] h-[250px] md:h-[300px] cursor-pointer"} md:first:ml-[50vw] shadow-[10px_10px_0px_2px_#0000001A] lg:shadow-[20px_20px_0px_2px_#0000001A] rounded-xl`}
+              className={`project-highlight-${index} group aspect-[1.45/1] snap-center flex-shrink-0 relative highlight overflow-hidden
+            ${index === activeProject ? "w-[90%] sm:w-[400px] md:w-[600px] lg:aspect-[1.7/1]" : "w-[80%] sm:w-[350px] md:w-[30%] lg:aspect-[1.6/1] cursor-pointer"} md:first:ml-[50vw] shadow-[10px_10px_0px_2px_#0000001A] lg:shadow-[20px_20px_0px_2px_#0000001A] rounded-xl`}
               style={{ transition: "width 0.5s, height 0.5s, margin 0.5s" }}
             >
               <Image
@@ -140,7 +140,7 @@ const Highlights: FC = () => {
                 className={`object-cover z-20`}
               />
               <div
-                className={`details z-20 delay-500 duration-500 text-white bg-gradient-to-t from-[#080808a8] to-[#08080800]  opacity-0 h-1/3 absolute bottom-0 px-5 w-full flex flex-col gap-y-3 justify-center
+                className={`details z-20 delay-500 duration-500 text-white bg-gradient-to-t from-[#080808a8] to-[#08080800]  opacity-0 h-1/3 absolute bottom-0 px-5 w-full flex flex-col gap-y-1 lg:gap-y-3 justify-center
                 ${index === activeProject ? "translate-y-0 opacity-100" : "translate-y-1/2"}`}
               >
                 <span className="font-bold text-lg lg:text-xl truncate max-w-[70%]">

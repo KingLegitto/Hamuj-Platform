@@ -30,16 +30,16 @@
     &::before {
       content: "·";
       color: #115faa;
-      font-size: 40px;
-      transform: translateY(-10%);
+      /* font-size: 40px; */
+      transform: translateY(-5%) scale(2.5);
     }
     @media (min-width: 1024px) {
-      column-gap: 5px;
+      column-gap: 10px;
       &::before {
         content: "·";
         color: #115faa;
-        font-size: 70px;
-        transform: translateY(-10%);
+        /* font-size: 70px; */
+        transform: translateY(-5%) scale(2.5);
       }
     }
   }

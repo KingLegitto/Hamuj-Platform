@@ -131,7 +131,7 @@ const Navbar = () => {
   return (
     <>
     <motion.nav onHoverEnd={()=>{setSubMenu(false)}}
-      className={`duration-300 flex group w-full z-[90] fixed justify-center items-center gap-x-14 text-white ${
+      className={`duration-300 flex w-full z-[90] fixed justify-center items-center gap-x-14 text-white ${
         isAtPageTop && (!pathname.startsWith("/portfolio/") && !pathname.startsWith("/hmos/"))
           ? "lg:hover:bg-theme-1 h-20 lg:backdrop-blur-sm"
           : "bg-theme-1 h-14 lg:h-16"
@@ -140,15 +140,15 @@ const Navbar = () => {
       {desktopRoutes.map((navLink) => {
         if(navLink.title === 'Services'){
           return(
-            <motion.span className={`navLink relative duration-200 hidden lg:inline ${
+            <motion.span className={`navLink relative duration-200 hidden lg:inline group ${
               ((pathname === '/hmos') || (pathname === '/properties') || (pathname === '/consultation')) 
                 ? "text-theme-2 font-medium"
                 : "text-white"
             }`} onHoverStart={()=>{setSubMenu(true)}}>
               {navLink.title}
               <div
-              className={`h-[1px] duration-300 rounded-full absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1 scale-105 link-underline ${
-                subMenu ? "w-full bg-[#ffffff90]" : "w-0"
+              className={`h-[1px]  duration-300 rounded-full absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1 scale-105 link-underline ${
+                subMenu ? "w-full bg-[#ffffff90] group-[.text-theme-2]:bg-theme-2" : "w-0"
               }`}
             />
             </motion.span>

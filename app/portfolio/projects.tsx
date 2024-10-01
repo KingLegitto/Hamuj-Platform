@@ -80,7 +80,7 @@ const Projects = () => {
               className={`object-cover group-hover:lg:scale-[1.1] duration-500`}
             />
             <div
-              className={`text-white bg-gradient-to-t from-[#080808a8] to-[#08080800] h-1/3 absolute bottom-0 px-5 w-full flex flex-col gap-y-3 justify-center
+              className={`text-white bg-gradient-to-t from-[#080808a8] to-[#08080800] h-1/3 absolute bottom-0 px-5 w-full flex flex-col gap-y-1 lg:gap-y-3 justify-center
                 `}
             >
               <span className="font-bold text-base lg:text-lg truncate max-w-[90%]">

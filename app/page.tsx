@@ -13,6 +13,7 @@ import DecorImages from "./decorImages";
 import Hero from "./landingHero";
 import Highlights from "./projectHighlights";
 import Testimonials from "./testimonials";
+import TransitionLink from "@/components/pageTransitions/transitionLink";
 
 const heroImages = [HeroBg, HeroBg_2, HeroBg_3];
 
@@ -167,9 +168,11 @@ export default function Home() {
         <h2 className="text-center text-[25px] lg:text-[32px] text-white font-bold">
           Let's create together
         </h2>
-        <a href="/consultation" className="text-white font-bold rounded-xl w-44 h-12 border-white duration-300 hover:shadow-[0px_0px_3px_3px_#ffffff50] border-2">
-          Get started
-        </a>
+        <TransitionLink href="/consultation">
+          <button className="text-white font-bold rounded-xl w-44 h-12 flex justify-center items-center border-white duration-300 active:scale-[1.1] lg:hover:shadow-[0px_0px_3px_3px_#ffffff50] border-2">
+              Get started
+          </button>
+        </TransitionLink>
         <div className=" bg-white h-[2px] rounded-full w-full lg:w-1/2 opacity-70" />
       </section>
     </main>
