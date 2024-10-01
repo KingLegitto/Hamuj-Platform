@@ -63,14 +63,14 @@ const TenantsPage = () => {
       <div className="w-full">
         <h2 className="w-full text-center">
           <span className="text-[20px] md:text-[30px] leading-[1.15] text-grade-3 font-medium px-5">
-            ~ Live with us ~
+            <span className="text-[#c5c5c5] font-bold">~</span> Live with us <span className="text-[#c5c5c5] font-bold">~</span>
           </span>
         </h2>
       </div>
 
       <section className="max-failsafe grid grid-cols-1 lg:grid-cols-2 gap-x-20 gap-y-14 lg:gap-y-20 my-16 lg:my-32 pl-16 pr-7 lg:pl-28 lg:pr-20">
           <div className="flex flex-col gap-y-5 text-sm md:text-lg text-grade-2">
-            <span className="relative font-medium text-[18px] lg:text-[22px] text-grade-3">
+            <span className="relative font-medium text-[18px] lg:text-[22px] text-grade-3 pl-3">
               Advantages
               <Check
                 fill="#115faa"
@@ -94,7 +94,7 @@ const TenantsPage = () => {
           </div>
 
           <div className="flex flex-col gap-y-5 text-sm md:text-lg text-grade-2">
-            <span className="relative font-medium text-[18px] lg:text-[22px] text-grade-3">
+            <span className="relative font-medium text-[18px] lg:text-[22px] text-grade-3 pl-3">
               We will meet the following:
               <Check
                 fill="#115faa"

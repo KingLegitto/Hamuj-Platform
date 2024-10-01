@@ -58,7 +58,7 @@ const LandlordsPage = () => {
       <div className="w-full">
         <h2 className="w-full text-center">
           <span className="text-[20px] md:text-[30px] leading-[1.15] text-grade-3 font-medium px-5">
-            ~ Work with us ~
+            <span className="text-[#c5c5c5] font-bold">~</span> Work with us <span className="text-[#c5c5c5] font-bold">~</span>
           </span>
         </h2>
       </div>
@@ -69,11 +69,11 @@ const LandlordsPage = () => {
               <div key={index} className="w-full flex">
                 
                 <div className="flex flex-col gap-y-5 text-sm md:text-lg text-grade-2">
-                  <span className="relative font-medium text-[18px] lg:text-[22px] text-grade-3">
+                  <span className="relative font-medium text-[18px] lg:text-[22px] text-grade-3 pl-3">
                     {perk.heading}
                     <Check fill="#115faa" width="100" height="100" className="absolute top-1/2 -translate-y-1/2 right-full translate-x-5 lg:translate-x-0 flex-shrink-0 scale-[0.7] lg:scale-[1]"/>
                   </span>
-                  {perk.paragraph && (<span>{perk.paragraph}</span>)}
+                  {perk.paragraph && (<span className="pl-3">{perk.paragraph}</span>)}
                   {perk.list && (
                     <ul className="lists flex flex-col gap-y-3">
                       {perk.list.map((item, index)=>{
