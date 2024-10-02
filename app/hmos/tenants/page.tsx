@@ -60,12 +60,17 @@ const TenantsPage = () => {
         </div>
       </section>
 
-      <div className="w-full">
-        <h2 className="w-full text-center">
-          <span className="text-[20px] md:text-[30px] leading-[1.15] text-grade-3 font-medium px-5">
-            <span className="text-[#c5c5c5] font-bold">~</span> Live with us <span className="text-[#c5c5c5] font-bold">~</span>
-          </span>
-        </h2>
+      <div className="w-full flex justify-center">
+        <div className="relative w-[200px] lg:w-[400px] flex flex-col items-center">
+          <div className="text-[20px] md:text-[30px] flex gap-x-7 items-center leading-[1.15] text-grade-3 font-medium px-5">
+            Live with us
+          </div>
+          <div className="text-sm mt-3 md:text-[20px] text-grade-2 max-w-[90%] md:max-w-[70%] leading-[1.25]">
+            Luxury and affordability
+          </div>
+          <div className="absolute rounded-lg top-1/2 -translate-y-1/2 right-full w-8 lg:w-20 h-[1px] bg-[#c5c5c5]"/>
+          <div className="absolute rounded-lg top-1/2 -translate-y-1/2 left-full w-8 lg:w-20 h-[1px] bg-[#c5c5c5]"/>
+        </div>
       </div>
 
       <section className="max-failsafe grid grid-cols-1 lg:grid-cols-2 gap-x-20 gap-y-14 lg:gap-y-20 my-16 lg:my-32 pl-16 pr-7 lg:pl-28 lg:pr-20">
